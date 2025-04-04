@@ -11,7 +11,7 @@ Curso de Programación 2, Universidad Nacional de Lujan
 ## Alumnos:
 ### Iván Peralta//197200//ialejoperalta@gmail.com 
 ### Valentin Quelle//195241//quelle2626@gmail.com
-### Ocatavio//Giaccaglia//195241
+### Ocatavio//Giaccaglia//195241//octagiaccaglia@gmail.com
 ### Matias Sebastian Fernandez//195238//matyxd88@gmail.com
 ### Renzo Martin Bisso//186104//renzo_bisso@outlook.com
 
