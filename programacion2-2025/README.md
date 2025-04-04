@@ -7,7 +7,7 @@ Curso de Programación 2, Universidad Nacional de Lujan
 ##### Perello Mario – Profesor Adjunto
 ##### Racker José – Ayudante de 1era
 ##### Reinaudi Claudia – Ayudante de 1era
-## N° de grupo: 01
+## N° de grupo: 03
 ## Alumnos:
 ### Iván Peralta//197200//ialejoperalta@gmail.com 
 ### Valentin Quelle//195241//quelle2626@gmail.com
