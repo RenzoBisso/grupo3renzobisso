@@ -33,9 +33,9 @@ int productoAux(int m, int n){
 }
 
 int producto(int m, int n){
-    int signo = (m / abs(m)) * (n / abs(n));
+    int signo = (m / abs(m)) * (n / abs(n)); //GUARDAMOS EL SIGNO
     int resultado = productoAux(abs(m), abs(n));
-    return resultado * signo;
+    return resultado * signo; //TRATAMIENTO DE SIGNO +/-
 }
 
 //PUNTO 3
@@ -122,7 +122,6 @@ void desarrollarPatron(char *cadena, int mitad, int nivel) {
     cadena[inicio + 1] = '-';
     cadena[fin - 1] = '-';
 
-    // Llamada recursiva para el siguiente nivel más interno
     desarrollarPatron(cadena, mitad, nivel - 1);
 }
 
@@ -146,7 +145,6 @@ char *reunionMafia(int nivel) {
     cadena[mitad + 2] = '-';
     cadena[mitad + 3] = ')';
 
-    // Llamada a la función recursiva para construir el patrón
     desarrollarPatron(cadena, mitad, nivel);
 
     return cadena;
@@ -186,7 +184,7 @@ char * ondaDigital(char * seniales){
     return digital;
 }
 
-//PUNTO 8 |||||FALTA TERMINAR
+//PUNTO 8
 void imprimirSubconjunto(int arr[], int n, int count) {
     if (count == 0) {
         printf("{");  // Abre el subconjunto

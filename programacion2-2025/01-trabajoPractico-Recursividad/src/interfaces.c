@@ -17,12 +17,12 @@ void interfaz2(){
         printf("\t||EJERCICIO PARA DETECTAR PALINDROMOS                                                                 ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         
-        printf("\nIngrese una cadena de caracteres: ");
+        printf("\nIngrese una cadena de caracteres: "); //PIDO CADENA DE CARACTERES
         fflush(stdin);
         fgets(cadena, 150, stdin);
         strtok(cadena, "\n");
         
-        while(cadena[0] == '\n'){
+        while(cadena[0] == '\n'){ //SI ES UN SALTO DE LINEA TIRA ERROR
             printf("Error, ingrese una cadena valida.\n");
             printf("\nIngrese una cadena de caracteres: ");
             fflush(stdin);
@@ -61,7 +61,7 @@ void interfaz3(){
     char min;
     bool bandera;
     char c;
-    int m, n, modm, modn;
+    int m, n;
     do  //MENU/////////////////////////////////////////////////
     {
         printf("\t\t\t                      +------------------------+\n");
@@ -73,7 +73,7 @@ void interfaz3(){
         
         fflush(stdin);
 
-        printf("Ingrese un numero m: ");
+        printf("Ingrese un numero m: "); //INGRESO DE NUMERO M
         bandera = scanf("%d", &m);
         while(bandera != 1){
             printf("\nError, ingrese un dato valido.");
@@ -82,12 +82,8 @@ void interfaz3(){
             bandera = scanf("%d", &m);
         }
 
-        if(m != 0){
-            modm = m / abs(m);
-        }
-
         fflush(stdin);
-        printf("\nIngrese un numero n: ");
+        printf("\nIngrese un numero n: "); //INGRESO NUMERO N
         bandera = scanf("%d", &n);
         while(bandera != 1){
             printf("\nError, ingrese un dato valido.");
@@ -96,11 +92,7 @@ void interfaz3(){
             bandera = scanf("%d", &n);
         }
 
-        if(n != 0){
-            modn = n / abs(n);
-        }
-
-        printf("\nEl producto de [%d] y [%d] es: [%d]", m, n, (producto(abs(m),abs(n)) * (modm * modn)));
+        printf("\nEl producto de [%d] y [%d] es: [%d]", m, n, (producto(m,n)));
 
         limpiarBuffer();
         

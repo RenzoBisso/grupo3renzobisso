@@ -1,5 +1,7 @@
 #include "..\headers\utilidades.h"
 
+//FUNCIONES AUXILIARES GENERALES
+
 void limpiar_pantalla()
 {
   #ifdef _WIN32
@@ -33,12 +35,12 @@ int es_decimal(double num){ // Funcion para saber si un numero tiene parte decim
 }
 
 int esEntero(double num){
-    return floor(num) == num;
+    return floor(num) == num; //FUNCION PARA SABER SI UN NUMERO ES ENTERO
 }
 
 void a_minusculas(char *str){
   while (*str) {
-      *str = tolower(*str);
+      *str = tolower(*str); //TRANSFORMA TODOS LOS CARACTERES A MINUSCULA
       str++;
   }
 }
@@ -50,6 +52,10 @@ void imprimirArr(int* arr, int length) {
   //printf("\n");
 }
 
+//FIN DE FUNCIONES AUXILIARES GENERALES
+//
+//
+//FUNCION ESPECIFICA DE PUNTO 8
 void cargarArray(int arr[], int n,int count){
   if(count==n){
       return;
@@ -69,6 +75,4 @@ void cargarArray(int arr[], int n,int count){
       }
   }
   return cargarArray(arr,n,count+1);
-  
-
 }
