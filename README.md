@@ -15,6 +15,6 @@ Curso de Programación 2, Universidad Nacional de Lujan
 ##### Matias Sebastian Fernandez//195238//matyxd88@gmail.com
 ##### Renzo Martin Bisso//186104//renzo_bisso@outlook.com
 
-## Recomendacion para el Menu: Ejecutar el codigo en una terminal aparte.
+## ⚠️Recomendacion para el Menu: Ejecutar el codigo en una terminal aparte.
 
 
