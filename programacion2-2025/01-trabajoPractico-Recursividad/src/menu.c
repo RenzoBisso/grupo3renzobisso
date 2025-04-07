@@ -2,7 +2,7 @@
 #include "..\headers\interfaz.h"
 
 void menu(){
-
+    limpiar_pantalla();
     bool bandera, valido;
     int opcion = 0;
     do  //MENU/////////////////////////////////////////////////
