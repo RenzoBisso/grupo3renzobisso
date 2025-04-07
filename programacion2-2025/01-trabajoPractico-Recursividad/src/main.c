@@ -5,6 +5,11 @@ int main()
 {   
     srand(time(NULL));
     
+    //
+    //  PUEDE LLEGAR A DAR ERRORES VISUALES EN LA TERMINAL DE VSCODE
+    //  RECOMENDAMOS EJECUTARLO EN UNA CONSOLA EXTERNA
+    //
+
     menu();
 
     return 0;
