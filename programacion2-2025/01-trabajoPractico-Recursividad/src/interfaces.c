@@ -21,7 +21,14 @@ void interfaz2(){
         fflush(stdin);
         fgets(cadena, 150, stdin);
         strtok(cadena, "\n");
-
+        
+        while(cadena[0] == '\n'){
+            printf("Error, ingrese una cadena valida.\n");
+            printf("\nIngrese una cadena de caracteres: ");
+            fflush(stdin);
+            fgets(cadena, 150, stdin);
+            strtok(cadena, "\n");
+        }
         
         if(palindromo(cadena)){
             printf("Su cadena [%s] es palindromo\n", cadena);
