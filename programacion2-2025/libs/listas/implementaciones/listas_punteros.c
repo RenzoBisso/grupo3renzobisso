@@ -1,5 +1,5 @@
 //#include "D:\Mario\Prog_2_2009\2024\TADs\Listas\listas.h"
-#include ".\listas.h"
+#include "..\listas\headers\listas.h"
 #include <stdlib.h>
 #include <stdio.h>
 
