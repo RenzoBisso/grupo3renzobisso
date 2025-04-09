@@ -1,5 +1,4 @@
-#include "..\listas\headers\listas.h"
-#include "..\libs\tipoElemento\headers\tipo_elemento.h"
+#include "..\headers\listas.h"
 #include <stdlib.h>
 #include <stdio.h>
 
