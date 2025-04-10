@@ -16,27 +16,52 @@ void interfaz2(){
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
         printf("\t||DADAS DOS LISTAS CARGADAS CON VALORES AL AZAR:                                                      ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+        Lista l1 = l_crear();
+        Lista l2 = l_crear();
+
+        while(!l_es_llena(l1)){
+            l_agregar(l1, te_crear(rand() % 11));
+        }
+
+        while(!l_es_llena(l2)){
+            l_agregar(l2, te_crear(rand() % 11));
+        }
+
+        printf("Lista 1: ");
+        l_mostrar(l1);
+        printf("\nLista 2: ");
+        l_mostrar(l2);
+
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||MOSTRAR LOS VALORES DE L1 QUE NO SE ENCUENTRAN EN L2:                                               ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
         
-        /* printf("\nIngrese una cadena de caracteres: ");
-        fflush(stdin);
-        fgets(cadena, 150, stdin);
-        strtok(cadena, "\n");
+        Lista resultado = l_crear();
+        resultado = verElementosQueNoSeRepiten(l1, l2);
+        l_mostrar(resultado);
 
-        while(cadena[0] == '\n'){
-            printf("Error, ingrese una cadena valida.\n");
-            printf("\nIngrese una cadena de caracteres: ");
-            fflush(stdin);
-            fgets(cadena, 150, stdin);
-            strtok(cadena, "\n");
-        }
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||MOSTRAR LOS VALORES DE L2 QUE NO SE ENCUENTRAN EN L1:                                               ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        
+        free(resultado);
+        resultado = verElementosQueNoSeRepiten(l2, l1);
+        l_mostrar(resultado);
 
-        if(palindromo(cadena)){
-            printf("Su cadena [%s] es palindromo\n", cadena);
-        }
-        else{
-            printf("Su cadena [%s] NO es palindromo\n", cadena);
-        } */
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||MOSTRAR LOS VALORES REPETIDOS:                                                                      ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
             
+        free(resultado);
+        resultado = verElementosRepetidos(l1, l2);
+        l_mostrar(resultado);
+
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||MOSTRAR EL PROMEDIO DE AMBAS LISTAS:                                                                ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+
         limpiarBuffer();
         
         do {
