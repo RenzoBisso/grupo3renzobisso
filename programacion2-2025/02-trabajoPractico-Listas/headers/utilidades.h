@@ -46,4 +46,6 @@ void encontrarSubconjuntos(int conjunto[], int largo, int index, int subconjunto
 
 void guardarSubconjunto(int arr[], int tamano,char** output,int *indiceOutput);
 
+void llenarLRandom(Lista l1);
+
 #endif

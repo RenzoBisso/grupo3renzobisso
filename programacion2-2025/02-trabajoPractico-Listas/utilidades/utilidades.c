@@ -72,3 +72,9 @@ void cargarArray(int arr[], int n,int count){
   
 
 }
+
+void llenarLRandom(Lista l1){
+  while(!l_es_llena(l1)){
+    l_agregar(l1, te_crear(rand() % 11));
+  }
+}
