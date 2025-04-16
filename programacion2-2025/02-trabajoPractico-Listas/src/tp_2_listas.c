@@ -8,28 +8,14 @@ Lista verElementosQueNoSeRepiten(Lista l1, Lista l2){
 
     Iterador iter1 = iterador(l1);
 
-    TipoElemento x = te_crear(0);
-    TipoElemento y = te_crear(0);
-
-    bool bandera;
+    TipoElemento X = te_crear(0);
 
     while(hay_siguiente(iter1)){
-        x = siguiente(iter1);
+        X = siguiente(iter1);
 
-        Iterador iter2 = iterador(l2);
-
-        while(hay_siguiente(iter2)){
-            y = siguiente(iter2);
-            if(x->clave != y->clave){
-                bandera = false;
-            }
+        if(l_buscar(l2, X->clave) == NULL){
+            l_agregar(lresultado, X);
         }
-        if(!bandera){
-            l_agregar(lresultado, x);
-        }
-
-        bandera = true;
-        free(iter2);
     }
 
     return lresultado;
@@ -39,30 +25,17 @@ Lista verElementosQueNoSeRepiten(Lista l1, Lista l2){
 Lista verElementosRepetidos(Lista l1, Lista l2){
     Lista lresultado = l_crear();
 
-    Iterador iter1 = iterador(l1);
+    Iterador iter = iterador(l1);
 
-    TipoElemento x = te_crear(0);
-    TipoElemento y = te_crear(0);
+    TipoElemento X = te_crear(0);
 
-    bool bandera;
 
-    while(hay_siguiente(iter1)){
-        x = siguiente(iter1);
+    while(hay_siguiente(iter)){
+        X = siguiente(iter);
 
-        Iterador iter2 = iterador(l2);
-
-        while(hay_siguiente(iter2)){
-            y = siguiente(iter2);
-            if(x->clave == y->clave){
-                bandera = false;
-            }
+        if(l_buscar(l2, X->clave) != NULL){
+            l_agregar(lresultado, X);
         }
-        if(!bandera){
-            l_agregar(lresultado, x);
-        }
-
-        bandera = true;
-        free(iter2);
     }
 
     return lresultado;
@@ -83,56 +56,51 @@ float promedio(Lista l1){
     return resultado;
 }
 
-Resultados promedioAmbasListas(Lista l1, Lista l2){
-    Resultados resultado;
-    resultado.resultado1 = promedio(l1);
-    resultado.resultado2 = promedio(l2);
-    return resultado;
-}
-
 //E
-ResultadoValorMinimo valorMaximo(Lista l1, Lista l2){ //EN REALIDAD BUSCA EL VALOR MÍNIMO, PERO ASÍ ESTÁ DECLARADO EN EL .h
+ResultadoValorMinimo valorMinimo(Lista l1, Lista l2){ //EN REALIDAD BUSCA EL VALOR MÍNIMO, PERO ASÍ ESTÁ DECLARADO EN EL .h
+    
     ResultadoValorMinimo resultado;
 
     Iterador iter1 = iterador(l1);
     Iterador iter2 = iterador(l2);
 
     TipoElemento X = te_crear(0);
+    X = siguiente(iter1);
 
-    int actual1 = siguiente(iter1)->clave;
+    int actual1 = X->clave;
     int i = 1;
-    int pos1;
+    int pos1 = i;
 
     while(hay_siguiente(iter1)){
+        i++;
         X = siguiente(iter1);
         if(X->clave < actual1){
             actual1 = X->clave;
             pos1 = i;
         }
-        i++;
     }
 
-    int actual2 = siguiente(iter2)->clave;
+    X = siguiente(iter2);
+
+    int actual2 = X->clave;
     i = 1;
-    int pos2;
+    int pos2 = 1;
 
     while(hay_siguiente(iter2)){
+        i++;
         X = siguiente(iter2);
         if(X->clave < actual2){
             actual2 = X->clave;
             pos2 = i;
         }
-        i++;
     }
 
-    if(actual2 < actual1){
-        resultado.pos = pos1;
-        resultado.valor = actual1;
-    }
-    else{
-        resultado.pos_2 = pos2;
-        resultado.valor_2 = actual2;
-    }
+    resultado.pos = pos1;
+    resultado.valor = actual1;
+
+    resultado.pos_2 = pos2;
+    resultado.valor_2 = actual2;
+    
     return resultado;
 }
 
@@ -141,6 +109,7 @@ ResultadoValorMinimo valorMaximo(Lista l1, Lista l2){ //EN REALIDAD BUSCA EL VAL
 //
 //
 //
+
 //PUNTO 3
 ResultadosMul multiplo(Lista l1, Lista l2){
     Lista l3 = l_crear();
@@ -271,22 +240,20 @@ Lista calcularRango(Lista list, double x, double y, double sumando) {
 
 //PUNTO 6
 bool esSublista(Lista l1, Lista l2){
-    Iterador iter1 = iterador(l1);
-    Iterador iter2 = iterador(l2);
+    Iterador ite  = iterador(l2);
 
-    TipoElemento X = te_crear(0);
-    TipoElemento Y = te_crear(0);
+    bool resultado = true;
 
-    while(hay_siguiente(iter2)){
-        X = siguiente(iter2);
-        while(hay_siguiente(iter1)){
-            Y = siguiente(iter1);
-            if(X->clave != Y->clave){
-                return false;
+    while(hay_siguiente(ite)){
+
+        TipoElemento x = siguiente(ite);
+
+        if(l_buscar(l1, x->clave) == NULL ){
+            resultado = false;
             }
         }
-    }
-    return true;
+
+    return resultado;
 }
 
 

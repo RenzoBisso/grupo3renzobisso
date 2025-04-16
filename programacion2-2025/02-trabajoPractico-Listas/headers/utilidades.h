@@ -52,4 +52,8 @@ void l_mostrar_con_valor(Lista lista);
 
 void cargarLista(Lista l, int n, int count);
 
+char salir();
+
+void mostrar_coeficientes(Lista l);
+
 #endif

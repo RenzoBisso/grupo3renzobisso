@@ -11,35 +11,25 @@ void menu(){
         printf("\t\t\t\t\t    |      Menu Principal    |\n");
         printf("\t\t\t\t\t    +------------------------+\n\n\n");
         printf("\t\t\t\t\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-        printf("\t\t\t\t\t||OPCION 1 - Probar ejercicio 1     ||\n");
+        printf("\t\t\t\t\t||OPCION 1 - Probar ejercicio 2     ||\n");
         printf("\t\t\t\t\t||----------------------------------||\n");
-        printf("\t\t\t\t\t||OPCION 2 - Probar ejercicio 2     ||\n");
+        printf("\t\t\t\t\t||OPCION 2 - Probar ejercicio 3     ||\n");
         printf("\t\t\t\t\t||----------------------------------||\n");
-        printf("\t\t\t\t\t||OPCION 3 - Probar ejercicio 3     ||\n");
+        printf("\t\t\t\t\t||OPCION 3 - Probar ejercicio 4     ||\n");
         printf("\t\t\t\t\t||----------------------------------||\n");     
-        printf("\t\t\t\t\t||OPCION 4 - Probar ejercicio 4     ||\n");
+        printf("\t\t\t\t\t||OPCION 4 - Probar ejercicio 5     ||\n");
         printf("\t\t\t\t\t||----------------------------------||\n");
-        printf("\t\t\t\t\t||OPCION 5 - Probar ejercicio 5     ||\n");
-        printf("\t\t\t\t\t||----------------------------------||\n");
-        printf("\t\t\t\t\t||OPCION 6 - Probar ejercicio 6     ||\n");
-        printf("\t\t\t\t\t||----------------------------------||\n");   
-        printf("\t\t\t\t\t||OPCION 7 - Probar ejercicio 7     ||\n");
-        printf("\t\t\t\t\t||----------------------------------||\n"); 
-        printf("\t\t\t\t\t||OPCION 8 - Probar ejercicio 8     ||\n");
-        printf("\t\t\t\t\t||----------------------------------||\n"); 
-        printf("\t\t\t\t\t||OPCION 9 - Probar ejercicio 9     ||\n");
-        printf("\t\t\t\t\t||----------------------------------||\n"); 
-        printf("\t\t\t\t\t||OPCION 10 - Probar ejercicio 10   ||\n");
+        printf("\t\t\t\t\t||OPCION 5 - Probar ejercicio 6     ||\n");
         printf("\t\t\t\t\t||----------------------------------||\n");  
         printf("\t\t\t\t\t||OPCION 0 - Salir del menu         ||\n");
         printf("\t\t\t\t\t||----------------------------------||\n");
-        printf("\t\t\t\t\t||Ingrese una opcion entre 0 y 10   ||\n");
+        printf("\t\t\t\t\t||Ingrese una opcion entre 0 y 5    ||\n");
         printf("\t\t\t\t\t||<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<||\n");
         do //VALIDO OPCION DEL MENU////////////////////////////////////////////////////////////
         {
             valido = true;
             bandera = scanf("%d", &opcion);
-            if ( bandera != 1 ||opcion < 0 || opcion > 10 )
+            if ( bandera != 1 ||opcion < 0 || opcion > 5 )
             {
                 printf("Valor invalido, reintente el ingreso...(Opciones validas entre 0 y 10)\n");
                 valido = false;
@@ -71,26 +61,6 @@ void menu(){
         interfaz6();
         pausa();
         break;  
-      case 6:
-        interfaz7();
-        pausa();
-        break;  
-      case 7:
-        interfaz8();
-        pausa();
-        break;  
-      case 8:
-        interfaz9();
-        pausa();
-        break; 
-      case 9:
-        interfaz10();
-        pausa();
-        break; 
-      case 10:
-        interfaz11();
-        pausa();
-        break;   
       default:
         break;
     }

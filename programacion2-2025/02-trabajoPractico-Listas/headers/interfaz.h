@@ -16,16 +16,4 @@ void interfaz5();
 
 void interfaz6();
 
-void interfaz7();
-
-void interfaz8();
-
-void interfaz9();
-
-void interfaz10();
-
-void interfaz11();
-
-
-
 #endif /* INTERFAZ_H */

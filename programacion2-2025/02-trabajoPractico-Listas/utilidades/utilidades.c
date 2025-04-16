@@ -102,13 +102,66 @@ void cargarLista(Lista l, int n, int count) {
   return cargarLista(l, n, count + 1);
 }
 
-void l_mostrar_con_valor(Lista l) {
+void l_mostrar_con_valor(Lista l) {//PARA EL EJERCICIO 5 DE LISTAS, NO INCLUIR EN OTROS EJERCICIOS
+                                   //SI SE DESEA UTILIZAR PARA OTROS FINES, ELIMINAR LAS LINEAS MARCADAS Y MODIFICAR EL CAST
   printf("Contenido de la lista: ");
   Iterador iter = iterador(l);
   TipoElemento X = te_crear_con_valor(0, NULL);
+  printf("{");//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   while(hay_siguiente(iter)){
     X = siguiente(iter);
-    printf("%.5f ", *(double*)X->valor);
+    if(hay_siguiente(iter)){//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      printf("%.5f; ", *(double*)X->valor);//XXXXXXXXXXXXXXXXXXXXXXXXXXX ELIMINAR ";" Y CAST XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    }
+    else{//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      printf("%.5f", *(double*)X->valor);//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    }//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    
   }
-  printf("\n");
+  printf("}\n");//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  
+}
+
+void mostrar_coeficientes(Lista l){ // 10 9 0 5 6 --- 5 --- 10^5 9^4 0^3 5^2 6
+  int i = l_longitud(l) -1;
+  Iterador iter = iterador(l);
+  TipoElemento X;
+  while(hay_siguiente(iter)){
+    X = siguiente(iter);
+    if(X->clave != 0){
+      if(i == 1){
+        printf("%dx + ", X->clave);
+      }
+      else if(i == 0){
+        printf("%d\n", X->clave);
+      }
+      else{
+        printf("%dx^%d + ", X->clave, i);
+      }
+      i--;
+    }
+    else{
+      i--;
+    }
+  }
+
+}
+
+char salir(){
+  char c;
+  char min;
+  do {
+    printf("\n\nDESEA SALIR? Y/N: ");
+    c = getchar();
+    min = tolower(c);
+    
+    limpiarBuffer(); // Limpia lo que quedó después del getchar
+
+    if (min != 'n' && min != 'y') {
+      printf("\nError, ingrese un dato valido.");
+    }
+
+  } while (min != 'n' && min != 'y');
+
+  return min;
 }
