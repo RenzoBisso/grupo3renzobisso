@@ -78,3 +78,37 @@ void llenarLRandom(Lista l1){
     l_agregar(l1, te_crear(rand() % 11));
   }
 }
+
+void cargarLista(Lista l, int n, int count) {
+  if (count == n) {
+      return;
+  }
+  int valor;
+  bool flag = true;
+  while (flag)
+  {
+      printf("Ingrese el numero a agregar: ");
+
+      if (scanf("%d", &valor) != 1) {
+          printf("Entrada inválida. No se ingresó un número entero.\n");
+          while (getchar() != '\n');
+      }
+      else {
+          TipoElemento elemento = te_crear(valor);
+          l_agregar(l, elemento);
+          flag = false;
+      }
+  }
+  return cargarLista(l, n, count + 1);
+}
+
+void l_mostrar_con_valor(Lista l) {
+  printf("Contenido de la lista: ");
+  Iterador iter = iterador(l);
+  TipoElemento X = te_crear_con_valor(0, NULL);
+  while(hay_siguiente(iter)){
+    X = siguiente(iter);
+    printf("%.5f ", *(double*)X->valor);
+  }
+  printf("\n");
+}

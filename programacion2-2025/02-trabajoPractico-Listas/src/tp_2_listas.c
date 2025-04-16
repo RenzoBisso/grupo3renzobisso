@@ -229,7 +229,45 @@ int CompararListas(Lista l1, Lista l2){
     }
 }
 
-//PUNTO 5 TE LA DEBO
+//PUNTO 5
+void hacerPolinomio(Lista list) {
+    cargarLista(list,5,0);
+}
+
+Lista calcularRango(Lista list, double x, double y, double sumando) {
+    
+    Lista resultados = l_crear();
+    
+    TipoElemento aux = te_crear(0);
+
+    double xRes = 0;
+    
+    while(x <= y){
+
+        double* yRes = (double*)malloc(sizeof(double));//Dedicado a mi Transformer favorito
+        *yRes = 0.0;
+
+        int largo = l_longitud(list)-1;
+
+        Iterador ite = iterador(list);
+
+        while(hay_siguiente(ite)) {
+            aux = siguiente(ite);//tomo el X del coeficiente
+
+            xRes = aux->clave * (pow(x, largo));
+            *yRes += xRes;
+            largo--;
+
+        }
+
+        l_agregar(resultados, te_crear_con_valor(0, yRes));
+
+        free(ite);
+
+        x += sumando;
+    }
+    return resultados;
+}
 
 //PUNTO 6
 bool esSublista(Lista l1, Lista l2){

@@ -48,4 +48,8 @@ void guardarSubconjunto(int arr[], int tamano,char** output,int *indiceOutput);
 
 void llenarLRandom(Lista l1);
 
+void l_mostrar_con_valor(Lista lista);
+
+void cargarLista(Lista l, int n, int count);
+
 #endif
