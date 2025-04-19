@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "..\headers\utilidades.h"
 #include "..\headers\interfaz.h"
 

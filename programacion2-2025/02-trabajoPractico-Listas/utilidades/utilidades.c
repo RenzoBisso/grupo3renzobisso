@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "..\headers\utilidades.h"
 
 void limpiar_pantalla()
@@ -87,7 +88,7 @@ void cargarLista(Lista l, int n, int count) {
   bool flag = true;
   while (flag)
   {
-      printf("Ingrese el numero a agregar: ");
+      printf("Ingrese el numero a agregar en la posicion %d: ",count);
 
       if (scanf("%d", &valor) != 1) {
           printf("Entrada inválida. No se ingresó un número entero.\n");
@@ -100,6 +101,25 @@ void cargarLista(Lista l, int n, int count) {
       }
   }
   return cargarLista(l, n, count + 1);
+}
+
+
+void pedirNumero(int* valor) {
+
+    bool flag = true;
+    while (flag)
+    {
+        printf("Ingrese un numero: ");
+
+        if (scanf("%d", valor) != 1) {
+            printf("Entrada inválida. No se ingresó un número entero.\n");
+            while (getchar() != '\n');
+        }
+        else {
+            flag = false;
+        }
+    }
+    return valor;
 }
 
 void l_mostrar_con_valor(Lista l) {//PARA EL EJERCICIO 5 DE LISTAS, NO INCLUIR EN OTROS EJERCICIOS
