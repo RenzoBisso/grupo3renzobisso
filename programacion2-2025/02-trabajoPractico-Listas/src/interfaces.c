@@ -466,7 +466,7 @@ void interfaz6(){
     }while (c == 'n');
 }
 
-void interfazCargaLista(Lista * l1) {
+void interfazCargaLista(Lista  l1) {
 
         printf("\t\t\t                      +------------------------+\n");
         printf("\t\t\t                      |       Cargar Lista     |\n");
