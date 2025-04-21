@@ -177,30 +177,31 @@ ResultadosMul multiplo(Lista l1, Lista l2){
 
 //PUNTO 4
 int CompararListas(Lista l1, Lista l2){
-    Iterador iter1 = iterador(l1);
-    Iterador iter2 = iterador(l2);
+    Iterador iter1 = iterador(l1);//O(1)
+    Iterador iter2 = iterador(l2);//O(1)
 
-    int sumal1 = 0;
-    int sumal2 = 0;
+    int sumal1 = 0;//O(1)
+    int sumal2 = 0;//O(1)
 
-    while(hay_siguiente(iter1)){
-        sumal1 += siguiente(iter1)->clave;
+    while(hay_siguiente(iter1)){//O(n1)
+        sumal1 += siguiente(iter1)->clave;//O(1)
     }
     
-    while(hay_siguiente(iter2)){
-        sumal2 += siguiente(iter2)->clave;
+    while(hay_siguiente(iter2)){//O(n2)
+        sumal2 += siguiente(iter2)->clave;//O(1)
     }
 
-    if(sumal1 > sumal2){
-        return 1;
+    if(sumal1 > sumal2){//O(1)
+        return 1;//O(1)
     }
-    else if(sumal1 == sumal2){
-        return 0;
+    else if(sumal1 == sumal2){//O(1)
+        return 0;//O(1)
     }
-    else{
-        return 2;
+    else{//O(1)
+        return 2;//O(1)
     }
 }
+//Complejidad O(n1+n2)
 
 //PUNTO 5
 void hacerPolinomio(Lista list) {
@@ -245,25 +246,25 @@ Lista calcularRango(Lista list, double x, double y, double sumando) {
 
         x += sumando;
     }
-    return resultados;
+    return resultados;//O(1)
 }
 
 //PUNTO 6
 bool esSublista(Lista l1, Lista l2){
-    Iterador ite  = iterador(l2);
+    Iterador ite  = iterador(l2);//O(1)
 
-    bool resultado = true;
+    bool resultado = true;//O(1)
 
-    while(hay_siguiente(ite)){
+    while(hay_siguiente(ite)){//O(n)
 
-        TipoElemento x = siguiente(ite);
+        TipoElemento x = siguiente(ite);//O(1)
 
-        if(l_buscar(l1, x->clave) == NULL ){
-            resultado = false;
+        if(l_buscar(l1, x->clave) == NULL ){//O(1)
+            resultado = false;//O(1)
             }
         }
 
-    return resultado;
+    return resultado;//O(1)
 }
-
+//Complejidad O(n)
 
