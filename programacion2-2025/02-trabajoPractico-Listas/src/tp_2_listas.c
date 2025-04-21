@@ -179,7 +179,7 @@ ResultadosMul multiplo(Lista l1, Lista l2){
 int CompararListas(Lista l1, Lista l2){
     Iterador iter1 = iterador(l1);//O(1)
     Iterador iter2 = iterador(l2);//O(1)
-    printf("Complejidad O(n1+n2)");
+    
     int sumal1 = 0;//O(1)
     int sumal2 = 0;//O(1)
 
@@ -252,7 +252,6 @@ Lista calcularRango(Lista list, double x, double y, double sumando) {
 //PUNTO 6
 bool esSublista(Lista l1, Lista l2){
     Iterador ite  = iterador(l2);//O(1)
-    printf("Complejidad O(n1*n2)");
     bool resultado = true;//O(1)
 
     while(hay_siguiente(ite)){//O(n2)
