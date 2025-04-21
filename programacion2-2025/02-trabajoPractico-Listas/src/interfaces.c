@@ -111,6 +111,7 @@ void interfaz2(){
 
 void interfaz3(){
     char c;
+    int opcion;
     ResultadosMul res;
     do  //MENU/////////////////////////////////////////////////
     {
@@ -125,32 +126,16 @@ void interfaz3(){
 
         Lista l1 = l_crear();
         Lista l2 = l_crear();
-        int opcion=-1;
-        pedirNumero(&opcion);
-        bool flag = true;
-        while (flag) {
-            if (opcion != 1 && opcion != 0) {
-                pedirNumero(&opcion);
-            }
-            else if (opcion == 1) {
-                flag = false;
-
-                llenarLRandom(l1);
-                llenarLRandom(l2);
-
-            }
-            else if (opcion == 0) {
-                flag = false;
-                interfazCargaLista(l1);
-                interfazCargaLista(l2);
-
-            }
-            else {
-                printf("Opción no válida. Ingrese 0 o 1.\n");
-            }
+        
+        opcion = cargaManualAuto();
+        if(opcion){
+            llenarLRandom(l1);
+            llenarLRandom(l2);
         }
-
- //TEMPORAL HASTA TENER LA FUNCION DE TAMAÑO Y CARGA MANUAL;
+        else{
+            interfazCargaLista(l1);
+            interfazCargaLista(l2);
+        }
 
         res = multiplo(l2, l1);
 
@@ -179,6 +164,8 @@ void interfaz3(){
         free(l1);
         free(l2);
 
+        limpiarBuffer();
+
         c = salir();
 
         pausa();
@@ -189,6 +176,7 @@ void interfaz3(){
 void interfaz4(){
     char c;
     int num;
+    int opcion;
     do  //MENU/////////////////////////////////////////////////
     {
         printf("\t\t\t                      +------------------------+\n");
@@ -197,52 +185,35 @@ void interfaz4(){
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
         printf("\t||DADAS DOS LISTAS, COMPARAR SI L1 ES MAYOR/MENOR/IGUAL A L2                                          ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
-        
         printf("\t||Ingrese 1 para cargar al azar o 0 para cargar manualmente:                                          ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
         Lista l1 = l_crear();
         Lista l2 = l_crear();
-        int opcion = -1;
-        pedirNumero(&opcion);
-        bool flag = true;
-        while (flag) {
-            if (opcion != 1 && opcion != 0) {
-                pedirNumero(&opcion);
-            }
-            else if (opcion == 1) {
 
-                llenarLRandom(l1);
-                llenarLRandom(l2);
-                printf("\t||");
-                printf("\n\t|| Lista 1: ");
-                l_mostrar(l1);
-
-                printf("\t||");
-
-                printf("\n\t|| Lista 2: ");
-                l_mostrar(l2);
-                printf("\t||\n");
-                flag = false;
-
-            }
-            else if (opcion == 0) {
-                interfazCargaLista(l1);
-                interfazCargaLista(l2);
-
-                flag = false;
-
-            }
-            else {
-                printf("Opción no válida. Ingrese 0 o 1.\n");
-            }
+        opcion = cargaManualAuto();
+        if(opcion){
+            llenarLRandom(l1);
+            llenarLRandom(l2);
+        }
+        else{
+            interfazCargaLista(l1);
+            interfazCargaLista(l2);
         }
 
+        printf("\t||");
+        printf("\n\t|| Lista 1: ");
+        l_mostrar(l1);
 
+        printf("\t||");
+        printf("\n\t|| Lista 2: ");
+        l_mostrar(l2);
+
+        printf("\t||\n");
 
         num = CompararListas(l1, l2);
 
-        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        //printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
         printf("\t||\n");
         switch(num)
         {
@@ -265,6 +236,8 @@ void interfaz4(){
         free(l1);
         free(l2);
 
+        limpiarBuffer();
+
         c = salir();
 
         pausa();
@@ -277,6 +250,8 @@ void interfaz5(){
     double x;
     double y;
     double intervalo;
+    int opcion;
+    bool flag;
     do  //MENU/////////////////////////////////////////////////
     {
         printf("\t\t\t                      +------------------------+\n");
@@ -285,83 +260,57 @@ void interfaz5(){
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
         printf("\t||DADA UNA LISTA DE COEFICIENTES Y CIERTO VALOR DE X, DEVOLVER UN POLINOMIO F(X)                      ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
-   
         printf("\t||Ingrese 1 para cargar al azar o 0 para cargar manualmente:                                          ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         Lista l1 = l_crear();
-        int opcion = -1;
-        pedirNumero(&opcion);
-        bool flag = true;
-        while (flag) {
-            if (opcion != 1 && opcion != 0) {
-                pedirNumero(&opcion);
-            }
-            else if (opcion == 1) {
 
-                llenarLRandom(l1);
-                printf("\t||");
-                printf("\n\t|| Lista 1: ");
-                l_mostrar(l1);
+        opcion = cargaManualAuto();
+        if(opcion){
+            llenarLRandom(l1);
+        }
+        else{
+            interfazCargaLista(l1);
+        }
 
-                printf("\t||");
+        flag = true;
+       
+        while(flag){
+            printf("\t||Ingrese el numero X: ");
 
-                printf("\n\t|| Lista 2: ");
-                printf("\t||\n");
-                flag = false;
-
-            }
-            else if (opcion == 0) {
-                interfazCargaLista(l1);
-                flag = false;
-
+            if (scanf("%lf", &x) != 1) {
+                printf("\t||Entrada invalida.\n");
+                while (getchar() != '\n');
             }
             else {
-                printf("Opción no válida. Ingrese 0 o 1.\n");
+                flag = false;
             }
         }
 
         flag = true;
-        while (flag)
-        {
-            double valor;
-            printf("Ingrese el numero X:");
 
-            if (scanf("%lf", &valor) != 1) {
-                printf("Entrada inválida. No se ingresó un número entero.\n");
+        while(flag){
+            printf("\t||Ingrese el numero Y: ");
+
+            if(scanf("%lf", &y) != 1){
+                printf("\t||Entrada invalida.\n");
                 while (getchar() != '\n');
             }
-            else {
-                x = valor;
+            else{
                 flag = false;
             }
         }
-        flag = true;
-        while (flag)
-        {
-            double valor;
-            printf("Ingrese el numero Y:");
 
-            if (scanf("%lf", &valor) != 1) {
-                printf("Entrada inválida. No se ingresó un número entero.\n");
+        flag = true;
+
+        while(flag){
+            double valor;
+            printf("\t||Ingrese el numero valor del intervalo: ");
+
+            if(scanf("%lf", &intervalo) != 1){
+                printf("\t||Entrada invalida.\n");
                 while (getchar() != '\n');
             }
-            else {
-                y= valor;
-                flag = false;
-            }
-        }
-        flag = true;
-        while (flag)
-        {
-            double valor;
-            printf("Ingrese el numero valor del intervalo:");
-
-            if (scanf("%lf", &valor) != 1) {
-                printf("Entrada inválida. No se ingresó un número entero.\n");
-                while (getchar() != '\n');
-            }
-            else {
-                intervalo = valor;
+            else{
                 flag = false;
             }
         }
@@ -375,7 +324,7 @@ void interfaz5(){
         mostrar_coeficientes(l1);
         printf("\t||\n");
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-        printf("\t||RESOLUCION DE F(X) CON RANGO {%.2f;%.2f}, E INTERVALO %.2f                                          ||\n", x, y, intervalo);
+        printf("\t||RESOLUCION DE F(X) CON RANGO {%.2f;%.2f}, E INTERVALO %.2f                                          \n", x, y, intervalo);
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||\n");
 
@@ -386,6 +335,11 @@ void interfaz5(){
         printf("\t||\n");
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
 
+        free(resultado);
+        free(l1);
+
+        limpiarBuffer();
+
         c = salir();
 
         pausa();
@@ -395,6 +349,7 @@ void interfaz5(){
 
 void interfaz6(){
     char c;
+    int opcion;
     do  //MENU/////////////////////////////////////////////////
     {
         printf("\t\t\t                      +------------------------+\n");
@@ -408,29 +363,15 @@ void interfaz6(){
 
         Lista l1 = l_crear();
         Lista l2 = l_crear();
-        int opcion = -1;
-        pedirNumero(&opcion);
-        bool flag = true;
-        while (flag) {
-            if (opcion != 1 && opcion != 0) {
-                pedirNumero(&opcion);
-            }
-            else if (opcion == 1) {
-                flag = false;
-
-                llenarLRandom(l1);
-                llenarLRandom(l2);
-
-            }
-            else if (opcion == 0) {
-                flag = false;
-                interfazCargaLista(l1);
-                interfazCargaLista(l2);
-
-            }
-            else {
-                printf("Opción no válida. Ingrese 0 o 1.\n");
-            }
+        
+        opcion = cargaManualAuto();
+        if(opcion){
+            llenarLRandom(l1);
+            llenarLRandom(l2);
+        }
+        else{
+            interfazCargaLista(l1);
+            interfazCargaLista(l2);
         }
 
         printf("\t||");
@@ -459,6 +400,8 @@ void interfaz6(){
         free(l1);
         free(l2);
 
+        limpiarBuffer();
+
         c = salir();
 
         pausa();
@@ -466,42 +409,45 @@ void interfaz6(){
     }while (c == 'n');
 }
 
-void interfazCargaLista(Lista * l1) {
+void interfazCargaLista(Lista  l1) {
+    //limpiar_pantalla();
+    printf("\t||CARGA MANUAL...                                                                                     ||\n");
+    printf("\t||----------------------------------------------------------------------------------------------------||\n");
+    int tamanio;
+    bool flag = true;
+    while (flag)
+    {
+        limpiarBuffer();
 
-        printf("\t\t\t                      +------------------------+\n");
-        printf("\t\t\t                      |       Cargar Lista     |\n");
-        printf("\t\t\t                      +------------------------+\n\n\n");
-        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-        printf("\t||----------------------------------------------------------------------------------------------------||\n");
-        int tamanio = 0;
-        bool flag = true;
-        while (flag)
-        {
-            printf("\t||Ingrese el tamanio de la lista:                                                                 ||\n");
+        printf("\t||Ingrese el tamanio de la lista: ");
 
-            if (scanf("%d", &tamanio) != 1) {
-                printf("Entrada inválida. No se ingresó un número entero.\n");
-                while (getchar() != '\n');
+        if (scanf("%d", &tamanio) != 1) {
+            printf("\t||\n");
+            printf("\t||----------------------------------------------------------------------------------------------------||\n");
+            printf("\t||Entrada invalida. No se ingreso un numero entero.                                                   ||\n");
+            printf("\t||----------------------------------------------------------------------------------------------------||\n");
+            //while (getchar() != '\n');
+        }
+        else {
+            if (tamanio >= 1) {
+                flag = false;
             }
-            else {
-                if (tamanio >= 1) {
-                    flag = false;
-                }
+            else{                                                                                                                 
+                printf("\t||\n");
+                printf("\t||----------------------------------------------------------------------------------------------------||\n");
+                printf("\t||Entrada invalida. No se ingreso un numero entero.                                                   ||\n");
+                printf("\t||----------------------------------------------------------------------------------------------------||\n");
             }
         }
-
         
-        //llenarLRandom(l1);
-        //llenarLRandom(l2);
-        printf("Lista 1\n");
-        cargarLista(l1, tamanio, 0);
+    }
 
-        printf("\t||");
-        printf("\n\t|| Lista 1: ");
-        l_mostrar(l1);
+    
+    //llenarLRandom(l1);
+    //llenarLRandom(l2);
+    printf("\t||----------------------------------------------------------------------------------------------------||\n");
+    cargarLista(l1, tamanio, 0);
 
-        printf("\t||");
-
-        printf("\t||\n");
-        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+    //limpiar_pantalla();
+    printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
 }
