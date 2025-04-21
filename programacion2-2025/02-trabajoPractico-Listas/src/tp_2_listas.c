@@ -116,7 +116,7 @@ ResultadosMul multiplo(Lista l1, Lista l2){
     
     Iterador iter1 = iterador(l1);
     Iterador iter2 = iterador(l2);
-    Iterador iter3 = iterador(l3);
+    
 
     TipoElemento X = te_crear(0);
     TipoElemento Y = te_crear(0);
@@ -140,9 +140,13 @@ ResultadosMul multiplo(Lista l1, Lista l2){
             l_agregar(l3, te_crear(X->clave / Y->clave));
         }
     }
+
+    Iterador iter3 = iterador(l3);
     
-    X = siguiente(iter3);
-    actual = X->clave;
+    if(hay_siguiente(iter3)){
+        X = siguiente(iter3);
+        actual = X->clave;
+    }
 
     while(hay_siguiente(iter3)){
         X = siguiente(iter3);
@@ -210,6 +214,12 @@ Lista calcularRango(Lista list, double x, double y, double sumando) {
     TipoElemento aux = te_crear(0);
 
     double xRes = 0;
+
+    if(x >= y){//AGREGADO PARA QUE X SIEMPRE SEA EL MENOR
+        double aux = y;
+        y = x;
+        x = aux;
+    }
     
     while(x <= y){
 

@@ -58,4 +58,6 @@ void mostrar_coeficientes(Lista l);
 
 void pedirNumero(int* valor);
 
+int cargaManualAuto();
+
 #endif

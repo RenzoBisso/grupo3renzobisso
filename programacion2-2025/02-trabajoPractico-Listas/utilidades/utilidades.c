@@ -88,10 +88,10 @@ void cargarLista(Lista l, int n, int count) {
   bool flag = true;
   while (flag)
   {
-      printf("Ingrese el numero a agregar en la posicion %d: ",count);
+      printf("\t||Ingrese el numero a agregar en la posicion %d: ",count);
 
       if (scanf("%d", &valor) != 1) {
-          printf("Entrada inválida. No se ingresó un número entero.\n");
+          printf("\t||Entrada inválida. No se ingresó un número entero.\n");
           while (getchar() != '\n');
       }
       else {
@@ -103,21 +103,21 @@ void cargarLista(Lista l, int n, int count) {
   return cargarLista(l, n, count + 1);
 }
 
-
 void pedirNumero(int* valor) {
 
     bool flag = true;
+    
     while (flag)
     {
-        printf("Ingrese un numero: ");
+      printf("\t||Ingrese un numero: ");
 
-        if (scanf("%d", valor) != 1) {
-            printf("Entrada inválida. No se ingresó un número entero.\n");
-            while (getchar() != '\n');
-        }
-        else {
-            flag = false;
-        }
+      if(scanf("%d", valor) != 1) {
+        printf("\t||Entrada invalida.\n");
+        while (getchar() != '\n');
+      }
+      else {
+        flag = false;
+      }
     }
 }
 
@@ -183,4 +183,22 @@ char salir(){
   } while (min != 'n' && min != 'y');
 
   return min;
+}
+
+int cargaManualAuto(){//0 manual, 1 azar
+  bool bandera = true;
+  int opcion;
+  pedirNumero(&opcion);
+  do{
+    if (opcion != 1 && opcion != 0) {
+      printf("\t||Error, ingrese una opcion valida.\n");
+      pedirNumero(&opcion);
+    }
+    else{
+      bandera = false;
+    }
+    
+  }while(bandera);
+  printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+  return opcion;
 }
