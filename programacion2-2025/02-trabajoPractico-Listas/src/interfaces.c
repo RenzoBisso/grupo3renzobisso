@@ -163,7 +163,6 @@ void interfaz3(){
         
         free(l1);
         free(l2);
-        printf("Complejidad O(n1+n2)");
         limpiarBuffer();
 
         c = salir();
@@ -235,7 +234,8 @@ void interfaz4(){
 
         free(l1);
         free(l2);
-
+        printf("Complejidad O(n1+n2)");
+        
         limpiarBuffer();
 
         c = salir();
