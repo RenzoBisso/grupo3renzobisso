@@ -255,16 +255,16 @@ bool esSublista(Lista l1, Lista l2){
 
     bool resultado = true;//O(1)
 
-    while(hay_siguiente(ite)){//O(n)
+    while(hay_siguiente(ite)){//O(n2)
 
         TipoElemento x = siguiente(ite);//O(1)
 
-        if(l_buscar(l1, x->clave) == NULL ){//O(1)
+        if(l_buscar(l1, x->clave) == NULL ){//O(n1)
             resultado = false;//O(1)
             }
         }
 
     return resultado;//O(1)
 }
-//Complejidad O(n)
+//Complejidad O(n1*n2)
 
