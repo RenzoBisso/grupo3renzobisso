@@ -2,10 +2,12 @@
 #define PILAS_H
 
 #include <stdbool.h>
-#include "tipo_elemento.h"
+#include "../headers/pilas.h"
+#include "..\..\..\..\..\..\..\Documents\GitHub\grupo3renzobisso\programacion2-2025\libs\tipoElemento\headers\tipo_elemento.h"
+
 
 struct PilaRep;
-typedef struct PilaRep *Pila;
+typedef struct PilaRep* Pila;
 
 /**
  * Crea una nueva pila vacía.
