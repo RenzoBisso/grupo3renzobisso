@@ -45,6 +45,7 @@ void interfaz3(){
 
 
 
+
         limpiarBuffer();
 
         c = salir();
@@ -67,6 +68,9 @@ void interfaz4(){
         printf("\t||                                                                                                    ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         
+
+
+
         limpiarBuffer();
 
         c = salir();
