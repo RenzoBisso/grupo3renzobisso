@@ -60,5 +60,6 @@ void mostrar_coeficientes(Lista l);
 void pedirNumero(int* valor);
 
 int cargaManualAuto();
-
+void p_cargar(Pila p);
+Pila p_ej6_eliminarclaveR(Pila p, int clave);
 #endif

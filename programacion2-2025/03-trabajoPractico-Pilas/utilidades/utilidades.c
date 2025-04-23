@@ -270,6 +270,21 @@ void cargarLista(Lista l, int n, int count) {
 //##################
 //FUNCIONES DE PILAS
 
+void p_cargar(Pila p){
+
+    int numero,tamanio;
+    pedirNumero(&tamanio);
+    while(tamanio>0){
+            printf("Ingrese un numero para la pila:  \n");
+            scanf("%d", &numero);
+            p_apilar(p, te_crear(numero));
+            tamanio--;
+    }
+    p_mostrar(p);
+}
+
+
+
 //FUNCIONES DE PILAS
 //##################
 //##################
