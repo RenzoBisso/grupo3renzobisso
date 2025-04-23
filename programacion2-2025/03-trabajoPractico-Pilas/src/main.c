@@ -11,10 +11,10 @@ int main(){
 
     char* texto = malloc(100 * sizeof(char));
 
-    texto = p_ej4_cambiarbase(10, 2);
+    texto = p_ej4_cambiarbase(10, 16);
 
-    printf("%s", texto);
-
+    printf("%s\n", texto);
+    printf("Prueba");
     pausa();
 
     return 0;

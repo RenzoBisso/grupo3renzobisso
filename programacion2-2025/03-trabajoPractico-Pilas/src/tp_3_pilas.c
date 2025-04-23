@@ -204,30 +204,6 @@ bool p_ej3_iguales(Pila p1, Pila p2) {
 	return flag;
 
 }
-
-char* p_ej4_cambiarbase(int nrobasedecimal, int nrootrabase){
-    Pila pAux = p_crear();
-    
-    while (nrobasedecimal > 0) {
-        int resto = nrobasedecimal % nrootrabase;
-        nrobasedecimal = nrobasedecimal / nrootrabase;
-        if (resto < 10) {
-            TipoElemento x = te_crear(resto);
-            p_apilar(pAux, x);
-        } else {
-            char letra = 'A' + (resto - 10);
-            char* str = (char*)malloc(2); 
-            str[0] = letra;
-            str[1] = '\0';
-            TipoElemento x = te_crear_con_valor(0, str);
-            p_apilar(pAux, x);
-        }
-    }
-    p_mostrar(pAux);
-}
-
-
-//EJERCICIO 4
 int largo(Pila p){
     int count=0;
     if(p_es_vacia(p)){
@@ -251,40 +227,41 @@ int largo(Pila p){
     return count;
 }
 
-char* pasarString(Pila p){
-    
-    int l=largo(p);
-    Pila pAux=p_crear();
-    char *texto = (char *)malloc( l* sizeof(char));
+char* pasarString(Pila p) {
+    int l = largo(p);
+    Pila pAux = p_crear();
 
-    while(p_tope(p)!=NULL){
-        TipoElemento elemento=te_crear_con_valor(0,NULL);
-        elemento=p_desapilar(p);
-        
-        if(elemento->valor==NULL){
-            char str[10];  
-            sprintf(str, "%d", elemento->clave);
-            strcpy(texto, str);
-        }else{
-            strcpy(texto, elemento->valor);
+    // Suponiendo longitud promedio de 10 por elemento
+    char *texto = (char *)malloc(l * 10 * sizeof(char));
+    texto[0] = '\0';  // Inicializar string vacío
+
+    while (p_tope(p) != NULL) {
+        TipoElemento elemento = p_desapilar(p);
+        char temp[50];
+
+        if (elemento->valor == NULL) {
+            sprintf(temp, "%d", elemento->clave);
+        } else {
+            sprintf(temp, "%s", elemento->valor);
         }
-        p_apilar(pAux,elemento);
+
+        strcat(texto, temp);
+        p_apilar(pAux, elemento);
     }
-    while (p_tope(pAux)!=NULL)
-    {
-        TipoElemento aux=te_crear_con_valor(0,NULL);
-        aux=p_desapilar(pAux);
-        p_apilar(p,aux);
+
+    // Restaurar pila original
+    while (p_tope(pAux) != NULL) {
+        p_apilar(p, p_desapilar(pAux));
     }
 
     return texto;
 }
 
 
-char* p_ej4_cambiarbase(int nrobasedecimal, int nrootrabase){
+
+char* p_ej4_cambiarbase(int nrobasedecimal, int nrootrabase) {
     Pila pAux = p_crear();
-    char* texto = malloc(100 * sizeof(char));
-    
+
     while (nrobasedecimal > 0) {
         int resto = nrobasedecimal % nrootrabase;
         nrobasedecimal = nrobasedecimal / nrootrabase;
@@ -294,7 +271,7 @@ char* p_ej4_cambiarbase(int nrobasedecimal, int nrootrabase){
             p_apilar(pAux, x);
         } else {
             char letra = 'A' + (resto - 10);
-            char* str = (char*)malloc(2); 
+            char* str = (char*)malloc(2);
             str[0] = letra;
             str[1] = '\0';
 
@@ -302,9 +279,12 @@ char* p_ej4_cambiarbase(int nrobasedecimal, int nrootrabase){
             p_apilar(pAux, x);
         }
     }
-    texto = pasarString(pAux);
-    //p_mostrar(pAux);
+
+    char* texto = pasarString(pAux);
+    p_mostrar(pAux); 
+    return texto;    
 }
+
 
 //EJERCICIO 5
 Pila  p_ej5_invertir(Pila p){
