@@ -270,19 +270,34 @@ void cargarLista(Lista l, int n, int count) {
 //##################
 //FUNCIONES DE PILAS
 
-void p_cargar(Pila p){
-
-    int numero,tamanio;
-    pedirNumero(&tamanio);
-    while(tamanio>0){
-            printf("Ingrese un numero para la pila:  \n");
-            scanf("%d", &numero);
-            p_apilar(p, te_crear(numero));
-            tamanio--;
+void p_cargar(Pila p,int n, int count){
+  if (count == n) {
+      return;
     }
-    p_mostrar(p);
+  int valor;
+  bool flag = true;
+  while (flag)
+  {
+      printf("\t||Ingrese el numero a agregar en la posicion %d: ",count);
+
+      if (scanf("%d", &valor) != 1) {
+          printf("\t||Entrada inválida. No se ingresó un número entero.\n");
+          while (getchar() != '\n');
+      }
+      else {
+          TipoElemento elemento = te_crear(valor);
+          p_apilar(p, elemento);
+          flag = false;
+      }
+  }
+  return p_cargar(p, n, count + 1);
 }
 
+void llenarPRandom(Pila p1){
+  while(!p_es_llena(p1)){
+    l_agregar(p1, te_crear(rand() % 11));
+  }
+}
 
 
 //FUNCIONES DE PILAS
