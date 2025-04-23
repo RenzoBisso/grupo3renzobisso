@@ -408,4 +408,46 @@ void interfaz6(){
 
     }while (c == 'n');
 }
- 
+
+void interfazCargaLista(Lista  l1) {
+    //limpiar_pantalla();
+    printf("\t||CARGA MANUAL...                                                                                     ||\n");
+    printf("\t||----------------------------------------------------------------------------------------------------||\n");
+    int tamanio;
+    bool flag = true;
+    while (flag)
+    {
+        limpiarBuffer();
+
+        printf("\t||Ingrese el tamanio de la lista: ");
+
+        if (scanf("%d", &tamanio) != 1) {
+            printf("\t||\n");
+            printf("\t||----------------------------------------------------------------------------------------------------||\n");
+            printf("\t||Entrada invalida. No se ingreso un numero entero.                                                   ||\n");
+            printf("\t||----------------------------------------------------------------------------------------------------||\n");
+            //while (getchar() != '\n');
+        }
+        else {
+            if (tamanio >= 1) {
+                flag = false;
+            }
+            else{                                                                                                                 
+                printf("\t||\n");
+                printf("\t||----------------------------------------------------------------------------------------------------||\n");
+                printf("\t||Entrada invalida. No se ingreso un numero entero.                                                   ||\n");
+                printf("\t||----------------------------------------------------------------------------------------------------||\n");
+            }
+        }
+        
+    }
+
+    
+    //llenarLRandom(l1);
+    //llenarLRandom(l2);
+    printf("\t||----------------------------------------------------------------------------------------------------||\n");
+    cargarLista(l1, tamanio, 0);
+
+    //limpiar_pantalla();
+    printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+}
