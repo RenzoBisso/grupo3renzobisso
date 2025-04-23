@@ -84,9 +84,23 @@ void interfaz4(){
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
         printf("\t||                                                                                                    ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
-        printf("\t||                                                                                                    ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         
+        int numero;
+        int base;
+        printf("Ingrese el numero a transformar\n");
+        pedirNumero(&numero);
+        printf("\n");
+        printf("Ingrese el numero de la base 2-16\n");
+        pedirNumero(&base);
+        if(base>16 || base<2){
+            printf("dato invalido");
+        }
+
+
+        printf("%s\n", p_ej4_cambiarbase(numero,base));
+
+
         limpiarBuffer();
 
         c = salir();
