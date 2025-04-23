@@ -23,7 +23,13 @@ void interfaz2(){
 
         Pila p = p_crear();
 
-        //FUNCION PARA CARGA MANUAL O AUTO
+        opcion = cargaManualAuto();
+        if(opcion){
+            llenarPRandom(p);
+        }
+        else{
+            interfazCargaPila(p);
+        }
 
         printf("\t||");
         printf("\n\t|| Pila: ");
@@ -264,17 +270,29 @@ void interfaz7(){
 
 void interfaz8(){
     char c;
+    int opcion;
     do  //MENU/////////////////////////////////////////////////
     {
         printf("\t\t\t                      +------------------------+\n");
         printf("\t\t\t                      |       EJERCICIO 8      |\n");
         printf("\t\t\t                      +------------------------+\n\n\n");
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-        printf("\t||                                                                                                    ||\n");
+        printf("\t||DADA UNA PILA CON VALORES REPETIDOS, DEVUELVE LA CANTIDAD DE VECES QUE APARECE UN VALOR             ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||Ingrese 1 para cargar al azar o 0 para cargar manualmente:                                          ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
+        Pila p = p_crear();
+
+        opcion = cargaManualAuto();
+        if(opcion){
+            llenarPRandom(p);
+        }
+        else{
+            interfazCargaPila(p);
+        }
+
+        
 
         limpiarBuffer();
 
@@ -284,6 +302,7 @@ void interfaz8(){
 
     }while (c == 'n');
 }
+
 void interfazCargaPila(Pila  p1) {
     //limpiar_pantalla();
     printf("\t||CARGA MANUAL...                                                                                     ||\n");

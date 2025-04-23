@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "..\headers\utilidades.h"
+#include "..\headers\tp_3_pilas.h"
 
 //###################
 //###################
@@ -299,6 +300,39 @@ void llenarPRandom(Pila p1){
   }
 }
 
+Pila duplicar(Pila p){
+  Pila aux = p_crear();
+  Pila doble = p_crear();
+
+  TipoElemento X;
+
+  while(!p_es_vacia(p)){
+    X = p_desapilar(p);
+    p_apilar(aux, p);
+  }
+
+  while(!p_es_vacia(aux)){
+    X = p_desapilar(aux);
+    p_apilar(p, X);
+    p_apilar(doble, X);
+  }
+
+  return doble
+}
+
+void p_mostrar_con_valor(Pila p){
+  Pila aux = p_crear();
+  aux = duplicar(p);
+
+  TipoElemento X;
+
+  printf("\t||Contenido de la pila: ");
+
+  while(!p_es_vacia(aux)){
+    X = p_desapilar(aux);
+    printf("\t|| ");
+  }
+}
 
 //FUNCIONES DE PILAS
 //##################

@@ -5,8 +5,8 @@
 int main(){
 
     srand(time(NULL));
+    
     menu();
-    pausa();
 
     return 0;
 }
