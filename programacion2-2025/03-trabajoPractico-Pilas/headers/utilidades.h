@@ -62,4 +62,5 @@ void pedirNumero(int* valor);
 int cargaManualAuto();
 void p_cargar(Pila p);
 Pila p_ej6_eliminarclaveR(Pila p, int clave);
+void llenarPRandom(Pila p1);
 #endif
