@@ -203,7 +203,10 @@ bool p_ej3_iguales(Pila p1, Pila p2) {
 	}
 	return flag;
 
+
 }
+
+//EJERCICIO 4
 int largo(Pila p){
     int count=0;
     if(p_es_vacia(p)){
@@ -257,8 +260,6 @@ char* pasarString(Pila p) {
     return texto;
 }
 
-
-
 char* p_ej4_cambiarbase(int nrobasedecimal, int nrootrabase) {
     Pila pAux = p_crear();
 
@@ -281,10 +282,9 @@ char* p_ej4_cambiarbase(int nrobasedecimal, int nrootrabase) {
     }
 
     char* texto = pasarString(pAux);
-    p_mostrar(pAux); 
+    
     return texto;    
 }
-
 
 //EJERCICIO 5
 Pila  p_ej5_invertir(Pila p){
@@ -345,7 +345,7 @@ Pila p_ej7_elementoscomunes(Pila p1, Pila p2){
         p_apilar(aux2, Y);
     }
 
-    while(!p_es_llena(p1) && !p_es_llena(p2)){
+    while(!p_es_llena(p1) && !p_es_llena(p2)){//APILAMOS LA PILA AUX CON LOS ELEMENTOS COMUNES
         X = p_desapilar(aux1);
         Y = p_desapilar(aux2);
         if(X->clave == Y->clave){
@@ -358,7 +358,43 @@ Pila p_ej7_elementoscomunes(Pila p1, Pila p2){
     return pEComunes;
 }
 
+//EJERCICIO 8
+Pila p_ej8_sacarrepetidos(Pila p){
+    Lista l = l_crear();
+    Pila pRepetidos = p_crear();
+    Pila aux = p_crear();
+    TipoElemento X;
+    TipoElemento Y;
+    int count;
 
+    while(!p_es_vacia(p)){//VACIAMOS LA PILA Y LLENAMOS LA LISTA
+        X = p_desapilar(p);
+        p_apilar(aux, X);
+        l_agregar(l, X);
+    }
 
+    Iterador iter1 = iterador(l);
+    Iterador iter2;
+
+    while(hay_siguiente(iter1)){//APILAMOS LAS CLAVES Y LA CANT DE REPETIDOS
+        X = siguiente(iter1);
+        iter2 = iterador(l);
+        count = 1;
+        while(hay_siguiente(iter2)){
+            Y = siguiente(iter2);
+            if(X->clave == Y->clave){
+                count++;
+            }
+        }
+        p_apilar(pRepetidos, te_crear_con_valor(X->clave, count));
+    }
+
+    while(!p_es_llena(aux)){//RESTAURO LA PILA ORIGINAL
+        X = p_desapilar(aux);
+        p_apilar(p, X);
+    }
+
+    return pRepetidos;
+}
 
 
