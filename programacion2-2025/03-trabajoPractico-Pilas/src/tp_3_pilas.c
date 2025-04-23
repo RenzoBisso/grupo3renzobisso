@@ -53,6 +53,7 @@ Pila p_ej2_colocarelemento(Pila p, int posicionordinal, TipoElemento x){
 Pila p_ej2_eliminarclave(Pila p, int clave){
     Pila aux = p_crear();
     TipoElemento X;
+    bool llave = true;
 
     while(!p_es_vacia(p)){//VACIAMOS LA PILA
         X = p_desapilar(p);
@@ -61,8 +62,9 @@ Pila p_ej2_eliminarclave(Pila p, int clave){
 
     while(!p_es_llena(p)){//INSERTAMOS ELEMENTO Y OMITIMOS LA CLAVE
         X = p_desapilar(aux);
-        if(X->clave != clave){
+        if(X->clave != clave && llave){
             p_apilar(p, X);
+            llave = false;
         }
     }
 
@@ -70,7 +72,7 @@ Pila p_ej2_eliminarclave(Pila p, int clave){
     return p;
 }
 
-
+//D
 Pila p_ej2_intercambiarposiciones(Pila p, int pos1, int pos2) {
 	if (p_es_vacia(p)) {
 		return p;
@@ -122,6 +124,7 @@ Pila p_ej2_intercambiarposiciones(Pila p, int pos1, int pos2) {
 	return p;
 }
 
+//E
 Pila p_ej2_duplicar(Pila p) {
 	if (p_es_vacia(p)) {
 		return p;
@@ -143,7 +146,7 @@ Pila p_ej2_duplicar(Pila p) {
 	return p2;
 }
 
-
+//F
 int p_ej2_cantidadelementos(Pila p) {
 	if (p_es_vacia(p)) {
 		return 0;
@@ -165,6 +168,7 @@ int p_ej2_cantidadelementos(Pila p) {
 	return count;
 }
 
+//EJERCICIO 3
 bool p_ej3_iguales(Pila p1, Pila p2) {
 	if (p_es_vacia(p1) || p_es_vacia(p2)) {
 		return false;
@@ -223,6 +227,7 @@ char* p_ej4_cambiarbase(int nrobasedecimal, int nrootrabase){
 }
 
 
+//EJERCICIO 4
 int largo(Pila p){
     int count=0;
     if(p_es_vacia(p)){
@@ -274,3 +279,106 @@ char* pasarString(Pila p){
 
     return texto;
 }
+
+
+char* p_ej4_cambiarbase(int nrobasedecimal, int nrootrabase){
+    Pila pAux = p_crear();
+    char* texto = malloc(100 * sizeof(char));
+    
+    while (nrobasedecimal > 0) {
+        int resto = nrobasedecimal % nrootrabase;
+        nrobasedecimal = nrobasedecimal / nrootrabase;
+
+        if (resto < 10) {
+            TipoElemento x = te_crear(resto);
+            p_apilar(pAux, x);
+        } else {
+            char letra = 'A' + (resto - 10);
+            char* str = (char*)malloc(2); 
+            str[0] = letra;
+            str[1] = '\0';
+
+            TipoElemento x = te_crear_con_valor(0, str);
+            p_apilar(pAux, x);
+        }
+    }
+    texto = pasarString(pAux);
+    //p_mostrar(pAux);
+}
+
+//EJERCICIO 5
+Pila  p_ej5_invertir(Pila p){
+    Pila pInvertida = p_crear();
+    Pila aux = p_crear();
+
+    TipoElemento X;
+
+    while(!p_es_vacia(p)){//DESAPILAMOS
+        X = p_desapilar(p);
+        p_apilar(aux, X);
+        p_apilar(pInvertida, X);
+    }
+
+    while(!p_es_vacia(p)){//APILAMOS
+        X = p_desapilar(aux);
+        p_apilar(p, X);
+    }
+
+    return pInvertida;
+}
+
+//EJERCICIO 6
+Pila p_ej6_eliminarclave(Pila p, int clave){
+    Pila pSinClave = p_crear();
+    Pila aux = p_crear();
+
+    TipoElemento X;
+
+    while(!p_es_vacia(p)){//DESAPILAMOS
+        X = p_desapilar(p);
+        p_apilar(aux, X);
+    }
+
+    while(!p_es_llena(p)){//APILAMOS - OMITIMOS LA CLAVE EN pSinClave
+        X = p_desapilar(aux);
+        p_apilar(p, X);
+        if(X->clave != clave){
+            p_apilar(pSinClave, X);  
+        }
+    }
+
+    return pSinClave;
+}
+
+//EJERCICIO 7
+Pila p_ej7_elementoscomunes(Pila p1, Pila p2){
+    Pila pEComunes = p_crear();
+    Pila aux1 = p_crear();
+    Pila aux2 = p_crear();
+    TipoElemento X;
+    TipoElemento Y;
+
+    while(!p_es_vacia(p1) && !p_es_vacia(p2)){//VACIAMOS LA PILA
+        X = p_desapilar(p1);
+        Y = p_desapilar(p2);
+        p_apilar(aux1, X);
+        p_apilar(aux2, Y);
+    }
+
+    while(!p_es_llena(p1) && !p_es_llena(p2)){
+        X = p_desapilar(aux1);
+        Y = p_desapilar(aux2);
+        if(X->clave == Y->clave){
+            p_apilar(pEComunes, X);
+        }
+        p_apilar(p1, X);
+        p_apilar(p2, Y);
+    }
+
+    return pEComunes;
+}
+
+
+
+
+
