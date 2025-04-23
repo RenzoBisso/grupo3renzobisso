@@ -5,9 +5,7 @@ int main(){
 
     srand(time(NULL));
 
-    printf("Funciona");
-
-    //menu();
+    menu();
 
     return 0;
 }

@@ -2,8 +2,8 @@
 #define PILAS_H
 
 #include <stdbool.h>
-#include "../headers/pilas.h"
-#include "..\..\..\..\..\..\..\Documents\GitHub\grupo3renzobisso\programacion2-2025\libs\tipoElemento\headers\tipo_elemento.h"
+#include "..\headers\pilas.h"
+#include "..\..\tipoElemento\headers\tipo_elemento.h"
 
 
 struct PilaRep;
