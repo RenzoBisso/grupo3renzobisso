@@ -327,7 +327,6 @@ Pila p_ej6_eliminarclaveR(Pila p, int clave){
     return ej6R(p,clave,pSinValor,pAux);
 }
 
-
 Pila p_ej6_eliminarclave(Pila p, int clave){
     Pila pSinClave = p_crear();
     Pila aux = p_crear();
@@ -349,10 +348,6 @@ Pila p_ej6_eliminarclave(Pila p, int clave){
 
     return pSinClave;
 }
-
-
-
-
 
 //EJERCICIO 7
 Pila p_ej7_elementoscomunes(Pila p1, Pila p2){
@@ -394,7 +389,9 @@ Pila p_ej8_sacarrepetidos(Pila p){
     while(!p_es_vacia(p)){//VACIAMOS LA PILA Y LLENAMOS LA LISTA
         X = p_desapilar(p);
         p_apilar(aux, X);
-        l_agregar(l, X);
+        if(l_buscar(l, X->clave) == NULL){
+            l_agregar(l, X);
+        }
     }
 
     Iterador iter1 = iterador(l);
