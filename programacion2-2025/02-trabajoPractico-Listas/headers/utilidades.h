@@ -7,6 +7,7 @@
 #include <string.h>
 #include <ctype.h>
 #include "..\..\libs\listas\headers\listas.h"
+#include "..\..\libs\pilas\headers\pilas.h"
 #include "..\..\libs\tipoElemento\headers\tipo_elemento.h"
 
 #ifndef UTILIDADES_H
@@ -59,5 +60,7 @@ void mostrar_coeficientes(Lista l);
 void pedirNumero(int* valor);
 
 int cargaManualAuto();
+
+Pila duplicar(Pila p);
 
 #endif

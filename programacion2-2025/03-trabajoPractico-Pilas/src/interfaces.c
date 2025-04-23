@@ -18,6 +18,125 @@ void interfaz2(){
         printf("\t||                                                                                                    ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
+<<<<<<< HEAD
+        Pila p = p_crear();
+
+        opcion = cargaManualAuto();
+        if(opcion){
+            llenarPRandom(p);
+        }
+        else{
+            interfazCargaPila(p);
+        }
+
+        printf("\t||");
+        printf("\n\t|| Pila: ");
+        p_mostrar(p);
+
+        printf("\t||");
+
+        //A
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||A: DETERMINA SI UNA CLAVE SE ENCUENTRA DENTRO DE LA PILA                                            ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        printf("\t||Ingrese una Clave:                                                                                  ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        pedirNumero(clave);
+
+        bool res = p_ej2_existeclave(p, clave);
+
+        printf("\t||La clave: [%d] se encuentra en la pila? %s\n",clave , res ? "SI":"NO");
+
+        //B
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||B: COLOCAR UNA CLAVE EN UNA POSICION ORDINAL                                                        ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        printf("\t||Ingrese una Clave:                                                                                  ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        pedirNumero(clave);
+
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        printf("\t||Ingrese una Posicion:                                                                               ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        pedirNumero(pos);
+
+        p = p_ej2_colocarelemento(p, pos, te_crear(clave));
+
+        printf("\t||");
+        printf("\n\t|| Pila: ");
+        p_mostrar(p);
+
+        printf("\t||");
+
+        //C
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||C: ELIMINA DE LA PILA UNA CLAVE (1ERA APARICION)                                                    ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        printf("\t||Ingrese una Clave:                                                                                  ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        pedirNumero(clave);
+
+        p = p_ej2_eliminarclave(p, clave);
+
+        printf("\t||");
+        printf("\n\t|| Pila: ");
+        p_mostrar(p);
+
+        printf("\t||");
+
+        //D
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||D: INTERCAMBIA DOS POSICIONES ORDINALES DE LA PILA                                                  ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        printf("\t||Ingrese la primera posicion:                                                                        ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        pedirNumero(pos);
+
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        printf("\t||Ingrese la segunda posicion:                                                                        ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        pedirNumero(pos2);
+
+        p = p_ej2_intercambiarposiciones(p, pos, pos2);
+
+        printf("\t||");
+        printf("\n\t|| Pila: ");
+        p_mostrar(p);
+
+        printf("\t||");
+
+        //E
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||E: DUPLICA EL CONTENIDO DE LA PILA                                                                  ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        
+        Pila aux = p_crear();
+        aux = p_ej2_duplicar(p);
+
+        printf("\t||");
+        printf("\n\t|| Pila: ");
+        p_mostrar(p);
+
+        printf("\t||");
+
+        printf("\t||");
+        printf("\n\t|| Pila Auxiliar: ");
+        p_mostrar(aux);
+
+        printf("\t||");
+
+        //F
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||F: RETORNA LA CANTIDAD DE ELEMENTOS DE LA PILA                                                      ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+        printf("\t||La pila cuenta con [%d] Elementos", p_ej2_cantidadelementos(p));
+
+        free(p);
+        free(aux);
+
+=======
+>>>>>>> a5a451acfdb8c4ccced57af31f0bce64eaa398a9
         limpiarBuffer();
 
         c = salir();
@@ -181,17 +300,29 @@ void interfaz7(){
 
 void interfaz8(){
     char c;
+    int opcion;
     do  //MENU/////////////////////////////////////////////////
     {
         printf("\t\t\t                      +------------------------+\n");
         printf("\t\t\t                      |       EJERCICIO 8      |\n");
         printf("\t\t\t                      +------------------------+\n\n\n");
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-        printf("\t||                                                                                                    ||\n");
+        printf("\t||DADA UNA PILA CON VALORES REPETIDOS, DEVUELVE LA CANTIDAD DE VECES QUE APARECE UN VALOR             ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||                                                                                                    ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
+        Pila p = p_crear();
+
+        opcion = cargaManualAuto();
+        if(opcion){
+            llenarPRandom(p);
+        }
+        else{
+            interfazCargaPila(p);
+        }
+
+        
 
         limpiarBuffer();
 
@@ -201,6 +332,7 @@ void interfaz8(){
 
     }while (c == 'n');
 }
+
 void interfazCargaPila(Pila  p1) {
     //limpiar_pantalla();
     printf("\t||CARGA MANUAL...                                                                                     ||\n");

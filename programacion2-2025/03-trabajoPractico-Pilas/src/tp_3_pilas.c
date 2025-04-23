@@ -384,7 +384,7 @@ Pila p_ej8_sacarrepetidos(Pila p){
     Pila aux = p_crear();
     TipoElemento X;
     TipoElemento Y;
-    int count;
+    int *count;
 
     while(!p_es_vacia(p)){//VACIAMOS LA PILA Y LLENAMOS LA LISTA
         X = p_desapilar(p);
@@ -400,11 +400,11 @@ Pila p_ej8_sacarrepetidos(Pila p){
     while(hay_siguiente(iter1)){//APILAMOS LAS CLAVES Y LA CANT DE REPETIDOS
         X = siguiente(iter1);
         iter2 = iterador(l);
-        count = 1;
+        *count = 1;
         while(hay_siguiente(iter2)){
             Y = siguiente(iter2);
             if(X->clave == Y->clave){
-                count++;
+                *count++;
             }
         }
         p_apilar(pRepetidos, te_crear_con_valor(X->clave, count));
