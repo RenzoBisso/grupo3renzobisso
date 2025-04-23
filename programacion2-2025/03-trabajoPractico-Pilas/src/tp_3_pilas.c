@@ -308,6 +308,26 @@ Pila  p_ej5_invertir(Pila p){
 }
 
 //EJERCICIO 6
+Pila ej6R(Pila p, int clave,Pila pSinValor, Pila pAux){
+    if(p_es_vacia(p)){
+        return pSinValor;
+    }
+    TipoElemento X;
+    X = p_desapilar(p);
+    p_apilar(pAux, X);
+    if(X->clave != clave){
+        p_apilar(pSinValor, X);  
+    }
+    return ej6R(p,clave,pSinValor,pAux);
+}
+
+Pila p_ej6_eliminarclaveR(Pila p, int clave){
+    Pila pSinValor=p_crear();
+    Pila pAux=p_crear();
+    return ej6R(p,clave,pSinValor,pAux);
+}
+
+
 Pila p_ej6_eliminarclave(Pila p, int clave){
     Pila pSinClave = p_crear();
     Pila aux = p_crear();
@@ -329,6 +349,10 @@ Pila p_ej6_eliminarclave(Pila p, int clave){
 
     return pSinClave;
 }
+
+
+
+
 
 //EJERCICIO 7
 Pila p_ej7_elementoscomunes(Pila p1, Pila p2){
