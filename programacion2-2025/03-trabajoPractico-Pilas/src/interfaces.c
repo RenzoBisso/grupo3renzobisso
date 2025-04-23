@@ -68,8 +68,18 @@ void interfaz4(){
         printf("\t||                                                                                                    ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         
-
-
+        int* numero;
+        int* base;
+        printf("Ingrese el numero a transformar\n");
+        pedirNumero(numero);
+        printf("\n");
+        printf("Ingrese el numero de la base 2-16\n");
+        pedirNumero(base);
+        if(*base>16 || *base<2){
+            printf("dato invalido");
+        }
+        printf("%c",p_ej4_cambiarbase(*numero,*base));
+        
 
         limpiarBuffer();
 
@@ -204,9 +214,6 @@ void interfazCargaPila(Pila  p1) {
         
     }
 
-    
-    //llenarLRandom(l1);
-    //llenarLRandom(l2);
     printf("\t||----------------------------------------------------------------------------------------------------||\n");
     p_cargar(p1, tamanio, 0);
 
