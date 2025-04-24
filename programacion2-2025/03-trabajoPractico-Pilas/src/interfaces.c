@@ -7,6 +7,7 @@
 
 void interfaz2(){
     char c;
+    int opcion,pos,pos2,clave;
     do  //MENU/////////////////////////////////////////////////
     {
         printf("\t\t\t                      +------------------------+\n");
@@ -18,7 +19,6 @@ void interfaz2(){
         printf("\t||                                                                                                    ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
-<<<<<<< HEAD
         Pila p = p_crear();
 
         opcion = cargaManualAuto();
@@ -135,8 +135,6 @@ void interfaz2(){
         free(p);
         free(aux);
 
-=======
->>>>>>> a5a451acfdb8c4ccced57af31f0bce64eaa398a9
         limpiarBuffer();
 
         c = salir();
