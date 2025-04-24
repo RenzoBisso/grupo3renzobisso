@@ -296,7 +296,7 @@ void p_cargar(Pila p,int n, int count){
 
 void llenarPRandom(Pila p1){
   while(!p_es_llena(p1)){
-    l_agregar(p1, te_crear(rand() % 11));
+    p_apilar(p1, te_crear(rand() % 11));
   }
 }
 
