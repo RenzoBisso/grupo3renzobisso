@@ -158,18 +158,18 @@ void interfaz3(){
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
         printf("\t||DADAS DOS PILAS DETERMINAR SI SUS CONTENIDOS SON EXACTAMENTE IGUALES                                ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
-        printf("\t||Introducir tamanio Pila 1                                                                           ||\n");
+        printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
-        pedirNumero(&num);
-        p_cargar(p0,num,0);
-
-        printf("\t||----------------------------------------------------------------------------------------------------||\n");
-        printf("\t||Introducir tamanio Pila 2                                                                           ||\n");
-        printf("\t||----------------------------------------------------------------------------------------------------||\n");
-
-        pedirNumero(&num);
-        p_cargar(p1,num,0);
+        if(cargaManualAuto()==0){
+            interfazCargaPila(p0);
+            interfazCargaPila(p1);
+        }else{
+            llenarPRandom(p0);
+            llenarPRandom(p1);
+        }
+        
+        
 
         if(p_ej3_iguales(p0,p1)==true){
             printf("\t||----------------------------------------------------------------------------------------------------||\n");

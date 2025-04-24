@@ -317,7 +317,7 @@ Pila duplicar(Pila p){
     p_apilar(doble, X);
   }
 
-  return doble
+  return doble;
 }
 
 void p_mostrar_con_valor(Pila p){
