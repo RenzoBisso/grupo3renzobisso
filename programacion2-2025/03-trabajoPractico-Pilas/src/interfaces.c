@@ -7,7 +7,9 @@
 
 void interfaz2(){
     char c;
-    int opcion,pos,pos2,clave;
+    int opcion;
+    int pos,pos2;
+    int clave;
     do  //MENU/////////////////////////////////////////////////
     {
         printf("\t\t\t                      +------------------------+\n");
@@ -21,7 +23,13 @@ void interfaz2(){
 
         Pila p = p_crear();
 
-        //FUNCION PARA CARGA MANUAL O AUTO
+        opcion = cargaManualAuto();
+        if(opcion){
+            llenarPRandom(p);
+        }
+        else{
+            interfazCargaPila(p);
+        }
 
         printf("\t||");
         printf("\n\t|| Pila: ");
@@ -124,7 +132,7 @@ void interfaz2(){
         printf("\t||F: RETORNA LA CANTIDAD DE ELEMENTOS DE LA PILA                                                      ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
-        //printf("\t||La pila cuenta con [%d] Elementos", p_ej2_cantidadelementos(p));
+        printf("\t||La pila cuenta con [%d] Elementos", p_ej2_cantidadelementos(p));
 
         free(p);
         free(aux);
@@ -140,23 +148,22 @@ void interfaz2(){
 
 void interfaz3(){
     char c;
-    int opcion;
-    Pila p0=p_crear();
-    Pila p1=p_crear();
     do  //MENU/////////////////////////////////////////////////
     {
+        Pila p0=p_crear();
+        Pila p1=p_crear();
+        int num;
+        
         printf("\t\t\t                      +------------------------+\n");
         printf("\t\t\t                      |       EJERCICIO 3      |\n");
         printf("\t\t\t                      +------------------------+\n\n\n");
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-        printf("\t||                                                                                                    ||\n");
+        printf("\t||DADAS DOS PILAS DETERMINAR SI SUS CONTENIDOS SON EXACTAMENTE IGUALES                                ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
-        opcion=cargaManualAuto();
-
-        if(opcion==0){
+        if(cargaManualAuto()==0){
             interfazCargaPila(p0);
             interfazCargaPila(p1);
         }else{
@@ -164,19 +171,19 @@ void interfaz3(){
             llenarPRandom(p1);
         }
         
+        
+
         if(p_ej3_iguales(p0,p1)==true){
             printf("\t||----------------------------------------------------------------------------------------------------||\n");
             printf("\t||LAS PILAS SON IGUALES                                                                               ||\n");
-            printf("\t||----------------------------------------------------------------------------------------------------||\n");     
+            printf("\t||----------------------------------------------------------------------------------------------------||\n");
         }else{
             printf("\t||----------------------------------------------------------------------------------------------------||\n");
-            printf("\t||LAS PILAS SON DIFERENTES                                                                            ||\n");
+            printf("\t||LAS PILAS NO SON IGUALES                                                                            ||\n");
             printf("\t||----------------------------------------------------------------------------------------------------||\n");
         }
-
-
-
-
+        
+        
         limpiarBuffer();
 
         c = salir();
@@ -195,12 +202,11 @@ void interfaz4(){
         printf("\t\t\t                      +------------------------+\n\n\n");
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
         printf("\t||                                                                                                    ||\n");
-        printf("\t||----------------------------------------------------------------------------------------------------||\n"); 
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         
         int numero;
         int base;
-
         printf("Ingrese el numero a transformar\n");
         pedirNumero(&numero);
         printf("\n");
@@ -209,7 +215,7 @@ void interfaz4(){
         if(base>16 || base<2){
             printf("dato invalido");
         }
-        
+
 
         printf("%s\n", p_ej4_cambiarbase(numero,base));
 
@@ -233,7 +239,7 @@ void interfaz5(){
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
         printf("\t||                                                                                                    ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
-        printf("\t||Ingrese 1 para cargar al azar o 0 para cargar manualmente:                                          ||\n");
+        printf("\t||                                                                                                    ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         p_ej4_cambiarbase(10,16);
 
@@ -256,7 +262,7 @@ void interfaz6(){
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
         printf("\t||                                                                                                    ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
-        printf("\t||Ingrese 1 para cargar al azar o 0 para cargar manualmente:                                          ||\n");
+        printf("\t||                                                                                                    ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
 
@@ -279,7 +285,7 @@ void interfaz7(){
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
         printf("\t||                                                                                                    ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
-        printf("\t||Ingrese 1 para cargar al azar o 0 para cargar manualmente:                                          ||\n");
+        printf("\t||                                                                                                    ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
 
@@ -294,17 +300,35 @@ void interfaz7(){
 
 void interfaz8(){
     char c;
+    int opcion;
     do  //MENU/////////////////////////////////////////////////
     {
         printf("\t\t\t                      +------------------------+\n");
         printf("\t\t\t                      |       EJERCICIO 8      |\n");
         printf("\t\t\t                      +------------------------+\n\n\n");
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-        printf("\t||                                                                                                    ||\n");
+        printf("\t||DADA UNA PILA CON VALORES REPETIDOS, DEVUELVE LA CANTIDAD DE VECES QUE APARECE UN VALOR             ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||Ingrese 1 para cargar al azar o 0 para cargar manualmente:                                          ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
+        Pila p = p_crear();
+
+        opcion = cargaManualAuto();
+        if(opcion){
+            llenarPRandom(p);
+        }
+        else{
+            interfazCargaPila(p);
+        }
+
+        printf("\t||");
+        printf("\n\t|| Pila: ");
+        p_mostrar(p);
+
+        printf("\t||");
+
+    
 
         limpiarBuffer();
 
@@ -314,6 +338,7 @@ void interfaz8(){
 
     }while (c == 'n');
 }
+
 void interfazCargaPila(Pila  p1) {
     //limpiar_pantalla();
     printf("\t||CARGA MANUAL...                                                                                     ||\n");
@@ -347,6 +372,9 @@ void interfazCargaPila(Pila  p1) {
         
     }
 
+    
+    //llenarLRandom(l1);
+    //llenarLRandom(l2);
     printf("\t||----------------------------------------------------------------------------------------------------||\n");
     p_cargar(p1, tamanio, 0);
 
