@@ -308,7 +308,7 @@ Pila duplicar(Pila p){
 
   while(!p_es_vacia(p)){
     X = p_desapilar(p);
-    p_apilar(aux, p);
+    p_apilar(aux, X);
   }
 
   while(!p_es_vacia(aux)){
