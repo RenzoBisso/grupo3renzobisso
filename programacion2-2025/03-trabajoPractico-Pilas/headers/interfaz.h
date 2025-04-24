@@ -21,6 +21,6 @@ void interfaz7();
 
 void interfaz8();
 
-void interfazCargaLista(Lista l);
+void interfazCargaPila(Pila l);
 
 #endif /* INTERFAZ_H */

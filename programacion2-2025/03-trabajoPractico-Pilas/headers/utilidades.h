@@ -63,4 +63,6 @@ int cargaManualAuto();
 void p_cargar(Pila p,int n, int count);
 Pila p_ej6_eliminarclaveR(Pila p, int clave);
 void llenarPRandom(Pila p1);
+void interfazCargaLista(Lista l);
+
 #endif
