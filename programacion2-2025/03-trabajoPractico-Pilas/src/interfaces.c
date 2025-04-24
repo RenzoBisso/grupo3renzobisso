@@ -7,9 +7,7 @@
 
 void interfaz2(){
     char c;
-    int opcion;
-    int clave;
-    int pos, pos2;
+    int opcion,pos,pos2,clave;
     do  //MENU/////////////////////////////////////////////////
     {
         printf("\t\t\t                      +------------------------+\n");
