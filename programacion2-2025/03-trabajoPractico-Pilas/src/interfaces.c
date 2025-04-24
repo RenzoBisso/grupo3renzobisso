@@ -148,6 +148,7 @@ void interfaz2(){
 
 void interfaz3(){
     char c;
+    int opcion;
     do  //MENU/////////////////////////////////////////////////
     {
         Pila p0=p_crear();
@@ -163,12 +164,14 @@ void interfaz3(){
         printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
-        if(cargaManualAuto()==0){
-            interfazCargaPila(p0);
-            interfazCargaPila(p1);
-        }else{
+        opcion = cargaManualAuto();
+        if(opcion){
             llenarPRandom(p0);
             llenarPRandom(p1);
+        }
+        else{
+            interfazCargaPila(p0);
+            interfazCargaPila(p1);
         }
         
         
