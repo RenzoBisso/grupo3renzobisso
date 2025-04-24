@@ -330,8 +330,9 @@ void p_mostrar_con_valor(Pila p){
 
   while(!p_es_vacia(aux)){
     X = p_desapilar(aux);
-    printf("\t|| ");
+    printf("{%d, %d}", X->clave, *(int*)X->valor);
   }
+  printf("\n");
 }
 
 //FUNCIONES DE PILAS
