@@ -61,8 +61,4 @@ void pedirNumero(int* valor);
 
 int cargaManualAuto();
 
-Pila duplicar(Pila p);
-
-void p_mostrar_con_valor(Pila p);
-
 #endif

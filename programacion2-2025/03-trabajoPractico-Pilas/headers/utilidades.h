@@ -13,6 +13,10 @@
 #ifndef UTILIDADES_H
 #define UTILIDADES_H
 
+//###################
+//###################
+//FUNCIONES GENERALES
+
 void limpiarBuffer();
 
 void limpiar_pantalla();
@@ -47,22 +51,57 @@ void encontrarSubconjuntos(int conjunto[], int largo, int index, int subconjunto
 
 void guardarSubconjunto(int arr[], int tamano,char** output,int *indiceOutput);
 
+char salir();
+
+void pedirNumero(int* valor);
+
+int cargaManualAuto();
+
+//FUNCIONES GENERALES
+//###################
+//###################
+
+
+
+
+
+//###################
+//###################
+//FUNCIONES DE LISTAS
+
 void llenarLRandom(Lista l1);
 
 void l_mostrar_con_valor(Lista lista);
 
 void cargarLista(Lista l, int n, int count);
 
-char salir();
-
 void mostrar_coeficientes(Lista l);
 
-void pedirNumero(int* valor);
-
-int cargaManualAuto();
-void p_cargar(Pila p,int n, int count);
-Pila p_ej6_eliminarclaveR(Pila p, int clave);
-void llenarPRandom(Pila p1);
 void interfazCargaLista(Lista l);
+
+//FUNCIONES DE LISTAS
+//###################
+//###################
+
+
+
+
+
+//##################
+//##################
+//FUNCIONES DE PILAS
+
+void p_cargar(Pila p,int n, int count);
+
+Pila p_ej6_eliminarclaveR(Pila p, int clave);
+
+void llenarPRandom(Pila p1);
+
+void p_mostrar_con_valor(Pila p);
+
+//FUNCIONES DE PILAS
+//##################
+//##################
+
 
 #endif
