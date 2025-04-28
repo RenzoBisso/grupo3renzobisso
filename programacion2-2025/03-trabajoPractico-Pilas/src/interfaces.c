@@ -235,8 +235,10 @@ void interfaz4(){
 
 void interfaz5(){
     char c;
+    int opcion;
     do  //MENU/////////////////////////////////////////////////
     {
+        Pila p0=p_crear();
         printf("\t\t\t                      +------------------------+\n");
         printf("\t\t\t                      |       EJERCICIO 5      |\n");
         printf("\t\t\t                      +------------------------+\n\n\n");
@@ -245,8 +247,15 @@ void interfaz5(){
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
-        p_ej4_cambiarbase(10,16);
-
+        opcion = cargaManualAuto();
+        if(opcion){
+            llenarPRandom(p0);
+        }
+        else{
+            interfazCargaPila(p0);
+        }
+        p_ej5_invertir(p0);
+        p_mostrar(p0);
         limpiarBuffer();
 
         c = salir();
@@ -258,8 +267,14 @@ void interfaz5(){
 
 void interfaz6(){
     char c;
+
+
     do  //MENU/////////////////////////////////////////////////
     {
+        int opcion;
+        int valor;
+        Pila p0=p_crear();
+        Pila pR=p_crear();
         printf("\t\t\t                      +------------------------+\n");
         printf("\t\t\t                      |       EJERCICIO 6      |\n");
         printf("\t\t\t                      +------------------------+\n\n\n");
@@ -268,12 +283,35 @@ void interfaz6(){
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
-
+        opcion = cargaManualAuto();
+        if(opcion){
+            llenarPRandom(p0);
+            p_mostrar(p0);
+            llenarPRandom(pR);
+            p_mostrar(pR);
+        }
+        else{
+            printf("Pila para eliminar normal\n");
+            interfazCargaPila(p0);
+            p_mostrar(p0);
+            printf("Pila para eliminar recursivo\n");
+            interfazCargaPila(pR);
+            p_mostrar(pR);
+            
+        }
+        printf("Eliminar valor normal\n");
+        pedirNumero(&valor);
+        Pila pSinValor=p_crear();
+        pSinValor=p_ej6_eliminarclave(p0,valor);
+        p_mostrar(pSinValor);
+        printf("Eliminar valor recursivo\n");
+        pedirNumero(&valor);
+        Pila pSinValorR=p_crear();
+        pSinValorR=p_ej6_eliminarclaveR(pR,valor);
+        p_mostrar(pSinValorR);
 
         limpiarBuffer();
-
         c = salir();
-
         pausa();
 
     }while (c == 'n');
@@ -281,6 +319,9 @@ void interfaz6(){
 
 void interfaz7(){
     char c;
+    int opcion;
+    Pila p1= p_crear();
+    Pila p2= p_crear();
     do  //MENU/////////////////////////////////////////////////
     {
         printf("\t\t\t                      +------------------------+\n");
@@ -291,7 +332,24 @@ void interfaz7(){
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        opcion = cargaManualAuto();
+        if(opcion){
+            llenarPRandom(p1);
+            p_mostrar(p1);
+            llenarPRandom(p2);
+            p_mostrar(p2);
+        }
+        else{
+            interfazCargaPila(p1);
+            p_mostrar(p1);
+            interfazCargaPila(p2);
+            p_mostrar(p2);
+            
+        }
 
+        Pila pResult=p_crear();
+        pResult=p_ej7_elementoscomunes(p1,p2);
+        p_mostrar(pResult);
 
         limpiarBuffer();
 
@@ -305,6 +363,7 @@ void interfaz7(){
 void interfaz8(){
     char c;
     int opcion;
+    Pila p = p_crear();
     do  //MENU/////////////////////////////////////////////////
     {
         printf("\t\t\t                      +------------------------+\n");
@@ -325,6 +384,9 @@ void interfaz8(){
         else{
             interfazCargaPila(p);
         }
+        Pila pResult=p_crear();
+
+        pResult=p_ej8_sacarrepetidos(p);
 
         printf("\t||");
         printf("\n\t|| Pila: ");
@@ -377,10 +439,6 @@ void interfazCargaPila(Pila  p1) {
         }
         
     }
-
-    
-    //llenarLRandom(l1);
-    //llenarLRandom(l2);
     printf("\t||----------------------------------------------------------------------------------------------------||\n");
     p_cargar(p1, tamanio, 0);
 

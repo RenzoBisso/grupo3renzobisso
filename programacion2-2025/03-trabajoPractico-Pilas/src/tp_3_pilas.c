@@ -347,23 +347,27 @@ Pila  p_ej5_invertir(Pila p){
 }
 
 //EJERCICIO 6
-Pila ej6R(Pila p, int clave,Pila pSinValor, Pila pAux){
-    if(p_es_vacia(p)){
+Pila ej6R(Pila p, int clave, Pila pSinValor, Pila pAux){
+    if (p_es_vacia(p)){
+        
+        while (!p_es_vacia(pAux)) {
+            TipoElemento X = p_desapilar(pAux);
+            p_apilar(p, X);
+        }
         return pSinValor;
     }
-    TipoElemento X;
-    X = p_desapilar(p);
+    TipoElemento X = p_desapilar(p);
     p_apilar(pAux, X);
-    if(X->clave != clave){
-        p_apilar(pSinValor, X);  
+    if (X->clave != clave){
+        p_apilar(pSinValor, X);
     }
-    return ej6R(p,clave,pSinValor,pAux);
+    return ej6R(p, clave, pSinValor, pAux);
 }
 
 Pila p_ej6_eliminarclaveR(Pila p, int clave){
-    Pila pSinValor=p_crear();
-    Pila pAux=p_crear();
-    return ej6R(p,clave,pSinValor,pAux);
+    Pila pSinValor = p_crear();
+    Pila pAux = p_crear();
+    return ej6R(p, clave, pSinValor, pAux);
 }
 
 Pila p_ej6_eliminarclave(Pila p, int clave){
@@ -372,16 +376,16 @@ Pila p_ej6_eliminarclave(Pila p, int clave){
 
     TipoElemento X;
 
-    while(!p_es_vacia(p)){//DESAPILAMOS
+    while(!p_es_vacia(p)){
         X = p_desapilar(p);
         p_apilar(aux, X);
     }
 
-    while(!p_es_llena(p)){//APILAMOS - OMITIMOS LA CLAVE EN pSinClave
+    while(!p_es_vacia(aux)){
         X = p_desapilar(aux);
         p_apilar(p, X);
-        if(X->clave != clave){
-            p_apilar(pSinClave, X);  
+        if (X->clave != clave){
+            p_apilar(pSinClave, X);
         }
     }
 
@@ -389,32 +393,63 @@ Pila p_ej6_eliminarclave(Pila p, int clave){
 }
 
 //EJERCICIO 7
-Pila p_ej7_elementoscomunes(Pila p1, Pila p2){
+Pila p_ej7_elementoscomunes(Pila p1, Pila p2) {
     Pila pEComunes = p_crear();
     Pila aux1 = p_crear();
     Pila aux2 = p_crear();
-    TipoElemento X;
-    TipoElemento Y;
+    Pila aux2temp = p_crear();
+    TipoElemento X, Y;
 
-    while(!p_es_vacia(p1) && !p_es_vacia(p2)){//VACIAMOS LA PILA
+    
+    while (!p_es_vacia(p1)) {
         X = p_desapilar(p1);
-        Y = p_desapilar(p2);
         p_apilar(aux1, X);
+    }
+    
+    while (!p_es_vacia(p2)) {
+        Y = p_desapilar(p2);
         p_apilar(aux2, Y);
     }
 
-    while(!p_es_llena(p1) && !p_es_llena(p2)){//APILAMOS LA PILA AUX CON LOS ELEMENTOS COMUNES
+    
+    while (!p_es_vacia(aux1)) {
         X = p_desapilar(aux1);
-        Y = p_desapilar(aux2);
-        if(X->clave == Y->clave){
+        bool encontrado = false;
+
+        while (!p_es_vacia(aux2)) {
+            Y = p_desapilar(aux2);
+            if (!encontrado && X->clave == Y->clave) {
+                encontrado = true;
+                
+            } else {
+                p_apilar(aux2temp, Y);
+            }
+        }
+
+       
+        while (!p_es_vacia(aux2temp)) {
+            Y = p_desapilar(aux2temp);
+            p_apilar(aux2, Y);
+        }
+
+        if (encontrado) {
             p_apilar(pEComunes, X);
         }
+
+        
         p_apilar(p1, X);
+    }
+
+    
+    while (!p_es_vacia(aux2)) {
+        Y = p_desapilar(aux2);
         p_apilar(p2, Y);
     }
 
     return pEComunes;
 }
+
+
 
 //EJERCICIO 8
 Pila p_ej8_sacarrepetidos(Pila p){
