@@ -237,12 +237,17 @@ bool p_ej3_iguales(Pila p1, Pila p2) {
 	if ((p_ej2_cantidadelementos(p1) > p_ej2_cantidadelementos(p2)) || (p_ej2_cantidadelementos(p1) < p_ej2_cantidadelementos(p2))) {
 		return false;
 	}
+
 	Pila pAux = p_crear();
 	bool flag = true;
+
+    TipoElemento elem1 = te_crear(0);
+    TipoElemento elem2 = te_crear(0);
+    TipoElemento elemAux = te_crear_con_valor(0, NULL);
+
 	while (p_tope(p1) != NULL) {
-		TipoElemento elem1 = te_crear(0);
-		TipoElemento elem2 = te_crear(0);
-		TipoElemento elemAux = te_crear_con_valor(0, NULL);
+        elem1 = p_desapilar(p1);
+        elem2 = p_desapilar(p2);
 		if (elem1->clave != elem2->clave) {
 			flag = false;
 		}
@@ -252,18 +257,15 @@ bool p_ej3_iguales(Pila p1, Pila p2) {
 	}
 
 	while (p_tope(pAux) != NULL) {
-		TipoElemento elemetoAux = te_crear_con_valor(0, NULL);
-		TipoElemento elem1 = te_crear(0);
-		TipoElemento elem2 = te_crear(0);
-		elemetoAux = p_desapilar(pAux);
-		elem1->clave = elemetoAux->clave;
-		elem2->clave = (int)(intptr_t)elemetoAux->valor;
+
+		elemAux = p_desapilar(pAux);
+		elem1->clave = elemAux->clave;
+		elem2->clave = (int)(intptr_t)elemAux->valor;
 		p_apilar(p1, elem1);
 		p_apilar(p2, elem2);
 	}
-	return flag;
-
-
+	
+    return flag;
 }
 
 //EJERCICIO 4
