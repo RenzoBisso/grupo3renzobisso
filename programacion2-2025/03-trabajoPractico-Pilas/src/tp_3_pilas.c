@@ -1,6 +1,27 @@
 #include "..\headers\utilidades.h"
 #include "..\headers\tp_3_pilas.h"
+int largo(Pila p){
+    int count=0;
+    if(p_es_vacia(p)){
+        return 0;
+    }
+    Pila pAux=p_crear();
+    while (p_tope(p)!=NULL)
+    {
+        TipoElemento aux=te_crear_con_valor(0,NULL);
+        aux=p_desapilar(p);
+        p_apilar(pAux,aux);
+        count++;
+    }
+    while (p_tope(pAux)!=NULL)
+    {
+        TipoElemento aux=te_crear_con_valor(0,NULL);
+        aux=p_desapilar(pAux);
+        p_apilar(p,aux);
+    }
 
+    return count;
+}
 //EJERCICIO 2
 //A
 bool p_ej2_existeclave(Pila p, int clave){
@@ -60,24 +81,26 @@ Pila p_ej2_eliminarclave(Pila p, int clave){
         p_apilar(aux, X);
     }
 
-    while(!p_es_llena(p)){//INSERTAMOS ELEMENTO Y OMITIMOS LA CLAVE
+    while(!p_es_vacia(aux)){//INSERTAMOS ELEMENTO Y OMITIMOS LA CLAVE
         X = p_desapilar(aux);
-        if(X->clave != clave && llave){
-            p_apilar(p, X);
+        if(X->clave == clave && llave){
+            //p_apilar(p, X);
             llave = false;
+            X = p_desapilar(aux);
         }
+        p_apilar(p, X);
     }
-
     free(aux);
     return p;
 }
 
 //D
 Pila p_ej2_intercambiarposiciones(Pila p, int pos1, int pos2) {
-	if (p_es_vacia(p)) {
+/* 	if (p_es_vacia(p)) {
 		return p;
 	}
-	int posActual = 1;
+
+	int posActual = 9;
 	Pila pAux = p_crear();
 	TipoElemento elemento1 = te_crear(0);
 	TipoElemento elemento2 = te_crear(0);
@@ -89,39 +112,76 @@ Pila p_ej2_intercambiarposiciones(Pila p, int pos1, int pos2) {
 		if (posActual == pos1) {
 			elemento1 = p_desapilar(p);
 			p_apilar(pAux, elemento1);
-			posActual++;
 		}
 		else if (posActual == pos2) {
 			elemento2 = p_desapilar(p);
 			p_apilar(pAux, elemento2);
-			posActual++;
 		}
 		else {
 			elementoAux = p_desapilar(p);
 			p_apilar(pAux, elementoAux);
-			posActual++;
 		}
+		posActual--;
+
 	}
+
 	//Vamos restando el contador hasta que llegamos a la posicion dada y apilamos el valor correspondiente
 	while (p_tope(pAux) != NULL) {
 		TipoElemento elementoAux = te_crear(0);
+
+
 		if (posActual == pos1) {
 			p_desapilar(pAux);
 			p_apilar(p, elemento2);
-			posActual--;
+			
 		}
 		else if (posActual == pos2) {
 			p_desapilar(pAux);
 			p_apilar(p, elemento1);
-			posActual--;
+			
 		}
 		else {
 			elementoAux = p_desapilar(pAux);
 			p_apilar(p, elementoAux);
-			posActual--;
+
 		}
+        posActual++;
 	}
-	return p;
+	return p; */
+
+    TipoElemento Basura;
+    TipoElemento X;
+    Pila aux = p_crear();
+    Pila res = p_crear();
+    int pos = 1;
+
+    while(!p_es_vacia(p)){
+        X = p_desapilar(p);
+        if(pos == pos1 || pos == pos2){
+            p_apilar(res, X);
+        }
+        p_apilar(aux, X);
+        pos++;
+    }
+
+    pos = 1;
+    int diferencia = largo(aux);
+
+    while(!p_es_vacia(aux)){
+        if(pos == diferencia - pos1 || pos == diferencia - pos2){
+            X = p_desapilar(res);
+            Basura = p_desapilar(aux);
+            p_apilar(p, X);
+            printf("\n||Apilo||\n");
+        }
+        else{
+            X = p_desapilar(aux);
+            p_apilar(p, X);
+        }
+        pos++;
+    }
+
+    return p;
 }
 
 //E
@@ -207,28 +267,7 @@ bool p_ej3_iguales(Pila p1, Pila p2) {
 }
 
 //EJERCICIO 4
-int largo(Pila p){
-    int count=0;
-    if(p_es_vacia(p)){
-        return 0;
-    }
-    Pila pAux=p_crear();
-    while (p_tope(p)!=NULL)
-    {
-        TipoElemento aux=te_crear_con_valor(0,NULL);
-        aux=p_desapilar(p);
-        p_apilar(pAux,aux);
-        count++;
-    }
-    while (p_tope(pAux)!=NULL)
-    {
-        TipoElemento aux=te_crear_con_valor(0,NULL);
-        aux=p_desapilar(pAux);
-        p_apilar(p,aux);
-    }
 
-    return count;
-}
 
 char* pasarString(Pila p) {
     int l = largo(p);
