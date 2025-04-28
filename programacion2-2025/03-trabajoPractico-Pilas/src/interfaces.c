@@ -319,6 +319,9 @@ void interfaz6(){
 
 void interfaz7(){
     char c;
+    int opcion;
+    Pila p1= p_crear();
+    Pila p2= p_crear();
     do  //MENU/////////////////////////////////////////////////
     {
         printf("\t\t\t                      +------------------------+\n");
@@ -329,7 +332,24 @@ void interfaz7(){
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        opcion = cargaManualAuto();
+        if(opcion){
+            llenarPRandom(p1);
+            p_mostrar(p1);
+            llenarPRandom(p2);
+            p_mostrar(p2);
+        }
+        else{
+            interfazCargaPila(p1);
+            p_mostrar(p1);
+            interfazCargaPila(p2);
+            p_mostrar(p2);
+            
+        }
 
+        Pila pResult=p_crear();
+        pResult=p_ej7_elementoscomunes(p1,p2);
+        p_mostrar(pResult);
 
         limpiarBuffer();
 
@@ -343,6 +363,7 @@ void interfaz7(){
 void interfaz8(){
     char c;
     int opcion;
+    Pila p = p_crear();
     do  //MENU/////////////////////////////////////////////////
     {
         printf("\t\t\t                      +------------------------+\n");
@@ -363,6 +384,9 @@ void interfaz8(){
         else{
             interfazCargaPila(p);
         }
+        Pila pResult=p_crear();
+
+        pResult=p_ej8_sacarrepetidos(p);
 
         printf("\t||");
         printf("\n\t|| Pila: ");
