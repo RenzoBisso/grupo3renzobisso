@@ -308,23 +308,27 @@ Pila  p_ej5_invertir(Pila p){
 }
 
 //EJERCICIO 6
-Pila ej6R(Pila p, int clave,Pila pSinValor, Pila pAux){
-    if(p_es_vacia(p)){
+Pila ej6R(Pila p, int clave, Pila pSinValor, Pila pAux){
+    if (p_es_vacia(p)){
+        
+        while (!p_es_vacia(pAux)) {
+            TipoElemento X = p_desapilar(pAux);
+            p_apilar(p, X);
+        }
         return pSinValor;
     }
-    TipoElemento X;
-    X = p_desapilar(p);
+    TipoElemento X = p_desapilar(p);
     p_apilar(pAux, X);
-    if(X->clave != clave){
-        p_apilar(pSinValor, X);  
+    if (X->clave != clave){
+        p_apilar(pSinValor, X);
     }
-    return ej6R(p,clave,pSinValor,pAux);
+    return ej6R(p, clave, pSinValor, pAux);
 }
 
 Pila p_ej6_eliminarclaveR(Pila p, int clave){
-    Pila pSinValor=p_crear();
-    Pila pAux=p_crear();
-    return ej6R(p,clave,pSinValor,pAux);
+    Pila pSinValor = p_crear();
+    Pila pAux = p_crear();
+    return ej6R(p, clave, pSinValor, pAux);
 }
 
 Pila p_ej6_eliminarclave(Pila p, int clave){
@@ -333,16 +337,16 @@ Pila p_ej6_eliminarclave(Pila p, int clave){
 
     TipoElemento X;
 
-    while(!p_es_vacia(p)){//DESAPILAMOS
+    while(!p_es_vacia(p)){
         X = p_desapilar(p);
         p_apilar(aux, X);
     }
 
-    while(!p_es_llena(p)){//APILAMOS - OMITIMOS LA CLAVE EN pSinClave
+    while(!p_es_vacia(aux)){
         X = p_desapilar(aux);
         p_apilar(p, X);
-        if(X->clave != clave){
-            p_apilar(pSinClave, X);  
+        if (X->clave != clave){
+            p_apilar(pSinClave, X);
         }
     }
 
