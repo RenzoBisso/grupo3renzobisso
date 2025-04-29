@@ -178,7 +178,7 @@ bool p_ej3_iguales(Pila p1, Pila p2) {
 	bool flag = true;
 
 
-	while (!p_es_vacia(p1)) {
+	while (!p_es_vacia(p1)) {//O(n1)
         TipoElemento elemAux = te_crear_con_valor(0, NULL);
         TipoElemento elem1 = te_crear(0);
         TipoElemento elem2 = te_crear(0);
@@ -194,7 +194,7 @@ bool p_ej3_iguales(Pila p1, Pila p2) {
 		p_apilar(pAux, elemAux);
 	}
 
-	while (!p_es_vacia(pAux)) {
+	while (!p_es_vacia(pAux)) {//O(n2)
         TipoElemento elemAux = te_crear_con_valor(0, NULL);
         TipoElemento elem1 = te_crear(0);
         TipoElemento elem2 = te_crear(0);
@@ -206,9 +206,11 @@ bool p_ej3_iguales(Pila p1, Pila p2) {
 		p_apilar(p1, elem1);
 		p_apilar(p2, elem2);
 	}
-	
+    printf("Complejidad: O(n1+n2)");
     return flag;
 }
+
+
 
 //EJERCICIO 4
 char* pasarString(Pila p) {
@@ -284,6 +286,7 @@ Pila  p_ej5_invertir(Pila p){
         TipoElemento X = p_desapilar(aux);
         p_apilar(p, X);
     }
+    printf("Complejidad: O(n)");
 
     return pInvertida;
 }
@@ -307,6 +310,8 @@ Pila ej6R(Pila p, int clave, Pila pSinValor, Pila pAux){
             TipoElemento X = p_desapilar(pAux);
             p_apilar(p, X);
         }
+        printf("Complejidad: O(n)");
+        
         return p_dar_vuelta(pSinValor);
     }
 
@@ -342,7 +347,7 @@ Pila p_ej6_eliminarclave(Pila p, int clave){
             p_apilar(pSinClave, X);
         }
     }
-
+    printf("Complejidad: O(n)");
     return pSinClave;
 }
 
@@ -399,7 +404,7 @@ Pila p_ej7_elementoscomunes(Pila p1, Pila p2) {
         Y = p_desapilar(aux2);
         p_apilar(p2, Y);
     }
-
+    printf("Complejidad: O(n x m)");
     return pEComunes;
 }
 
@@ -445,7 +450,7 @@ Pila p_ej8_sacarrepetidos(Pila p){
         X = p_desapilar(aux);
         p_apilar(p, X);
     }
-
+    printf("Complejidad: O(n²)");
     return pRepetidos;
 }
 
