@@ -332,16 +332,16 @@ Pila  p_ej5_invertir(Pila p){
     Pila pInvertida = p_crear();
     Pila aux = p_crear();
 
-    TipoElemento X;
+   
 
-    while(!p_es_vacia(p)){//DESAPILAMOS
-        X = p_desapilar(p);
+    while(p_tope(p) != NULL){//DESAPILAMOS
+        TipoElemento X = p_desapilar(p);
         p_apilar(aux, X);
         p_apilar(pInvertida, X);
     }
 
-    while(!p_es_vacia(p)){//APILAMOS
-        X = p_desapilar(aux);
+    while(p_tope(aux) != NULL){//APILAMOS
+        TipoElemento X = p_desapilar(aux);
         p_apilar(p, X);
     }
 

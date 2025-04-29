@@ -246,7 +246,7 @@ void interfaz4(){
         limpiarBuffer();
 
         c = salir();
-
+        
         pausa();
 
     }while (c == 'n');
@@ -255,9 +255,10 @@ void interfaz4(){
 void interfaz5(){
     char c;
     int opcion;
+    Pila invertida = p_crear();
     do  //MENU/////////////////////////////////////////////////
     {
-        Pila p0=p_crear();
+        Pila p0 = p_crear();
         printf("\t\t\t                      +------------------------+\n");
         printf("\t\t\t                      |       EJERCICIO 5      |\n");
         printf("\t\t\t                      +------------------------+\n\n\n");
@@ -267,18 +268,21 @@ void interfaz5(){
         printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         opcion = cargaManualAuto();
-        if(opcion){
+        if(opcion==1){
             llenarPRandom(p0);
         }
         else{
             interfazCargaPila(p0);
         }
-        p_ej5_invertir(p0);
+        printf("\t||PILA ORIGINAL                                                                                       ||\n");
         p_mostrar(p0);
+        invertida = p_ej5_invertir(p0);
+        printf("\t||PILA iNVERTIDA                                                                                      ||\n");
+        p_mostrar(invertida);
         limpiarBuffer();
 
         c = salir();
-
+        free(invertida);
         pausa();
 
     }while (c == 'n');

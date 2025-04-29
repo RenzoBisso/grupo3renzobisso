@@ -6,6 +6,7 @@
 #include <math.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdint.h>
 #include "..\..\libs\listas\headers\listas.h"
 #include "..\..\libs\pilas\headers\pilas.h"
 #include "..\..\libs\tipoElemento\headers\tipo_elemento.h"
