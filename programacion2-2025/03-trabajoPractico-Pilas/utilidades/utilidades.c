@@ -292,7 +292,6 @@ void p_cargar(Pila p, int n, int count) {
   p_cargar(p, n, count + 1);
 }
 
-
 void llenarPRandom(Pila p1){
   while(!p_es_llena(p1)){
     p_apilar(p1, te_crear(rand() % 11));
@@ -320,18 +319,41 @@ Pila duplicar(Pila p){
 }
 
 void p_mostrar_con_valor(Pila p){
-  Pila aux = p_crear();
-  aux = duplicar(p);
-
+  Pila aux = duplicar(p);
   TipoElemento X;
 
-  printf("\t||Contenido de la pila: ");
+  printf("\t|| Contenido de la pila: ");
 
   while(!p_es_vacia(aux)){
     X = p_desapilar(aux);
-    printf("{%d, %d}", X->clave, *(int*)X->valor);
+    if(X->valor != NULL){
+      printf("{%d, %d} ", X->clave, *(int*)X->valor);
+    }
   }
   printf("\n");
+}
+
+int largo(Pila p){
+  int count=0;
+  if(p_es_vacia(p)){
+      return 0;
+  }
+  Pila pAux=p_crear();
+  while (p_tope(p)!=NULL)
+  {
+      TipoElemento aux=te_crear_con_valor(0,NULL);
+      aux=p_desapilar(p);
+      p_apilar(pAux,aux);
+      count++;
+  }
+  while (p_tope(pAux)!=NULL)
+  {
+      TipoElemento aux=te_crear_con_valor(0,NULL);
+      aux=p_desapilar(pAux);
+      p_apilar(p,aux);
+  }
+
+  return count;
 }
 
 //FUNCIONES DE PILAS

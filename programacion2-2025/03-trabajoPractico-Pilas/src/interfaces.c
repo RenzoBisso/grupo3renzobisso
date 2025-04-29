@@ -41,26 +41,36 @@ void interfaz2(){
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
         printf("\t||A: DETERMINA SI UNA CLAVE SE ENCUENTRA DENTRO DE LA PILA                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
-        printf("\t||Ingrese una Clave:                                                                                  ||\n");
-        printf("\t||----------------------------------------------------------------------------------------------------||\n");
         pedirNumero(&clave);
+        limpiarBuffer();
 
         bool res = p_ej2_existeclave(p, clave);
 
+        printf("\t||\n");
         printf("\t||La clave: [%d] se encuentra en la pila? %s\n",clave , res ? "SI":"NO");
 
         //B
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
         printf("\t||B: COLOCAR UNA CLAVE EN UNA POSICION ORDINAL                                                        ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
-        printf("\t||Ingrese una Clave:                                                                                  ||\n");
-        printf("\t||----------------------------------------------------------------------------------------------------||\n");
         pedirNumero(&clave);
+        limpiarBuffer();
 
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||Ingrese una Posicion:                                                                               ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         pedirNumero(&pos);
+        limpiarBuffer();
+
+        while(pos > largo(p)){
+            printf("\t||----------------------------------------------------------------------------------------------------||\n");
+            printf("\t||EEROR, INGRESE UNA POSICION VALIDA:                                                                 ||\n");
+            printf("\t||----------------------------------------------------------------------------------------------------||\n");
+            pedirNumero(&pos);
+            limpiarBuffer();
+        }
+
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
         p = p_ej2_colocarelemento(p, pos, te_crear(clave));
 
@@ -74,9 +84,9 @@ void interfaz2(){
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
         printf("\t||C: ELIMINA DE LA PILA UNA CLAVE (1ERA APARICION)                                                    ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
-        printf("\t||Ingrese una Clave:                                                                                  ||\n");
-        printf("\t||----------------------------------------------------------------------------------------------------||\n");
         pedirNumero(&clave);
+        limpiarBuffer();
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
         p = p_ej2_eliminarclave(p, clave);
 
@@ -93,11 +103,29 @@ void interfaz2(){
         printf("\t||Ingrese la primera posicion:                                                                        ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         pedirNumero(&pos);
+        limpiarBuffer();
+
+        while(pos > largo(p)){
+            printf("\t||----------------------------------------------------------------------------------------------------||\n");
+            printf("\t||EEROR, INGRESE UNA POSICION VALIDA:                                                                 ||\n");
+            printf("\t||----------------------------------------------------------------------------------------------------||\n");
+            pedirNumero(&pos);
+            limpiarBuffer();
+        }
 
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||Ingrese la segunda posicion:                                                                        ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         pedirNumero(&pos2);
+        limpiarBuffer();
+
+        while(pos2 > largo(p)){
+            printf("\t||----------------------------------------------------------------------------------------------------||\n");
+            printf("\t||EEROR, INGRESE UNA POSICION VALIDA:                                                                 ||\n");
+            printf("\t||----------------------------------------------------------------------------------------------------||\n");
+            pedirNumero(&pos2);
+            limpiarBuffer();
+        }
 
         p = p_ej2_intercambiarposiciones(p, pos, pos2);
 
@@ -132,7 +160,8 @@ void interfaz2(){
         printf("\t||F: RETORNA LA CANTIDAD DE ELEMENTOS DE LA PILA                                                      ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
-        printf("\t||La pila cuenta con [%d] Elementos", p_ej2_cantidadelementos(p));
+        printf("\t||La pila cuenta con [%d] Elementos\n", p_ej2_cantidadelementos(p));
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
         free(p);
         free(aux);
@@ -188,9 +217,6 @@ void interfaz3(){
             printf("\t||\n");
             printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
-
-
-
         }else{
             printf("\t||----------------------------------------------------------------------------------------------------||\n");
             printf("\t||LAS PILAS NO SON IGUALES                                                                            ||\n");
@@ -201,8 +227,6 @@ void interfaz3(){
             p_mostrar(p1);
             printf("\t||\n");
             printf("\t||----------------------------------------------------------------------------------------------------||\n");
-
-           
         }
         
         
@@ -217,6 +241,7 @@ void interfaz3(){
 
 void interfaz4(){
     char c;
+    bool flag=false;
     do  //MENU/////////////////////////////////////////////////
     {
         printf("\t\t\t                      +------------------------+\n");
@@ -225,23 +250,33 @@ void interfaz4(){
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
         printf("\t||                                                                                                    ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
-        printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
+        printf("\t||INGRESE EL NUMERO A TRANSFORMAR                                                                     ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         
         int numero;
         int base;
-        printf("Ingrese el numero a transformar\n");
         pedirNumero(&numero);
-        printf("\n");
-        printf("Ingrese el numero de la base 2-16\n");
-        pedirNumero(&base);
-        if(base>16 || base<2){
-            printf("dato invalido");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        printf("\t||INGRESE EL NUMERO DE LA BASE 2-16                                                                   ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");  
+        
+        while(flag==false){
+            pedirNumero(&base);
+            
+            if(base>16 || base<2){
+                printf("\t||\n");
+                printf("\t||");
+                printf("DATO INVALIDO\n");
+                printf("\t||\n");
+            }
+            else{
+                flag=true;
+            }
         }
 
-
+        printf("\t||");
         printf("%s\n", p_ej4_cambiarbase(numero,base));
-
+        printf("\t||");
 
         limpiarBuffer();
 
@@ -393,7 +428,6 @@ void interfaz7(){
 void interfaz8(){
     char c;
     int opcion;
-    Pila p = p_crear();
     do  //MENU/////////////////////////////////////////////////
     {
         printf("\t\t\t                      +------------------------+\n");
@@ -414,17 +448,20 @@ void interfaz8(){
         else{
             interfazCargaPila(p);
         }
-        Pila pResult=p_crear();
 
-        pResult=p_ej8_sacarrepetidos(p);
+        Pila pResult = p_crear();
+
+        pResult = p_ej8_sacarrepetidos(p);
 
         printf("\t||");
         printf("\n\t|| Pila: ");
         p_mostrar(p);
 
-        printf("\t||");
+        printf("\t||\n");
 
-        p_mostrar_con_valor(p);
+        p_mostrar_con_valor(pResult);
+
+        printf("\t||\n");
 
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
 
