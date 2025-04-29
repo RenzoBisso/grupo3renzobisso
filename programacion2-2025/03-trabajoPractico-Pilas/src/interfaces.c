@@ -217,9 +217,6 @@ void interfaz3(){
             printf("\t||\n");
             printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
-
-
-
         }else{
             printf("\t||----------------------------------------------------------------------------------------------------||\n");
             printf("\t||LAS PILAS NO SON IGUALES                                                                            ||\n");
@@ -230,8 +227,6 @@ void interfaz3(){
             p_mostrar(p1);
             printf("\t||\n");
             printf("\t||----------------------------------------------------------------------------------------------------||\n");
-
-           
         }
         
         
@@ -246,6 +241,7 @@ void interfaz3(){
 
 void interfaz4(){
     char c;
+    bool flag=false;
     do  //MENU/////////////////////////////////////////////////
     {
         printf("\t\t\t                      +------------------------+\n");
@@ -254,23 +250,33 @@ void interfaz4(){
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
         printf("\t||                                                                                                    ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
-        printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
+        printf("\t||INGRESE EL NUMERO A TRANSFORMAR                                                                     ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         
         int numero;
         int base;
-        printf("Ingrese el numero a transformar\n");
         pedirNumero(&numero);
-        printf("\n");
-        printf("Ingrese el numero de la base 2-16\n");
-        pedirNumero(&base);
-        if(base>16 || base<2){
-            printf("dato invalido");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        printf("\t||INGRESE EL NUMERO DE LA BASE 2-16                                                                   ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");  
+        
+        while(flag==false){
+            pedirNumero(&base);
+            
+            if(base>16 || base<2){
+                printf("\t||\n");
+                printf("\t||");
+                printf("DATO INVALIDO\n");
+                printf("\t||\n");
+            }
+            else{
+                flag=true;
+            }
         }
 
-
+        printf("\t||");
         printf("%s\n", p_ej4_cambiarbase(numero,base));
-
+        printf("\t||");
 
         limpiarBuffer();
 
