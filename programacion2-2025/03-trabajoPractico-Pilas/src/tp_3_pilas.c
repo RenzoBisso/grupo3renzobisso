@@ -406,6 +406,7 @@ Pila p_ej7_elementoscomunes(Pila p1, Pila p2) {
 //EJERCICIO 8
 Pila p_ej8_sacarrepetidos(Pila p){
     Lista l = l_crear();
+    Lista rep = l_crear();
     Pila pRepetidos = p_crear();
     Pila aux = p_crear();
     TipoElemento X;
@@ -414,18 +415,19 @@ Pila p_ej8_sacarrepetidos(Pila p){
     while(!p_es_vacia(p)){//VACIAMOS LA PILA Y LLENAMOS LA LISTA
         X = p_desapilar(p);
         p_apilar(aux, X);
-        if(l_buscar(l, X->clave) == NULL){
-            l_agregar(l, X);
+        if(l_buscar(rep, X->clave) == NULL){
+            l_agregar(rep, X);
         }
+        l_agregar(l, X);
     }
 
-    Iterador iter1 = iterador(l);
+    Iterador iter1 = iterador(rep);
     Iterador iter2;
 
     while(hay_siguiente(iter1)){//APILAMOS LAS CLAVES Y LA CANT DE REPETIDOS
         
         int *count = (int*)malloc(sizeof(int));
-        *count = 1;
+        *count = 0;
 
         X = siguiente(iter1);
         iter2 = iterador(l);
