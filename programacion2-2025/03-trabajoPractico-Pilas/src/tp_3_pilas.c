@@ -288,6 +288,17 @@ Pila  p_ej5_invertir(Pila p){
     return pInvertida;
 }
 
+Pila p_dar_vuelta(Pila p){
+    Pila pDadaVuelta=p_crear();
+    while (!p_es_vacia(p))
+    {
+        TipoElemento X = p_desapilar(p);
+        p_apilar(pDadaVuelta, X);
+    }
+    return pDadaVuelta;
+}
+
+
 //EJERCICIO 6
 Pila ej6R(Pila p, int clave, Pila pSinValor, Pila pAux){
     if (p_es_vacia(p)){
@@ -296,8 +307,9 @@ Pila ej6R(Pila p, int clave, Pila pSinValor, Pila pAux){
             TipoElemento X = p_desapilar(pAux);
             p_apilar(p, X);
         }
-        return pSinValor;
+        return p_dar_vuelta(pSinValor);
     }
+
     TipoElemento X = p_desapilar(p);
     p_apilar(pAux, X);
     if (X->clave != clave){
