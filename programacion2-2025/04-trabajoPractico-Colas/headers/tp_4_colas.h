@@ -2,9 +2,9 @@
 #define TP_COLAS_H
 
 #include <stdbool.h>
-#include "../libs/colas/colas.h"
-#include "../libs/pilas/pilas.h"
-#include "../libs/listas/listas.h"
+#include "../../libs/colas/colas.h"
+#include "../../libs/pilas/pilas.h"
+#include "../../libs/listas/listas.h"
 
 /**
 	PARA TODOS LOS EJERCICIOS PERMITIR UNA CARGA MANUAL PARA LOS TESTING
