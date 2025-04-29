@@ -99,6 +99,8 @@ void llenarPRandom(Pila p1);
 
 void p_mostrar_con_valor(Pila p);
 
+int largo(Pila p);
+
 //FUNCIONES DE PILAS
 //##################
 //##################
