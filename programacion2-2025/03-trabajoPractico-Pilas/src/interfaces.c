@@ -446,7 +446,9 @@ void interfaz8(){
 
         printf("\t||\n");
 
-        p_mostrar_con_valor(p);
+        p_mostrar_con_valor(pResult);
+
+        printf("\t||\n");
 
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
 

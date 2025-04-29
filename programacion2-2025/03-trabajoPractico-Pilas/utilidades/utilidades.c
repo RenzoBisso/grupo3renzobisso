@@ -322,7 +322,7 @@ void p_mostrar_con_valor(Pila p){
   Pila aux = duplicar(p);
   TipoElemento X;
 
-  printf("\t||Contenido de la pila: ");
+  printf("\t|| Contenido de la pila: ");
 
   while(!p_es_vacia(aux)){
     X = p_desapilar(aux);
