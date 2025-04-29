@@ -275,8 +275,9 @@ void interfaz4(){
         }
 
         printf("\t||");
-        printf("%s\n", p_ej4_cambiarbase(numero,base));
-        printf("\t||");
+        printf("NUMERO %d EN BASE %d: %s\n",numero,base, p_ej4_cambiarbase(numero,base));
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");  
+        
 
         limpiarBuffer();
 
