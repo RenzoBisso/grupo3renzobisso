@@ -248,7 +248,7 @@ void interfaz4(){
         printf("\t\t\t                      |       EJERCICIO 4      |\n");
         printf("\t\t\t                      +------------------------+\n\n\n");
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-        printf("\t||                                                                                                    ||\n");
+        printf("\t||TRANSFORMA UN NUMERO A UNA BASE DE 2 A 16                                                           ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||INGRESE EL NUMERO A TRANSFORMAR                                                                     ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
@@ -275,8 +275,9 @@ void interfaz4(){
         }
 
         printf("\t||");
-        printf("%s\n", p_ej4_cambiarbase(numero,base));
-        printf("\t||");
+        printf("NUMERO %d EN BASE %d: %s\n",numero,base, p_ej4_cambiarbase(numero,base));
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");  
+        
 
         limpiarBuffer();
 
@@ -298,7 +299,7 @@ void interfaz5(){
         printf("\t\t\t                      |       EJERCICIO 5      |\n");
         printf("\t\t\t                      +------------------------+\n\n\n");
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-        printf("\t||                                                                                                    ||\n");
+        printf("\t||INVIERTE EL CONTENIDO DE UNA PILA SIN DESTRUIRLA                                                    ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
@@ -310,10 +311,17 @@ void interfaz5(){
             interfazCargaPila(p0);
         }
         printf("\t||PILA ORIGINAL                                                                                       ||\n");
+        printf("\t||");
         p_mostrar(p0);
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
         invertida = p_ej5_invertir(p0);
+
         printf("\t||PILA iNVERTIDA                                                                                      ||\n");
+        printf("\t||");
         p_mostrar(invertida);
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        
         limpiarBuffer();
 
         c = salir();
@@ -337,7 +345,7 @@ void interfaz6(){
         printf("\t\t\t                      |       EJERCICIO 6      |\n");
         printf("\t\t\t                      +------------------------+\n\n\n");
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-        printf("\t||                                                                                                    ||\n");
+        printf("\t||ELIMINA TODAS LAS OCURRENCIAS DE UN DETERMINADO VALOR SIN PERDER LA PILA ORIGINAL                   ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
@@ -386,7 +394,7 @@ void interfaz7(){
         printf("\t\t\t                      |       EJERCICIO 7      |\n");
         printf("\t\t\t                      +------------------------+\n\n\n");
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-        printf("\t||                                                                                                    ||\n");
+        printf("\t||RETORNA LOS ELEMENTOS EN COMUN DE DOS PILAS                                                         ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
