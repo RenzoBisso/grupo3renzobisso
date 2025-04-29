@@ -310,10 +310,17 @@ void interfaz5(){
             interfazCargaPila(p0);
         }
         printf("\t||PILA ORIGINAL                                                                                       ||\n");
+        printf("\t||");
         p_mostrar(p0);
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
         invertida = p_ej5_invertir(p0);
+
         printf("\t||PILA iNVERTIDA                                                                                      ||\n");
+        printf("\t||");
         p_mostrar(invertida);
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        
         limpiarBuffer();
 
         c = salir();
