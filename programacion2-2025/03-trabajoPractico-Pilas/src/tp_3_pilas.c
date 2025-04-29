@@ -1,27 +1,7 @@
 #include "..\headers\utilidades.h"
 #include "..\headers\tp_3_pilas.h"
-int largo(Pila p){
-    int count=0;
-    if(p_es_vacia(p)){
-        return 0;
-    }
-    Pila pAux=p_crear();
-    while (p_tope(p)!=NULL)
-    {
-        TipoElemento aux=te_crear_con_valor(0,NULL);
-        aux=p_desapilar(p);
-        p_apilar(pAux,aux);
-        count++;
-    }
-    while (p_tope(pAux)!=NULL)
-    {
-        TipoElemento aux=te_crear_con_valor(0,NULL);
-        aux=p_desapilar(pAux);
-        p_apilar(p,aux);
-    }
 
-    return count;
-}
+
 //EJERCICIO 2
 //A
 bool p_ej2_existeclave(Pila p, int clave){
@@ -48,7 +28,6 @@ bool p_ej2_existeclave(Pila p, int clave){
 
 //B
 Pila p_ej2_colocarelemento(Pila p, int posicionordinal, TipoElemento x){
-    int count = 1;
     Pila aux = p_crear();
     TipoElemento X;
 
@@ -57,13 +36,16 @@ Pila p_ej2_colocarelemento(Pila p, int posicionordinal, TipoElemento x){
         p_apilar(aux, X);
     }
 
-    while(!p_es_llena(p)){//INSERTAMOS ELEMENTO
+    int count = largo(aux);
+
+    while(!p_es_vacia(aux)){//INSERTAMOS ELEMENTO
         if(count == posicionordinal){
             p_apilar(p, x);
+            X = p_desapilar(aux);//BASURA
         }
         X = p_desapilar(aux);
         p_apilar(p, X);
-        count++;
+        count--;
     }
 
     free(aux);
@@ -76,83 +58,32 @@ Pila p_ej2_eliminarclave(Pila p, int clave){
     TipoElemento X;
     bool llave = true;
 
-    while(!p_es_vacia(p)){//VACIAMOS LA PILA
+    while(!p_es_vacia(p)){//VACIAMOS LA PILA Y OMITIMOS LA CLAVE
         X = p_desapilar(p);
+        if(X->clave == clave && llave){
+            llave = false;
+            X = p_desapilar(p);
+        }
         p_apilar(aux, X);
     }
 
-    while(!p_es_vacia(aux)){//INSERTAMOS ELEMENTO Y OMITIMOS LA CLAVE
+    while(!p_es_vacia(aux)){//RESTAURAMOS LA PILA
         X = p_desapilar(aux);
-        if(X->clave == clave && llave){
-            //p_apilar(p, X);
-            llave = false;
-            X = p_desapilar(aux);
-        }
         p_apilar(p, X);
     }
+
     free(aux);
     return p;
 }
 
 //D
 Pila p_ej2_intercambiarposiciones(Pila p, int pos1, int pos2) {
-/* 	if (p_es_vacia(p)) {
-		return p;
-	}
-
-	int posActual = 9;
-	Pila pAux = p_crear();
-	TipoElemento elemento1 = te_crear(0);
-	TipoElemento elemento2 = te_crear(0);
-
-
-	//buscamos los elementos en las posiciones dadas y guardamos en la pila auxiliar
-	while (p_tope(p) != NULL) {
-		TipoElemento elementoAux = te_crear(0);
-		if (posActual == pos1) {
-			elemento1 = p_desapilar(p);
-			p_apilar(pAux, elemento1);
-		}
-		else if (posActual == pos2) {
-			elemento2 = p_desapilar(p);
-			p_apilar(pAux, elemento2);
-		}
-		else {
-			elementoAux = p_desapilar(p);
-			p_apilar(pAux, elementoAux);
-		}
-		posActual--;
-
-	}
-
-	//Vamos restando el contador hasta que llegamos a la posicion dada y apilamos el valor correspondiente
-	while (p_tope(pAux) != NULL) {
-		TipoElemento elementoAux = te_crear(0);
-
-
-		if (posActual == pos1) {
-			p_desapilar(pAux);
-			p_apilar(p, elemento2);
-			
-		}
-		else if (posActual == pos2) {
-			p_desapilar(pAux);
-			p_apilar(p, elemento1);
-			
-		}
-		else {
-			elementoAux = p_desapilar(pAux);
-			p_apilar(p, elementoAux);
-
-		}
-        posActual++;
-	}
-	return p; */
-
     TipoElemento Basura;
     TipoElemento X;
+
     Pila aux = p_crear();
     Pila res = p_crear();
+
     int pos = 1;
 
     while(!p_es_vacia(p)){
@@ -164,15 +95,20 @@ Pila p_ej2_intercambiarposiciones(Pila p, int pos1, int pos2) {
         pos++;
     }
 
+    Pila resAux = p_crear();
+    while(!p_es_vacia(res)){
+        X = p_desapilar(res);
+        p_apilar(resAux, X);
+    }
+
     pos = 1;
     int diferencia = largo(aux);
 
     while(!p_es_vacia(aux)){
-        if(pos == diferencia - pos1 || pos == diferencia - pos2){
-            X = p_desapilar(res);
+        if(pos == diferencia-pos2+1 || pos == diferencia-pos1+1){
+            X = p_desapilar(resAux);
             Basura = p_desapilar(aux);
             p_apilar(p, X);
-            printf("\n||Apilo||\n");
         }
         else{
             X = p_desapilar(aux);
@@ -275,8 +211,6 @@ bool p_ej3_iguales(Pila p1, Pila p2) {
 }
 
 //EJERCICIO 4
-
-
 char* pasarString(Pila p) {
     int l = largo(p);
     Pila pAux = p_crear();
@@ -457,8 +391,6 @@ Pila p_ej7_elementoscomunes(Pila p1, Pila p2) {
     return pEComunes;
 }
 
-
-
 //EJERCICIO 8
 Pila p_ej8_sacarrepetidos(Pila p){
     Lista l = l_crear();
@@ -466,7 +398,6 @@ Pila p_ej8_sacarrepetidos(Pila p){
     Pila aux = p_crear();
     TipoElemento X;
     TipoElemento Y;
-    int *count;
 
     while(!p_es_vacia(p)){//VACIAMOS LA PILA Y LLENAMOS LA LISTA
         X = p_desapilar(p);
@@ -480,19 +411,23 @@ Pila p_ej8_sacarrepetidos(Pila p){
     Iterador iter2;
 
     while(hay_siguiente(iter1)){//APILAMOS LAS CLAVES Y LA CANT DE REPETIDOS
+        
+        int *count = (int*)malloc(sizeof(int));
+        *count = 1;
+
         X = siguiente(iter1);
         iter2 = iterador(l);
-        *count = 1;
+
         while(hay_siguiente(iter2)){
             Y = siguiente(iter2);
             if(X->clave == Y->clave){
-                *count++;
+                (*count)++;
             }
         }
         p_apilar(pRepetidos, te_crear_con_valor(X->clave, count));
     }
 
-    while(!p_es_llena(aux)){//RESTAURO LA PILA ORIGINAL
+    while(!p_es_vacia(aux)){//RESTAURO LA PILA ORIGINAL
         X = p_desapilar(aux);
         p_apilar(p, X);
     }
