@@ -350,31 +350,47 @@ void interfaz6(){
         printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         opcion = cargaManualAuto();
+        
         if(opcion){
+            printf("\t||PILA PARA ELIMINAR FUNCION COMUN:                                                                   ||\n");
             llenarPRandom(p0);
+            printf("\t||");
             p_mostrar(p0);
+            printf("\t||\n");
+            printf("\t||PILA PARA ELIMINAR FUNCION RECURSIVA:                                                               ||\n");
             llenarPRandom(pR);
+            printf("\t||");
             p_mostrar(pR);
+            printf("\t||----------------------------------------------------------------------------------------------------||\n");
         }
         else{
-            printf("Pila para eliminar normal\n");
+            printf("\t||PILA PARA ELIMINAR FUNCION COMUN:                                                                   ||\n");
             interfazCargaPila(p0);
+            printf("\t||");
             p_mostrar(p0);
-            printf("Pila para eliminar recursivo\n");
+            printf("\t||");
+            printf("\t||PILA PARA ELIMINAR FUNCION RECURSIVA:                                                               ||\n");
+            printf("\t||");
             interfazCargaPila(pR);
             p_mostrar(pR);
+            printf("\t||----------------------------------------------------------------------------------------------------||\n");
             
         }
-        printf("Eliminar valor normal\n");
+        
+        printf("\t||ELIMINAR VALOR DE FORMA NORMAL:                                                                     ||\n");
         pedirNumero(&valor);
         Pila pSinValor=p_crear();
         pSinValor=p_ej6_eliminarclave(p0,valor);
+        printf("\t||");
         p_mostrar(pSinValor);
-        printf("Eliminar valor recursivo\n");
+        printf("\t||\n");
+        printf("\t||ELIMINAR VALOR DE FORMA RECURSIVA:                                                                  ||\n");
         pedirNumero(&valor);
         Pila pSinValorR=p_crear();
         pSinValorR=p_ej6_eliminarclaveR(pR,valor);
+        printf("\t||");
         p_mostrar(pSinValorR);
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
         limpiarBuffer();
         c = salir();
