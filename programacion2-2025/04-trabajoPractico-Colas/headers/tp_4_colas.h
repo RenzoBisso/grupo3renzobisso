@@ -2,10 +2,10 @@
 #define TP_COLAS_H
 
 #include <stdbool.h>
-#include "..\..\libs\colas\headers\colas.h"
-#include "..\..\libs\tipoElemento\headers\tipo_elemento.h"
-#include "..\..\libs\listas\headers\listas.h"
-#include "..\..\libs\pilas\headers\pilas.h"
+#include "colas.h"
+#include "tipo_elemento.h"
+#include "listas.h"
+#include "pilas.h"
 
 /**
 	PARA TODOS LOS EJERCICIOS PERMITIR UNA CARGA MANUAL PARA LOS TESTING
@@ -78,11 +78,7 @@ Cola c_ej5_divisortotal(Cola c);
 // retornar una lista con los valores comunes segun las especificaciones del ejercicio.
 // Si no existen valores comunes retornar la lista vacia. 
 // Usar el atributo valor para enviar las 2 posiciones como un *char.
-<<<<<<< HEAD
-// Ejemplo: si “P” = (2,5,8,19,3,4) y “C” = (4, 18, 12, 5, 6) la lista tendría L = (5:2:4, 4:6:5). 2 y 4 deben venir en el valor.
-=======
 // Ejemplo: si "P" = (2,5,8,19,3,4) y "C" = (4, 18, 12, 5, 6) la lista tendría L = (5:2:4, 4:6:5). 2 y 4 deben venir en el valor.
->>>>>>> 38e819a591309df8606adcf6c4d22592e9dc09fe
 // "2:4" indicara que el "5" esta en la segunda posicion de "P" y en la cuarta de "C".
 Lista c_ej6_comunesapilaycola(Pila p, Cola c);
 

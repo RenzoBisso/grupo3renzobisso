@@ -34,7 +34,7 @@ bool c_ej2_existeclave(Cola c, int clave){
 Cola c_ej2_colarelemento(Cola c, int posicionordinal, TipoElemento X){
 
     if(c_es_vacia(c)){
-        return ;
+        return c;
     }
     int count=0;
     Cola cAux=c_crear();
@@ -67,7 +67,7 @@ Cola c_ej2_colarelemento(Cola c, int posicionordinal, TipoElemento X){
 Cola c_ej2_sacarelemento(Cola c, int clave){
 
     if(c_es_vacia(c)){
-        return ;
+        return c;
     }
     Cola cAux=c_crear();
     while (!c_es_vacia(c))
@@ -108,7 +108,7 @@ int c_ej2_contarelementos(Cola c){
 //E
 Cola c_ej2_copiar(Cola c){
     if(c_es_vacia(c)){
-        return ;
+        return c;
     }
     Cola cCopia=c_crear();
     int largoC1=c_ej2_contarelementos(c);
@@ -130,7 +130,7 @@ Cola c_ej2_copiar(Cola c){
 //F
 Cola c_ej2_invertir(Cola c){
     if(c_es_vacia(c)){
-        return;
+        return c;
     }
 
     Pila p=p_crear();

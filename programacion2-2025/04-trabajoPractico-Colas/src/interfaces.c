@@ -1,8 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 
-#include "..\headers\interfaz.h"
-#include "..\headers\utilidades.h"
-#include "..\headers\tp_4_colas.h"
+#include "interfaz.h"
+#include "utilidades.h"
+#include "tp_4_colas.h"
 
 
 void interfaz2(){
