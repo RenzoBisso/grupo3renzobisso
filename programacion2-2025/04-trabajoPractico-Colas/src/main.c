@@ -1,7 +1,14 @@
-#include "..\headers\utilidades.h"
-#include ""
-
+#include "utilidades.h"
+#include "tp_4_colas.h"
+#include "colas.h"
+#include <stdio.h>
 int main(){
-    printf("Hola mundo");
+
+
+
+    Cola c=c_crear();
+
+
+    
     return 0;
 }

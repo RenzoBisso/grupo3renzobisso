@@ -1,5 +1,5 @@
-#include "..\headers\utilidades.h"
-#include "..\headers\interfaz.h"
+#include "utilidades.h"
+#include "interfaz.h"
 
 void menu(){
 
