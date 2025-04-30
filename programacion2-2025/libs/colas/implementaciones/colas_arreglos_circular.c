@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 #include "..\headers\colas.h"
-=======
-#include "colas.h"
->>>>>>> 38e819a591309df8606adcf6c4d22592e9dc09fe
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>

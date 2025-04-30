@@ -2,11 +2,7 @@
 #define COLAS_H
 
 #include <stdbool.h>
-<<<<<<< HEAD
 #include "..\..\tipoElemento\headers\tipo_elemento.h"
-=======
-#include "../../tipoElemento/headers/tipo_elemento.h"
->>>>>>> 38e819a591309df8606adcf6c4d22592e9dc09fe
 
 struct ColaRep;
 typedef struct ColaRep *Cola;
