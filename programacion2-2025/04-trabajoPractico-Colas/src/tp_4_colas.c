@@ -313,7 +313,7 @@ Lista c_ej6_comunesapilaycola(Pila p, Cola c){
 
         posC = 1;
 
-        while(!c_es_vacia(cAux)){//RESTAURO LA COLA
+        while(!c_es_vacia(cAux)){
             Y = c_recuperar(cAux);
             c_encolar(c, Y);
         }
