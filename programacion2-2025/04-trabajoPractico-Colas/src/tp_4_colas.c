@@ -1,5 +1,5 @@
-#include "..\headers\utilidades.h"
-#include "..\headers\tp_4_colas.h"
+#include "utilidades.h"
+#include "tp_4_colas.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -23,7 +23,7 @@ bool c_ej2_existeclave(Cola c, int clave){
         }
         c_encolar(cAux,X);
     }
-    while (!c_es_vacia(c))
+    while (!c_es_vacia(cAux))
     {
         TipoElemento X=c_desencolar(cAux);
         c_encolar(c,X);
@@ -49,7 +49,7 @@ Cola c_ej2_colarelemento(Cola c, int posicionordinal, TipoElemento X){
             c_encolar(cAux,X);
         }
         c_encolar(cAux,Y);
-        
+        Y=c_desencolar(c);
     }
     
     while (!c_es_vacia(cAux))
@@ -68,6 +68,8 @@ Cola c_ej2_sacarelemento(Cola c, int clave){
     if(c_es_vacia(c)){
         return c;
     }
+    TipoElemento X;
+
     Cola cAux=c_crear();
     while (!c_es_vacia(c))
     {
@@ -78,12 +80,19 @@ Cola c_ej2_sacarelemento(Cola c, int clave){
             c_encolar(cAux,X);
         }
     }
-    return cAux;
+    while (!c_es_vacia(cAux))
+    {
+        X=c_desencolar(cAux);
+        c_encolar(c,X);
+        
+    }
+    return c;
 }
 //D
 int c_ej2_contarelementos(Cola c){
     int count=0;
     Cola cAux=c_crear();
+
     if(c_es_vacia(c)){
         return count;
     }
@@ -94,11 +103,12 @@ int c_ej2_contarelementos(Cola c){
         c_encolar(cAux,X);        
     }
     
-    while (!c_es_vacia(c))
+    while (!c_es_vacia(cAux))
     {
-        TipoElemento X=c_desencolar(c);
+        TipoElemento X=c_desencolar(cAux);
         c_encolar(c,X);        
     }
+
     return count;
 
 }
@@ -204,6 +214,13 @@ Cola  c_ej4_colanorepetidos(Cola c){
     return cSinRepetir;
 
 }
+
+
+//EJERCICIO 5
+
+
+
+
 
 
 //EJERCICIO 6
