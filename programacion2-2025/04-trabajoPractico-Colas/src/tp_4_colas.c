@@ -45,7 +45,6 @@ Cola c_ej2_colarelemento(Cola c, int posicionordinal, TipoElemento X){
         count++;
         if (count==posicionordinal)
         {
-            free(Y);
             c_encolar(cAux,X);
         }
         c_encolar(cAux,Y);
@@ -159,7 +158,8 @@ bool c_ej3_iguales(Cola c1, Cola c2){
         if(X->clave!=Y->clave){
             flag=false;
         }
-        TipoElemento elementoValor=te_crear_con_valor(X->clave,Y->clave);
+        int* punteroAClave = &(Y->clave);
+        TipoElemento elementoValor=te_crear_con_valor(X->clave,punteroAClave);
         c_encolar(cAux,elementoValor);
     }
 
@@ -168,7 +168,7 @@ bool c_ej3_iguales(Cola c1, Cola c2){
         TipoElemento elementoValor=te_crear_con_valor(0,NULL);
         elementoValor=c_desencolar(cAux);
         TipoElemento X=te_crear(elementoValor->clave);
-        TipoElemento Y=te_crear(elementoValor->valor);
+        TipoElemento Y = te_crear(*(int*)(elementoValor->valor));
         c_encolar(c1,X);
         c_encolar(c2,Y);
     }
@@ -177,7 +177,7 @@ bool c_ej3_iguales(Cola c1, Cola c2){
 //4
 Cola  c_ej4_colanorepetidos(Cola c){
     if(c_es_vacia(c)){
-        return;
+        return c;
     }
 
     int largo= c_ej2_contarelementos(c);
@@ -298,7 +298,7 @@ void atenderClientes(Cola c, Cola resultado, int tiempoatencion, int nroC){
     X->clave -= tiempoatencion;
 
     if(X->clave <= 0){//GUARDAMOS LOS DATOS DEL CLIENTE
-        c_encolar(resultado, te_crear_con_valor(nroC, *(int*)X->valor));
+        c_encolar(resultado, te_crear_con_valor(nroC, (void*)X->valor));
         c_desencolar(c);
     }
 }
