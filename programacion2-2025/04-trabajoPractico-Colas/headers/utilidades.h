@@ -114,6 +114,11 @@ int largo(Pila p);
 //##################
 //FUNCIONES DE COLAS
 
+void atenderClientes(Cola c, Cola resultado, int tiempoatencion, int nroC);
+
+void enumerar(Cola c);
+
+
 //FUNCIONES DE COLAS
 //##################
 //##################

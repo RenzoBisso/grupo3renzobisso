@@ -2,6 +2,10 @@
 #include "..\headers\utilidades.h"
 #include "..\headers\tp_4_colas.h"
 
+//COLAPSAR = Ctrl + K seguido de Ctrl + 0
+
+//EXPANDIR = Ctrl + K seguido de Ctrl + J
+
 //###################
 //###################
 //FUNCIONES GENERALES
@@ -137,9 +141,6 @@ int cargaManualAuto(){//0 manual, 1 azar
 //###################
 
 
-
-
-
 //###################
 //###################
 //FUNCIONES DE LISTAS
@@ -264,13 +265,9 @@ void cargarLista(Lista l, int n, int count) {
 //###################
 
 
-
-
-
 //##################
 //##################
 //FUNCIONES DE PILAS
-
 void p_cargar(Pila p, int n, int count) {
   if (count == n) {
       return;
@@ -356,6 +353,54 @@ int largo(Pila p){
   return count;
 }
 
+void interfazCargaPila(Pila  p1) {
+  //limpiar_pantalla();
+  printf("\t||CARGA MANUAL...                                                                                     ||\n");
+  printf("\t||----------------------------------------------------------------------------------------------------||\n");
+  int tamanio;
+  bool flag = true;
+  while (flag)
+  {
+      limpiarBuffer();
+
+      printf("\t||Ingrese el tamanio de la pila: ");
+
+      if (scanf("%d", &tamanio) != 1) {
+          printf("\t||\n");
+          printf("\t||----------------------------------------------------------------------------------------------------||\n");
+          printf("\t||Entrada invalida. No se ingreso un numero entero.                                                   ||\n");
+          printf("\t||----------------------------------------------------------------------------------------------------||\n");
+          //while (getchar() != '\n');
+      }
+      else {
+          if (tamanio >= 1) {
+              flag = false;
+          }
+          else{                                                                                                                 
+              printf("\t||\n");
+              printf("\t||----------------------------------------------------------------------------------------------------||\n");
+              printf("\t||Entrada invalida. No se ingreso un numero entero.                                                   ||\n");
+              printf("\t||----------------------------------------------------------------------------------------------------||\n");
+          }
+      }
+      
+  }
+  printf("\t||----------------------------------------------------------------------------------------------------||\n");
+  p_cargar(p1, tamanio, 0);
+
+  //limpiar_pantalla();
+  printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+}
 //FUNCIONES DE PILAS
+//##################
+//##################
+
+
+//##################
+//##################
+//FUNCIONES DE COLAS
+
+
+//FUNCIONES DE COLAS
 //##################
 //##################
