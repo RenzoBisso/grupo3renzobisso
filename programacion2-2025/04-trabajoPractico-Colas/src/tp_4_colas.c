@@ -299,7 +299,7 @@ void atenderClientes(Cola c, Cola resultado, int tiempoatencion, int nroC){
     X->clave -= tiempoatencion;
 
     if(X->clave <= 0){//GUARDAMOS LOS DATOS DEL CLIENTE
-        c_encolar(resultado, te_crear_con_valor(nroC, *(int*)X->valor));
+        c_encolar(resultado, te_crear_con_valor(nroC, X->valor));
         c_desencolar(c);
     }
 }
