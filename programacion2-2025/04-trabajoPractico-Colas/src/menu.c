@@ -33,7 +33,7 @@ void menu(){
             bandera = scanf("%d", &opcion);
             if ( bandera != 1 ||opcion < 0 || opcion > 6 )
             {
-                printf("Valor invalido, reintente el ingreso...(Opciones validas entre 0 y 10)\n");
+                printf("Valor invalido, reintente el ingreso...(Opciones validas entre 0 y 6)\n");
                 valido = false;
             }
             fflush(stdin);
@@ -70,7 +70,7 @@ void menu(){
       default:
         break;
     }
-    } while (opcion != 0);
+  } while (opcion != 0);
 
     pausa();
 }

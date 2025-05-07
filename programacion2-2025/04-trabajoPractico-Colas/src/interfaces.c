@@ -1,8 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 
-#include "..\headers\interfaz.h"
-#include "..\headers\utilidades.h"
-#include "..\headers\tp_4_colas.h"
+#include "interfaz.h"
+#include "utilidades.h"
+#include "tp_4_colas.h"
 
 void interfaz2(){
     char c;
@@ -286,6 +286,7 @@ void interfaz6(){
 void interfaz7(){
     char c;
     int opcion;
+    bool flag = true;
     
     do  //MENU/////////////////////////////////////////////////
     {
@@ -293,26 +294,48 @@ void interfaz7(){
         printf("\t\t\t                      |       EJERCICIO 7      |\n");
         printf("\t\t\t                      +------------------------+\n\n\n");
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-        printf("\t||                                                                                                    ||\n");
+        printf("\t||UN NEGOCIO TIENE 3 VENTANILLAS PARA ATENDER CLIENTE. LOS CLIENTES FORMAN COLA EN CADA VENTANILLA    ||\n");
+        printf("\t||UN DIA QUEDA SOLO UN EMPLEADO PARA ATENDER LAS 3 COLAS. LAS ATIENDE EN UN TIEMPO(Q),                ||\n");
+        printf("\t||PASANDO POR CADA COLA EQUITATIVAMENTE                                                               ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
-        
-        Cola c1=c_crear();
+        Cola c1 = c_crear();
+        Cola c2 = c_crear();
+        Cola c3 = c_crear();
+
+        int q;
 
         opcion = cargaManualAuto();
         if(opcion){
             llenarCRandom(c1);
+            llenarCRandom(c2);
+            llenarCRandom(c3);
         }
         else{
             interfazCargaCola(c1);
+            interfazCargaCola(c2);
+            interfazCargaCola(c3);
         }
 
-        printf("\t||");
-        printf("\n\t|| Cola: ");
-        c_mostrar(c1);
-        printf("\t||\n");
+        printf("\t|| INGRESE TIEMPO DE ATENCION(Q): ");
+        
+        while(flag){
+            if(scanf("%d", q) <= 0){
+                printf("\n\t||Entrada invalida.\n");
+                while (getchar() != '\n');
+            }
+            else{
+                flag = false;
+            }
+        }
+
+        printf("\n\t||----------------------------------------------------------------------------------------------------||\n");
+
+        Cola res = c_ej7_atenderclientes(c1, c2, c3, q);
+
+        c_mostrar_clientes(res);
 
         limpiarBuffer();
 
