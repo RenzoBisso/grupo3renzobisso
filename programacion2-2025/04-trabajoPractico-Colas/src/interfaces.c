@@ -1,8 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 
-#include "..\headers\interfaz.h"
-#include "..\headers\utilidades.h"
-#include "..\headers\tp_4_colas.h"
+#include "interfaz.h"
+#include "utilidades.h"
+#include "tp_4_colas.h"
 
 #define CARGA_AUTOMATICA 1
 
@@ -20,14 +20,82 @@ void interfaz2(){
         printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
-        pedirNumero(&opcion);
+        Cola c1=c_crear();
 
-        if(opcion==CARGA_AUTOMATICA){
-
-        }else{
-            
+        opcion = cargaManualAuto();
+        if(opcion){
+            llenarCRandom(c1);
+        }
+        else{
+            interfazCargaCola(c1);
         }
 
+        printf("\t||");
+        printf("\n\t|| Cola: ");
+        c_mostrar(c1);
+        printf("\t||\n");
+
+        int numero;
+        int posicion;
+
+        //A
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||A: DETERMINA SI UNA CLAVE SE ENCUENTRA DENTRO DE LA COLA                                            ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+        pedirNumero(&numero);
+
+        bool esta= c_ej2_existeclave(c1,numero);
+        printf("%d",esta);
+        //B
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||B: AGREGAR UN ELEMENTO EN LA POSICION DADA                                                          ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+        printf("Ingrese el elemento a agregar: ");
+        pedirNumero(&numero);
+        TipoElemento elementoNuevo=te_crear(numero);
+        printf("Ingrese la posicion en que lo quiere agregar: ");
+        pedirNumero(&posicion);
+        c_ej2_colarelemento(c1,posicion,elementoNuevo);
+        c_mostrar(c1);
+
+        //C
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||C: SACAR UN ELEMENTO ENCONTRADO TODAS VECES DADAS                                                   ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        
+        printf("Ingrese el numero a eliminar: ");
+        pedirNumero(&numero);
+        c_ej2_sacarelemento(c1,numero);
+        c_mostrar(c1);
+
+        //D
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||D: CONTAR LOS ELEMENTOS DE LA COLA                                                                  ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+        int elementos=c_ej2_contarelementos(c1);
+        printf("Hay %d elementos",elementos);
+        
+        //E
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||E: COPIAR UNA COLA                                                                                  ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        
+        Cola cCopia=c_crear();
+        cCopia=c_ej2_copiar(c1);
+        c_mostrar(cCopia);
+
+        //F
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||F: INVERTIR CONTENIDO DE LA COLA                                                                    ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+        Cola cInvertida=c_crear();
+
+        cInvertida=c_ej2_invertir(c1);
+        c_mostrar(cInvertida);
         limpiarBuffer();
 
         c = salir();
