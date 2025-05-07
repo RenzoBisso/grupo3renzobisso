@@ -176,7 +176,7 @@ void interfaz4(){
         printf("\t\t\t                      |       EJERCICIO 4      |\n");
         printf("\t\t\t                      +------------------------+\n\n\n");
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-        printf("\t||                                                                                                    ||\n");
+        printf("\t||COLA ELEMENTOS NO REPETIDOS                                                                         ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
@@ -193,12 +193,18 @@ void interfaz4(){
         }
 
         printf("\t||");
-        printf("\n\t|| Cola: ");
-        c_mostrar(c1);
+        printf("\n\t|| Cola: \n");
         printf("\t||\n");
         Cola cAux=c_crear();
         cAux=c_ej4_colanorepetidos(c1);
         c_mostrar(cAux);
+        c_mostrar(c1);
+
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        printf("\t||COLA NO REPETIDOS:                                                                                  ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        c_mostrar(c_ej4_colanorepetidos(c1));
+
         limpiarBuffer();
 
         c = salir();
