@@ -159,7 +159,8 @@ bool c_ej3_iguales(Cola c1, Cola c2){
         if(X->clave!=Y->clave){
             flag=false;
         }
-        TipoElemento elementoValor=te_crear_con_valor(X->clave,Y->clave);
+        int clave=Y->clave;
+        TipoElemento elementoValor=te_crear_con_valor(X->clave,&clave);
         c_encolar(cAux,elementoValor);
     }
 
@@ -168,7 +169,7 @@ bool c_ej3_iguales(Cola c1, Cola c2){
         TipoElemento elementoValor=te_crear_con_valor(0,NULL);
         elementoValor=c_desencolar(cAux);
         TipoElemento X=te_crear(elementoValor->clave);
-        TipoElemento Y=te_crear(elementoValor->valor);
+        TipoElemento Y = te_crear(*(int*)(elementoValor->valor));
         c_encolar(c1,X);
         c_encolar(c2,Y);
     }
