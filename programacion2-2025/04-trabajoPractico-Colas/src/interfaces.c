@@ -58,10 +58,10 @@ void interfaz2(){
         printf("\t||B: AGREGAR UN ELEMENTO EN LA POSICION DADA                                                          ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
-        printf("Ingrese el elemento a agregar: \n");
+        printf("\t||Ingrese el elemento a agregar: \n");
         pedirNumero(&numero);
         TipoElemento elementoNuevo=te_crear(numero);
-        printf("Ingrese la posicion en que lo quiere agregar: \n");
+        printf("\t||Ingrese la posicion en que lo quiere agregar: \n");
         pedirNumero(&posicion);
         c_ej2_colarelemento(c1,posicion,elementoNuevo);
         c_mostrar(c1);
@@ -71,7 +71,7 @@ void interfaz2(){
         printf("\t||C: SACAR UN ELEMENTO ENCONTRADO TODAS VECES DADAS                                                   ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         
-        printf("Ingrese el numero a eliminar: \n");
+        printf("\t||Ingrese el numero a eliminar: \n");
         pedirNumero(&numero);
         c_ej2_sacarelemento(c1,numero);
         c_mostrar(c1);
@@ -82,7 +82,7 @@ void interfaz2(){
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
         int elementos=c_ej2_contarelementos(c1);
-        printf("Hay %d elementos\n",elementos);
+        printf("\t||Hay %d elementos\n",elementos);
         
         //E
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
