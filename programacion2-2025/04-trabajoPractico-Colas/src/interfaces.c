@@ -217,10 +217,13 @@ void interfaz5(){
         printf("\t\t\t                      |       EJERCICIO 5      |\n");
         printf("\t\t\t                      +------------------------+\n\n\n");
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-        printf("\t||                                                                                                    ||\n");
+        printf("\t||DADA UNA COLA DE VALORES ENTEROS NO REPETIDOS Y MAYORES O IGUALES A 2,                              ||\n");
+        printf("\t||OBTENER TOOS LOS VALORES QUE SON DIVISORES TOTALES O PARCIALES.                                     ||\n");
+        printf("\t||DIVISOR PARCIAL = DIVIDE AL MENOS LA MITAD DE LA COLA                                               ||\n");
+        printf("\t||DIVISOR TOTAL = DIVIDE LA TOTALIDA DE LA COLA                                                       ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
-        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n"); 
         
         
         Cola c1=c_crear();

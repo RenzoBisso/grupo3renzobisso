@@ -485,7 +485,7 @@ void c_mostrar_valor(Cola c){
 
   while(!c_es_vacia(c)){
     X = c_desencolar(c);
-    printf("\t%d||%s",X->clave,*(bool*)X->valor ? "true" : "false");
+    printf("\t||Divisor: %d||Total: %s\n",X->clave,*(bool*)X->valor ? "true" : "false");
     c_encolar(aux, X);
   }
   while(!c_es_vacia(aux)){
