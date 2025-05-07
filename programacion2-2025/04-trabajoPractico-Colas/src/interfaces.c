@@ -199,12 +199,6 @@ void interfaz4(){
         cAux=c_ej4_colanorepetidos(c1);
         c_mostrar(cAux);
         c_mostrar(c1);
-
-        printf("\t||----------------------------------------------------------------------------------------------------||\n");
-        printf("\t||COLA NO REPETIDOS:                                                                                  ||\n");
-        printf("\t||----------------------------------------------------------------------------------------------------||\n");
-        c_mostrar(c_ej4_colanorepetidos(c1));
-
         limpiarBuffer();
 
         c = salir();
