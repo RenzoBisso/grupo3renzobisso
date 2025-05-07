@@ -1,9 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 
-#include "interfaz.h"
-#include "utilidades.h"
-#include "tp_4_colas.h"
-
+#include "..\headers\interfaz.h"
+#include "..\headers\utilidades.h"
+#include "..\headers\tp_4_colas.h"
 
 void interfaz2(){
     char c;
@@ -51,10 +50,10 @@ void interfaz2(){
         printf("\t||B: AGREGAR UN ELEMENTO EN LA POSICION DADA                                                          ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
-        printf("Ingrese el elemento a agregar: ");
+        printf("Ingrese el elemento a agregar: \n");
         pedirNumero(&numero);
         TipoElemento elementoNuevo=te_crear(numero);
-        printf("Ingrese la posicion en que lo quiere agregar: ");
+        printf("Ingrese la posicion en que lo quiere agregar: \n");
         pedirNumero(&posicion);
         c_ej2_colarelemento(c1,posicion,elementoNuevo);
         c_mostrar(c1);
@@ -64,7 +63,7 @@ void interfaz2(){
         printf("\t||C: SACAR UN ELEMENTO ENCONTRADO TODAS VECES DADAS                                                   ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         
-        printf("Ingrese el numero a eliminar: ");
+        printf("Ingrese el numero a eliminar: \n");
         pedirNumero(&numero);
         c_ej2_sacarelemento(c1,numero);
         c_mostrar(c1);
@@ -75,7 +74,7 @@ void interfaz2(){
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
         int elementos=c_ej2_contarelementos(c1);
-        printf("Hay %d elementos",elementos);
+        printf("Hay %d elementos\n",elementos);
         
         //E
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
@@ -106,18 +105,50 @@ void interfaz2(){
 
 void interfaz3(){
     char c;
-    
+    int opcion;
     do  //MENU/////////////////////////////////////////////////
     {
         printf("\t\t\t                      +------------------------+\n");
         printf("\t\t\t                      |       EJERCICIO 3      |\n");
         printf("\t\t\t                      +------------------------+\n\n\n");
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-        printf("\t||                                                                                                    ||\n");
+        printf("\t||Dadas dos colas, determinar si sus contenidos son iguales                                           ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+        Cola c1=c_crear();
+        Cola c2=c_crear();
+
+        opcion = cargaManualAuto();
+        if(opcion){
+            llenarCRandom(c1);
+            llenarCRandom(c2);
+        }
+        else{
+            interfazCargaCola(c1);
+            interfazCargaCola(c2);
+        }
         
+        printf("\t||");
+        printf("\n\t|| Cola 1: ");
+        c_mostrar(c1);
+        printf("\t||\n");
+        printf("\t||");
+        printf("\n\t|| Cola 2: ");
+        c_mostrar(c2);
+        printf("\t||\n");
+
+        if(c_ej3_iguales(c1,c2)==true){
+            printf("\t||----------------------------------------------------------------------------------------------------||\n");
+            printf("\t||SON IGUALES                                                                                         ||\n");
+            printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        }else{
+            printf("\t||----------------------------------------------------------------------------------------------------||\n");
+            printf("\t||NO SON IGUALES                                                                                      ||\n");
+            printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        }
+
         limpiarBuffer();
 
         c = salir();
@@ -129,6 +160,7 @@ void interfaz3(){
 
 void interfaz4(){
     char c;
+    int opcion;
     
     do  //MENU/////////////////////////////////////////////////
     {
@@ -141,6 +173,22 @@ void interfaz4(){
         printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
+        
+        Cola c1=c_crear();
+
+        opcion = cargaManualAuto();
+        if(opcion){
+            llenarCRandom(c1);
+        }
+        else{
+            interfazCargaCola(c1);
+        }
+
+        printf("\t||");
+        printf("\n\t|| Cola: ");
+        c_mostrar(c1);
+        printf("\t||\n");
+
         limpiarBuffer();
 
         c = salir();
@@ -152,7 +200,7 @@ void interfaz4(){
 
 void interfaz5(){
     char c;
-    
+    int opcion;
     do  //MENU/////////////////////////////////////////////////
     {
         printf("\t\t\t                      +------------------------+\n");
@@ -164,6 +212,22 @@ void interfaz5(){
         printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         
+        
+        Cola c1=c_crear();
+
+        opcion = cargaManualAuto();
+        if(opcion){
+            llenarCRandom(c1);
+        }
+        else{
+            interfazCargaCola(c1);
+        }
+
+        printf("\t||");
+        printf("\n\t|| Cola: ");
+        c_mostrar(c1);
+        printf("\t||\n");
+
         limpiarBuffer();
 
         c = salir();
@@ -175,7 +239,7 @@ void interfaz5(){
 
 void interfaz6(){
     char c;
-
+    int opcion;
     do  //MENU/////////////////////////////////////////////////
     {
         printf("\t\t\t                      +------------------------+\n");
@@ -186,6 +250,21 @@ void interfaz6(){
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+        Cola c1=c_crear();
+
+        opcion = cargaManualAuto();
+        if(opcion){
+            llenarCRandom(c1);
+        }
+        else{
+            interfazCargaCola(c1);
+        }
+
+        printf("\t||");
+        printf("\n\t|| Cola: ");
+        c_mostrar(c1);
+        printf("\t||\n");
 
         limpiarBuffer();
 
@@ -210,6 +289,22 @@ void interfaz7(){
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+        
+        Cola c1=c_crear();
+
+        opcion = cargaManualAuto();
+        if(opcion){
+            llenarCRandom(c1);
+        }
+        else{
+            interfazCargaCola(c1);
+        }
+
+        printf("\t||");
+        printf("\n\t|| Cola: ");
+        c_mostrar(c1);
+        printf("\t||\n");
 
         limpiarBuffer();
 

@@ -114,12 +114,15 @@ int largo(Pila p);
 //##################
 //FUNCIONES DE COLAS
 
+void c_cargar(Cola c,int n, int count);
+
+void llenarCRandom(Cola c);
+
 void atenderClientes(Cola c, Cola resultado, int tiempoatencion, int nroC);
 
 void enumerar(Cola c);
-void c_cargar(Cola c, int n, int count);
-void interfazCargaCola(Cola  c1);
-void llenarCRandom(Cola c1);
+
+
 //FUNCIONES DE COLAS
 //##################
 //##################

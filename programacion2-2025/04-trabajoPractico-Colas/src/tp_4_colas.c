@@ -1,5 +1,5 @@
-#include "utilidades.h"
-#include "tp_4_colas.h"
+#include "..\headers\utilidades.h"
+#include "..\headers\tp_4_colas.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -38,10 +38,11 @@ Cola c_ej2_colarelemento(Cola c, int posicionordinal, TipoElemento X){
     }
     int count=0;
     Cola cAux=c_crear();
+    TipoElemento Y=c_desencolar(c);
 
     while (!c_es_vacia(c))
     {
-        TipoElemento Y=c_desencolar(c);
+        
         count++;
         if (count==posicionordinal)
         {
@@ -53,7 +54,7 @@ Cola c_ej2_colarelemento(Cola c, int posicionordinal, TipoElemento X){
     
     while (!c_es_vacia(cAux))
     {
-        TipoElemento Y=c_desencolar(cAux);
+        Y=c_desencolar(cAux);
         c_encolar(c,Y);
         
     }
@@ -158,8 +159,7 @@ bool c_ej3_iguales(Cola c1, Cola c2){
         if(X->clave!=Y->clave){
             flag=false;
         }
-        int* punteroAClave = &(Y->clave);
-        TipoElemento elementoValor=te_crear_con_valor(X->clave,punteroAClave);
+        TipoElemento elementoValor=te_crear_con_valor(X->clave,Y->clave);
         c_encolar(cAux,elementoValor);
     }
 
@@ -168,7 +168,7 @@ bool c_ej3_iguales(Cola c1, Cola c2){
         TipoElemento elementoValor=te_crear_con_valor(0,NULL);
         elementoValor=c_desencolar(cAux);
         TipoElemento X=te_crear(elementoValor->clave);
-        TipoElemento Y = te_crear(*(int*)(elementoValor->valor));
+        TipoElemento Y=te_crear(elementoValor->valor);
         c_encolar(c1,X);
         c_encolar(c2,Y);
     }
@@ -298,7 +298,7 @@ void atenderClientes(Cola c, Cola resultado, int tiempoatencion, int nroC){
     X->clave -= tiempoatencion;
 
     if(X->clave <= 0){//GUARDAMOS LOS DATOS DEL CLIENTE
-        c_encolar(resultado, te_crear_con_valor(nroC, (void*)X->valor));
+        c_encolar(resultado, te_crear_con_valor(nroC, *(int*)X->valor));
         c_desencolar(c);
     }
 }

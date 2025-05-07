@@ -19,6 +19,6 @@ void interfaz6();
 
 void interfaz7();
 
-void interfazCargaPila(Pila l);
+void interfazCargaCola(Cola c);
 
 #endif /* INTERFAZ_H */
