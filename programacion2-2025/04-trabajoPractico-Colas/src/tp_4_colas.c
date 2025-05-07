@@ -316,7 +316,9 @@ void atenderClientes(Cola c, Cola resultado, int tiempoatencion, int nroC){
     X->clave -= tiempoatencion;
 
     if(X->clave <= 0){//GUARDAMOS LOS DATOS DEL CLIENTE
-        c_encolar(resultado, te_crear_con_valor(nroC, X->valor));
+        char *cliente = (char*)malloc(sizeof(char));
+        sprintf(cliente, "Cliente %d Cola %d", *(int*)X->valor, nroC);
+        c_encolar(resultado, te_crear_con_valor(nroC, cliente));
         c_desencolar(c);
     }
 }
