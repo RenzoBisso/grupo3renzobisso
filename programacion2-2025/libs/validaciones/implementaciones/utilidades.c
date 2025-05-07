@@ -438,7 +438,6 @@ void interfazCargaCola(Cola  c1) {
   printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
 }
 
-
 void c_cargar(Cola c, int n, int count) {
   if (count == n) {
       return;
@@ -465,6 +464,22 @@ void llenarCRandom(Cola c1){
     c_encolar(c1, te_crear(rand() % 11));
   }
 }
+
+void c_mostrar_clientes(Cola c){
+  Cola aux = c_crear();
+  TipoElemento X;
+
+  while(!c_es_vacia(c)){
+    X = c_desencolar(c);
+    printf("\t||%s", *(char*)X->valor);
+    c_encolar(aux, X);
+  }
+  while(!c_es_vacia(aux)){
+    X = c_desencolar(aux);
+    c_encolar(c, X);
+  }
+}
+
 //FUNCIONES DE COLAS
 //##################
 //##################
