@@ -1,5 +1,5 @@
-#include "utilidades.h"
-#include "tp_4_colas.h"
+#include "..\headers\utilidades.h"
+#include "..\headers\tp_4_colas.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -34,18 +34,18 @@ bool c_ej2_existeclave(Cola c, int clave){
 Cola c_ej2_colarelemento(Cola c, int posicionordinal, TipoElemento X){
 
     if(c_es_vacia(c)){
-        return ;
+        return c;
     }
     int count=0;
     Cola cAux=c_crear();
+    TipoElemento Y=c_desencolar(c);
 
     while (!c_es_vacia(c))
     {
-        TipoElemento Y=c_desencolar(c);
+        
         count++;
         if (count==posicionordinal)
         {
-            free(Y);
             c_encolar(cAux,X);
         }
         c_encolar(cAux,Y);
@@ -54,7 +54,7 @@ Cola c_ej2_colarelemento(Cola c, int posicionordinal, TipoElemento X){
     
     while (!c_es_vacia(cAux))
     {
-        TipoElemento Y=c_desencolar(cAux);
+        Y=c_desencolar(cAux);
         c_encolar(c,Y);
         
     }
@@ -66,7 +66,7 @@ Cola c_ej2_colarelemento(Cola c, int posicionordinal, TipoElemento X){
 Cola c_ej2_sacarelemento(Cola c, int clave){
 
     if(c_es_vacia(c)){
-        return ;
+        return c;
     }
     Cola cAux=c_crear();
     while (!c_es_vacia(c))
@@ -105,7 +105,7 @@ int c_ej2_contarelementos(Cola c){
 //E
 Cola c_ej2_copiar(Cola c){
     if(c_es_vacia(c)){
-        return ;
+        return c;
     }
     Cola cCopia=c_crear();
     int largoC1=c_ej2_contarelementos(c);
@@ -125,7 +125,7 @@ Cola c_ej2_copiar(Cola c){
 //F
 Cola c_ej2_invertir(Cola c){
     if(c_es_vacia(c)){
-        return;
+        return c;
     }
 
     Pila p=p_crear();
@@ -177,7 +177,7 @@ bool c_ej3_iguales(Cola c1, Cola c2){
 //4
 Cola  c_ej4_colanorepetidos(Cola c){
     if(c_es_vacia(c)){
-        return;
+        return c;
     }
 
     int largo= c_ej2_contarelementos(c);
