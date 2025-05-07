@@ -43,7 +43,7 @@ void interfaz2(){
 
         pedirNumero(&numero);
 
-        if(c_ej2_existeclave(c1,numero)==true){
+        if(c_ej2_existeclave(c1,numero)){
             printf("\t||                                                                                                    ||\n");
             printf("\t||EXISTE LA CLAVE %d EN LA COLA                                                                       ||\n", numero);
             printf("\t||----------------------------------------------------------------------------------------------------||\n");
