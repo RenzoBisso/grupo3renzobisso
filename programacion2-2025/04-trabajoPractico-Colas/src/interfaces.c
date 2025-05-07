@@ -196,7 +196,9 @@ void interfaz4(){
         printf("\n\t|| Cola: ");
         c_mostrar(c1);
         printf("\t||\n");
-
+        Cola cAux=c_crear();
+        cAux=c_ej4_colanorepetidos(c1);
+        c_mostrar(cAux);
         limpiarBuffer();
 
         c = salir();
@@ -237,7 +239,7 @@ void interfaz5(){
         printf("\t||\n");
         Cola cResultado=c_crear();
         cResultado=c_ej5_divisortotal(c1);
-        c_mostrar(cResultado);
+        c_mostrar_valor(cResultado);
         limpiarBuffer();
 
         c = salir();

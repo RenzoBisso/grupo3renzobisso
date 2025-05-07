@@ -480,6 +480,21 @@ void c_mostrar_clientes(Cola c){
   }
 }
 
+void c_mostrar_valor(Cola c){
+  Cola aux = c_crear();
+  TipoElemento X;
+
+  while(!c_es_vacia(c)){
+    X = c_desencolar(c);
+    printf("\t%d||%s",X->clave,*(bool*)X->valor ? "true" : "false");
+    c_encolar(aux, X);
+  }
+  while(!c_es_vacia(aux)){
+    X = c_desencolar(aux);
+    c_encolar(c, X);
+  }
+}
+
 //FUNCIONES DE COLAS
 //##################
 //##################

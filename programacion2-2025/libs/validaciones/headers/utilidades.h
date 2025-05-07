@@ -123,6 +123,8 @@ void atenderClientes(Cola c, Cola resultado, int tiempoatencion, int nroC);
 void enumerar(Cola c);
 
 void c_mostrar_clientes(Cola c);
+void c_mostrar_valor(Cola c);
+
 
 //FUNCIONES DE COLAS
 //##################

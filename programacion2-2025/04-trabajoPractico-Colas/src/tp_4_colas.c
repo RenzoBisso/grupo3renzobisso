@@ -188,31 +188,48 @@ bool c_ej3_iguales(Cola c1, Cola c2){
 }
 //4
 Cola  c_ej4_colanorepetidos(Cola c){
-    if(c_es_vacia(c)){
-        return c;
+    Cola cCopia1 = c_crear();
+    Cola cCopia2 = c_crear(); 
+    Cola resultado = c_crear();
+
+    
+    while (!c_es_vacia(c)) {
+        TipoElemento x = c_desencolar(c);
+        c_encolar(cCopia1, x);
+        c_encolar(cCopia2, x);
     }
 
-    int largo= c_ej2_contarelementos(c);
-    int largoAux=0;
-    Cola cSinRepetir=c_crear();
-    Cola cAux=c_crear();
+    
+    while (!c_es_vacia(cCopia1)) {
+        TipoElemento x = c_desencolar(cCopia1);
+        int repeticiones = 0;
 
-    while(largoAux!=largo){
-        largoAux++;
-        TipoElemento X=c_desencolar(c);
-        if(!c_ej2_existeclave(c,X->clave)){
-            c_encolar(cSinRepetir,X);
+        
+        Cola aux = c_crear();
+        while (!c_es_vacia(cCopia2)) {
+            TipoElemento y = c_desencolar(cCopia2);
+            if (x->clave == y->clave) {
+                repeticiones++;
+            }
+            c_encolar(aux, y);
         }
-        c_encolar(cAux,X);
 
+        
+        while (!c_es_vacia(aux)) {
+            c_encolar(cCopia2, c_desencolar(aux));
+        }
+
+        if (repeticiones == 1) {
+            c_encolar(resultado, x);
+        }
     }
 
-    while(!c_es_vacia(cAux)){
-        TipoElemento X=c_desencolar(cAux);
-        c_encolar(c,X);
+    
+    while (!c_es_vacia(cCopia2)) {
+        c_encolar(c, c_desencolar(cCopia2));
     }
 
-    return cSinRepetir;
+    return resultado;
 
 }
 
