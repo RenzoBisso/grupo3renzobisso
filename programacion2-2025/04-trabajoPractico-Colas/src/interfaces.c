@@ -139,13 +139,13 @@ void interfaz3(){
         }
         
         printf("\t||");
-        printf("\n\t|| Cola 1: ");
+        printf("\n\t|| Cola 1: \n");
+        printf("\t||\n");
         c_mostrar(c1);
-        printf("\t||\n");
         printf("\t||");
-        printf("\n\t|| Cola 2: ");
-        c_mostrar(c2);
+        printf("\n\t|| Cola 2: \n");
         printf("\t||\n");
+        c_mostrar(c2);
 
         if(c_ej3_iguales(c1,c2)==true){
             printf("\t||----------------------------------------------------------------------------------------------------||\n");
