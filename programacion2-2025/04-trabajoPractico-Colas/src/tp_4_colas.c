@@ -109,6 +109,7 @@ int c_ej2_contarelementos(Cola c){
         c_encolar(c,X);        
     }
 
+
     return count;
 
 }
@@ -219,8 +220,62 @@ Cola  c_ej4_colanorepetidos(Cola c){
 //EJERCICIO 5
 
 
+Cola c_ej5_divisortotal(Cola c) {
+    Cola resultado = c_crear();
+    Cola copia1 = c_crear();
+    Cola copia2 = c_crear();
+    Cola aux = c_crear();
+    TipoElemento te, te2;
+    int total_elementos = 0;
 
+    while (!c_es_vacia(c)) {
+        te = c_desencolar(c);
+        c_encolar(copia1, te);
+        c_encolar(aux, te); 
+        total_elementos++;
+    }
 
+    while (!c_es_vacia(aux)) {
+        c_encolar(c, c_desencolar(aux));
+    }
+
+       while (!c_es_vacia(copia1)) {
+        te = c_desencolar(copia1);
+        int divisor = te->clave;
+        int divisibles = 0;
+
+        while (!c_es_vacia(c)) {
+            te2 = c_desencolar(c);
+            c_encolar(copia2, te2);
+            c_encolar(aux, te2);  
+
+            if (te2->clave % divisor == 0) {
+                divisibles++;
+            }
+        }
+
+        
+        while (!c_es_vacia(aux)) {
+            c_encolar(c, c_desencolar(aux));
+        }
+
+        
+        if (divisibles == total_elementos || divisibles >= total_elementos / 2) {
+            bool* es_total = malloc(sizeof(bool));
+            *es_total = (divisibles == total_elementos);
+
+            TipoElemento nuevo = te_crear_con_valor(divisor, es_total);
+            c_encolar(resultado, nuevo);
+        }
+
+        
+        while (!c_es_vacia(copia2)) {
+            c_desencolar(copia2);
+        }
+    }
+
+    return resultado;
+}
 
 
 //EJERCICIO 6
@@ -288,7 +343,6 @@ Cola c_ej7_atenderclientes(Cola c1, Cola c2, Cola c3, int tiempoatencion){
         if(!c_es_vacia(c3)) atenderClientes(c3, res, tiempoatencion, 3);
 
     }while(!(c_es_vacia(c1) && c_es_vacia(c2) && c_es_vacia(c3)));
-
     return res;
 }
 
@@ -316,9 +370,7 @@ void atenderClientes(Cola c, Cola resultado, int tiempoatencion, int nroC){
     X->clave -= tiempoatencion;
 
     if(X->clave <= 0){//GUARDAMOS LOS DATOS DEL CLIENTE
-        char *cliente = (char*)malloc(sizeof(char));
-        sprintf(cliente, "Cliente %d Cola %d", *(int*)X->valor, nroC);
-        c_encolar(resultado, te_crear_con_valor(nroC, cliente));
+        c_encolar(resultado, te_crear_con_valor(nroC, X->valor));
         c_desencolar(c);
     }
 }
