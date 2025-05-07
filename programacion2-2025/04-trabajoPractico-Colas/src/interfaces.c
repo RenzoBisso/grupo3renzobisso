@@ -4,10 +4,11 @@
 #include "..\headers\utilidades.h"
 #include "..\headers\tp_4_colas.h"
 
+#define CARGA_AUTOMATICA 1
 
 void interfaz2(){
     char c;
-
+    int opcion;
     do  //MENU/////////////////////////////////////////////////
     {
         printf("\t\t\t                      +------------------------+\n");
@@ -18,6 +19,14 @@ void interfaz2(){
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+        pedirNumero(&opcion);
+
+        if(opcion==CARGA_AUTOMATICA){
+
+        }else{
+            
+        }
 
         limpiarBuffer();
 
