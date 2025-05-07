@@ -43,8 +43,16 @@ void interfaz2(){
 
         pedirNumero(&numero);
 
-        bool esta= c_ej2_existeclave(c1,numero);
-        printf("%d",esta);
+        if(c_ej2_existeclave(c1,numero)==true){
+            printf("\t||                                                                                                    ||\n");
+            printf("\t||EXISTE LA CLAVE %d EN LA COLA                                                                       ||\n", numero);
+            printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        }else{
+            printf("\t||                                                                                                    ||\n");
+            printf("\t||NO EXISTE LA CLAVE %d EN LA COLA                                                                    ||\n", numero);
+            printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        }
+        
         //B
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
         printf("\t||B: AGREGAR UN ELEMENTO EN LA POSICION DADA                                                          ||\n");
