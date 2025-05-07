@@ -62,7 +62,6 @@ Cola c_ej2_colarelemento(Cola c, int posicionordinal, TipoElemento X){
     return c;
 
 }
-
 //C
 Cola c_ej2_sacarelemento(Cola c, int clave){
 
@@ -81,7 +80,6 @@ Cola c_ej2_sacarelemento(Cola c, int clave){
     }
     return cAux;
 }
-
 //D
 int c_ej2_contarelementos(Cola c){
     int count=0;
@@ -104,7 +102,6 @@ int c_ej2_contarelementos(Cola c){
     return count;
 
 }
-
 //E
 Cola c_ej2_copiar(Cola c){
     if(c_es_vacia(c)){
@@ -125,8 +122,6 @@ Cola c_ej2_copiar(Cola c){
 
 
 }
-
-
 //F
 Cola c_ej2_invertir(Cola c){
     if(c_es_vacia(c)){
@@ -145,8 +140,6 @@ Cola c_ej2_invertir(Cola c){
     }
     return c;
 }
-
-
 //3
 bool c_ej3_iguales(Cola c1, Cola c2){
 
@@ -181,7 +174,6 @@ bool c_ej3_iguales(Cola c1, Cola c2){
     }
     return flag;
 }
-
 //4
 Cola  c_ej4_colanorepetidos(Cola c){
     if(c_es_vacia(c)){
@@ -212,4 +204,102 @@ Cola  c_ej4_colanorepetidos(Cola c){
 
 }
 
+
+//EJERCICIO 6
+Lista c_ej6_comunesapilaycola(Pila p, Cola c){
+    Pila pAux = p_crear();
+    Cola cAux = c_crear();
+    Lista l = l_crear();
+    
+    TipoElemento X;
+    TipoElemento Y;
+
+    int posP = 1;
+    int posC = 1;
+
+    while(!p_es_vacia(p)){
+        X = p_desapilar(p);
+        p_apilar(pAux, X);
+
+        char *posiciones = (char*)malloc(sizeof(char));
+
+        while(!c_es_vacia(c)){
+            Y = c_recuperar(c);
+            c_encolar(cAux, Y);
+
+            if(X->clave == Y->clave){
+                sprintf(posiciones, "%d:", posP);
+                sprintf(posiciones, "%d:", posC);
+            }
+            posC++;
+        }
+
+        if(posiciones[0] != '\0'){
+            l_agregar(l, te_crear_con_valor(X->clave, posiciones));
+        }
+
+        posC = 1;
+
+        while(!c_es_vacia(cAux)){//RESTAURO LA COLA
+            Y = c_recuperar(cAux);
+            c_encolar(c, Y);
+        }
+
+        posP++;
+    }
+
+    while(!p_es_vacia(pAux)){
+        X = p_desapilar(pAux);
+        p_apilar(p, X);
+    }
+
+    return l;
+}
+
+//EJERCICIO 7
+Cola c_ej7_atenderclientes(Cola c1, Cola c2, Cola c3, int tiempoatencion){
+    Cola res = c_crear();
+
+    enumerar(c1);
+    enumerar(c2);
+    enumerar(c3);
+
+    do{
+        if(!c_es_vacia(c1)) atenderClientes(c1, res, tiempoatencion, 1);
+        if(!c_es_vacia(c2)) atenderClientes(c2, res, tiempoatencion, 2);
+        if(!c_es_vacia(c3)) atenderClientes(c3, res, tiempoatencion, 3);
+
+    }while(!(c_es_vacia(c1) && c_es_vacia(c2) && c_es_vacia(c3)));
+
+    return res;
+}
+
+void enumerar(Cola c){
+    Cola aux = c_crear();
+    TipoElemento X;
+
+    int *count = (int*)malloc(sizeof(int));
+    *count = 1;
+
+    while(!c_es_vacia(c)){//SE DE UNA FUENTE DE BIEN QUE ESTE PROCESO SE PUEDE OPTIMIZAR, PERO NO TENGO GANAS DE CRANEARLO
+        X = c_desencolar(c);
+        c_encolar(aux, X);
+    }
+    while(!c_es_vacia(aux)){
+        X = c_desencolar(aux);
+        c_encolar(c, te_crear_con_valor(X->clave, count));
+        (*count)++;
+    }
+}
+
+void atenderClientes(Cola c, Cola resultado, int tiempoatencion, int nroC){
+    TipoElemento X = c_recuperar(c);
+
+    X->clave -= tiempoatencion;
+
+    if(X->clave <= 0){//GUARDAMOS LOS DATOS DEL CLIENTE
+        c_encolar(resultado, te_crear_con_valor(nroC, *(int*)X->valor));
+        c_desencolar(c);
+    }
+}
 
