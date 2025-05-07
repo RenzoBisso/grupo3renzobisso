@@ -260,7 +260,7 @@ Cola c_ej5_divisortotal(Cola c) {
         }
 
         
-        if (divisibles == total_elementos || divisibles >= total_elementos / 2) {
+        if (divisibles == total_elementos || divisibles >= (total_elementos + 1) / 2){
             bool* es_total = malloc(sizeof(bool));
             *es_total = (divisibles == total_elementos);
 

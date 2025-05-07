@@ -240,7 +240,9 @@ void interfaz5(){
         printf("\n\t|| Cola: ");
         c_mostrar(c1);
         printf("\t||\n");
-
+        Cola cResultado=c_crear();
+        cResultado=c_ej5_divisortotal(c1);
+        c_mostrar(cResultado);
         limpiarBuffer();
 
         c = salir();
