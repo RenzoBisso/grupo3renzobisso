@@ -1,4 +1,4 @@
-#include "..\headers\utilidades.h"
+#include "utilidades.h"
 
 int main(){
 
