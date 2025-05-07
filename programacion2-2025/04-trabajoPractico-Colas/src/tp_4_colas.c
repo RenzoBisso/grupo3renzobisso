@@ -1,5 +1,5 @@
-#include "utilidades.h"
-#include "tp_4_colas.h"
+#include "..\..\libs\validaciones\headers\utilidades.h"
+#include "..\headers\tp_4_colas.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>

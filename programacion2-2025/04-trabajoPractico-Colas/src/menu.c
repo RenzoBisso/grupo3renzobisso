@@ -1,4 +1,4 @@
-#include "..\headers\utilidades.h"
+#include "..\..\libs\validaciones\headers\utilidades.h"
 #include "..\headers\interfaz.h"
 
 void menu(){

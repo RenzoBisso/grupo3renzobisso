@@ -7,10 +7,11 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdint.h>
-#include "..\..\libs\listas\headers\listas.h"
-#include "..\..\libs\pilas\headers\pilas.h"
-#include "..\..\libs\colas\headers\colas.h"
-#include "..\..\libs\tipoElemento\headers\tipo_elemento.h"
+
+#include "..\..\listas\headers\listas.h"
+#include "..\..\pilas\headers\pilas.h"
+#include "..\..\colas\headers\colas.h"
+#include "..\..\tipoElemento\headers\tipo_elemento.h"
 
 #ifndef UTILIDADES_H
 #define UTILIDADES_H
