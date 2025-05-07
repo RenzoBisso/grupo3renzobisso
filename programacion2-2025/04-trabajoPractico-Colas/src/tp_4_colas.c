@@ -261,6 +261,10 @@ Cola c_ej5_divisortotal(Cola c) {
         int divisor = te->clave;
         int divisibles = 0;
 
+        if(divisor==0){
+            continue;
+        }
+
         while (!c_es_vacia(c)) {
             te2 = c_desencolar(c);
             c_encolar(copia2, te2);
