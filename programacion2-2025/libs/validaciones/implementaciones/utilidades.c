@@ -213,24 +213,41 @@ void mostrar_coeficientes(Lista l){ // 10 9 0 5 6 --- 5 --- 10^5 9^4 0^3 5^2 6
 
 }
 
-void l_mostrar_con_valor(Lista l) {//PARA EL EJERCICIO 5 DE LISTAS, NO INCLUIR EN OTROS EJERCICIOS
-    //SI SE DESEA UTILIZAR PARA OTROS FINES, ELIMINAR LAS LINEAS MARCADAS Y MODIFICAR EL CAST
+void l_mostrar_con_valor(Lista l) {
   printf("Contenido de la lista: ");
   Iterador iter = iterador(l);
   TipoElemento X = te_crear_con_valor(0, NULL);
-  printf("{");//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  printf("{");
   while(hay_siguiente(iter)){
     X = siguiente(iter);
-  if(hay_siguiente(iter)){//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-    printf("%f; ", *(double*)X->valor);//XXXXXXXXXXXXXXXXXXXXXXXXXXX ELIMINAR ";" Y CAST XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-  }
-  else{//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-    printf("%f", *(double*)X->valor);//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-  }//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    if(hay_siguiente(iter)){
+      printf("%f; ", *(double*)X->valor);
+    }
+    else{
+      printf("%f", *(double*)X->valor);
+    }
 
   }
-    printf("}\n");//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  printf("}\n");
+}
 
+void l_mostrar_comunes_pc(Lista l){
+
+  printf("\t||ELEMENTOS COMUNES Y POSICIONES: \n");
+
+  Iterador iter = iterador(l);
+  TipoElemento X;
+
+  while(hay_siguiente(iter)){
+    X = siguiente(iter);
+    if(hay_siguiente(iter)){
+      printf("\t||%d:%s\n",X->clave, (char*)X->valor);
+    }
+    else{
+      printf("\t||%d:%s\n",X->clave, (char*)X->valor);
+    }
+
+  }
 }
 
 void llenarLRandom(Lista l1){
@@ -498,6 +515,26 @@ void c_mostrar_valor(Cola c){
     X = c_desencolar(aux);
     c_encolar(c, X);
   }
+}
+
+void mostrar_bien(Cola c){
+  Cola aux = c_crear();
+  TipoElemento X;
+
+  printf("Contenido de la cola: ");
+
+  while(!c_es_vacia(c)){
+    X = c_desencolar(c);
+    printf("%d ",X->clave);
+    c_encolar(aux, X);
+  }
+  while(!c_es_vacia(aux)){
+    X = c_desencolar(aux);
+    c_encolar(c, X);
+
+  }
+
+  printf("\n");
 }
 
 //FUNCIONES DE COLAS

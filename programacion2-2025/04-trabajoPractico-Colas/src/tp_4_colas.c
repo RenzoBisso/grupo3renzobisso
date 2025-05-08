@@ -309,33 +309,37 @@ Lista c_ej6_comunesapilaycola(Pila p, Cola c){
     TipoElemento Y;
 
     int posP = 1;
-    int posC = 1;
 
     while(!p_es_vacia(p)){
         X = p_desapilar(p);
         p_apilar(pAux, X);
 
-        char *posiciones = (char*)malloc(sizeof(char));
+        char *res = malloc(500);
+        res[0] = '\0';
+
+        int posC = 1;
 
         while(!c_es_vacia(c)){
-            Y = c_recuperar(c);
+            Y = c_desencolar(c);
             c_encolar(cAux, Y);
 
             if(X->clave == Y->clave){
-                sprintf(posiciones, "%d:", posP);
-                sprintf(posiciones, "%d:", posC);
+                char posiciones[50];
+                sprintf(posiciones, "%d:%d ", posP, posC);
+                strcat(res, posiciones);
             }
             posC++;
         }
 
-        if(posiciones[0] != '\0'){
-            l_agregar(l, te_crear_con_valor(X->clave, posiciones));
+        if(res[0] != '\0'){
+            l_agregar(l, te_crear_con_valor(X->clave, res));
+        }
+        else{
+            free(res);
         }
 
-        posC = 1;
-
         while(!c_es_vacia(cAux)){
-            Y = c_recuperar(cAux);
+            Y = c_desencolar(cAux);
             c_encolar(c, Y);
         }
 

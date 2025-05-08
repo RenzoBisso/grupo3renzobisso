@@ -261,25 +261,32 @@ void interfaz6(){
         printf("\t\t\t                      |       EJERCICIO 6      |\n");
         printf("\t\t\t                      +------------------------+\n\n\n");
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-        printf("\t||                                                                                                    ||\n");
-        printf("\t||----------------------------------------------------------------------------------------------------||\n");
-        printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
+        printf("\t||DADA UNA PILA Y COLA CON VALORES AL AZAR, RETORNA EN UNA LISTA LOS VALORES EN COMUN Y SU POSICION   ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
-        Cola c1=c_crear();
+        Cola c1 = c_crear();
+        Pila p1 = p_crear();
 
-        opcion = cargaManualAuto();
-        if(opcion){
-            llenarCRandom(c1);
-        }
-        else{
-            interfazCargaCola(c1);
-        }
+        llenarCRandom(c1);
+        llenarPRandom(p1);
 
-        printf("\t||");
-        printf("\n\t|| Cola: ");
-        c_mostrar(c1);
-        printf("\t||\n");
+        printf("\t||PILA ORIGINAL                                                                                       ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        printf("\t||"); p_mostrar(p1);
+
+        printf("\t||COLA ORIGNIAL                                                                                       ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        printf("\t||"); mostrar_bien(c1);
+        
+        Lista l = l_crear();
+
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        
+        l = c_ej6_comunesapilaycola(p1, c1);
+
+        l_mostrar_comunes_pc(l);
+
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
         limpiarBuffer();
 
@@ -306,8 +313,6 @@ void interfaz7(){
         printf("\t||UN DIA QUEDA SOLO UN EMPLEADO PARA ATENDER LAS 3 COLAS. LAS ATIENDE EN UN TIEMPO(Q),                ||\n");
         printf("\t||PASANDO POR CADA COLA EQUITATIVAMENTE                                                               ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
-        printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
-        printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
         Cola c1 = c_crear();
         Cola c2 = c_crear();
@@ -315,17 +320,11 @@ void interfaz7(){
 
         flag = true;
 
-        opcion = cargaManualAuto();
-        if(opcion){
-            llenarCRandom(c1);
-            llenarCRandom(c2);
-            llenarCRandom(c3);
-        }
-        else{
-            interfazCargaCola(c1);
-            interfazCargaCola(c2);
-            interfazCargaCola(c3);
-        }
+        
+        interfazCargaCola(c1);
+        interfazCargaCola(c2);
+        interfazCargaCola(c3);
+        
 
         printf("\t||INGRESE TIEMPO DE ATENCION(Q): ");
 
@@ -344,7 +343,7 @@ void interfaz7(){
             }
         }
 
-        printf("\n\t||----------------------------------------------------------------------------------------------------||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
         Cola res = c_crear();
         
