@@ -1,5 +1,5 @@
-#include "utilidades.h"
-#include "tp_4_colas.h"
+#include "..\..\libs\validaciones\headers\utilidades.h"
+#include "..\headers\tp_4_colas.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -109,6 +109,7 @@ int c_ej2_contarelementos(Cola c){
         c_encolar(c,X);        
     }
 
+
     return count;
 
 }
@@ -187,31 +188,48 @@ bool c_ej3_iguales(Cola c1, Cola c2){
 }
 //4
 Cola  c_ej4_colanorepetidos(Cola c){
-    if(c_es_vacia(c)){
-        return c;
+    Cola cCopia1 = c_crear();
+    Cola cCopia2 = c_crear(); 
+    Cola resultado = c_crear();
+
+    
+    while (!c_es_vacia(c)) {
+        TipoElemento x = c_desencolar(c);
+        c_encolar(cCopia1, x);
+        c_encolar(cCopia2, x);
     }
 
-    int largo= c_ej2_contarelementos(c);
-    int largoAux=0;
-    Cola cSinRepetir=c_crear();
-    Cola cAux=c_crear();
+    
+    while (!c_es_vacia(cCopia1)) {
+        TipoElemento x = c_desencolar(cCopia1);
+        int repeticiones = 0;
 
-    while(largoAux!=largo){
-        largoAux++;
-        TipoElemento X=c_desencolar(c);
-        if(!c_ej2_existeclave(c,X->clave)){
-            c_encolar(cSinRepetir,X);
+        
+        Cola aux = c_crear();
+        while (!c_es_vacia(cCopia2)) {
+            TipoElemento y = c_desencolar(cCopia2);
+            if (x->clave == y->clave) {
+                repeticiones++;
+            }
+            c_encolar(aux, y);
         }
-        c_encolar(cAux,X);
 
+        
+        while (!c_es_vacia(aux)) {
+            c_encolar(cCopia2, c_desencolar(aux));
+        }
+
+        if (repeticiones == 1) {
+            c_encolar(resultado, x);
+        }
     }
 
-    while(!c_es_vacia(cAux)){
-        TipoElemento X=c_desencolar(cAux);
-        c_encolar(c,X);
+    
+    while (!c_es_vacia(cCopia2)) {
+        c_encolar(c, c_desencolar(cCopia2));
     }
 
-    return cSinRepetir;
+    return resultado;
 
 }
 
@@ -219,8 +237,66 @@ Cola  c_ej4_colanorepetidos(Cola c){
 //EJERCICIO 5
 
 
+Cola c_ej5_divisortotal(Cola c) {
+    Cola resultado = c_crear();
+    Cola copia1 = c_crear();
+    Cola copia2 = c_crear();
+    Cola aux = c_crear();
+    TipoElemento te, te2;
+    int total_elementos = 0;
 
+    while (!c_es_vacia(c)) {
+        te = c_desencolar(c);
+        c_encolar(copia1, te);
+        c_encolar(aux, te); 
+        total_elementos++;
+    }
 
+    while (!c_es_vacia(aux)) {
+        c_encolar(c, c_desencolar(aux));
+    }
+
+       while (!c_es_vacia(copia1)) {
+        te = c_desencolar(copia1);
+        int divisor = te->clave;
+        int divisibles = 0;
+
+        if(divisor==0){
+            continue;
+        }
+
+        while (!c_es_vacia(c)) {
+            te2 = c_desencolar(c);
+            c_encolar(copia2, te2);
+            c_encolar(aux, te2);  
+
+            if (te2->clave % divisor == 0) {
+                divisibles++;
+            }
+        }
+
+        
+        while (!c_es_vacia(aux)) {
+            c_encolar(c, c_desencolar(aux));
+        }
+
+        
+        if (divisibles == total_elementos || divisibles >= (total_elementos + 1) / 2){
+            bool* es_total = malloc(sizeof(bool));
+            *es_total = (divisibles == total_elementos);
+
+            TipoElemento nuevo = te_crear_con_valor(divisor, es_total);
+            c_encolar(resultado, nuevo);
+        }
+
+        
+        while (!c_es_vacia(copia2)) {
+            c_desencolar(copia2);
+        }
+    }
+
+    return resultado;
+}
 
 
 //EJERCICIO 6
@@ -258,7 +334,7 @@ Lista c_ej6_comunesapilaycola(Pila p, Cola c){
 
         posC = 1;
 
-        while(!c_es_vacia(cAux)){//RESTAURO LA COLA
+        while(!c_es_vacia(cAux)){
             Y = c_recuperar(cAux);
             c_encolar(c, Y);
         }
@@ -288,7 +364,6 @@ Cola c_ej7_atenderclientes(Cola c1, Cola c2, Cola c3, int tiempoatencion){
         if(!c_es_vacia(c3)) atenderClientes(c3, res, tiempoatencion, 3);
 
     }while(!(c_es_vacia(c1) && c_es_vacia(c2) && c_es_vacia(c3)));
-
     return res;
 }
 

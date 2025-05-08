@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "..\headers\utilidades.h"
-#include "..\headers\tp_4_colas.h"
+#include "tp_4_colas.h"
+
 
 //COLAPSAR = Ctrl + K seguido de Ctrl + 0
 
@@ -450,10 +451,12 @@ void c_cargar(Cola c, int n, int count) {
           printf("\t||Entrada inválida. No se ingresó un número entero.\n");
           while (getchar() != '\n');
       }
-      else {
+      else if(!c_ej2_existeclave(c,valor)) {
           TipoElemento elemento = te_crear(valor);
           c_encolar(c, elemento);  
           flag = false;
+      }else{
+        printf("Valor repetido.");
       }
   }
   c_cargar(c, n, count + 1);
@@ -461,7 +464,9 @@ void c_cargar(Cola c, int n, int count) {
 
 void llenarCRandom(Cola c1){
   while(!c_es_llena(c1)){
-    c_encolar(c1, te_crear(rand() % 11));
+    int valor=rand() % 11;
+    if(!c_ej2_existeclave(c1,valor))
+      c_encolar(c1, te_crear(valor));
   }
 }
 
@@ -472,6 +477,21 @@ void c_mostrar_clientes(Cola c){
   while(!c_es_vacia(c)){
     X = c_desencolar(c);
     printf("\t||%s\n", (char*)X->valor);
+    c_encolar(aux, X);
+  }
+  while(!c_es_vacia(aux)){
+    X = c_desencolar(aux);
+    c_encolar(c, X);
+  }
+}
+
+void c_mostrar_valor(Cola c){
+  Cola aux = c_crear();
+  TipoElemento X;
+
+  while(!c_es_vacia(c)){
+    X = c_desencolar(c);
+    printf("\t||Divisor: %d||Total: %s\n",X->clave,*(bool*)X->valor ? "true" : "false");
     c_encolar(aux, X);
   }
   while(!c_es_vacia(aux)){

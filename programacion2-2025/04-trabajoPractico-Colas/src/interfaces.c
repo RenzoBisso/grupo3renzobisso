@@ -1,8 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 
-#include "interfaz.h"
-#include "utilidades.h"
-#include "tp_4_colas.h"
+#include "..\..\libs\validaciones\headers\utilidades.h"
+#include "..\headers\interfaz.h"
+#include "..\headers\tp_4_colas.h"
 
 void interfaz2(){
     char c;
@@ -43,7 +43,7 @@ void interfaz2(){
 
         pedirNumero(&numero);
 
-        if(c_ej2_existeclave(c1,numero)==true){
+        if(c_ej2_existeclave(c1,numero)){
             printf("\t||                                                                                                    ||\n");
             printf("\t||EXISTE LA CLAVE %d EN LA COLA                                                                       ||\n", numero);
             printf("\t||----------------------------------------------------------------------------------------------------||\n");
@@ -58,10 +58,10 @@ void interfaz2(){
         printf("\t||B: AGREGAR UN ELEMENTO EN LA POSICION DADA                                                          ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
-        printf("Ingrese el elemento a agregar: \n");
+        printf("\t||Ingrese el elemento a agregar: \n");
         pedirNumero(&numero);
         TipoElemento elementoNuevo=te_crear(numero);
-        printf("Ingrese la posicion en que lo quiere agregar: \n");
+        printf("\t||Ingrese la posicion en que lo quiere agregar: \n");
         pedirNumero(&posicion);
         c_ej2_colarelemento(c1,posicion,elementoNuevo);
         c_mostrar(c1);
@@ -71,7 +71,7 @@ void interfaz2(){
         printf("\t||C: SACAR UN ELEMENTO ENCONTRADO TODAS VECES DADAS                                                   ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         
-        printf("Ingrese el numero a eliminar: \n");
+        printf("\t||Ingrese el numero a eliminar: \n");
         pedirNumero(&numero);
         c_ej2_sacarelemento(c1,numero);
         c_mostrar(c1);
@@ -82,7 +82,7 @@ void interfaz2(){
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
         int elementos=c_ej2_contarelementos(c1);
-        printf("Hay %d elementos\n",elementos);
+        printf("\t||Hay %d elementos\n",elementos);
         
         //E
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
@@ -139,13 +139,13 @@ void interfaz3(){
         }
         
         printf("\t||");
-        printf("\n\t|| Cola 1: ");
+        printf("\n\t|| Cola 1: \n");
+        printf("\t||\n");
         c_mostrar(c1);
-        printf("\t||\n");
         printf("\t||");
-        printf("\n\t|| Cola 2: ");
-        c_mostrar(c2);
+        printf("\n\t|| Cola 2: \n");
         printf("\t||\n");
+        c_mostrar(c2);
 
         if(c_ej3_iguales(c1,c2)==true){
             printf("\t||----------------------------------------------------------------------------------------------------||\n");
@@ -176,7 +176,7 @@ void interfaz4(){
         printf("\t\t\t                      |       EJERCICIO 4      |\n");
         printf("\t\t\t                      +------------------------+\n\n\n");
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-        printf("\t||                                                                                                    ||\n");
+        printf("\t||COLA ELEMENTOS NO REPETIDOS                                                                         ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
@@ -193,10 +193,12 @@ void interfaz4(){
         }
 
         printf("\t||");
-        printf("\n\t|| Cola: ");
-        c_mostrar(c1);
+        printf("\n\t|| Cola: \n");
         printf("\t||\n");
-
+        Cola cAux=c_crear();
+        cAux=c_ej4_colanorepetidos(c1);
+        c_mostrar(cAux);
+        c_mostrar(c1);
         limpiarBuffer();
 
         c = salir();
@@ -215,10 +217,13 @@ void interfaz5(){
         printf("\t\t\t                      |       EJERCICIO 5      |\n");
         printf("\t\t\t                      +------------------------+\n\n\n");
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-        printf("\t||                                                                                                    ||\n");
+        printf("\t||DADA UNA COLA DE VALORES ENTEROS NO REPETIDOS Y MAYORES O IGUALES A 2,                              ||\n");
+        printf("\t||OBTENER TOOS LOS VALORES QUE SON DIVISORES TOTALES O PARCIALES.                                     ||\n");
+        printf("\t||DIVISOR PARCIAL = DIVIDE AL MENOS LA MITAD DE LA COLA                                               ||\n");
+        printf("\t||DIVISOR TOTAL = DIVIDE LA TOTALIDA DE LA COLA                                                       ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
-        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n"); 
         
         
         Cola c1=c_crear();
@@ -235,7 +240,9 @@ void interfaz5(){
         printf("\n\t|| Cola: ");
         c_mostrar(c1);
         printf("\t||\n");
-
+        Cola cResultado=c_crear();
+        cResultado=c_ej5_divisortotal(c1);
+        c_mostrar_valor(cResultado);
         limpiarBuffer();
 
         c = salir();
