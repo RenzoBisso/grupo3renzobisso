@@ -129,7 +129,7 @@ void c_mostrar_clientes(Cola c);
 
 void c_mostrar_valor(Cola c);
 
-void mostrar_bien(Cola c);
+void c_mostrar_bien(Cola c);
 
 //FUNCIONES DE COLAS
 //##################

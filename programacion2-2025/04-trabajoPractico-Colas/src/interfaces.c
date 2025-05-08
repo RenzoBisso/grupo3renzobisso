@@ -13,8 +13,6 @@ void interfaz2(){
         printf("\t\t\t                      |       EJERCICIO 2      |\n");
         printf("\t\t\t                      +------------------------+\n\n\n");
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-        printf("\t||                                                                                                    ||\n");
-        printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
@@ -29,8 +27,8 @@ void interfaz2(){
         }
 
         printf("\t||");
-        printf("\n\t|| Cola: ");
-        c_mostrar(c1);
+        printf("\n\t||");
+        c_mostrar_bien(c1);
         printf("\t||\n");
 
         int numero;
@@ -64,7 +62,8 @@ void interfaz2(){
         printf("\t||Ingrese la posicion en que lo quiere agregar: \n");
         pedirNumero(&posicion);
         c_ej2_colarelemento(c1,posicion,elementoNuevo);
-        c_mostrar(c1);
+        printf("\t||");
+        c_mostrar_bien(c1);
 
         //C
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
@@ -74,7 +73,8 @@ void interfaz2(){
         printf("\t||Ingrese el numero a eliminar: \n");
         pedirNumero(&numero);
         c_ej2_sacarelemento(c1,numero);
-        c_mostrar(c1);
+        printf("\t||");
+        c_mostrar_bien(c1);
 
         //D
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
@@ -91,7 +91,8 @@ void interfaz2(){
         
         Cola cCopia=c_crear();
         cCopia=c_ej2_copiar(c1);
-        c_mostrar(cCopia);
+        printf("\t||");
+        c_mostrar_bien(cCopia);
 
         //F
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
@@ -101,7 +102,11 @@ void interfaz2(){
         Cola cInvertida=c_crear();
 
         cInvertida=c_ej2_invertir(c1);
-        c_mostrar(cInvertida);
+        printf("\t||");
+        c_mostrar_bien(cInvertida);
+
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
         limpiarBuffer();
 
         c = salir();
@@ -140,12 +145,12 @@ void interfaz3(){
         
         printf("\t||");
         printf("\n\t|| Cola 1: \n");
-        printf("\t||\n");
-        c_mostrar(c1);
+        printf("\t||");
+        c_mostrar_bien(c1);
         printf("\t||");
         printf("\n\t|| Cola 2: \n");
-        printf("\t||\n");
-        c_mostrar(c2);
+        printf("\t||");
+        c_mostrar_bien(c2);
 
         if(c_ej3_iguales(c1,c2)==true){
             printf("\t||----------------------------------------------------------------------------------------------------||\n");
@@ -197,8 +202,11 @@ void interfaz4(){
         printf("\t||\n");
         Cola cAux=c_crear();
         cAux=c_ej4_colanorepetidos(c1);
-        c_mostrar(cAux);
-        c_mostrar(c1);
+        printf("\t||"); c_mostrar_bien(cAux);
+        printf("\t||"); c_mostrar_bien(c1);
+
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
         limpiarBuffer();
 
         c = salir();
@@ -237,12 +245,15 @@ void interfaz5(){
         }
 
         printf("\t||");
-        printf("\n\t|| Cola: ");
-        c_mostrar(c1);
+        printf("\n\t||");
+        c_mostrar_bien(c1);
         printf("\t||\n");
         Cola cResultado=c_crear();
         cResultado=c_ej5_divisortotal(c1);
         c_mostrar_valor(cResultado);
+
+        printf("\t||----------------------------------------------------------------------------------------------------||\n"); 
+
         limpiarBuffer();
 
         c = salir();
@@ -276,7 +287,7 @@ void interfaz6(){
 
         printf("\t||COLA ORIGNIAL                                                                                       ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
-        printf("\t||"); mostrar_bien(c1);
+        printf("\t||"); c_mostrar_bien(c1);
         
         Lista l = l_crear();
 
