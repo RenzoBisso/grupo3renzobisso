@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-static const int TAMANIO_MAXIMO = 11;  //Siempre 1 mas porque se pierde uno por la ranura
+static const int TAMANIO_MAXIMO = 101;  //Siempre 1 mas porque se pierde uno por la ranura
 
 struct ColaRep {
     TipoElemento *valores;

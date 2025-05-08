@@ -331,6 +331,19 @@ void interfaz7(){
 
         flag = true;
 
+        opcion = cargaManualAuto();
+        if(opcion){
+            llenarCRandomValor(c1, 10);
+            llenarCRandomValor(c2, 10);
+            llenarCRandomValor(c3, 10);
+        }
+        else{
+            interfazCargaCola(c1);
+            interfazCargaCola(c2);
+            interfazCargaCola(c3);
+        
+        }
+
         
         interfazCargaCola(c1);
         interfazCargaCola(c2);

@@ -487,6 +487,15 @@ void llenarCRandom(Cola c1){
   }
 }
 
+void llenarCRandomValor(Cola c1, int max){
+  while(max != 0){
+    int valor=rand() % 11;
+    if(!c_ej2_existeclave(c1,valor))
+      c_encolar(c1, te_crear(valor));
+    max--;
+  }
+}
+
 void c_mostrar_clientes(Cola c){
   Cola aux = c_crear();
   TipoElemento X;

@@ -121,6 +121,8 @@ void c_cargar(Cola c,int n, int count);
 
 void llenarCRandom(Cola c);
 
+void llenarCRandomValor(Cola c, int max);
+
 void atenderClientes(Cola c, Cola resultado, int tiempoatencion, int nroC);
 
 void enumerar(Cola c);
