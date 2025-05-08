@@ -546,7 +546,7 @@ void c_cargarSinRepetir(Cola c, int n, int count) {
         printf("Valor repetido.");
       }
   }
-  c_cargar(c, n, count + 1);
+  c_cargarSinRepetir(c, n, count + 1);
 }
 
 void llenarCRandomSinRepetir(Cola c1){
