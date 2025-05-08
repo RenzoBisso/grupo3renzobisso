@@ -76,6 +76,8 @@ void llenarLRandom(Lista l1);
 
 void l_mostrar_con_valor(Lista lista);
 
+void l_mostrar_comunes_pc(Lista l);
+
 void cargarLista(Lista l, int n, int count);
 
 void mostrar_coeficientes(Lista l);
@@ -122,13 +124,17 @@ void llenarCRandom(Cola c);
 void llenarCRandomSinRepetir(Cola c);
 
 
+void llenarCRandomValor(Cola c, int max);
+
 void atenderClientes(Cola c, Cola resultado, int tiempoatencion, int nroC);
 
 void enumerar(Cola c);
 
 void c_mostrar_clientes(Cola c);
+
 void c_mostrar_valor(Cola c);
 
+void c_mostrar_bien(Cola c);
 
 //FUNCIONES DE COLAS
 //##################

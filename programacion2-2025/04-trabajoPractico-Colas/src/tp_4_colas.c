@@ -309,33 +309,37 @@ Lista c_ej6_comunesapilaycola(Pila p, Cola c){
     TipoElemento Y;
 
     int posP = 1;
-    int posC = 1;
 
     while(!p_es_vacia(p)){
         X = p_desapilar(p);
         p_apilar(pAux, X);
 
-        char *posiciones = (char*)malloc(sizeof(char));
+        char *res = malloc(500);
+        res[0] = '\0';
+
+        int posC = 1;
 
         while(!c_es_vacia(c)){
-            Y = c_recuperar(c);
+            Y = c_desencolar(c);
             c_encolar(cAux, Y);
 
             if(X->clave == Y->clave){
-                sprintf(posiciones, "%d:", posP);
-                sprintf(posiciones, "%d:", posC);
+                char posiciones[50];
+                sprintf(posiciones, "%d:%d ", posP, posC);
+                strcat(res, posiciones);
             }
             posC++;
         }
 
-        if(posiciones[0] != '\0'){
-            l_agregar(l, te_crear_con_valor(X->clave, posiciones));
+        if(res[0] != '\0'){
+            l_agregar(l, te_crear_con_valor(X->clave, res));
+        }
+        else{
+            free(res);
         }
 
-        posC = 1;
-
         while(!c_es_vacia(cAux)){
-            Y = c_recuperar(cAux);
+            Y = c_desencolar(cAux);
             c_encolar(c, Y);
         }
 
@@ -371,8 +375,7 @@ void enumerar(Cola c){
     Cola aux = c_crear();
     TipoElemento X;
 
-    int *count = (int*)malloc(sizeof(int));
-    *count = 1;
+    int contador = 1;
 
     while(!c_es_vacia(c)){//SE DE UNA FUENTE DE BIEN QUE ESTE PROCESO SE PUEDE OPTIMIZAR, PERO NO TENGO GANAS DE CRANEARLO
         X = c_desencolar(c);
@@ -380,18 +383,38 @@ void enumerar(Cola c){
     }
     while(!c_es_vacia(aux)){
         X = c_desencolar(aux);
+        int *count = (int*)malloc(sizeof(int));
+        *count = contador;
         c_encolar(c, te_crear_con_valor(X->clave, count));
-        (*count)++;
+        contador++;
     }
 }
 
 void atenderClientes(Cola c, Cola resultado, int tiempoatencion, int nroC){
-    TipoElemento X = c_recuperar(c);
+    TipoElemento X;
+    Cola aux = c_crear();
 
-    X->clave -= tiempoatencion;
+    bool llave = true;
+
+    while(!c_es_vacia(c)){
+        X = c_desencolar(c);
+        if(llave){
+            X->clave -= tiempoatencion;
+            llave = false;
+        }
+        c_encolar(aux, X);
+    }
+    while(!c_es_vacia(aux)){
+        X = c_desencolar(aux);
+        c_encolar(c, X);
+    }
+
+    X = c_recuperar(c);
 
     if(X->clave <= 0){//GUARDAMOS LOS DATOS DEL CLIENTE
-        c_encolar(resultado, te_crear_con_valor(nroC, X->valor));
+        char *cliente = malloc(100);
+        sprintf(cliente, "Cliente %d Cola %d", *(int*)X->valor, nroC);
+        c_encolar(resultado, te_crear_con_valor(nroC, cliente));
         c_desencolar(c);
     }
 }
