@@ -286,7 +286,8 @@ void interfaz6(){
 void interfaz7(){
     char c;
     int opcion;
-    bool flag = true;
+    bool flag;
+    int q;
     
     do  //MENU/////////////////////////////////////////////////
     {
@@ -305,7 +306,7 @@ void interfaz7(){
         Cola c2 = c_crear();
         Cola c3 = c_crear();
 
-        int q;
+        flag = true;
 
         opcion = cargaManualAuto();
         if(opcion){
@@ -319,12 +320,17 @@ void interfaz7(){
             interfazCargaCola(c3);
         }
 
-        printf("\t|| INGRESE TIEMPO DE ATENCION(Q): ");
+        printf("\t||INGRESE TIEMPO DE ATENCION(Q): ");
+
+        scanf("%d", &q);
+        limpiarBuffer();
         
         while(flag){
-            if(scanf("%d", q) <= 0){
+            if(q <= 0){
                 printf("\n\t||Entrada invalida.\n");
-                while (getchar() != '\n');
+                printf("\t||INGRESE TIEMPO DE ATENCION(Q): ");
+                scanf("%d", &q);
+                limpiarBuffer();
             }
             else{
                 flag = false;
@@ -333,7 +339,9 @@ void interfaz7(){
 
         printf("\n\t||----------------------------------------------------------------------------------------------------||\n");
 
-        Cola res = c_ej7_atenderclientes(c1, c2, c3, q);
+        Cola res = c_crear();
+        
+        res = c_ej7_atenderclientes(c1, c2, c3, q);
 
         c_mostrar_clientes(res);
 

@@ -471,7 +471,7 @@ void c_mostrar_clientes(Cola c){
 
   while(!c_es_vacia(c)){
     X = c_desencolar(c);
-    printf("\t||%s", *(char*)X->valor);
+    printf("\t||%s\n", (char*)X->valor);
     c_encolar(aux, X);
   }
   while(!c_es_vacia(aux)){

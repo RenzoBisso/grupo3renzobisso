@@ -296,8 +296,7 @@ void enumerar(Cola c){
     Cola aux = c_crear();
     TipoElemento X;
 
-    int *count = (int*)malloc(sizeof(int));
-    *count = 1;
+    int contador = 1;
 
     while(!c_es_vacia(c)){//SE DE UNA FUENTE DE BIEN QUE ESTE PROCESO SE PUEDE OPTIMIZAR, PERO NO TENGO GANAS DE CRANEARLO
         X = c_desencolar(c);
@@ -305,18 +304,36 @@ void enumerar(Cola c){
     }
     while(!c_es_vacia(aux)){
         X = c_desencolar(aux);
+        int *count = (int*)malloc(sizeof(int));
+        *count = contador;
         c_encolar(c, te_crear_con_valor(X->clave, count));
-        (*count)++;
+        contador++;
     }
 }
 
 void atenderClientes(Cola c, Cola resultado, int tiempoatencion, int nroC){
-    TipoElemento X = c_recuperar(c);
+    TipoElemento X;
+    Cola aux = c_crear();
 
-    X->clave -= tiempoatencion;
+    bool llave = true;
+
+    while(!c_es_vacia(c)){
+        X = c_desencolar(c);
+        if(llave){
+            X->clave -= tiempoatencion;
+            llave = false;
+        }
+        c_encolar(aux, X);
+    }
+    while(!c_es_vacia(aux)){
+        X = c_desencolar(aux);
+        c_encolar(c, X);
+    }
+
+    X = c_recuperar(c);
 
     if(X->clave <= 0){//GUARDAMOS LOS DATOS DEL CLIENTE
-        char *cliente = (char*)malloc(sizeof(char));
+        char *cliente = malloc(100);
         sprintf(cliente, "Cliente %d Cola %d", *(int*)X->valor, nroC);
         c_encolar(resultado, te_crear_con_valor(nroC, cliente));
         c_desencolar(c);
