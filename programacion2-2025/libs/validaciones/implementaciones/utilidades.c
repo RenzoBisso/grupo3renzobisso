@@ -439,7 +439,77 @@ void interfazCargaCola(Cola  c1) {
   printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
 }
 
+void interfazCargaColaSinRepetir(Cola  c1) {
+  //limpiar_pantalla();
+  printf("\t||CARGA MANUAL...                                                                                     ||\n");
+  printf("\t||----------------------------------------------------------------------------------------------------||\n");
+  int tamanio;
+  bool flag = true;
+  while (flag)
+  {
+      limpiarBuffer();
+
+      printf("\t||Ingrese el tamanio de la cola: ");
+
+      if (scanf("%d", &tamanio) != 1) {
+          printf("\t||\n");
+          printf("\t||----------------------------------------------------------------------------------------------------||\n");
+          printf("\t||Entrada invalida. No se ingreso un numero entero.                                                   ||\n");
+          printf("\t||----------------------------------------------------------------------------------------------------||\n");
+          //while (getchar() != '\n');
+      }
+      else {
+          if (tamanio >= 1) {
+              flag = false;
+          }
+          else{                                                                                                                 
+              printf("\t||\n");
+              printf("\t||----------------------------------------------------------------------------------------------------||\n");
+              printf("\t||Entrada invalida. No se ingreso un numero entero.                                                   ||\n");
+              printf("\t||----------------------------------------------------------------------------------------------------||\n");
+          }
+      }
+      
+  }
+  printf("\t||----------------------------------------------------------------------------------------------------||\n");
+  c_cargarSinRepetir(c1, tamanio, 0);
+
+  //limpiar_pantalla();
+  printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+}
+
 void c_cargar(Cola c, int n, int count) {
+  if (count == n) {
+      return;
+  }
+  int valor;
+  bool flag = true;
+  while (flag) {
+      printf("\t||Ingrese el numero a agregar en la posicion %d: ", count);
+      if (scanf("%d", &valor) != 1) {
+          printf("\t||Entrada inválida. No se ingresó un número entero.\n");
+          while (getchar() != '\n');
+      }
+      else {
+          TipoElemento elemento = te_crear(valor);
+          c_encolar(c, elemento);  
+          flag = false;
+      }
+  }
+  c_cargar(c, n, count + 1);
+}
+
+void llenarCRandom(Cola c1){
+  while(!c_es_llena(c1)){
+    int valor=rand() % 11;
+      c_encolar(c1, te_crear(valor));
+  }
+}
+
+
+
+
+void c_cargarSinRepetir(Cola c, int n, int count) {
   if (count == n) {
       return;
   }
@@ -462,7 +532,7 @@ void c_cargar(Cola c, int n, int count) {
   c_cargar(c, n, count + 1);
 }
 
-void llenarCRandom(Cola c1){
+void llenarCRandomSinRepetir(Cola c1){
   while(!c_es_llena(c1)){
     int valor=rand() % 11;
     if(!c_ej2_existeclave(c1,valor))

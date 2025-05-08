@@ -230,10 +230,10 @@ void interfaz5(){
 
         opcion = cargaManualAuto();
         if(opcion){
-            llenarCRandom(c1);
+            llenarCRandomSinRepetir(c1);
         }
         else{
-            interfazCargaCola(c1);
+            interfazCargaColaSinRepetir(c1);
         }
 
         printf("\t||");
