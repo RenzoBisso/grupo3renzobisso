@@ -625,72 +625,74 @@ void c_mostrar_bien(Cola c){
 //##################
 //##################
 
-void cargar_arbol_binario(ArbolBinario A){
-  Cargar_SubArbol(A,NULL,0);
+void cargar_arbol_binario(ArbolBinario A) {
+    Cargar_SubArbol(A, NULL, 0);  // Llama a la función recursiva para cargar el árbol
 }
 
 void Cargar_SubArbol(ArbolBinario A, NodoArbol N, int sa) {
     TipoElemento X;
     NodoArbol N1;
     int n;
-    bool b=true;
 
     if (!a_es_lleno(A)) {
-        pedirNumero(&n);  
+        pedirNumero(&n);  // Pedir un número para el nodo
 
-        if (b) {
-            X = te_crear(n);
+        X = te_crear(n);  // Crear el nuevo nodo con el valor
 
-            if (sa == -1)
-                N1 = a_conectar_hi(A, N, X);
-            else if (sa == 1)
-                N1 = a_conectar_hd(A, N, X);
-            else
-                N1 = a_establecer_raiz(A, X);
-
-            Cargar_SubArbol(A, N1, -1);  
-            Cargar_SubArbol(A, N1, 1);   
+        if (sa == -1) {
+            N1 = a_conectar_hi(A, N, X);  // Conectar el hijo izquierdo
+        } else if (sa == 1) {
+            N1 = a_conectar_hd(A, N, X);  // Conectar el hijo derecho
+        } else {
+            N1 = a_establecer_raiz(A, X);  // Establecer la raíz si es el primer nodo
         }
+
+        // Recursión para los subárboles izquierdo y derecho
+        Cargar_SubArbol(A, N1, -1);  // Subárbol izquierdo
+        Cargar_SubArbol(A, N1, 1);   // Subárbol derecho
     }
 }
 
 
-void pre_orden(NodoArbol N) {
+void pre_orden(NodoArbol N){
     TipoElemento X;
-    if (N == NULL) {
-        printf(". ");
-    } else {
-        X = n_recuperar(N);
-        printf("%d ", X->clave);
-        pre_orden(n_hijoizquierdo(N));
-        pre_orden(n_hijoderecho(N));
+    if(N==NULL){
+      printf(".");
     }
+    else{
+      X=n_recuperar(N);
+      printf(" %d",X->clave);
+      pre_orden(n_hijoizquierdo(N));
+      pre_orden(n_hijoderecho(N));
+    }
+
 }
 
-void in_orden(NodoArbol N) {
+
+void in_orden(NodoArbol N){
     TipoElemento X;
-    if (N == NULL) {
-        printf(". ");
-    } else {
-        in_orden(n_hijoizquierdo(N));
-        X = n_recuperar(N);
-        printf("%d ", X->clave);
-        in_orden(n_hijoderecho(N));
+    if(N == NULL){
+        printf(".");
+    }
+    else{
+        in_orden(n_hijoizquierdo(N));  // Primero el hijo izquierdo
+        X = n_recuperar(N);  // Imprimir el nodo actual
+        printf(" %d", X->clave);
+        in_orden(n_hijoderecho(N));  // Después el hijo derecho
     }
 }
-
-void post_orden(NodoArbol N) {
+void post_orden(NodoArbol N){
     TipoElemento X;
-    if (N == NULL) {
-        printf(". ");
-    } else {
-        post_orden(n_hijoizquierdo(N));
-        post_orden(n_hijoderecho(N));
-        X = n_recuperar(N);
-        printf("%d ", X->clave);
+    if(N == NULL){
+        printf(".");
+    }
+    else{
+        post_orden(n_hijoizquierdo(N));  // Primero el hijo izquierdo
+        post_orden(n_hijoderecho(N));  // Luego el hijo derecho
+        X = n_recuperar(N);  // Imprimir el nodo al final
+        printf(" %d", X->clave);
     }
 }
-
 
 
 
