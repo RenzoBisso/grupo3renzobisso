@@ -1,6 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "..\headers\utilidades.h"
 #include "..\..\..\04-trabajoPractico-Colas\headers\tp_4_colas.h"
+#include "arbol-binario.h"
+#include "nodo.h"
 
 //COLAPSAR = Ctrl + K seguido de Ctrl + 0
 
@@ -616,5 +618,82 @@ void c_mostrar_bien(Cola c){
 }
 
 //FUNCIONES DE COLAS
+//##################
+//##################
+
+//FUNCIONES DE ARBOLES
+//##################
+//##################
+
+void cargar_arbol_binario(ArbolBinario A){
+  Cargar_SubArbol(A,NULL,0);
+}
+
+void Cargar_SubArbol(ArbolBinario A, NodoArbol N, int sa) {
+    TipoElemento X;
+    NodoArbol N1;
+    int n;
+    bool b=true;
+
+    if (!a_es_lleno(A)) {
+        pedirNumero(&n);  
+
+        if (b) {
+            X = te_crear(n);
+
+            if (sa == -1)
+                N1 = a_conectar_hi(A, N, X);
+            else if (sa == 1)
+                N1 = a_conectar_hd(A, N, X);
+            else
+                N1 = a_establecer_raiz(A, X);
+
+            Cargar_SubArbol(A, N1, -1);  
+            Cargar_SubArbol(A, N1, 1);   
+        }
+    }
+}
+
+
+void pre_orden(NodoArbol N) {
+    TipoElemento X;
+    if (N == NULL) {
+        printf(". ");
+    } else {
+        X = n_recuperar(N);
+        printf("%d ", X->clave);
+        pre_orden(n_hijoizquierdo(N));
+        pre_orden(n_hijoderecho(N));
+    }
+}
+
+void in_orden(NodoArbol N) {
+    TipoElemento X;
+    if (N == NULL) {
+        printf(". ");
+    } else {
+        in_orden(n_hijoizquierdo(N));
+        X = n_recuperar(N);
+        printf("%d ", X->clave);
+        in_orden(n_hijoderecho(N));
+    }
+}
+
+void post_orden(NodoArbol N) {
+    TipoElemento X;
+    if (N == NULL) {
+        printf(". ");
+    } else {
+        post_orden(n_hijoizquierdo(N));
+        post_orden(n_hijoderecho(N));
+        X = n_recuperar(N);
+        printf("%d ", X->clave);
+    }
+}
+
+
+
+
+//FUNCIONES DE ARBOLES
 //##################
 //##################

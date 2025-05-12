@@ -4,7 +4,7 @@
 #include "nodo.h"
 #include "arbol-binario.h"
 
-static const int TAMANIO_MAXIMO = 100;
+static const int TAMANIO_MAXIMO = 10;
 
 
 struct ArbolBinarioRep {

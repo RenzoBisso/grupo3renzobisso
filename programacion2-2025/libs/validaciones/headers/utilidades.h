@@ -12,6 +12,8 @@
 #include "..\..\pilas\headers\pilas.h"
 #include "..\..\colas\headers\colas.h"
 #include "..\..\tipoElemento\headers\tipo_elemento.h"
+#include "arbol-binario.h"
+#include "nodo.h"
 
 #ifndef UTILIDADES_H
 #define UTILIDADES_H
@@ -139,5 +141,23 @@ void c_mostrar_bien(Cola c);
 //FUNCIONES DE COLAS
 //##################
 //##################
+
+//FUNCIONES DE ARBOLES
+//##################
+//##################
+
+
+void cargar_arbol_binario(ArbolBinario a);
+void Cargar_SubArbol(ArbolBinario A, NodoArbol N, int sa);
+
+void pre_orden(NodoArbol N);
+void in_orden(NodoArbol N);
+void post_orden(NodoArbol N);
+
+//FUNCIONES DE ARBOLES
+//##################
+//##################
+
+
 
 #endif
