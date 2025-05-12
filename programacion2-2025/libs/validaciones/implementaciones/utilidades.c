@@ -1,7 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "..\headers\utilidades.h"
-#include "tp_4_colas.h"
-
+#include "..\..\..\04-trabajoPractico-Colas\headers\tp_4_colas.h"
 
 //COLAPSAR = Ctrl + K seguido de Ctrl + 0
 
