@@ -49,6 +49,23 @@ Lista a_ej2_interiores(ArbolBinario A) {
     return lInteriores;                 
 }
 //2.C
-Lista a_ej2_buscarclave(ArbolBinario A, int clave){
+void a_ej2_buscarclaveR(NodoArbol nodo, int clave,Lista l){
+    if(nodo==NULL){
+        return;
+    }
+        TipoElemento x=n_recuperar(nodo);
+        if(x->clave==clave){
+            l_agregar(l,x);
+        }
 
+    a_ej2_buscarclaveR(n_hijoizquierdo(nodo),clave,l);
+    a_ej2_buscarclaveR(n_hijoderecho(nodo),clave,l);
+
+}
+
+Lista a_ej2_buscarclave(ArbolBinario A, int clave){
+    Lista lClaves=l_crear();
+    NodoArbol nodo=a_raiz(A);
+    a_ej2_buscarclaveR(nodo,clave,lClaves);
+    return lClaves;
 }

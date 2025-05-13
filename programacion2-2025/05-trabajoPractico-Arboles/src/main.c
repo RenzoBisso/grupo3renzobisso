@@ -28,6 +28,10 @@ int main(){
     Lista lInteriores=l_crear();
     lInteriores=a_ej2_interiores(A);
     l_mostrar(lInteriores);
+    printf("\n");
+    Lista lClaves=l_crear();
+    lClaves=a_ej2_buscarclave(A,5);
+    l_mostrar(lClaves);
 
     return 0;
 }
