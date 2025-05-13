@@ -35,5 +35,14 @@ int main(){
     printf("\n");
     int result=a_ej3_clavepadre(A,5);
     printf("Nodo padre de nodo %d es %d",5,result);
+    printf("\n");
+    Lista lHijos=l_crear();
+    lHijos=a_ej3_hijos(A,5);
+    l_mostrar(lHijos);
+    printf("\n");
+    int hermano=a_ej3_hermano(A,5);
+    printf("Hermano de %d es %d",5,hermano);
+
+
     return 0;
 }

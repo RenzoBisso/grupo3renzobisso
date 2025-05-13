@@ -83,7 +83,6 @@ void a_ej3_clavepadreR(NodoArbol nodo, int clavehijo,int* nodoPadre){
         return; 
     }
 
-    // Verificar si el hijo derecho existe y si su clave es la correcta
     if (n_hijoderecho(nodo) != NULL && n_recuperar(n_hijoderecho(nodo)) != NULL &&
         n_recuperar(n_hijoderecho(nodo))->clave == clavehijo) {
         *nodoPadre = n_recuperar(nodo)->clave;
@@ -104,3 +103,70 @@ int a_ej3_clavepadre(ArbolBinario A, int clavehijo){
     a_ej3_clavepadreR(nodo,clavehijo,nodoPadre);
     return *nodoPadre;
 }
+
+
+void a_ej3_hijosR(NodoArbol nodo, int clavepadre,Lista lHijos){
+    if(nodo==NULL){
+        return;
+    }
+        TipoElemento x=n_recuperar(nodo);
+        if(x->clave==clavepadre){
+            if(n_hijoizquierdo(nodo) != NULL && n_recuperar(n_hijoizquierdo(nodo)) != NULL && n_recuperar(n_hijoizquierdo(nodo))){
+                l_agregar(lHijos,n_recuperar(n_hijoizquierdo(nodo)));
+            }
+            if(n_hijoderecho(nodo) != NULL && n_recuperar(n_hijoderecho(nodo)) != NULL && n_recuperar(n_hijoderecho(nodo))){
+                l_agregar(lHijos,n_recuperar(n_hijoderecho(nodo)));
+            }
+        }
+    a_ej3_hijosR(n_hijoizquierdo(nodo),clavepadre,lHijos);
+    a_ej3_hijosR(n_hijoderecho(nodo),clavepadre,lHijos);
+}
+
+Lista a_ej3_hijos(ArbolBinario A, int clavepadre){
+    Lista lHijos=l_crear();
+    if(a_es_vacio(A)){
+        return lHijos;
+    }
+
+    NodoArbol nodo=a_raiz(A);
+
+    a_ej3_hijosR(nodo,clavepadre,lHijos);
+    return lHijos;
+
+}
+
+
+void a_ej3_hermanoR(NodoArbol nodo, int clave, int* nodoHermano) {
+    if (nodo == NULL) return;
+
+    if ((n_hijoizquierdo(nodo) != NULL) && (n_recuperar(n_hijoizquierdo(nodo))->clave == clave)) {
+        if (n_hijoderecho(nodo) != NULL) {
+            *nodoHermano = n_recuperar(n_hijoderecho(nodo))->clave;
+        }
+        return;
+    }
+
+    if ((n_hijoderecho(nodo) != NULL) && (n_recuperar(n_hijoderecho(nodo))->clave == clave)) {
+        if (n_hijoizquierdo(nodo) != NULL) {
+            *nodoHermano = n_recuperar(n_hijoizquierdo(nodo))->clave;
+        }
+        return;
+    }
+
+    a_ej3_hermanoR(n_hijoizquierdo(nodo), clave, nodoHermano);
+    a_ej3_hermanoR(n_hijoderecho(nodo), clave, nodoHermano);
+}
+
+int a_ej3_hermano(ArbolBinario A, int clave){
+
+    if(a_es_vacio(A)){
+        printf("Arbol vacio");
+        return -1;
+    }
+    NodoArbol nodo=a_raiz(A);
+    int* nodoHermano = malloc(sizeof(int));
+    *nodoHermano = -1; 
+    a_ej3_hermanoR(nodo,clave,nodoHermano);
+    return *nodoHermano;
+}
+
