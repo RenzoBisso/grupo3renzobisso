@@ -42,7 +42,15 @@ int main(){
     printf("\n");
     int hermano=a_ej3_hermano(A,5);
     printf("Hermano de %d es %d",5,hermano);
-
-
+    printf("\n");
+    int nivel=a_ej3_nivel(A,5);
+    printf("Nivel del valor %d es %d",5,nivel);
+    printf("\n");
+    int altura=a_ej3_alturarama(A,5);
+    printf("Altura de la rama del nodo %d es %d",5,altura);
+    printf("\n");
+    Lista lMismoNivel=l_crear();
+    lMismoNivel=a_ej3_clavesmismonivel(A,2);
+    l_mostrar(lMismoNivel);
     return 0;
 }

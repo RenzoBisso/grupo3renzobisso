@@ -170,3 +170,105 @@ int a_ej3_hermano(ArbolBinario A, int clave){
     return *nodoHermano;
 }
 
+int a_ej3_nivelR(NodoArbol nodo, int clave, int nivel) {
+    if (nodo == NULL) {
+        return -1;
+    }
+
+    TipoElemento x = n_recuperar(nodo);
+    if (x->clave == clave) {
+        return nivel;
+    }
+
+    int nivelIzq = a_ej3_nivelR(n_hijoizquierdo(nodo), clave, nivel + 1);
+    if (nivelIzq != -1) return nivelIzq;
+
+    int nivelDer = a_ej3_nivelR(n_hijoderecho(nodo), clave, nivel + 1);
+    return nivelDer;
+}
+
+int a_ej3_nivel(ArbolBinario A, int clave) {
+    if (a_es_vacio(A)) {
+        printf("Árbol vacío\n");
+        return -1;
+    }
+
+    NodoArbol raiz = a_raiz(A);
+    return a_ej3_nivelR(raiz, clave, 0);
+}
+
+int a_ej3_alturaramaR(NodoArbol nodo) {
+    if (nodo == NULL) {
+        return -1;
+    }
+
+    int hIzq = a_ej3_alturaramaR(n_hijoizquierdo(nodo));
+    int hDer = a_ej3_alturaramaR(n_hijoderecho(nodo));
+
+    int max;
+    if (hIzq > hDer) {
+        max = hIzq;
+    } else {
+        max = hDer;
+    }
+
+    return 1 + max;
+}
+
+void altura_subarbol_desde_clave(NodoArbol nodo, int clave, int* alturaEncontrada) {
+    if (nodo == NULL || *alturaEncontrada != -1) {
+        return;
+    }
+
+    TipoElemento x = n_recuperar(nodo);
+
+    if (x->clave == clave) {
+        *alturaEncontrada = a_ej3_alturaramaR(nodo);
+        return;
+    }
+
+    altura_subarbol_desde_clave(n_hijoizquierdo(nodo), clave, alturaEncontrada);
+    altura_subarbol_desde_clave(n_hijoderecho(nodo), clave, alturaEncontrada);
+}
+
+
+
+
+
+int a_ej3_alturarama(ArbolBinario A, int clave){
+    if (a_es_vacio(A)) {
+        printf("Árbol vacío\n");
+        return -1;
+    }
+
+    int altura = -1;
+    altura_subarbol_desde_clave(a_raiz(A), clave, &altura);
+
+    if (altura == -1) {
+        printf("Clave no encontrada\n");
+    }
+    return altura;
+}
+
+void a_ej3_clavesmismonivelR(NodoArbol nodo, int nivelObjetivo, int nivelActual, Lista lMismoNivel) {
+    if (nodo == NULL) {
+        return;
+    }
+
+    if (nivelActual == nivelObjetivo) {
+        TipoElemento elemento = n_recuperar(nodo);
+        l_agregar(lMismoNivel, elemento);
+        return;
+    }
+
+    a_ej3_clavesmismonivelR(n_hijoizquierdo(nodo), nivelObjetivo, nivelActual + 1, lMismoNivel);
+    a_ej3_clavesmismonivelR(n_hijoderecho(nodo), nivelObjetivo, nivelActual + 1, lMismoNivel);
+}
+
+Lista a_ej3_clavesmismonivel(ArbolBinario A, int nivel) {
+    Lista lMismoNivel = l_crear();
+    if (!a_es_vacio(A)) {
+        a_ej3_clavesmismonivelR(a_raiz(A), nivel, 0, lMismoNivel);
+    }
+    return lMismoNivel;
+}
