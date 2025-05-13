@@ -148,7 +148,10 @@ void c_mostrar_bien(Cola c);
 
 
 void cargar_arbol_binario(ArbolBinario a);
-void Cargar_SubArbol(ArbolBinario A, NodoArbol N, int sa);
+void cargar_arbol_binario_aleatorio(ArbolBinario a);
+void cargar_nodo(ArbolBinario a, NodoArbol padre, int es_izquierdo);
+void cargar_nodo_aleatorio(ArbolBinario a, NodoArbol padre, int es_izquierdo);
+
 
 void pre_orden(NodoArbol N);
 void in_orden(NodoArbol N);
