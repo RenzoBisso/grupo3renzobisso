@@ -31,7 +31,9 @@ int main(){
     printf("\n");
     Lista lClaves=l_crear();
     lClaves=a_ej2_buscarclave(A,5);
-    l_mostrar(lClaves);
-
+    l_mostrar_con_nodo(lClaves);
+    printf("\n");
+    int result=a_ej3_clavepadre(A,5);
+    printf("Nodo padre de nodo %d es %d",5,result);
     return 0;
 }

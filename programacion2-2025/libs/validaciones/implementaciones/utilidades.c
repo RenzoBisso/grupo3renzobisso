@@ -625,6 +625,26 @@ void c_mostrar_bien(Cola c){
 //##################
 //##################
 
+void l_mostrar_con_nodo(Lista l) {
+    printf("Contenido de la lista (nodos encontrados):\n");
+    Iterador iter = iterador(l);
+    TipoElemento X;
+    while (hay_siguiente(iter)) {
+        X = siguiente(iter);
+        NodoArbol nodo = (NodoArbol)X->valor;
+        TipoElemento datos = n_recuperar(nodo);
+
+        printf("Clave: %d, Dirección del nodo: %p\n", datos->clave, (void*)nodo);
+    }
+}
+
+
+
+
+
+
+
+
 // Función recursiva auxiliar para construir el árbol binario
 void cargar_nodo(ArbolBinario a, NodoArbol padre, int es_izquierdo) {
     int valor;

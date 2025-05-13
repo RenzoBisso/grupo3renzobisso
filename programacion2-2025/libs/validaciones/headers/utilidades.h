@@ -146,7 +146,7 @@ void c_mostrar_bien(Cola c);
 //##################
 //##################
 
-
+void l_mostrar_con_nodo(Lista l);
 void cargar_arbol_binario(ArbolBinario a);
 void cargar_arbol_binario_aleatorio(ArbolBinario a);
 void cargar_nodo(ArbolBinario a, NodoArbol padre, int es_izquierdo);
