@@ -272,3 +272,84 @@ Lista a_ej3_clavesmismonivel(ArbolBinario A, int nivel) {
     }
     return lMismoNivel;
 }
+
+
+Lista a_ej4_anchura(ArbolBinario A) {
+    Lista lAnchura = l_crear();
+    if (a_es_vacio(A)) return lAnchura;
+
+    Cola c = c_crear();
+
+    // Encolar la raíz como referencia
+    NodoArbol raiz = a_raiz(A);
+    TipoElemento te_raiz = te_crear_con_valor(0, raiz);
+    c_encolar(c, te_raiz);
+
+    while (!c_es_vacia(c)) {
+        // Desencolamos el TipoElemento y recuperamos el Nodo
+        TipoElemento te_nodo = c_desencolar(c);
+        NodoArbol actual = te_nodo->valor;
+
+        // Agregamos el dato del nodo a la lista final
+        TipoElemento dato = n_recuperar(actual);
+        l_agregar(lAnchura, dato);
+
+        // Encolar todos los hijos del nodo actual
+        NodoArbol hijo = n_hijoizquierdo(actual);
+        while (hijo != NULL) {
+            TipoElemento te_hijo = te_crear_con_valor(0, hijo);
+            c_encolar(c, te_hijo);
+            hijo = n_hijoderecho(hijo);
+        }
+    }
+    return lAnchura;
+}
+
+
+
+
+void a_ej4_q_hojasR(NodoArbol nodo,int* count){
+    if(nodo==NULL){
+        return;
+    }
+
+    if(n_hijoizquierdo(nodo)==NULL){
+        (*count)++;;
+    }
+    a_ej4_q_hojasR(n_hijoizquierdo(nodo),count);
+    a_ej4_q_hojasR(n_hijoderecho(nodo),count);
+}
+
+int a_ej4_q_hojas(ArbolBinario A){
+    if(a_es_vacio(A)){
+        return 0;
+    }
+    NodoArbol nodo=a_raiz(A);
+    int count =0;
+    a_ej4_q_hojasR(nodo,&count);
+    return count;
+}
+
+bool a_ej4_similaresSolucion(NodoArbol nA, NodoArbol nB) {
+    if (nA == NULL && nB == NULL) return true;
+    if ((nA == NULL && nB != NULL) || (nA != NULL && nB == NULL)) return false;
+
+    NodoArbol hijoA = n_hijoizquierdo(nA);
+    NodoArbol hijoB = n_hijoizquierdo(nB);
+
+    while (hijoA != NULL && hijoB != NULL) {
+        if (!a_ej4_similaresSolucion(hijoA, hijoB)) return false;
+        hijoA = n_hijoderecho(hijoA);
+        hijoB = n_hijoderecho(hijoB);
+    }
+
+    if (hijoA != NULL || hijoB != NULL) return false;
+
+    return true;
+}
+
+bool a_ej4_similares(ArbolBinario A, ArbolBinario B) {
+    NodoArbol nA = a_raiz(A);
+    NodoArbol nB = a_raiz(B);
+    return a_ej4_similaresSolucion(nA, nB);
+}
