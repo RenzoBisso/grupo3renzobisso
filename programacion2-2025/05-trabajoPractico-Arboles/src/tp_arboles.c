@@ -314,7 +314,7 @@ void a_ej4_q_hojasR(NodoArbol nodo,int* count){
     }
 
     if(n_hijoizquierdo(nodo)==NULL){
-        (*count)++;;
+        (*count)++;
     }
     a_ej4_q_hojasR(n_hijoizquierdo(nodo),count);
     a_ej4_q_hojasR(n_hijoderecho(nodo),count);
@@ -352,4 +352,78 @@ bool a_ej4_similares(ArbolBinario A, ArbolBinario B) {
     NodoArbol nA = a_raiz(A);
     NodoArbol nB = a_raiz(B);
     return a_ej4_similaresSolucion(nA, nB);
+}
+
+
+
+
+TipoElemento a_ej4_padre(ArbolBinario A, int clave){
+    if (a_es_vacio(A)) return NULL;
+
+    Cola c = c_crear();
+
+    // Encolar la raíz como referencia
+    NodoArbol raiz = a_raiz(A);
+    TipoElemento te_raiz = te_crear_con_valor(0, raiz);
+    c_encolar(c, te_raiz);
+
+    while (!c_es_vacia(c)) {
+        // Desencolamos el TipoElemento y recuperamos el Nodo
+        TipoElemento te_nodo = c_desencolar(c);
+        NodoArbol actual = te_nodo->valor;
+
+        // Agregamos el dato del nodo a la lista final
+        TipoElemento dato = n_recuperar(actual);
+        // Encolar todos los hijos del nodo actual
+        NodoArbol hijo = n_hijoizquierdo(actual);
+        while (hijo != NULL) {
+            if(n_recuperar(hijo)->clave==clave){
+                return n_recuperar(actual);
+            }
+            TipoElemento te_hijo = te_crear_con_valor(0, hijo);
+            c_encolar(c, te_hijo);
+            hijo = n_hijoderecho(hijo);
+        }
+    }
+    
+    return NULL;
+}
+
+void a_ej4_hermanosR(NodoArbol nodo, int clave,Lista lHermanos){
+
+    if(nodo==NULL){
+        return;
+    }
+
+    NodoArbol hijo = n_hijoizquierdo(nodo);
+    while (hijo != NULL) {
+        if (n_recuperar(hijo)->clave == clave) {
+        // Encontramos al hijo con la clave, ahora nodo es el padre
+        NodoArbol hermano = n_hijoizquierdo(nodo);
+            while (hermano != NULL) {
+                if (n_recuperar(hermano)->clave != clave) {
+                    l_agregar(lHermanos, n_recuperar(hermano));
+                }
+            hermano = n_hijoderecho(hermano);
+        }
+            return;
+        }
+        hijo = n_hijoderecho(hijo);
+    }
+    a_ej4_hermanosR(n_hijoizquierdo(nodo),clave,lHermanos);
+    a_ej4_hermanosR(n_hijoderecho(nodo),clave,lHermanos);
+
+}
+
+
+Lista a_ej4_hermanos(ArbolBinario A, int clave){
+    Lista lHermanos=l_crear();
+    if(a_es_vacio(A)){
+        return lHermanos;
+    }
+    NodoArbol nodo=a_raiz(A);
+
+    a_ej4_hermanosR(nodo,clave,lHermanos);
+    return lHermanos;
+
 }

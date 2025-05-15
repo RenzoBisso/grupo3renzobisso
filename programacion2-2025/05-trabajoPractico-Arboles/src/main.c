@@ -53,7 +53,6 @@ int main(){
     Lista lMismoNivel=l_crear();
     lMismoNivel=a_ej3_clavesmismonivel(A,2);
     l_mostrar(lMismoNivel);
-    */
     ArbolBinario NarioA=a_crear();
     cargar_arbol_binario(NarioA);
     ArbolBinario NarioB=a_crear();
@@ -65,5 +64,14 @@ int main(){
     printf("\n");
     bool esSimiliar=a_ej4_similares(NarioA,NarioB);
     printf("es similiar: %d",esSimiliar);
+        TipoElemento elem=te_crear(a_ej4_padre(NarioA,5)->clave);
+    printf("padre de %d es %d",5,elem->clave);
+    */
+    ArbolBinario NarioA=a_crear();
+    cargar_arbol_binario(NarioA);
+    Lista lHermanos=l_crear();
+    lHermanos=a_ej4_hermanos(NarioA,2);
+    l_mostrar(lHermanos);
+    
     return 0;
 }
