@@ -66,12 +66,22 @@ int main(){
     printf("es similiar: %d",esSimiliar);
         TipoElemento elem=te_crear(a_ej4_padre(NarioA,5)->clave);
     printf("padre de %d es %d",5,elem->clave);
+        Lista lHermanos=l_crear();
+    lHermanos=a_ej4_hermanos(NarioA,2);
+    l_mostrar(lHermanos);
+        ArbolBinario NarioB=a_crear();
+    cargar_arbol_binario(NarioB);
+    bool equivalentes=a_ej7_equivalente(NarioA,NarioB);
+    printf("Equivalencia : %d",equivalentes);
+        int altura=a_ej8_altura(NarioA);
+    printf("altura del arbol: %d",altura);
+    int nivelActual=a_ej8_nivel(NarioA,9);
+    printf("Nivel del %d es %d",9,nivelActual);
+    
     */
     ArbolBinario NarioA=a_crear();
     cargar_arbol_binario(NarioA);
-    Lista lHermanos=l_crear();
-    lHermanos=a_ej4_hermanos(NarioA,2);
-    l_mostrar(lHermanos);
-    
+    Lista lInternos=a_ej8_internos(NarioA);
+    l_mostrar(lInternos);
     return 0;
 }

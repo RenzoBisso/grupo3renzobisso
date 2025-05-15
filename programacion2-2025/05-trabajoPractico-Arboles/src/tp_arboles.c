@@ -427,3 +427,116 @@ Lista a_ej4_hermanos(ArbolBinario A, int clave){
     return lHermanos;
 
 }
+
+
+bool a_ej7_equivalenteR(NodoArbol nA,NodoArbol nB){
+
+    if(nA==NULL && nB==NULL){
+        return true;
+    }
+
+    if(nA==NULL || nB==NULL){
+        return false;
+    }
+
+
+    TipoElemento A=n_recuperar(nA);
+    TipoElemento B=n_recuperar(nB);
+    if(A->clave!=B->clave){
+        return false;
+    }
+    a_ej7_equivalenteR(n_hijoizquierdo(nA),n_hijoizquierdo(nB));
+    a_ej7_equivalenteR(n_hijoderecho(nA),n_hijoderecho(nB));
+}
+
+bool a_ej7_equivalente(ArbolBinario A, ArbolBinario B){
+    if(a_es_vacio(A)|| a_es_vacio(B)){
+        return false;
+    }
+    NodoArbol nA=a_raiz(A);
+    NodoArbol nB=a_raiz(B);
+    return a_ej7_equivalenteR(nA,nB);
+}
+
+
+int a_ej8_alturaR(NodoArbol nodo){
+
+    if(nodo==NULL){
+        return 0;
+    }
+    NodoArbol hijo=n_hijoizquierdo(nodo);
+    int maxAltura=0;
+    while(hijo!=NULL){
+        int alturaHijo=a_ej8_alturaR(hijo);
+        if(alturaHijo>maxAltura){
+            maxAltura=alturaHijo;
+        }
+        hijo=n_hijoderecho(hijo);
+    }
+    return 1+maxAltura;
+
+}
+
+
+int a_ej8_altura(ArbolBinario A){
+    if(a_es_vacio(A)){
+        return 0;
+    }
+    NodoArbol nodo=a_raiz(A);
+    return a_ej8_alturaR(nodo);
+}
+
+int a_ej8_nivelR(NodoArbol nodo, int clave, int nivelActual) {
+    if (nodo == NULL) {
+        return 0;
+    }
+
+    if (n_recuperar(nodo)->clave == clave) {
+        return nivelActual;
+    }
+
+    NodoArbol hijo = n_hijoizquierdo(nodo);
+    while (hijo != NULL) {
+        
+        int resultado = a_ej8_nivelR(hijo, clave, nivelActual + 1);
+        if (resultado != 0) {
+            return resultado; 
+        }
+        hijo = n_hijoderecho(hijo); 
+    }
+
+    return 0; 
+}
+
+
+int a_ej8_nivel(ArbolBinario A, int clave) {
+    if (a_es_vacio(A)){
+        return 0;
+    }
+    return a_ej8_nivelR(a_raiz(A), clave, 0); 
+}
+
+void a_ej8_internosR(NodoArbol nodo,Lista lInternos){
+
+    if(nodo==NULL){
+        return;
+    }
+    if(n_hijoizquierdo(nodo)!=NULL){
+        TipoElemento x=n_recuperar(nodo);
+        l_agregar(lInternos,x);
+    }
+    a_ej8_internosR(n_hijoizquierdo(nodo),lInternos);
+    a_ej8_internosR(n_hijoderecho(nodo),lInternos);
+}
+
+Lista a_ej8_internos(ArbolBinario A){
+    Lista lInternos=l_crear();
+
+    if(a_es_vacio(A)){
+        return lInternos;
+    }
+
+    NodoArbol nodo=a_raiz(A);
+    a_ej8_internosR(nodo,lInternos);
+    return lInternos;
+}
