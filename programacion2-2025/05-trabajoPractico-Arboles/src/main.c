@@ -77,11 +77,12 @@ int main(){
     printf("altura del arbol: %d",altura);
     int nivelActual=a_ej8_nivel(NarioA,9);
     printf("Nivel del %d es %d",9,nivelActual);
-    
+        Lista lInternos=a_ej8_internos(NarioA);
+    l_mostrar(lInternos);
     */
     ArbolBinario NarioA=a_crear();
     cargar_arbol_binario(NarioA);
-    Lista lInternos=a_ej8_internos(NarioA);
-    l_mostrar(lInternos);
+    bool mismoNivel=a_ej8_hojasmismonivel(NarioA);
+    printf("Mismo nivel: %d",mismoNivel);
     return 0;
 }

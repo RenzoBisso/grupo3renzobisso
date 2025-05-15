@@ -540,3 +540,27 @@ Lista a_ej8_internos(ArbolBinario A){
     a_ej8_internosR(nodo,lInternos);
     return lInternos;
 }
+
+
+bool a_ej8_hojasmismonivelR(NodoArbol nodo, ArbolBinario A, int* aux) {
+    if (nodo == NULL) return true;
+
+    if (n_hijoizquierdo(nodo) == NULL) {
+        int nivel = a_ej8_nivel(A, n_recuperar(nodo)->clave);
+        if (*aux == 0) {
+            *aux = nivel;
+        } else if (nivel != *aux) {
+            return false;
+        }
+    }
+
+    bool izq = a_ej8_hojasmismonivelR(n_hijoizquierdo(nodo), A, aux);
+    bool der = a_ej8_hojasmismonivelR(n_hijoderecho(nodo), A, aux);
+    return izq && der;
+}
+
+bool a_ej8_hojasmismonivel(ArbolBinario A) {
+    if (a_es_vacio(A)) return false;
+    int aux = 0;
+    return a_ej8_hojasmismonivelR(a_raiz(A), A, &aux);
+}
