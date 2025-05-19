@@ -537,7 +537,10 @@ Lista a_ej8_internos(ArbolBinario A){
     }
 
     NodoArbol nodo=a_raiz(A);
-    a_ej8_internosR(nodo,lInternos);
+    if(n_hijoizquierdo(nodo)!=NULL){
+        a_ej8_internosR(n_hijoizquierdo(nodo),lInternos);
+    }
+    
     return lInternos;
 }
 
