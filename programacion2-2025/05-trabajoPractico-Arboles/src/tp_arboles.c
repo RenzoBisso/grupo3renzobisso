@@ -10,7 +10,7 @@ void a_ej2_hojasR(NodoArbol n, Lista lHojas){
     if(n==NULL){
         return;
     }
-    if(n_hijoizquierdo(n)==NULL && n_hijoderecho(n)==NULL){
+    if(a_es_rama_nula(n_hijoizquierdo(n)) && a_es_rama_nula(n_hijoderecho(n))){
         TipoElemento X=n_recuperar(n);
         l_agregar(lHojas,X);
     }
@@ -33,7 +33,7 @@ void a_ej2_interioresR(NodoArbol n, Lista lInteriores) {
     }
 
     
-    if (n_hijoizquierdo(n) != NULL || n_hijoderecho(n) != NULL) {
+    if (!a_es_rama_nula(n_hijoizquierdo(n))||!a_es_rama_nula(n_hijoderecho(n))) {
         TipoElemento X = n_recuperar(n);  
         l_agregar(lInteriores, X);       
     }
@@ -77,13 +77,13 @@ void a_ej3_clavepadreR(NodoArbol nodo, int clavehijo,int* nodoPadre){
     if(nodo==NULL){
         return;
     }
-    if (n_hijoizquierdo(nodo) != NULL && n_recuperar(n_hijoizquierdo(nodo)) != NULL &&
+    if (!a_es_rama_nula(n_hijoizquierdo(nodo)) && n_recuperar(n_hijoizquierdo(nodo)) != NULL &&
         n_recuperar(n_hijoizquierdo(nodo))->clave == clavehijo) {
         *nodoPadre = n_recuperar(nodo)->clave;
         return; 
     }
 
-    if (n_hijoderecho(nodo) != NULL && n_recuperar(n_hijoderecho(nodo)) != NULL &&
+    if (!a_es_rama_nula(n_hijoderecho(nodo)) && n_recuperar(n_hijoderecho(nodo)) != NULL &&
         n_recuperar(n_hijoderecho(nodo))->clave == clavehijo) {
         *nodoPadre = n_recuperar(nodo)->clave;
         return;  
@@ -111,7 +111,7 @@ void a_ej3_hijosR(NodoArbol nodo, int clavepadre,Lista lHijos){
     }
         TipoElemento x=n_recuperar(nodo);
         if(x->clave==clavepadre){
-            if(n_hijoizquierdo(nodo) != NULL && n_recuperar(n_hijoizquierdo(nodo)) != NULL && n_recuperar(n_hijoizquierdo(nodo))){
+            if(!a_es_rama_nula(n_hijoizquierdo(nodo)) && n_recuperar(n_hijoizquierdo(nodo)) != NULL && n_recuperar(n_hijoizquierdo(nodo))){
                 l_agregar(lHijos,n_recuperar(n_hijoizquierdo(nodo)));
             }
             if(n_hijoderecho(nodo) != NULL && n_recuperar(n_hijoderecho(nodo)) != NULL && n_recuperar(n_hijoderecho(nodo))){
@@ -139,15 +139,15 @@ Lista a_ej3_hijos(ArbolBinario A, int clavepadre){
 void a_ej3_hermanoR(NodoArbol nodo, int clave, int* nodoHermano) {
     if (nodo == NULL) return;
 
-    if ((n_hijoizquierdo(nodo) != NULL) && (n_recuperar(n_hijoizquierdo(nodo))->clave == clave)) {
-        if (n_hijoderecho(nodo) != NULL) {
+    if ((!a_es_rama_nula(n_hijoizquierdo(nodo))) && (n_recuperar(n_hijoizquierdo(nodo))->clave == clave)) {
+        if (!a_es_rama_nula(n_hijoderecho(nodo))) {
             *nodoHermano = n_recuperar(n_hijoderecho(nodo))->clave;
         }
         return;
     }
 
-    if ((n_hijoderecho(nodo) != NULL) && (n_recuperar(n_hijoderecho(nodo))->clave == clave)) {
-        if (n_hijoizquierdo(nodo) != NULL) {
+    if ((!a_es_rama_nula(n_hijoderecho(nodo))) && (n_recuperar(n_hijoderecho(nodo))->clave == clave)) {
+        if (!a_es_rama_nula(n_hijoizquierdo(nodo))) {
             *nodoHermano = n_recuperar(n_hijoizquierdo(nodo))->clave;
         }
         return;
@@ -313,7 +313,7 @@ void a_ej4_q_hojasR(NodoArbol nodo,int* count){
         return;
     }
 
-    if(n_hijoizquierdo(nodo)==NULL){
+    if(a_es_rama_nula(n_hijoizquierdo(nodo))){
         (*count)++;
     }
     a_ej4_q_hojasR(n_hijoizquierdo(nodo),count);
@@ -548,7 +548,7 @@ Lista a_ej8_internos(ArbolBinario A){
 bool a_ej8_hojasmismonivelR(NodoArbol nodo, ArbolBinario A, int* aux) {
     if (nodo == NULL) return true;
 
-    if (n_hijoizquierdo(nodo) == NULL) {
+    if (a_es_rama_nula(n_hijoizquierdo(nodo))) {
         int nivel = a_ej8_nivel(A, n_recuperar(nodo)->clave);
         if (*aux == 0) {
             *aux = nivel;
