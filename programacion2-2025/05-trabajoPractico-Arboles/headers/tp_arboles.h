@@ -7,8 +7,8 @@
 #include "pilas.h"
 #include "nodo.h"
 #include "arbol-binario.h"
-//#include ".\arbol-avl.h"
-//#include ".\arbol-binario-busqueda.h"
+#include "arbol-avl.h"
+#include "arbol-binario-busqueda.h"
 
 
 /**
@@ -97,7 +97,7 @@ bool a_ej8_hojasmismonivel(ArbolBinario A);
 	Comparar las alturas de ambos árboles. Determinar la complejidad algorítmica.
  */
 // Primero llamamos para construir el AVL
-//ArbolAVL a_ej9_construiravl(ArbolBinario A);
+ArbolAVL a_ej9_construiravl(ArbolBinario A);
 
 // Luego con el resultado de la funcion anterior llamamos a una funcion para que nos retorne la diferencia de las alturas 
 // comparadas como Altura(ArbolBinario) - Altura(ArbolAVL).
@@ -119,7 +119,7 @@ Lista a_ej10_generarlistaclaves(int cantidadclavesagenerar, int valorminimo, int
 //ArbolAVL a_ej10_crearAVL(Lista L);
 
 // Ahora llamos a la funcion que compara las alturas.  La comparacion es Altura(ABB) - Altura(AVL).
-//int a_ej10_difalturas(ArbolBinarioBusqueda ABB, ArbolAVL AVL);
+int a_ej10_difalturas(ArbolBinarioBusqueda ABB, ArbolAVL AVL);
 
 // Este proceso se debera repetir N veces  (N se debera poder tomar por teclado).
 

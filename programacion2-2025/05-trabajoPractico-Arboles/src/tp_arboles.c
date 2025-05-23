@@ -567,3 +567,5 @@ bool a_ej8_hojasmismonivel(ArbolBinario A) {
     int aux = 0;
     return a_ej8_hojasmismonivelR(a_raiz(A), A, &aux);
 }
+
+
