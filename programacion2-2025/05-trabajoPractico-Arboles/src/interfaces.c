@@ -7,16 +7,87 @@
 void interfaz2(){
     char c;
     int opcion;
+    int clave;
     do  //MENU/////////////////////////////////////////////////
     {
         printf("\t\t\t                      +------------------------+\n");
         printf("\t\t\t                      |       EJERCICIO 2      |\n");
         printf("\t\t\t                      +------------------------+\n\n\n");
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-        printf("\t||                                                                                                    ||\n");
+        printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
+        ArbolBinario A = a_crear();
 
+        Lista l = l_crear();
+
+        opcion = cargaManualAuto();
+        if(opcion){
+            //LLENAR RANDOM
+        }
+        else{
+            //LLENAR MANUAL
+        }
+
+        printf("\t||\n");
+
+        //A
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||A: RETORNA UNA LISTA CON TODOS LOS NODOS HOJA                                                       ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+        l = a_ej2_hojas(A);
+
+        printf("\t||\n");
+        printf("\t|| "); l_mostrar(l);
+        printf("\t||\n");
+
+        free(l);
+        
+        //B
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||B: RETORNA UNA ESTRUCTURA CON TODOS LOS NODOS INTERIORES                                            ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+        l = a_ej2_interiores(A);
+
+        printf("\t||\n");
+        printf("\t|| "); l_mostrar(l);
+        printf("\t||\n");
+
+        free(l);
+
+        //C
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||C: BUSCA TODAS LAS OCURRENCIAS DE UNA CLAVE Y RETORNA SUS POSICIONES                                ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+        pedirNumero(clave);
+
+        l = a_ej2_buscarclave(A, clave);
+
+        printf("\t||\n");
+        printf("\t|| "); //l_mostrar_ej2(l);
+        printf("\t||\n");
+
+        free(l);
+
+        //D
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||D: COMPLEJIDAD ALGORITMICA DE LOS PUNTOS A), B) Y C)                                                ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+        printf("\t||\n");
+        printf("\t|| Complejidad A: \n");
+        printf("\t|| Complejidad B: \n");
+        printf("\t|| Complejidad C: \n");
+        printf("\t||\n");
+
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+        limpiarBuffer();
+
+        c = salir();
 
         pausa();
 

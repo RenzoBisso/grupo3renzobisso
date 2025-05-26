@@ -142,9 +142,9 @@ int cargaManualAuto(){//0 manual, 1 azar
 //###################
 
 
-//###################
-//###################
 //FUNCIONES DE LISTAS
+//###################
+//###################
 void interfazCargaLista(Lista  l1) {
   //limpiar_pantalla();
   printf("\t||CARGA MANUAL...                                                                                     ||\n");
@@ -283,9 +283,9 @@ void cargarLista(Lista l, int n, int count) {
 //###################
 
 
-//##################
-//##################
 //FUNCIONES DE PILAS
+//##################
+//##################
 void p_cargar(Pila p, int n, int count) {
   if (count == n) {
       return;
@@ -414,9 +414,9 @@ void interfazCargaPila(Pila  p1) {
 //##################
 
 
-//##################
-//##################
 //FUNCIONES DE COLAS
+//##################
+//##################
 void interfazCargaCola(Cola  c1) {
   //limpiar_pantalla();
   printf("\t||CARGA MANUAL...                                                                                     ||\n");
@@ -523,9 +523,6 @@ void llenarCRandom(Cola c1){
   }
 }
 
-
-
-
 void c_cargarSinRepetir(Cola c, int n, int count) {
   if (count == n) {
       return;
@@ -620,10 +617,12 @@ void c_mostrar_bien(Cola c){
 //##################
 //##################
 
-//FUNCIONES DE ARBOLES
-//##################
-//##################
 
+
+
+//FUNCIONES DE ARBOLES
+//####################
+//####################
 void l_mostrar_con_nodo(Lista l) {
     printf("Contenido de la lista (nodos encontrados):\n");
     Iterador iter = iterador(l);
@@ -636,13 +635,6 @@ void l_mostrar_con_nodo(Lista l) {
         printf("Clave: %d, Dirección del nodo: %p\n", datos->clave, (void*)nodo);
     }
 }
-
-
-
-
-
-
-
 
 // Función recursiva auxiliar para construir el árbol binario
 void cargar_nodo(ArbolBinario a, NodoArbol padre, int es_izquierdo) {
@@ -684,8 +676,6 @@ void cargar_arbol_binario(ArbolBinario a) {
     cargar_nodo(a, raiz, 1);  // Hijo izquierdo
     cargar_nodo(a, raiz, 0);  // Hijo derecho
 }
-
-
 
 int numero_aleatorio(int min, int max) {
     return rand() % (max - min + 1) + min;
@@ -756,9 +746,29 @@ void post_orden(NodoArbol N) {
     }
 }
 
+void l_mostrar_ej2(Lista l){
+  printf("Contenido de la lista: ");
 
+  Iterador iter = iterador(l);
+  TipoElemento X = te_crear_con_valor(0, NULL);
 
+  printf("{");
+
+  while(hay_siguiente(iter)){
+    
+    X = siguiente(iter);
+
+    if(hay_siguiente(iter)){
+      printf("%d : ", n_recuperar((NodoArbol*)X->valor)->clave);
+    }
+    else{
+      printf("%d", n_recuperar((NodoArbol*)X->valor)->clave);
+    }
+
+  }
+  printf("}\n");
+}
 
 //FUNCIONES DE ARBOLES
-//##################
-//##################
+//####################
+//####################
