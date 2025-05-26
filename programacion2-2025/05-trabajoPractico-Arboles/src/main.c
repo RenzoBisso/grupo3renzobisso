@@ -1,8 +1,5 @@
-#include "arbol-binario.h"
-#include "nodo.h"
-#include "listas.h"
-#include "utilidades.h"
-#include "tp_arboles.h"
+#include "..\..\libs\validaciones\headers\utilidades.h"
+#include "..\headers\tp_arboles.h"
 
 int main(){
     /*

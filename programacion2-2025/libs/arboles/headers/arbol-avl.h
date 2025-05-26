@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "nodo.h"
+#include "..\..\tipoElemento\headers\tipo_elemento.h"
 
 struct ArbolAVLRep {
     NodoArbol raiz;

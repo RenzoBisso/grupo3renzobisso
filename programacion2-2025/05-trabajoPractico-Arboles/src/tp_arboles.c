@@ -1,8 +1,5 @@
-#include "tp_arboles.h"
-#include "utilidades.h"
-
-
-
+#include "..\..\libs\validaciones\headers\utilidades.h"
+#include "..\headers\tp_arboles.h"
 
 //2.A
 

@@ -1,6 +1,5 @@
-#include "arbol-binario-busqueda.h"
-#include "nodo.h"
-
+#include "..\headers\arbol-binario-busqueda.h"
+#include "..\headers\nodo.h"
 static const int TAMANIO_MAXIMO = 100;
 
 

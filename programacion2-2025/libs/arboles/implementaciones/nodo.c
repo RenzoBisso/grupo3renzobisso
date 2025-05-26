@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "nodo.h"
+#include "..\headers\nodo.h"
 
 // retorna el hijo izquierdo
 NodoArbol n_hijoizquierdo(NodoArbol N){

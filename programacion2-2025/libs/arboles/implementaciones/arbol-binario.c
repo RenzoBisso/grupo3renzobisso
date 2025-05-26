@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <string.h>
-#include "colas.h"
-#include "nodo.h"
-#include "arbol-binario.h"
+#include "..\..\colas\headers\colas.h"
+#include "..\headers\nodo.h"
+#include "..\headers\arbol-binario.h"
 
 static const int TAMANIO_MAXIMO = 100;
 

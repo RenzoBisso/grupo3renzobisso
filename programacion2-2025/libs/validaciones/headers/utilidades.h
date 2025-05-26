@@ -12,8 +12,10 @@
 #include "..\..\pilas\headers\pilas.h"
 #include "..\..\colas\headers\colas.h"
 #include "..\..\tipoElemento\headers\tipo_elemento.h"
-#include "arbol-binario.h"
-#include "nodo.h"
+#include "..\..\arboles\headers\nodo.h"
+#include "..\..\arboles\headers\arbol-binario.h"
+#include "..\..\arboles\headers\arbol-binario-busqueda.h"
+#include "..\..\arboles\headers\arbol-avl.h"
 
 #ifndef UTILIDADES_H
 #define UTILIDADES_H
