@@ -14,6 +14,8 @@ void interfaz2(){
         printf("\t\t\t                      |       EJERCICIO 2      |\n");
         printf("\t\t\t                      +------------------------+\n\n\n");
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||DADO UN ARBOL BINARIO NO VACIO DETERMINAR                                                           ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
@@ -106,6 +108,8 @@ void interfaz3(){
         printf("\t\t\t                      |       EJERCICIO 3      |\n");
         printf("\t\t\t                      +------------------------+\n\n\n");
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||PARA UN NODO DE UN ARBOL BINARIO DETERMINAR                                                         ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
         printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
@@ -210,17 +214,111 @@ void interfaz3(){
 void interfaz4(){
     char c;
     int opcion;
-    
+    int clave;
     do  //MENU/////////////////////////////////////////////////
     {
         printf("\t\t\t                      +------------------------+\n");
         printf("\t\t\t                      |       EJERCICIO 4      |\n");
         printf("\t\t\t                      +------------------------+\n\n\n");
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-        printf("\t||                                                                                                    ||\n");
+        printf("\t||PARA ARBOLES N-ARIOS                                                                                ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
+        ArbolBinario A = a_crear();
+
+        Lista l = l_crear();
+
+        opcion = cargaManualAuto();
+        if(opcion){
+            //LLENAR RANDOM
+        }
+        else{
+            //LLENAR MANUAL
+        }
+
+        //A
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||A: RETORNAR UNA LISTA CON EL RESULTADO DE RECORRER EL ARBOL POR ANCHURA                             ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+        l = a_ej4_anchura(A);
+
+        printf("\t||\n");
+        printf("\t|| NODOS EN RECORRIDO DE ANCHURA: "); l_mostrar(l);
+        printf("\t||\n");
+
+        free(l);
+
+        //B
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||B: DEVUELVE LA CANTIDAD DE NODOS HOJAS DEL ARBOL N-ARIO                                             ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+        printf("\t||\n");
+        printf("\t|| EL ARBOL TIENE [%d] NODOS HOJA\n", a_ej4_q_hojas(A));
+        printf("\t||\n");
+
+        //C
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||C: DETERMINA SI DOS ARBOLES N-ARIOS TIENEN LA MISMA ESTRUCTURA                                      ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+        printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+        ArbolBinario B = a_crear();
+
+        opcion = cargaManualAuto();
+        if(opcion){
+            //LLENAR RANDOM
+        }
+        else{
+            //LLENAR MANUAL
+        }
+
+        printf("\t||\n");
+        if(a_ej4_similares(A, B)){
+            printf("\t|| LOS ARBOLES A Y B SON SIMILARES\n");
+        }
+        else{
+            printf("\t|| LOS ARBOLES A Y B 'NO' SON SIMILARES\n");
+        }
+        printf("\t||\n");
+
+        free(B);
+
+        //D
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||D: RETORNA EL PADRE DE UN ELEMENTO DEL ARBOL                                                        ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+        printf("\t||\n");
+        pedirNumero(&clave);
+
+        printf("\t||\n");
+        printf("\t|| EL PADRE DE %d ES [%d]\n", clave, a_ej4_padre(A, clave)->clave);
+        printf("\t||\n");
         
+        //E
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||E: RETORNA LOS HERMANOS DE UN NODO DEL ARBOL                                                        ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+        printf("\t||\n");
+        pedirNumero(&clave);
+
+        l = a_ej4_hermanos(A, clave);
+
+        printf("\t||\n");
+        printf("\t|| LISTA DE HERMANOS DE %d: ", clave); l_mostrar(l);
+        printf("\t||\n");
+
+        free(l);
+
+        limpiarBuffer();
+
+        c = salir();
 
         pausa();
 

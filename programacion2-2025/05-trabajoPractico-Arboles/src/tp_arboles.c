@@ -2,7 +2,6 @@
 #include "..\headers\tp_arboles.h"
 
 //2.A
-
 void a_ej2_hojasR(NodoArbol n, Lista lHojas){
     if(n==NULL){
         return;
@@ -45,6 +44,7 @@ Lista a_ej2_interiores(ArbolBinario A) {
     a_ej2_interioresR(nodo, lInteriores); 
     return lInteriores;                 
 }
+
 //2.C
 void a_ej2_buscarclaveR(NodoArbol nodo, int clave,Lista l){
     if(nodo==NULL){
@@ -68,7 +68,7 @@ Lista a_ej2_buscarclave(ArbolBinario A, int clave){
     return lClaves;
 }
 
-
+//3.A
 void a_ej3_clavepadreR(NodoArbol nodo, int clavehijo,int* nodoPadre){
 
     if(nodo==NULL){
@@ -101,7 +101,7 @@ int a_ej3_clavepadre(ArbolBinario A, int clavehijo){
     return *nodoPadre;
 }
 
-
+//3.B
 void a_ej3_hijosR(NodoArbol nodo, int clavepadre,Lista lHijos){
     if(nodo==NULL){
         return;
@@ -132,7 +132,7 @@ Lista a_ej3_hijos(ArbolBinario A, int clavepadre){
 
 }
 
-
+//3.C
 void a_ej3_hermanoR(NodoArbol nodo, int clave, int* nodoHermano) {
     if (nodo == NULL) return;
 
@@ -167,6 +167,7 @@ int a_ej3_hermano(ArbolBinario A, int clave){
     return *nodoHermano;
 }
 
+//3.D
 int a_ej3_nivelR(NodoArbol nodo, int clave, int nivel) {
     if (nodo == NULL) {
         return -1;
@@ -194,6 +195,7 @@ int a_ej3_nivel(ArbolBinario A, int clave) {
     return a_ej3_nivelR(raiz, clave, 0);
 }
 
+//3.E
 int a_ej3_alturaramaR(NodoArbol nodo) {
     if (nodo == NULL) {
         return -1;
@@ -228,10 +230,6 @@ void altura_subarbol_desde_clave(NodoArbol nodo, int clave, int* alturaEncontrad
     altura_subarbol_desde_clave(n_hijoderecho(nodo), clave, alturaEncontrada);
 }
 
-
-
-
-
 int a_ej3_alturarama(ArbolBinario A, int clave){
     if (a_es_vacio(A)) {
         printf("Árbol vacío\n");
@@ -247,6 +245,7 @@ int a_ej3_alturarama(ArbolBinario A, int clave){
     return altura;
 }
 
+//3.F
 void a_ej3_clavesmismonivelR(NodoArbol nodo, int nivelObjetivo, int nivelActual, Lista lMismoNivel) {
     if (nodo == NULL) {
         return;
@@ -270,7 +269,7 @@ Lista a_ej3_clavesmismonivel(ArbolBinario A, int nivel) {
     return lMismoNivel;
 }
 
-
+//4.A
 Lista a_ej4_anchura(ArbolBinario A) {
     Lista lAnchura = l_crear();
     if (a_es_vacio(A)) return lAnchura;
@@ -302,9 +301,7 @@ Lista a_ej4_anchura(ArbolBinario A) {
     return lAnchura;
 }
 
-
-
-
+//4.B
 void a_ej4_q_hojasR(NodoArbol nodo,int* count){
     if(nodo==NULL){
         return;
@@ -327,6 +324,7 @@ int a_ej4_q_hojas(ArbolBinario A){
     return count;
 }
 
+//4.C
 bool a_ej4_similaresSolucion(NodoArbol nA, NodoArbol nB) {
     if (nA == NULL && nB == NULL) return true;
     if ((nA == NULL && nB != NULL) || (nA != NULL && nB == NULL)) return false;
@@ -351,9 +349,7 @@ bool a_ej4_similares(ArbolBinario A, ArbolBinario B) {
     return a_ej4_similaresSolucion(nA, nB);
 }
 
-
-
-
+//4.D
 TipoElemento a_ej4_padre(ArbolBinario A, int clave){
     if (a_es_vacio(A)) return NULL;
 
@@ -386,6 +382,7 @@ TipoElemento a_ej4_padre(ArbolBinario A, int clave){
     return NULL;
 }
 
+//4.E
 void a_ej4_hermanosR(NodoArbol nodo, int clave,Lista lHermanos){
 
     if(nodo==NULL){
@@ -412,7 +409,6 @@ void a_ej4_hermanosR(NodoArbol nodo, int clave,Lista lHermanos){
 
 }
 
-
 Lista a_ej4_hermanos(ArbolBinario A, int clave){
     Lista lHermanos=l_crear();
     if(a_es_vacio(A)){
@@ -425,7 +421,7 @@ Lista a_ej4_hermanos(ArbolBinario A, int clave){
 
 }
 
-
+//7
 bool a_ej7_equivalenteR(NodoArbol nA,NodoArbol nB){
 
     if(nA==NULL && nB==NULL){
@@ -455,7 +451,7 @@ bool a_ej7_equivalente(ArbolBinario A, ArbolBinario B){
     return a_ej7_equivalenteR(nA,nB);
 }
 
-
+//8
 int a_ej8_alturaR(NodoArbol nodo){
 
     if(nodo==NULL){
@@ -473,7 +469,6 @@ int a_ej8_alturaR(NodoArbol nodo){
     return 1+maxAltura;
 
 }
-
 
 int a_ej8_altura(ArbolBinario A){
     if(a_es_vacio(A)){
@@ -504,7 +499,6 @@ int a_ej8_nivelR(NodoArbol nodo, int clave, int nivelActual) {
 
     return 0; 
 }
-
 
 int a_ej8_nivel(ArbolBinario A, int clave) {
     if (a_es_vacio(A)){
@@ -540,7 +534,6 @@ Lista a_ej8_internos(ArbolBinario A){
     
     return lInternos;
 }
-
 
 bool a_ej8_hojasmismonivelR(NodoArbol nodo, ArbolBinario A, int* aux) {
     if (nodo == NULL) return true;
