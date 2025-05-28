@@ -1,4 +1,5 @@
 #include "..\..\libs\validaciones\headers\utilidades.h"
+#include "..\headers\interfaz.h"
 #include "..\headers\tp_arboles.h"
 
 int main() {
@@ -104,8 +105,6 @@ int main() {
     */
     // ArbolBinario NarioA = a_crear();
     // cargar_arbol_binario(NarioA);
-    Lista l = l_crear();
-    l = a_ej10_comparacionarboles(10, 1, 100, 100);
-    l_mostrar(l);
+    menu();
     return 0;
 }

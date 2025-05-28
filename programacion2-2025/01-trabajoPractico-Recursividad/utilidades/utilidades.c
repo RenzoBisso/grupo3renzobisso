@@ -1,23 +1,22 @@
 #include "..\headers\utilidades.h"
 
-//FUNCIONES AUXILIARES GENERALES
+// FUNCIONES AUXILIARES GENERALES
 
-void limpiar_pantalla()
-{
-  #ifdef _WIN32
+void limpiar_pantalla() {
+#ifdef _WIN32
     system("cls");
-  #else
+#else
     system("clear");
-  #endif
+#endif
 }
 
-void limpiarBuffer(){    
+void limpiarBuffer() {
     char c;
-    while(( c = getchar()) != '\n' && c != EOF);
+    while ((c = getchar()) != '\n' && c != EOF)
+        ;
 }
 
-void pausa()
-{
+void pausa() {
     printf("Presione cualquier tecla para continuar...\n");
     // fflush(stdin);
     // limpiarBuffer();
@@ -27,52 +26,54 @@ void pausa()
     limpiar_pantalla();
 }
 
-int es_decimal(double num){ // Funcion para saber si un numero tiene parte decimal
-  double parte_entera;
-  double parte_decimal = modf(num, &parte_entera);
-  
-  return parte_decimal != 0.0; // Retorna 1 si tiene parte decimal, 0 si es entero
+int es_decimal(
+    double num) {  // Funcion para saber si un numero tiene parte decimal
+    double parte_entera;
+    double parte_decimal = modf(num, &parte_entera);
+
+    return parte_decimal !=
+           0.0;  // Retorna 1 si tiene parte decimal, 0 si es entero
 }
 
-int esEntero(double num){
-    return floor(num) == num; //FUNCION PARA SABER SI UN NUMERO ES ENTERO
+int esEntero(double num) {
+    return floor(num) == num;  // FUNCION PARA SABER SI UN NUMERO ES ENTERO
 }
 
-void a_minusculas(char *str){
-  while (*str) {
-      *str = tolower(*str); //TRANSFORMA TODOS LOS CARACTERES A MINUSCULA
-      str++;
-  }
+void a_minusculas(char* str) {
+    while (*str) {
+        *str = tolower(*str);  // TRANSFORMA TODOS LOS CARACTERES A MINUSCULA
+        str++;
+    }
 }
 
 void imprimirArr(int* arr, int length) {
-  for (int i = 0; i < length; i++) {
-      printf("%d ", arr[i]);
-  }
-  //printf("\n");
+    for (int i = 0; i < length; i++) {
+        printf("%d ", arr[i]);
+    }
+    // printf("\n");
 }
 
-//FIN DE FUNCIONES AUXILIARES GENERALES
+// FIN DE FUNCIONES AUXILIARES GENERALES
 //
 //
-//FUNCION ESPECIFICA DE PUNTO 8
-void cargarArray(int arr[], int n,int count){
-  if(count==n){
-      return;
-  }
-  int valor;
-  bool flag=true;
-  while (flag)
-  {
-  printf("Ingrese el numero a agregar: ");
+// FUNCION ESPECIFICA DE PUNTO 8
+void cargarArray(int arr[], int n, int count) {
+    if (count == n) {
+        return;
+    }
+    int valor;
+    bool flag = true;
+    while (flag) {
+        printf("Ingrese el numero a agregar: ");
 
-      if(scanf("%d", &valor)!=1){
-          printf("Entrada inválida. No se ingresó un número entero.\n");
-          while (getchar() != '\n');
-      }else{
-          arr[count]=valor;
-          flag=false;
-      }
-  }
-  return cargarArray(arr,n,count+1);
+        if (scanf("%d", &valor) != 1) {
+            printf("Entrada inválida. No se ingresó un número entero.\n");
+            while (getchar() != '\n')
+                ;
+        } else {
+            arr[count] = valor;
+            flag = false;
+        }
+    }
+    return cargarArray(arr, n, count + 1);
 }

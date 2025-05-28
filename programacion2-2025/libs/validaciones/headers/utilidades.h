@@ -64,6 +64,7 @@ void guardarSubconjunto(int arr[], int tamano, char** output,
 char salir();
 
 void pedirNumero(int* valor);
+void pedirNumeroPos(int* valor);
 
 int cargaManualAuto();
 

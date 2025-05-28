@@ -124,6 +124,21 @@ void pedirNumero(int* valor) {
         }
     }
 }
+void pedirNumeroPos(int* valor) {
+    bool flag = true;
+
+    while (flag) {
+        printf("\t||Ingrese un numero: ");
+
+        if (scanf("%d", valor) != 1 || valor < 0) {
+            printf("\t||Entrada invalida.\n");
+            while (getchar() != '\n')
+                ;
+        } else {
+            flag = false;
+        }
+    }
+}
 
 char salir() {
     char c;
@@ -846,12 +861,14 @@ void cargar_avl(ArbolAVL v) {
 }
 void cargar_avl_lista(ArbolAVL v, Lista l) {
     Iterador ite = iterador(l);
-    TipoElemento aux = te_crear(0);
-    while (hay_siguiente(ite) || !avl_es_lleno(v)) {
-        aux = siguiente(ite);
+    while (hay_siguiente(ite)) {
+        if (avl_es_lleno(v))
+            break;
+        TipoElemento aux = siguiente(ite);
         avl_insertar(v, aux);
     }
 }
+
 void cargar_avl_manual(ArbolAVL v) {
     while (!avl_es_lleno(v)) {
         int clave = leer_entero_no_negativo();
@@ -869,9 +886,8 @@ void cargar_abb_manual(ArbolBinarioBusqueda abb) {
 
 void cargar_abb_lista(ArbolBinarioBusqueda abb, Lista l) {
     Iterador ite = iterador(l);
-    TipoElemento aux = te_crear(0);
-    while (hay_siguiente(ite) || !abb_es_lleno(abb)) {
-        aux = siguiente(ite);
+    while (hay_siguiente(ite)) {
+        TipoElemento aux = siguiente(ite);
         abb_insertar(abb, aux);
     }
 }
