@@ -392,14 +392,77 @@ void interfaz5(){
 void interfaz6(){
     char c;
     int opcion;
+    int clave;
     do  //MENU/////////////////////////////////////////////////
     {
         printf("\t\t\t                      +------------------------+\n");
         printf("\t\t\t                      |       EJERCICIO 8      |\n");
         printf("\t\t\t                      +------------------------+\n\n\n");
         printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-        printf("\t||                                                                                                    ||\n");
+        printf("\t||DADO UN ARBOL N-ARIO DETERMINAR                                                                     ||\n");
         printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+        Lista l = l_crear();
+
+        ArbolBinario A = a_crear();
+
+        opcion = cargaManualAuto();
+        if(opcion){
+            //LLENAR RANDOM
+        }
+        else{
+            //LLENAR MANUAL
+        }
+
+        //O1
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||O: DETERMINAR LA ALTURA DEL ARBOL                                                                   ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+        printf("\t||\n");
+        printf("\t|| LA ALTURA DEL ARBOL ES: [%d]\n", a_ej8_altura(A));
+        printf("\t||\n");
+
+        //O2
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||O: DETERMINAR EL NIVEL DE UN NODO                                                                   ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+        printf("\t|| INGRESE CLAVE DE UN NODO: \n");
+        pedirNumero(&clave);
+
+        printf("\t||\n");
+        printf("\t|| EL NIVEL DEL NODO %d ES: [%d]\n",clave , a_ej8_nivel(A, clave));
+        printf("\t||\n");
+
+        //O3
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||O: LISTAR TODOS LOS NODOS INTERNOS                                                                  ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+        l = a_ej8_internos(A);
+
+        printf("\t||\n");
+        printf("\t|| NODOS INTERNOS: \n"); l_mostrar(l);
+        printf("\t||\n");
+
+        free(l);
+
+        //O4
+        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+        printf("\t||O: DETERMINAR SI TODAS LAS HOJAS ESTAN AL MISMO NIVEL                                               ||\n");
+        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+        printf("\t||\n");
+        if(a_ej8_hojasmismonivel(A)){
+            printf("\t|| TODAS LAS HOJAS ESTAN AL MISMO NIVEL\n");
+        }
+        else{
+            printf("\t|| NO TODAS LAS HOJAS ESTAN AL MISMO NIVEL\n");
+        }
+        printf("\t||\n");
+
+        free(A);
 
         limpiarBuffer();
 
