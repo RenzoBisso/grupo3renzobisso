@@ -10,3 +10,4 @@ build/
 *.suo
 *.userosscache
 *.sln.docstates
+.clang-format
