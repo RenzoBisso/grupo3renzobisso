@@ -69,7 +69,7 @@ void interfaz2() {
        l = a_ej2_buscarclave(A, clave);
 
        printf("\t||\n");
-       printf("\t|| ");  // l_mostrar_ej2(l);
+       printf("\t|| ");     l_mostrar_ej2(l);
        printf("\t||\n");
 
        free(l);

@@ -52,7 +52,7 @@ void a_ej2_buscarclaveR(NodoArbol nodo, int clave, Lista l) {
     }
     TipoElemento x = n_recuperar(nodo);
     if (x->clave == clave) {
-        TipoElemento nodoDevolver = te_crear_con_valor(0, nodo);
+        TipoElemento nodoDevolver = te_crear_con_valor(clave, nodo);
         l_agregar(l, nodoDevolver);
     }
 
