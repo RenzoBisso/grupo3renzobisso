@@ -20,7 +20,6 @@ Lista a_ej2_hojas(ArbolBinario A) {
     Lista lHojas = l_crear();
     NodoArbol nodo = a_raiz(A);
     a_ej2_hojasR(nodo, lHojas);
-    printf("complejidad O(n)");
     return lHojas;
 }
 
@@ -44,7 +43,6 @@ Lista a_ej2_interiores(ArbolBinario A) {
     Lista lInteriores = l_crear();
     NodoArbol nodo = a_raiz(A);
     a_ej2_interioresR(nodo, lInteriores);
-    printf("complejidad O(n)");
 
     return lInteriores;
 }
@@ -68,7 +66,6 @@ Lista a_ej2_buscarclave(ArbolBinario A, int clave) {
     Lista lClaves = l_crear();
     NodoArbol nodo = a_raiz(A);
     a_ej2_buscarclaveR(nodo, clave, lClaves);
-    printf("complejidad O(n)");
 
     return lClaves;
 }
