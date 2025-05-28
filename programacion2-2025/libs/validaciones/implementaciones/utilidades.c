@@ -586,6 +586,30 @@ void llenarCRandom(Cola c1) {
   }
 }
 
+bool cexisteclave(Cola c, int clave){
+        
+    bool flag=false;
+    Cola cAux=c_crear();
+    if(c_es_vacia(c)){
+        return flag;
+    }
+
+    while (!c_es_vacia(c))
+    {
+        TipoElemento X=c_desencolar(c);
+        if(X->clave==clave){
+            flag=true;
+        }
+        c_encolar(cAux,X);
+    }
+    while (!c_es_vacia(cAux))
+    {
+        TipoElemento X=c_desencolar(cAux);
+        c_encolar(c,X);
+    }
+    return flag;
+}
+
 void c_cargarSinRepetir(Cola c, int n, int count) {
   if (count == n) {
     return;
@@ -597,7 +621,7 @@ void c_cargarSinRepetir(Cola c, int n, int count) {
     if (scanf("%d", &valor) != 1) {
       printf("\t||Entrada inválida. No se ingresó un número entero.\n");
       while (getchar() != '\n');
-    } else if (!c_ej2_existeclave(c, valor)) {
+    } else if (!cexisteclave(c, valor)) {
       TipoElemento elemento = te_crear(valor);
       c_encolar(c, elemento);
       flag = false;
@@ -611,14 +635,14 @@ void c_cargarSinRepetir(Cola c, int n, int count) {
 void llenarCRandomSinRepetir(Cola c1) {
   while (!c_es_llena(c1)) {
     int valor = rand() % 11;
-    if (!c_ej2_existeclave(c1, valor)) c_encolar(c1, te_crear(valor));
+    if (!cexisteclave(c1, valor)) c_encolar(c1, te_crear(valor));
   }
 }
 
 void llenarCRandomValor(Cola c1, int max) {
   while (max != 0) {
     int valor = rand() % 11;
-    if (!c_ej2_existeclave(c1, valor)) c_encolar(c1, te_crear(valor));
+    if (!cexisteclave(c1, valor)) c_encolar(c1, te_crear(valor));
     max--;
   }
 }
