@@ -871,6 +871,26 @@ void lRandomSinRepetir(Lista l, int min, int max, int cantidad, int count){
   }
 }
 
+void pedirNumeroPos(int* valor) {
+  bool flag = true;
+
+  while (flag) {
+    printf("\t||Ingrese un numero: ");
+
+    
+    if (scanf("%d", valor) != 1) {
+      if(valor < 0){
+        printf("\t||Entrada invalida.\n");
+        while (getchar() != '\n');
+      }
+      printf("\t||Entrada invalida.\n");
+      while (getchar() != '\n');
+    } else {
+      flag = false;
+    }
+  }
+}
+
 // FUNCIONES DE ARBOLES
 // ####################
 // ####################

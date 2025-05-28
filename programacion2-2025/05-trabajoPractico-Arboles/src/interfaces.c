@@ -511,10 +511,10 @@ void interfaz7() {
 
        ArbolAVL v = a_ej9_construiravl(A);
 
-       mostrar_arbol(a_raiz(v), "", 1);
+       mostrar_arbol(avl_raiz(v), "", 1);
 
        printf("\t||\n");
-       printf("\t|| LA ALTURA DEL ARBOL BINARIO ES [%d] Y LA ALTURA DEL ARBOL AVL ES [%d]\n", alturaNodo(araiz(A)), alturaNodo(avl_raiz(v)));
+       printf("\t|| LA ALTURA DEL ARBOL BINARIO ES [%d] Y LA ALTURA DEL ARBOL AVL ES [%d]\n", alturaNodo(a_raiz(A)), alturaNodo(avl_raiz(v)));
        printf("\t||\n");
 
        printf("\t|| COMPLEJIDAD ALGORITMICA DE O(logn) YA QUE AL CREAR EL ARBOL AVL EL COSTO DE LA LLAMADA A avl_insertar ES O(logn)\n");
