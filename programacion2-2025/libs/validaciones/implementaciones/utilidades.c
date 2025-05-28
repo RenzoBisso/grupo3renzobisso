@@ -130,7 +130,7 @@ void pedirNumeroPos(int* valor) {
     while (flag) {
         printf("\t||Ingrese un numero: ");
 
-        if (scanf("%d", valor) != 1 || valor < 0) {
+        if (scanf("%d", valor) != 1 || *valor < 0) {
             printf("\t||Entrada invalida.\n");
             while (getchar() != '\n')
                 ;
