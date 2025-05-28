@@ -6,7 +6,7 @@
 #include "..\..\colas\headers\colas.h"
 #include "..\headers\nodo.h"
 
-static const int TAMANIO_MAXIMO = 4;
+static const int TAMANIO_MAXIMO = 10;
 
 struct ArbolBinarioRep {
   NodoArbol raiz;
