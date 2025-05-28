@@ -83,12 +83,18 @@ int main() {
   // ArbolBinario NarioA = a_crear();
   // cargar_arbol_binario(NarioA);
   ArbolAVL avl = avl_crear();
-
   cargar_avl(avl);
   printf("%d\n", avl_cantidad_elementos(avl));
   NodoArbol nodoAvl = avl_raiz(avl);
   mostrar_arbol(nodoAvl, "", 1);
   in_orden(nodoAvl);
+  printf("\n arbol abb \n");
+  ArbolBinarioBusqueda abb = abb_crear();
+  cargar_abb(abb);
+  printf("%d\n", avl_cantidad_elementos(avl));
+  NodoArbol nodoAbb = abb_raiz(abb);
+  mostrar_arbol(nodoAbb, "", 1);
+  in_orden(nodoAbb);
 
   return 0;
 }

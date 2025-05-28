@@ -829,11 +829,24 @@ void cargar_avl(ArbolAVL v) {
   }
 }
 
+void cargar_abb(ArbolBinarioBusqueda abb) {
+  while (!abb_es_lleno(abb)) {
+    TipoElemento aux = te_crear(numero_aleatorio(0, 20));
+    abb_insertar(abb, aux);
+  }
+}
+
 NodoArbol arbolAleatorio() {
   ArbolAVL avl = avl_crear();
   cargar_avl(avl);
   NodoArbol nodoAvl = avl_raiz(avl);
   return nodoAvl;
+}
+NodoArbol arbolAleatorioAbb() {
+  ArbolBinarioBusqueda abb = abb_crear();
+  cargar_abb(abb);
+  NodoArbol nodoAbb = abb_raiz(abb);
+  return nodoAbb;
 }
 
 // FUNCIONES DE ARBOLES

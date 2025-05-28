@@ -151,7 +151,7 @@ void pre_orden(NodoArbol N);
 void in_orden(NodoArbol N);
 void post_orden(NodoArbol N);
 NodoArbol arbolAleatorio();
-
+void cargar_abb(ArbolBinarioBusqueda abb);
 // FUNCIONES DE ARBOLES
 // ##################
 // ##################
