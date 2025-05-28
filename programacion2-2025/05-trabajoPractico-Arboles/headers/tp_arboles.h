@@ -113,8 +113,7 @@ respecto?
  */
 // Generamos una lista con la serie de numeros (unicos no repetidos)
 // Las claves se deben generar entre "valorminimo" y "valormaximo".
-Lista a_ej10_generarlistaclaves(int cantidadclavesagenerar, int valorminimo,
-                                int valormaximo);
+Lista a_ej10_generarlistaclaves(int cantidadclavesagenerar, int valorminimo, int valormaximo);
 
 // Ahora se la paso a la funcion que crea los 2 arboles
 ArbolBinarioBusqueda a_ej10_crearABB(Lista L);
@@ -129,7 +128,6 @@ int a_ej10_difalturas(ArbolBinarioBusqueda ABB, ArbolAVL AVL);
 
 // LLamada general del proceso.  retorna una lista con todas las diferencias de
 // las comparaciones.
-Lista a_ej10_comparacionarboles(int N_repeticiones, int valorminimo,
-                                int valormaximo, int cantidaclavesagenerar);
+Lista a_ej10_comparacionarboles(int N_repeticiones, int valorminimo, int valormaximo, int cantidaclavesagenerar);
 
 #endif  // TP_ARBOLES_H

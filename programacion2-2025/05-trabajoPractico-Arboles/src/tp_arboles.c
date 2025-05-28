@@ -29,8 +29,7 @@ void a_ej2_interioresR(NodoArbol n, Lista lInteriores) {
         return;
     }
 
-    if (!a_es_rama_nula(n_hijoizquierdo(n)) ||
-        !a_es_rama_nula(n_hijoderecho(n))) {
+    if (!a_es_rama_nula(n_hijoizquierdo(n)) || !a_es_rama_nula(n_hijoderecho(n))) {
         TipoElemento X = n_recuperar(n);
         l_agregar(lInteriores, X);
     }
@@ -601,13 +600,29 @@ Lista a_ej10_generarlistaclaves(int cantidadclavesagenerar, int valorminimo,int 
 
 ArbolBinarioBusqueda a_ej10_crearABB(Lista L) {
     ArbolBinarioBusqueda abb = abb_crear();
-    cargar_abb_lista(abb, L);
+
+    TipoElemento X = te_crear(0);
+    Iterador iter = iterador(L);
+
+    while(!abb_es_lleno(abb) || !hay_siguiente(iter)){
+        X = siguiente(iter);
+        abb_insertar(abb, X);
+    }
+
     return abb;
 }
 
 ArbolAVL a_ej10_crearAVL(Lista L) {
     ArbolAVL avl = avl_crear();
-    cargar_avl_lista(avl, L);
+
+    TipoElemento X = te_crear(0);
+    Iterador iter = iterador(L);
+
+    while(!avl_es_lleno(avl) || !hay_siguiente(iter)){
+        X = siguiente(iter);
+        avl_insertar(avl, X);
+    }
+
     return avl;
 }
 
@@ -652,12 +667,12 @@ Lista a_ej10_comparacionarboles(int N_repeticiones, int valorminimo,int valormax
 
     Lista lComparaciones = l_crear();
     while (count < N_repeticiones) {
-        Lista lClaves = a_ej10_generarlistaclaves(cantidaclavesagenerar,
-                                                  valorminimo, valormaximo);
+        Lista lClaves = a_ej10_generarlistaclaves(cantidaclavesagenerar, valorminimo, valormaximo);
+        
         ArbolBinarioBusqueda abb = a_ej10_crearABB(lClaves);
 
         ArbolAVL avl = a_ej10_crearAVL(lClaves);
-        cargar_avl_lista(avl, lClaves);
+        
         TipoElemento aux = te_crear(a_ej10_difalturas(abb, avl));
         l_agregar(lComparaciones, aux);
         count++;

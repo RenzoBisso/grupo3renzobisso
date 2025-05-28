@@ -249,9 +249,9 @@ void l_mostrar_con_valor(Lista l) {
   while (hay_siguiente(iter)) {
     X = siguiente(iter);
     if (hay_siguiente(iter)) {
-      printf("%f; ", *(double*)X->valor);
+      printf("%f; ", *(int*)X->valor);
     } else {
-      printf("%f", *(double*)X->valor);
+      printf("%f", *(int*)X->valor);
     }
   }
   printf("}\n");
@@ -859,6 +859,16 @@ int alturaNodo(NodoArbol na) {
     return -1;
   }
   return maximo(alturaNodo(n_hijoizquierdo(na)), alturaNodo(n_hijoderecho(na))) + 1;
+}
+
+void lRandomSinRepetir(Lista l, int min, int max, int cantidad, int count){
+  while(count != cantidad){
+    int clave = rand() % (max-min+1)+min;
+    if(l_buscar(l, clave) == NULL){
+      l_agregar(l, te_crear(clave));
+      count++;
+    }
+  }
 }
 
 // FUNCIONES DE ARBOLES

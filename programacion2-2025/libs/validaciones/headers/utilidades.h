@@ -157,8 +157,6 @@ void crearBinarioAleatorio(ArbolBinario b, NodoArbol avl, NodoArbol raiz);
 void cargar_abb_manual(ArbolBinarioBusqueda abb);
 void cargar_avl_manual(ArbolAVL v);
 void lRandomSinRepetir(Lista l, int min, int max, int cantidad, int count);
-void cargar_avl_lista(ArbolAVL v, Lista l);
-void cargar_abb_lista(ArbolBinarioBusqueda abb, Lista l);
 int maximo(int a, int b);
 int alturaNodo(NodoArbol na);
 // FUNCIONES DE ARBOLES
