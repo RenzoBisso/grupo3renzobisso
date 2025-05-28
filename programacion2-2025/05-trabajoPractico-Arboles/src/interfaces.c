@@ -28,6 +28,7 @@ void interfaz2() {
        // LLENAR RANDOM
        } else {
        // LLENAR MANUAL
+              cargar_arbol_binario(A);
        }
 
        printf("\t||\n");
@@ -123,6 +124,7 @@ void interfaz3() {
        // LLENAR RANDOM
        } else {
        // LLENAR MANUAL
+              cargar_arbol_binario(A);
        }
 
        // A
@@ -352,6 +354,7 @@ void interfaz5() {
        // LLENAR RANDOM
        } else {
        // LLENAR MANUAL
+              cargar_arbol_binario(A);
        }
 
        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
@@ -365,6 +368,7 @@ void interfaz5() {
        // LLENAR RANDOM
        } else {
        // LLENAR MANUAL
+              cargar_arbol_binario(A);
        }
 
        printf("\t||\n");
@@ -493,6 +497,7 @@ void interfaz7() {
        }
        else{
        // LLENAR MANUAL
+              cargar_arbol_binario(A);
        }
 
        printf("\t||\n");
