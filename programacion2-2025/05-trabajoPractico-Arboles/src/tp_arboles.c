@@ -558,3 +558,28 @@ bool a_ej8_hojasmismonivel(ArbolBinario A) {
   int aux = 0;
   return a_ej8_hojasmismonivelR(a_raiz(A), A, &aux);
 }
+
+//PUNTO 9
+void a_ej9_construir(ArbolAVL v, NodoArbol n){
+    if(!a_es_rama_nula(n)){
+        if(!avl_es_lleno(v)){
+            avl_insertar(v, n_recuperar(n));
+        }
+        a_ej9_construir(v, n_hijoizquierdo(n));
+        a_ej9_construir(v, n_hijoderecho(n));
+    }
+}
+
+ArbolAVL a_ej9_construiravl(ArbolBinario A){
+    ArbolAVL v = avl_crear();
+    NodoArbol raiz = a_raiz(A);
+    a_ej9_construir(v, raiz);
+    return v;
+}
+
+int a_ej9_diferenciaalturas(ArbolBinario A, ArbolAVL AVL){
+    NodoArbol n = avl_raiz(AVL);
+
+    ArbolBinario B = a_crear();
+    
+}

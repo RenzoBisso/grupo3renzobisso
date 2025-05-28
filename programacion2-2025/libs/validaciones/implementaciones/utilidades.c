@@ -822,6 +822,7 @@ void mostrar_arbol(NodoArbol n, char* prefijo, int Izq) {
     mostrar_arbol(n_hijoizquierdo(n), prefijoNuevo, 0);
   }
 }
+
 void cargar_avl(ArbolAVL v) {
   while (!avl_es_lleno(v)) {
     TipoElemento aux = te_crear(numero_aleatorio(0, 20));
@@ -847,6 +848,13 @@ NodoArbol arbolAleatorioAbb() {
   cargar_abb(abb);
   NodoArbol nodoAbb = abb_raiz(abb);
   return nodoAbb;
+}
+
+void crearBinarioAleatorio(ArbolBinario b, NodoArbol avl, NodoArbol raiz){
+  if(!a_es_rama_nula(avl)){
+    if(n_hijoderecho(avl) != NULL) crearBinarioAleatorio(b, n_hijoderecho(avl), n_hijoderecho(a_conectar_hd(b, raiz, n_hijoderecho(avl))));
+    if(n_hijoizquierdo(avl != NULL)) crearBinarioAleatorio(b, n_hijoizquierdo(avl), n_hijoizquierdo(a_conectar_hi(b, raiz, n_hijoizquierdo(avl))));
+  }
 }
 
 // FUNCIONES DE ARBOLES

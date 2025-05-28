@@ -152,6 +152,8 @@ void in_orden(NodoArbol N);
 void post_orden(NodoArbol N);
 NodoArbol arbolAleatorio();
 void cargar_abb(ArbolBinarioBusqueda abb);
+void crearBinarioAleatorio(ArbolBinario b, NodoArbol avl, NodoArbol raiz);
+
 // FUNCIONES DE ARBOLES
 // ##################
 // ##################
