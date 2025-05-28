@@ -589,23 +589,22 @@ ArbolAVL a_ej9_construiravl(ArbolBinario A) {
 }
 
 int a_ej9_diferenciaalturas(ArbolBinario A, ArbolAVL AVL) {
-    NodoArbol n = avl_raiz(AVL);
-
-    ArbolBinario B = a_crear();
+    return alturaNodo(a_raiz(A)) - alturaNodo(avl_raiz(AVL));
 }
 
-Lista a_ej10_generarlistaclaves(int cantidadclavesagenerar, int valorminimo,
-                                int valormaximo) {
+//PUNTO 10
+Lista a_ej10_generarlistaclaves(int cantidadclavesagenerar, int valorminimo,int valormaximo) {
     Lista lClaves = l_crear();
-    lRandomSinRepetir(lClaves, valorminimo, valormaximo, cantidadclavesagenerar,
-                      0);
+    lRandomSinRepetir(lClaves, valorminimo, valormaximo, cantidadclavesagenerar,0);
     return lClaves;
 }
+
 ArbolBinarioBusqueda a_ej10_crearABB(Lista L) {
     ArbolBinarioBusqueda abb = abb_crear();
     cargar_abb_lista(abb, L);
     return abb;
 }
+
 ArbolAVL a_ej10_crearAVL(Lista L) {
     ArbolAVL avl = avl_crear();
     cargar_avl_lista(avl, L);
@@ -648,8 +647,7 @@ int a_ej10_difalturas(ArbolBinarioBusqueda ABB, ArbolAVL AVL) {
     return (a - b);
 }
 
-Lista a_ej10_comparacionarboles(int N_repeticiones, int valorminimo,
-                                int valormaximo, int cantidaclavesagenerar) {
+Lista a_ej10_comparacionarboles(int N_repeticiones, int valorminimo,int valormaximo, int cantidaclavesagenerar) {
     int count = 0;
 
     Lista lComparaciones = l_crear();
