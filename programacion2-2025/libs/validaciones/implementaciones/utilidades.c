@@ -838,6 +838,20 @@ void l_mostrar_ej2(Lista l) {
   printf("}\n");
 }
 
+void mostrar_arbol(NodoArbol n, char* prefijo, int Izq){
+    if (n != NULL) {
+        printf("%s", prefijo);
+        printf("%s", Izq ? "|-- " : "L-- ");
+        printf("%i\n", n_recuperar(n)->clave);
+
+        char prefijoNuevo[100];
+        snprintf(prefijoNuevo, sizeof(prefijoNuevo), "%s%s", prefijo, Izq ? "|   " : "    ");
+
+        mostrar_arbol(n_hijoderecho(n), prefijoNuevo, 1);
+        mostrar_arbol(n_hijoizquierdo(n), prefijoNuevo, 0);
+    }
+}
+
 // FUNCIONES DE ARBOLES
 // ####################
 // ####################

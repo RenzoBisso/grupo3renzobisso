@@ -154,6 +154,7 @@ void cargar_arbol_binario_aleatorio(ArbolBinario a);
 void cargar_nodo(ArbolBinario a, NodoArbol padre, int es_izquierdo);
 void cargar_nodo_aleatorio(ArbolBinario a, NodoArbol padre, int es_izquierdo);
 void l_mostrar_ej2(Lista l);
+void mostrar_arbol(NodoArbol n, char* prefijo, int Izq);
 
 void pre_orden(NodoArbol N);
 void in_orden(NodoArbol N);
