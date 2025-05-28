@@ -2,8 +2,9 @@
 #include "..\headers\tp_arboles.h"
 
 int main() {
-  /*
   srand(time(NULL));
+  /*
+
   ArbolBinario A=a_crear();
   cargar_arbol_binario(A);
 
@@ -76,10 +77,18 @@ int main() {
   printf("Nivel del %d es %d",9,nivelActual);
       Lista lInternos=a_ej8_internos(NarioA);
   l_mostrar(lInternos);
-  */
-  ArbolBinario NarioA = a_crear();
-  cargar_arbol_binario(NarioA);
-  bool mismoNivel = a_ej8_hojasmismonivel(NarioA);
+    bool mismoNivel = a_ej8_hojasmismonivel(NarioA);
   printf("Mismo nivel: %d", mismoNivel);
+  */
+  // ArbolBinario NarioA = a_crear();
+  // cargar_arbol_binario(NarioA);
+  ArbolAVL avl = avl_crear();
+
+  cargar_avl(avl);
+  printf("%d\n", avl_cantidad_elementos(avl));
+  NodoArbol nodoAvl = avl_raiz(avl);
+  mostrar_arbol(nodoAvl, "", 1);
+  in_orden(nodoAvl);
+
   return 0;
 }

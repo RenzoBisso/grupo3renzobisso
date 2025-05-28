@@ -5,11 +5,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 #include "..\..\tipoElemento\headers\tipo_elemento.h"
+#include "..\headers\nodo.h"
 
 struct ArbolAVLRep {
-    NodoArbol raiz;
-    int cantidad_elementos;
+  NodoArbol raiz;
+  int cantidad_elementos;
 };
 typedef struct ArbolAVLRep *ArbolAVL;
 
@@ -31,4 +33,4 @@ bool avl_eliminar(ArbolAVL a, int claveABorrar);
 
 TipoElemento avl_buscar(ArbolAVL a, int clave);
 
-#endif // ARBOL_AVL_H_INCLUDED
+#endif  // ARBOL_AVL_H_INCLUDED

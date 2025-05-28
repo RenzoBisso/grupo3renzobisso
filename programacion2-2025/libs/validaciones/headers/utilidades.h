@@ -1,28 +1,28 @@
+#include <assert.h>
+#include <ctype.h>
+#include <math.h>
+#include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
-#include <assert.h>
-#include <time.h>
-#include <math.h>
 #include <string.h>
-#include <ctype.h>
-#include <stdint.h>
+#include <time.h>
 
+#include "..\..\arboles\headers\arbol-avl.h"
+#include "..\..\arboles\headers\arbol-binario-busqueda.h"
+#include "..\..\arboles\headers\arbol-binario.h"
+#include "..\..\arboles\headers\nodo.h"
+#include "..\..\colas\headers\colas.h"
 #include "..\..\listas\headers\listas.h"
 #include "..\..\pilas\headers\pilas.h"
-#include "..\..\colas\headers\colas.h"
 #include "..\..\tipoElemento\headers\tipo_elemento.h"
-#include "..\..\arboles\headers\nodo.h"
-#include "..\..\arboles\headers\arbol-binario.h"
-#include "..\..\arboles\headers\arbol-binario-busqueda.h"
-#include "..\..\arboles\headers\arbol-avl.h"
 
 #ifndef UTILIDADES_H
 #define UTILIDADES_H
 
-//###################
-//###################
-//FUNCIONES GENERALES
+// ###################
+// ###################
+// FUNCIONES GENERALES
 
 void limpiarBuffer();
 
@@ -36,27 +36,30 @@ int es_decimal();
 
 float divisionNoExacta(int m, int n, float resto);
 
-void digitalizacion(char * digital, char * seniales, int pos, int posAux);
+void digitalizacion(char* digital, char* seniales, int pos, int posAux);
 
 int* valoresQueSuman();
 
 int esEntero(double num);
 
-char * separadorMilesAux(char * numero, int longitud);
+char* separadorMilesAux(char* numero, int longitud);
 
-void a_minusculas(char *str);
+void a_minusculas(char* str);
 
 void imprimirArr(int* arr, int length);
 
-int explosionRecursiva(int n, int b,int* arr, int* count);
+int explosionRecursiva(int n, int b, int* arr, int* count);
 
-void desarrollarPatron(char *cadena, int mitad, int nivel);
+void desarrollarPatron(char* cadena, int mitad, int nivel);
 
-void cargarArray(int arr[], int n,int count);
+void cargarArray(int arr[], int n, int count);
 
-void encontrarSubconjuntos(int conjunto[], int largo, int index, int subconjunto[], int tamanoSub, int sumaActual, int objetivo,char** output,int * indiceOutput);
+void encontrarSubconjuntos(int conjunto[], int largo, int index,
+                           int subconjunto[], int tamanoSub, int sumaActual,
+                           int objetivo, char** output, int* indiceOutput);
 
-void guardarSubconjunto(int arr[], int tamano,char** output,int *indiceOutput);
+void guardarSubconjunto(int arr[], int tamano, char** output,
+                        int* indiceOutput);
 
 char salir();
 
@@ -64,17 +67,13 @@ void pedirNumero(int* valor);
 
 int cargaManualAuto();
 
-//FUNCIONES GENERALES
-//###################
-//###################
+// FUNCIONES GENERALES
+// ###################
+// ###################
 
-
-
-
-
-//###################
-//###################
-//FUNCIONES DE LISTAS
+// ###################
+// ###################
+// FUNCIONES DE LISTAS
 
 void llenarLRandom(Lista l1);
 
@@ -88,19 +87,15 @@ void mostrar_coeficientes(Lista l);
 
 void interfazCargaLista(Lista l);
 
-//FUNCIONES DE LISTAS
-//###################
-//###################
+// FUNCIONES DE LISTAS
+// ###################
+// ###################
 
+// ##################
+// ##################
+// FUNCIONES DE PILAS
 
-
-
-
-//##################
-//##################
-//FUNCIONES DE PILAS
-
-void p_cargar(Pila p,int n, int count);
+void p_cargar(Pila p, int n, int count);
 
 Pila p_ej6_eliminarclaveR(Pila p, int clave);
 
@@ -110,23 +105,19 @@ void p_mostrar_con_valor(Pila p);
 
 int largo(Pila p);
 
-//FUNCIONES DE PILAS
-//##################
-//##################
+// FUNCIONES DE PILAS
+// ##################
+// ##################
 
+// ##################
+// ##################
+// FUNCIONES DE COLAS
 
-
-
-//##################
-//##################
-//FUNCIONES DE COLAS
-
-void c_cargar(Cola c,int n, int count);
-void c_cargarSinRepetir(Cola c,int n, int count);
-void interfazCargaColaSinRepetir(Cola  c1);
+void c_cargar(Cola c, int n, int count);
+void c_cargarSinRepetir(Cola c, int n, int count);
+void interfazCargaColaSinRepetir(Cola c1);
 void llenarCRandom(Cola c);
 void llenarCRandomSinRepetir(Cola c);
-
 
 void llenarCRandomValor(Cola c, int max);
 
@@ -140,13 +131,13 @@ void c_mostrar_valor(Cola c);
 
 void c_mostrar_bien(Cola c);
 
-//FUNCIONES DE COLAS
-//##################
-//##################
+// FUNCIONES DE COLAS
+// ##################
+// ##################
 
-//FUNCIONES DE ARBOLES
-//##################
-//##################
+// FUNCIONES DE ARBOLES
+// ##################
+// ##################
 
 void l_mostrar_con_nodo(Lista l);
 void cargar_arbol_binario(ArbolBinario a);
@@ -155,15 +146,14 @@ void cargar_nodo(ArbolBinario a, NodoArbol padre, int es_izquierdo);
 void cargar_nodo_aleatorio(ArbolBinario a, NodoArbol padre, int es_izquierdo);
 void l_mostrar_ej2(Lista l);
 void mostrar_arbol(NodoArbol n, char* prefijo, int Izq);
-
+void cargar_avl(ArbolAVL v);
 void pre_orden(NodoArbol N);
 void in_orden(NodoArbol N);
 void post_orden(NodoArbol N);
+NodoArbol arbolAleatorio();
 
-//FUNCIONES DE ARBOLES
-//##################
-//##################
-
-
+// FUNCIONES DE ARBOLES
+// ##################
+// ##################
 
 #endif

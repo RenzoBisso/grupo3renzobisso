@@ -758,36 +758,6 @@ int numero_aleatorio(int min, int max) {
   return rand() % (max - min + 1) + min;
 }
 
-void cargar_nodo_aleatorio(ArbolBinario a, NodoArbol padre, int es_izquierdo) {
-  if (a_es_lleno(a)) return;
-
-  if (numero_aleatorio(0, 1)) {
-    int valor = numero_aleatorio(1, 100);
-    TipoElemento te = te_crear(valor);
-
-    NodoArbol nuevo;
-    if (es_izquierdo) {
-      nuevo = a_conectar_hi(a, padre, te);
-    } else {
-      nuevo = a_conectar_hd(a, padre, te);
-    }
-
-    if (!a_es_lleno(a)) cargar_nodo_aleatorio(a, nuevo, 1);
-    if (!a_es_lleno(a)) cargar_nodo_aleatorio(a, nuevo, 0);
-  }
-}
-
-void cargar_arbol_binario_aleatorio(ArbolBinario a) {
-  if (a_es_lleno(a)) return;
-
-  int valor_raiz = numero_aleatorio(1, 100);
-  TipoElemento te = te_crear(valor_raiz);
-  NodoArbol raiz = a_establecer_raiz(a, te);
-
-  cargar_nodo_aleatorio(a, raiz, 1);
-  cargar_nodo_aleatorio(a, raiz, 0);
-}
-
 void pre_orden(NodoArbol N) {
   TipoElemento X;
   if (N != NULL) {
@@ -838,18 +808,32 @@ void l_mostrar_ej2(Lista l) {
   printf("}\n");
 }
 
-void mostrar_arbol(NodoArbol n, char* prefijo, int Izq){
-    if (n != NULL) {
-        printf("%s", prefijo);
-        printf("%s", Izq ? "|-- " : "L-- ");
-        printf("%i\n", n_recuperar(n)->clave);
+void mostrar_arbol(NodoArbol n, char* prefijo, int Izq) {
+  if (n != NULL) {
+    printf("%s", prefijo);
+    printf("%s", Izq ? "|-- " : "L-- ");
+    printf("%i\n", n_recuperar(n)->clave);
 
-        char prefijoNuevo[100];
-        snprintf(prefijoNuevo, sizeof(prefijoNuevo), "%s%s", prefijo, Izq ? "|   " : "    ");
+    char prefijoNuevo[100];
+    snprintf(prefijoNuevo, sizeof(prefijoNuevo), "%s%s", prefijo,
+             Izq ? "|   " : "    ");
 
-        mostrar_arbol(n_hijoderecho(n), prefijoNuevo, 1);
-        mostrar_arbol(n_hijoizquierdo(n), prefijoNuevo, 0);
-    }
+    mostrar_arbol(n_hijoderecho(n), prefijoNuevo, 1);
+    mostrar_arbol(n_hijoizquierdo(n), prefijoNuevo, 0);
+  }
+}
+void cargar_avl(ArbolAVL v) {
+  while (!avl_es_lleno(v)) {
+    TipoElemento aux = te_crear(numero_aleatorio(0, 20));
+    avl_insertar(v, aux);
+  }
+}
+
+NodoArbol arbolAleatorio() {
+  ArbolAVL avl = avl_crear();
+  cargar_avl(avl);
+  NodoArbol nodoAvl = avl_raiz(avl);
+  return nodoAvl;
 }
 
 // FUNCIONES DE ARBOLES
