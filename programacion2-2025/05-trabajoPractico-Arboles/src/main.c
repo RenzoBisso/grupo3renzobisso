@@ -79,15 +79,7 @@ int main() {
   l_mostrar(lInternos);
     bool mismoNivel = a_ej8_hojasmismonivel(NarioA);
   printf("Mismo nivel: %d", mismoNivel);
-  */
-  // ArbolBinario NarioA = a_crear();
-  // cargar_arbol_binario(NarioA);
-  ArbolAVL avl = avl_crear();
-  cargar_avl(avl);
-  printf("%d\n", avl_cantidad_elementos(avl));
-  NodoArbol nodoAvl = avl_raiz(avl);
-  mostrar_arbol(nodoAvl, "", 1);
-  in_orden(nodoAvl);
+    in_orden(nodoAvl);
   printf("\n arbol abb \n");
   ArbolBinarioBusqueda abb = abb_crear();
   cargar_abb(abb);
@@ -96,5 +88,22 @@ int main() {
   mostrar_arbol(nodoAbb, "", 1);
   in_orden(nodoAbb);
 
+  */
+  // ArbolBinario NarioA = a_crear();
+  // cargar_arbol_binario(NarioA);
+
+  ArbolAVL avl = avl_crear();
+  cargar_avl(avl);
+  printf("%d\n", avl_cantidad_elementos(avl));
+  NodoArbol nodoAvl = avl_raiz(avl);
+  ArbolBinario ab = a_crear();
+  NodoArbol n = a_establecer_raiz(ab, n_recuperar(nodoAvl));
+  printf("\n");
+  crearBinarioAleatorio(ab, nodoAvl, n);
+  mostrar_arbol(n, "", 1);
+  mostrar_arbol(nodoAvl, "", 1);
+  in_orden(nodoAvl);
+  printf("\n");
+  in_orden(n);
   return 0;
 }

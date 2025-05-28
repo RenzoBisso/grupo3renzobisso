@@ -532,20 +532,30 @@ void interfaz5() {
   } while (c == 'n');
 }
 
-void interfaz6(){
-    char c;
-    int opcion;
-    int clave;
-    do  //MENU/////////////////////////////////////////////////
-    {
-        printf("\t\t\t                      +------------------------+\n");
-        printf("\t\t\t                      |       EJERCICIO 8      |\n");
-        printf("\t\t\t                      +------------------------+\n\n\n");
-        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-        printf("\t||DADO UN ARBOL N-ARIO DETERMINAR                                                                     ||\n");
-        printf("\t||----------------------------------------------------------------------------------------------------||\n");
-        printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
-        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+void interfaz6() {
+  char c;
+  int opcion;
+  int clave;
+  do  // MENU/////////////////////////////////////////////////
+  {
+    printf("\t\t\t                      +------------------------+\n");
+    printf("\t\t\t                      |       EJERCICIO 8      |\n");
+    printf("\t\t\t                      +------------------------+\n\n\n");
+    printf(
+        "\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+        ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+    printf(
+        "\t||DADO UN ARBOL N-ARIO DETERMINAR                                   "
+        "                                  ||\n");
+    printf(
+        "\t||------------------------------------------------------------------"
+        "----------------------------------||\n");
+    printf(
+        "\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL          "
+        "                                  ||\n");
+    printf(
+        "\t||------------------------------------------------------------------"
+        "----------------------------------||\n");
 
     Lista l = l_crear();
 
@@ -642,38 +652,44 @@ void interfaz6(){
   } while (c == 'n');
 }
 
-void interfaz7(){
-    char c;
-    int opcion; 
-    do  //MENU/////////////////////////////////////////////////
-    {
-        printf("\t\t\t                      +------------------------+\n");
-        printf("\t\t\t                      |       EJERCICIO 9      |\n");
-        printf("\t\t\t                      +------------------------+\n\n\n");
-        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-        printf("\t||A PARTIR DE UN ARBOL BINARIO LO TRANSFORMA EN ARBOL AVL                                             ||\n");
-        printf("\t||----------------------------------------------------------------------------------------------------||\n");
-        printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
-        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+void interfaz7() {
+  char c;
+  int opcion;
+  do  // MENU/////////////////////////////////////////////////
+  {
+    printf("\t\t\t                      +------------------------+\n");
+    printf("\t\t\t                      |       EJERCICIO 9      |\n");
+    printf("\t\t\t                      +------------------------+\n\n\n");
+    printf(
+        "\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+        ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+    printf(
+        "\t||A PARTIR DE UN ARBOL BINARIO LO TRANSFORMA EN ARBOL AVL           "
+        "                                  ||\n");
+    printf(
+        "\t||------------------------------------------------------------------"
+        "----------------------------------||\n");
+    printf(
+        "\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL          "
+        "                                  ||\n");
+    printf(
+        "\t||------------------------------------------------------------------"
+        "----------------------------------||\n");
 
-        ArbolBinario A = a_crear();
+    ArbolBinario A = a_crear();
 
-        opcion = cargaManualAuto();
-        if(opcion){
-            //LLENAR RANDOM
-        }
-        else{
-            //LLENAR MANUAL
-        }
+    opcion = cargaManualAuto();
+    if (opcion) {
+      // LLENAR RANDOM
+    } else {
+      // LLENAR MANUAL
+    }
 
-        
+    free(A);
 
+    limpiarBuffer();
 
-        free(A);
-
-        limpiarBuffer();
-
-        c = salir();
+    c = salir();
 
     pausa();
 
@@ -706,6 +722,20 @@ void interfaz8() {
     printf(
         "\t||------------------------------------------------------------------"
         "----------------------------------||\n");
+    ArbolBinarioBusqueda abb = abb_crear();
+    ArbolAVL avl = avl_crear();
+    opcion = cargaManualAuto();
+    if (opcion) {
+      cargar_avl(avl);
+      cargar_abb(abb);
+    } else {
+        }
+
+    free(avl);
+
+    limpiarBuffer();
+
+    c = salir();
 
     pausa();
 

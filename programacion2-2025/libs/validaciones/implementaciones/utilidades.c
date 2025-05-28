@@ -830,6 +830,13 @@ void cargar_avl(ArbolAVL v) {
   }
 }
 
+void cargar_avl_manual(ArbolAVL v) {
+  while (!avl_es_lleno(v)) {
+    TipoElemento aux = te_crear(numero_aleatorio(0, 20));
+    avl_insertar(v, aux);
+  }
+}
+
 void cargar_abb(ArbolBinarioBusqueda abb) {
   while (!abb_es_lleno(abb)) {
     TipoElemento aux = te_crear(numero_aleatorio(0, 20));
@@ -850,10 +857,16 @@ NodoArbol arbolAleatorioAbb() {
   return nodoAbb;
 }
 
-void crearBinarioAleatorio(ArbolBinario b, NodoArbol avl, NodoArbol raiz){
-  if(!a_es_rama_nula(avl)){
-    if(n_hijoderecho(avl) != NULL) crearBinarioAleatorio(b, n_hijoderecho(avl), n_hijoderecho(a_conectar_hd(b, raiz, n_hijoderecho(avl))));
-    if(n_hijoizquierdo(avl != NULL)) crearBinarioAleatorio(b, n_hijoizquierdo(avl), n_hijoizquierdo(a_conectar_hi(b, raiz, n_hijoizquierdo(avl))));
+void crearBinarioAleatorio(ArbolBinario b, NodoArbol avl, NodoArbol raiz) {
+  if (!a_es_rama_nula(avl)) {
+    if (n_hijoderecho(avl) != NULL) {
+      NodoArbol x = a_conectar_hd(b, raiz, n_recuperar(n_hijoderecho(avl)));
+      crearBinarioAleatorio(b, n_hijoderecho(avl), x);
+    }
+    if (n_hijoizquierdo(avl) != NULL) {
+      NodoArbol y = a_conectar_hi(b, raiz, n_recuperar(n_hijoizquierdo(avl)));
+      crearBinarioAleatorio(b, n_hijoizquierdo(avl), y);
+    }
   }
 }
 
