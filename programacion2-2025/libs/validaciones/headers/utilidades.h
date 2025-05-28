@@ -132,6 +132,8 @@ void c_mostrar_valor(Cola c);
 
 void c_mostrar_bien(Cola c);
 
+bool cexisteclave(Cola c, int clave);
+
 // FUNCIONES DE COLAS
 // ##################
 // ##################
