@@ -18,6 +18,31 @@ void limpiar_pantalla() {
 #endif
 }
 
+int leer_entero_no_negativo() {
+  char buffer[100];
+  int valor;
+  char extra;  // para verificar que no haya caracteres extras
+
+  while (1) {
+    if (!fgets(buffer, sizeof(buffer), stdin)) {
+      // error o EOF
+      printf("Error leyendo la entrada.\n");
+      continue;
+    }
+
+    // Intentamos escanear un entero y asegurarnos que no haya más caracteres
+    if (sscanf(buffer, "%d %c", &valor, &extra) == 1) {
+      if (valor >= 0) {
+        return valor;
+      } else {
+        printf("Error: el valor debe ser mayor o igual a 0.\n");
+      }
+    } else {
+      printf("Entrada inválida. Por favor ingrese un número entero >= 0.\n");
+    }
+  }
+}
+
 void limpiarBuffer() {
   char c;
   while ((c = getchar()) != '\n' && c != EOF);
@@ -668,17 +693,41 @@ void l_mostrar_con_nodo(Lista l) {
   }
 }
 
+char leer_opcion_sn() {
+  char buffer[10];
+  char opcion;
+  printf("solo obtiene el primer caracter\n");
+  while (1) {
+    if (!fgets(buffer, sizeof(buffer), stdin)) {
+      printf("Error leyendo la entrada.\n");
+      continue;
+    }
+    int i = 0;
+    while (buffer[i] && isspace(buffer[i])) i++;
+    opcion = tolower(buffer[i]);
+    if (opcion == 's' || opcion == 'n') {
+      return opcion;
+    }
+    printf("Entrada inválida. Por favor ingrese 's' o 'n'.\n");
+  }
+}
+
 void cargar_nodo(ArbolBinario a, NodoArbol padre, int es_izquierdo) {
   int valor;
   char opcion;
 
+  if (a_es_lleno(a)) {
+    return;
+  }
+
   printf("¿Desea agregar un nodo %s de %d? (s/n): ",
          es_izquierdo ? "izquierdo" : "derecho", n_recuperar(padre)->clave);
-  scanf(" %c", &opcion);
+  opcion = leer_opcion_sn();
 
-  if (opcion == 's' || opcion == 'S') {
-    printf("Ingrese el valor del nodo: ");
-    scanf("%d", &valor);
+  if (opcion == 's') {
+    printf("Ingrese el valor del nodo (>= 0): ");
+    valor = leer_entero_no_negativo();
+
     TipoElemento te = te_crear(valor);
 
     NodoArbol nuevo;
@@ -695,8 +744,8 @@ void cargar_nodo(ArbolBinario a, NodoArbol padre, int es_izquierdo) {
 
 void cargar_arbol_binario(ArbolBinario a) {
   int valor;
-  printf("Ingrese el valor de la raíz: ");
-  scanf("%d", &valor);
+  printf("Ingrese el valor de la raíz (>= 0): ");
+  valor = leer_entero_no_negativo();
 
   TipoElemento te = te_crear(valor);
   NodoArbol raiz = a_establecer_raiz(a, te);
