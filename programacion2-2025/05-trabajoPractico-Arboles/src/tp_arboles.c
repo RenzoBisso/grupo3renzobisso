@@ -451,7 +451,7 @@ bool a_ej7_equivalente(ArbolBinario A, ArbolBinario B){
     return a_ej7_equivalenteR(nA,nB);
 }
 
-//8
+//8.1
 int a_ej8_alturaR(NodoArbol nodo){
 
     if(nodo==NULL){
@@ -478,6 +478,7 @@ int a_ej8_altura(ArbolBinario A){
     return a_ej8_alturaR(nodo);
 }
 
+//8.2
 int a_ej8_nivelR(NodoArbol nodo, int clave, int nivelActual) {
     if (nodo == NULL) {
         return 0;
@@ -507,6 +508,7 @@ int a_ej8_nivel(ArbolBinario A, int clave) {
     return a_ej8_nivelR(a_raiz(A), clave, 0); 
 }
 
+//8.3
 void a_ej8_internosR(NodoArbol nodo,Lista lInternos){
 
     if(nodo==NULL){
@@ -535,6 +537,7 @@ Lista a_ej8_internos(ArbolBinario A){
     return lInternos;
 }
 
+//8.4
 bool a_ej8_hojasmismonivelR(NodoArbol nodo, ArbolBinario A, int* aux) {
     if (nodo == NULL) return true;
 
