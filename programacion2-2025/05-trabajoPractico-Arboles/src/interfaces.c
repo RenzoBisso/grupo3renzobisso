@@ -717,20 +717,14 @@ void interfaz8() {
         "\t||------------------------------------------------------------------"
         "----------------------------------||\n");
     printf(
-        "\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL          "
+        "\t||"
         "                                  ||\n");
     printf(
         "\t||------------------------------------------------------------------"
         "----------------------------------||\n");
     ArbolBinarioBusqueda abb = abb_crear();
     ArbolAVL avl = avl_crear();
-    opcion = cargaManualAuto();
-    if (opcion) {
-      cargar_avl(avl);
-      cargar_abb(abb);
-    } else {
-        }
-
+    
     free(avl);
 
     limpiarBuffer();

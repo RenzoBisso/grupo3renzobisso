@@ -100,10 +100,10 @@ algorítmica.
 // Primero llamamos para construir el AVL
 ArbolAVL a_ej9_construiravl(ArbolBinario A);
 
-// Luego con el resultado de la funcion anterior llamamos a una funcion para que nos retorne la diferencia de las alturas 
-// comparadas como Altura(ArbolBinario) - Altura(ArbolAVL).
+// Luego con el resultado de la funcion anterior llamamos a una funcion para que
+// nos retorne la diferencia de las alturas comparadas como Altura(ArbolBinario)
+// - Altura(ArbolAVL).
 int a_ej9_diferenciaalturas(ArbolBinario A, ArbolAVL AVL);
-
 
 /*
 10.	Dada una serie de números generados al azar, cargar la misma serie en un
@@ -117,8 +117,8 @@ Lista a_ej10_generarlistaclaves(int cantidadclavesagenerar, int valorminimo,
                                 int valormaximo);
 
 // Ahora se la paso a la funcion que crea los 2 arboles
-// ArbolBinarioBusqueda a_ej10_crearABB(Lista L);
-// ArbolAVL a_ej10_crearAVL(Lista L);
+ArbolBinarioBusqueda a_ej10_crearABB(Lista L);
+ArbolAVL a_ej10_crearAVL(Lista L);
 
 // Ahora llamos a la funcion que compara las alturas.  La comparacion es
 // Altura(ABB) - Altura(AVL).
