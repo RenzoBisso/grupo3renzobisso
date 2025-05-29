@@ -16,7 +16,7 @@ void interfaz2(){
        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
        printf("\t||DADO UN ARBOL BINARIO NO VACIO DETERMINAR                                                           ||\n");
        printf("\t||----------------------------------------------------------------------------------------------------||\n");
-       printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
+       printf("\t||CARGA MANUAL ARBOL BINARIO:                                                                         ||\n");
        printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
        ArbolBinario A = a_crear();
@@ -107,7 +107,7 @@ void interfaz3() {
        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
        printf("\t||PARA UN NODO DE UN ARBOL BINARIO DETERMINAR                                                         ||\n");
        printf("\t||----------------------------------------------------------------------------------------------------||\n");
-       printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
+       printf("\t||CARGA MANUAL ARBOL BINARIO                                                                          ||\n");
        printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
        ArbolBinario A = a_crear();
@@ -116,7 +116,6 @@ void interfaz3() {
 
        int nivel=0;
 
-       
        cargar_arbol_binario(A);
        
 
@@ -324,24 +323,21 @@ void interfaz5() {
        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
        printf("\t||DETERMINAR SI DOS ARBOLES BINARIOS SON EQUIVALENTES                                                 ||\n");
        printf("\t||----------------------------------------------------------------------------------------------------||\n");
+       printf("\t||CARGA MANUAL (ARBOL A)                                                                              ||\n");
+       printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
 
        ArbolBinario A = a_crear();
 
        cargar_arbol_binario(A);
        
        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-       printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL (ARBOL B)                                  ||\n");
+       printf("\t||CARGA MANUAL (ARBOL B)                                                                              ||\n");
        printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
        ArbolBinario B = a_crear();
 
-       opcion = cargaManualAuto();
-       if (opcion) {
-       // LLENAR RANDOM
-       } else {
-       // LLENAR MANUAL
-              cargar_arbol_binario(A);
-       }
+       cargar_arbol_binario(B);
 
        printf("\t||\n");
        if(a_ej7_equivalente(A, B)){
