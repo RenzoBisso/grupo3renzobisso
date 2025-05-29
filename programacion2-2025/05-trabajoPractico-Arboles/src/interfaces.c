@@ -576,8 +576,10 @@ void interfaz8() {
               pedirNumeroPos(&cantidaclavesagenerar);
        }
 
+       Lista l = a_ej10_comparacionarboles(N_repeticiones, valorminimo, valormaximo, cantidaclavesagenerar);
+
        printf("\t||\n");
-       printf("\t|| LISTA CON LA COMPARACION DE ALTURAS (ABB - AVL): "); l_mostrar(a_ej10_comparacionarboles(N_repeticiones, valorminimo, valormaximo, cantidaclavesagenerar));
+       printf("\t|| LISTA CON LA COMPARACION DE ALTURAS (ABB - AVL): "); l_mostrar(l);
        printf("\t||\n");
 
        printf("\t|| CONCLUSION: \n");
