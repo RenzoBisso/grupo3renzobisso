@@ -667,14 +667,12 @@ int a_ej10_difalturas(ArbolBinarioBusqueda ABB, ArbolAVL AVL) {
     return (a - b);
 }
 
-Lista a_ej10_comparacionarboles(int N_repeticiones, int valorminimo,
-                                int valormaximo, int cantidaclavesagenerar) {
+Lista a_ej10_comparacionarboles(int N_repeticiones, int valorminimo,int valormaximo, int cantidaclavesagenerar) {
     int count = 0;
 
     Lista lComparaciones = l_crear();
     while (count < N_repeticiones) {
-        Lista lClaves = a_ej10_generarlistaclaves(cantidaclavesagenerar,
-                                                  valorminimo, valormaximo);
+        Lista lClaves = a_ej10_generarlistaclaves(cantidaclavesagenerar, valorminimo, valormaximo);
 
         ArbolBinarioBusqueda abb = a_ej10_crearABB(lClaves);
 

@@ -564,7 +564,6 @@ void interfaz8() {
        printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
        printf("\t|| INGRESE EL NUMERO DE REPETICIONES: \n");
-       limpiarBuffer();
        pedirNumeroPos(&N_repeticiones);
        
        printf("\t|| INGRESE VALOR MINIMO: \n");
