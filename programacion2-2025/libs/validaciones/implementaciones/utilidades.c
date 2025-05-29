@@ -861,18 +861,29 @@ NodoArbol nodoAleatorio() {
   return nodoAvl;
 }
 
-void crearBinarioAleatorio(ArbolBinario b, NodoArbol avl, NodoArbol raiz){
-  if(!a_es_rama_nula(avl)){
-    if(n_hijoderecho(avl) != NULL){
-      NodoArbol x = a_conectar_hd(b, raiz, n_recuperar(n_hijoderecho(avl)));
-      crearBinarioAleatorio(b, n_hijoderecho(avl), x);
+void crearBinarioAleatorio(ArbolBinario b, NodoArbol aleatorio, NodoArbol vacio){
+  if(!a_es_rama_nula(aleatorio)){
+    if(n_hijoderecho(aleatorio) != NULL){
+      NodoArbol x = a_conectar_hd(b, vacio, n_recuperar(n_hijoderecho(aleatorio)));
+      crearBinarioAleatorio(b, n_hijoderecho(aleatorio), x);
     } 
-    if(n_hijoizquierdo(avl) != NULL){
-      NodoArbol y = a_conectar_hi(b, raiz, n_recuperar(n_hijoizquierdo(avl)));
-      crearBinarioAleatorio(b, n_hijoizquierdo(avl), y);
+    if(n_hijoizquierdo(aleatorio) != NULL){
+      NodoArbol y = a_conectar_hi(b, vacio, n_recuperar(n_hijoizquierdo(aleatorio)));
+      crearBinarioAleatorio(b, n_hijoizquierdo(aleatorio), y);
     } 
   }
 }
+
+ArbolBinario binarioAleatorio(){
+  ArbolBinario b = a_crear();
+  NodoArbol n = n_crear(te_crear(0));
+
+  crearBinarioAleatorio(b, nodoAleatorio(), n);
+
+  return b;
+}
+
+
 
 int maximo(int a, int b) {
   return (a > b) ? a : b;
