@@ -874,8 +874,9 @@ void crearBinarioAleatorio(ArbolBinario b, NodoArbol aleatorio, NodoArbol vacio)
 ArbolBinario binarioAleatorio(){
   ArbolBinario b = a_crear();
   NodoArbol n = n_crear(te_crear(0));
+  NodoArbol rand = nodoAleatorio();
 
-  crearBinarioAleatorio(b, nodoAleatorio(), n);
+  crearBinarioAleatorio(b, rand, n);
 
   return b;
 }

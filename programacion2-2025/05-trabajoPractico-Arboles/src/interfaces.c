@@ -410,20 +410,14 @@ void interfaz6() {
        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
        printf("\t||DADO UN ARBOL N-ARIO DETERMINAR                                                                     ||\n");
        printf("\t||----------------------------------------------------------------------------------------------------||\n");
-       printf("\t||INTRODUZCA 1 PARA CARGA AUTOMATICA Y 0 PARA CARGA MANUAL                                            ||\n");
-       printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
        Lista l = l_crear();
 
        ArbolBinario A = a_crear();
 
-       opcion = cargaManualAuto();
-       limpiarBuffer();
-       if(opcion){
-       // LLENAR RANDOM
-       }else{
-       // LLENAR MANUAL
-       }
+       cargarNArio(A, NULL, 0);
+       
+       mostrar_arbol(a_raiz(A), "", 1);
 
        // O1
        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
