@@ -4,7 +4,7 @@
 #include "..\headers\interfaz.h"
 #include "..\headers\tp_arboles.h"
 
-void interfaz2() {
+void interfaz2(){
     char c;
     int opcion;
     int clave;
@@ -24,6 +24,7 @@ void interfaz2() {
        Lista l = l_crear();
 
        opcion = cargaManualAuto();
+       limpiarBuffer();
        if (opcion) {
        // LLENAR RANDOM
        } else {
@@ -120,6 +121,7 @@ void interfaz3() {
        Lista l = l_crear();
 
        opcion = cargaManualAuto();
+       limpiarBuffer();
        if (opcion) {
        // LLENAR RANDOM
        } else {
@@ -238,6 +240,7 @@ void interfaz4() {
        Lista l = l_crear();
 
        opcion = cargaManualAuto();
+       limpiarBuffer();
        if(opcion){
               // LLENAR RANDOM
        }
@@ -350,6 +353,7 @@ void interfaz5() {
        ArbolBinario A = a_crear();
 
        opcion = cargaManualAuto();
+       limpiarBuffer();
        if (opcion) {
        // LLENAR RANDOM
        } else {
@@ -411,6 +415,7 @@ void interfaz6() {
        ArbolBinario A = a_crear();
 
        opcion = cargaManualAuto();
+       limpiarBuffer();
        if(opcion){
        // LLENAR RANDOM
        }else{
@@ -492,6 +497,7 @@ void interfaz7() {
        ArbolBinario A = a_crear();
 
        opcion = cargaManualAuto();
+       limpiarBuffer();
        if(opcion){
        // LLENAR RANDOM
        }

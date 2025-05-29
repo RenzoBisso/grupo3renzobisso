@@ -38,7 +38,7 @@ int leer_entero_no_negativo() {
         printf("Error: el valor debe ser mayor o igual a 0.\n");
       }
     } else {
-      printf("Entrada inválida. Por favor ingrese un número entero >= 0.\n");
+      printf("Entrada invalida. Por favor ingrese un numero entero >= 0.\n");
     }
   }
 }
@@ -732,7 +732,7 @@ char leer_opcion_sn() {
     if (opcion == 's' || opcion == 'n') {
       return opcion;
     }
-    printf("Entrada inválida. Por favor ingrese 's' o 'n'.\n");
+    printf("Entrada invalida. Por favor ingrese 's' o 'n'.\n");
   }
 }
 
@@ -768,7 +768,7 @@ void cargar_nodo(ArbolBinario a, NodoArbol padre, int es_izquierdo) {
 
 void cargar_arbol_binario(ArbolBinario a) {
   int valor;
-  printf("Ingrese el valor de la raíz (>= 0): ");
+  printf("Ingrese el valor de la raiz (>= 0): ");
   valor = leer_entero_no_negativo();
 
   TipoElemento te = te_crear(valor);
