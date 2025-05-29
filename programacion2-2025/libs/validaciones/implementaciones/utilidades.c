@@ -933,7 +933,7 @@ void cargarNArio(ArbolBinario a, NodoArbol p, int aux){
   if(!a_es_lleno(a)){
     limpiarBuffer();
     c = pedirNodo();
-    if(c == 'n'){
+    if(c == 'y'){
       limpiarBuffer();
       pedirNumero(&clave);
       if(aux == -1) n = a_conectar_hi(a, p, te_crear(clave));
