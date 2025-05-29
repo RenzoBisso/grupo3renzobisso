@@ -164,7 +164,7 @@ int maximo(int a, int b);
 int alturaNodo(NodoArbol na);
 
 void cargarNArio(ArbolBinario a, NodoArbol p, int aux);
-void pedirNodo();
+char pedirNodo();
 // FUNCIONES DE ARBOLES
 // ##################
 // ##################
