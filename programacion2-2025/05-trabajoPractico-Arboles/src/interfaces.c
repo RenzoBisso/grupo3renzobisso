@@ -105,6 +105,7 @@ void interfaz3() {
     char c;
     int opcion;
     int clave;
+    char repetirArbol;
     do  // MENU/////////////////////////////////////////////////
     {
        printf("\t\t\t                      +------------------------+\n");
@@ -120,6 +121,8 @@ void interfaz3() {
 
        Lista l = l_crear();
 
+       int nivel=0;
+
        opcion = cargaManualAuto();
        limpiarBuffer();
        if (opcion) {
@@ -129,84 +132,84 @@ void interfaz3() {
               cargar_arbol_binario(A);
        }
 
+       do{
+              printf("\t|| INGRESE LA CLAVE DEL NODO A TRABAJAR \n");
+              pedirNumero(&clave);
        // A
-       printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-       printf("\t||A: RETORNA LA CLAVE DEL NODO PADRE/RAIZ                                                             ||\n");
-       printf("\t||----------------------------------------------------------------------------------------------------||\n");
+              printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+              printf("\t||A: RETORNA LA CLAVE DEL NODO PADRE/RAIZ                                                             ||\n");
+              printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
-       printf("\t|| INGRESE LA CLAVE DEL NODO HIJO \n");
-       pedirNumero(&clave);
 
-       printf("\t||\n");
-       printf("\t|| CLAVE: %d\n", a_ej3_clavepadre(A, clave));
 
-       // B
-       printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-       printf("\t||B: LISTA LOS NODOS HOJA (CLAVE)                                                                     ||\n");
-       printf("\t||----------------------------------------------------------------------------------------------------||\n");
+              printf("\t||\n");
+              printf("\t|| CLAVE: %d\n", a_ej3_clavepadre(A, clave));
 
-       printf("\t|| INGRESE LA CLAVE DEL NODO PADRE \n");
-       pedirNumero(&clave);
+              // B
+              printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+              printf("\t||B: LISTA LOS NODOS HOJA (CLAVE)                                                                     ||\n");
+              printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
-       l = a_ej3_hijos(A, clave);
 
-       printf("\t||\n");
-       printf("\t|| ");
-       l_mostrar(l);
-       printf("\t||\n");
 
-       free(l);
+              l = a_ej3_hijos(A, clave);
 
-       // C
-       printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-       printf("\t||C: RETORNA EL NODO HERMANO DE UNA CLAVE                                                             ||\n");
-       printf("\t||----------------------------------------------------------------------------------------------------||\n");
+              printf("\t||\n");
+              printf("\t|| ");
+              l_mostrar(l);
+              printf("\t||\n");
 
-       printf("\t|| INGRESE EL NODO HERMANO \n");
-       pedirNumero(&clave);
+              free(l);
 
-       printf("\t||\n");
-       printf("\t|| NODO HERMANO DE %d: [%d] \n", clave,a_ej3_hermano(A, clave));
-       printf("\t||\n");
+              // C
+              printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+              printf("\t||C: RETORNA EL NODO HERMANO DE UNA CLAVE                                                             ||\n");
+              printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
-       // D
-       printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-       printf("\t||D: CALCULA EL NIVEL EN EL QUE SE ENCUENTRA UN NODO                                                  ||\n");
-       printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
-       printf("\t|| INGRESE LA CLAVE DEL NODO \n");
-       pedirNumero(&clave);
 
-       printf("\t||\n");
-       printf("\t|| EL NODO CON LA CLAVE '%d' SE ENCUENTRA EN EL NIVEL %d \n",clave, a_ej3_nivel(A, clave));
-       printf("\t||\n");
+              printf("\t||\n");
+              printf("\t|| NODO HERMANO DE %d: [%d] \n", clave,a_ej3_hermano(A, clave));
+              printf("\t||\n");
 
-       // E
-       printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-       printf("\t||E: CALCULA LA ALTURA DE LA RAMA DE UN NODO                                                          ||\n");
-       printf("\t||----------------------------------------------------------------------------------------------------||\n");
+              // D
+              printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+              printf("\t||D: CALCULA EL NIVEL EN EL QUE SE ENCUENTRA UN NODO                                                  ||\n");
+              printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
-       printf("\t|| INGRESE LA CLAVE DEL NODO \n");
-       pedirNumero(&clave);
+              nivel=a_ej3_nivel(A, clave);
 
-       printf("\t||\n");
-       printf("\t|| LA ALTURA DE LA RAMA DEL NODO CON LA CLAVE '%d' ES: [%d] \n",clave, a_ej3_alturarama(A, clave));
-       printf("\t||\n");
+              printf("\t||\n");
+              printf("\t|| EL NODO CON LA CLAVE '%d' SE ENCUENTRA EN EL NIVEL %d \n",clave, nivel);
+              printf("\t||\n");
 
-       // F
-       printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-       printf("\t||F: LISTA TODOS LOS NODOS EN EL MISMO NIVEL (CLAVE)                                                  ||\n");
-       printf("\t||----------------------------------------------------------------------------------------------------||\n");
+              // E
+              printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+              printf("\t||E: CALCULA LA ALTURA DE LA RAMA DE UN NODO                                                          ||\n");
+              printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
-       printf("\t|| INGRESE EL NIVEL \n");
-       pedirNumero(&clave);
 
-       l = a_ej3_clavesmismonivel(A, clave);
+              printf("\t||\n");
+              printf("\t|| LA ALTURA DE LA RAMA DEL NODO CON LA CLAVE '%d' ES: [%d] \n",clave, a_ej3_alturarama(A, clave));
+              printf("\t||\n");
 
-       printf("\t||\n");
-       printf("\t|| ");
-       l_mostrar(l);
-       printf("\t||\n");
+              // F
+              printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+              printf("\t||F: LISTA TODOS LOS NODOS EN EL MISMO NIVEL (CLAVE)                                                  ||\n");
+              printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+              l = a_ej3_clavesmismonivel(A, nivel);
+
+              printf("\t||\n");
+              printf("\t|| ");
+              l_mostrar(l);
+              printf("\t||\n");
+
+
+              printf("Repetir ejercicio con el mismo arbol?\n");
+              repetirArbol = salir();
+
+       }while(repetirArbol == 'n');
 
        free(l);
        free(A);
