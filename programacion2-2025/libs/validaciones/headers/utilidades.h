@@ -162,6 +162,8 @@ void cargar_avl_manual(ArbolAVL v);
 void lRandomSinRepetir(Lista l, int min, int max, int cantidad, int count);
 int maximo(int a, int b);
 int alturaNodo(NodoArbol na);
+
+void cargarNArio(ArbolBinario a, NodoArbol p, int aux);
 // FUNCIONES DE ARBOLES
 // ##################
 // ##################
