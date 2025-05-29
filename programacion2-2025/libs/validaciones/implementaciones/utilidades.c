@@ -875,8 +875,9 @@ ArbolBinario binarioAleatorio(){
   ArbolBinario b = a_crear();
   NodoArbol n = n_crear(te_crear(0));
   NodoArbol rand = nodoAleatorio();
+  NodoArbol raiz = a_establecer_raiz(b, n_recuperar(rand));
 
-  crearBinarioAleatorio(b, rand, n);
+  crearBinarioAleatorio(b, raiz, n);
 
   return b;
 }
