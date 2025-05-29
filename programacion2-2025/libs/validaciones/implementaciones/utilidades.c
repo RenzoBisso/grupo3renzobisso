@@ -931,8 +931,10 @@ void cargarNArio(ArbolBinario a, NodoArbol p, int aux){
   NodoArbol n;
 
   if(!a_es_lleno(a)){
-    c = salir();
+    limpiarBuffer();
+    c = pedirNodo();
     if(c == 'n'){
+      limpiarBuffer();
       pedirNumero(&clave);
       if(aux == -1) n = a_conectar_hi(a, p, te_crear(clave));
       else if(aux == 1) n = a_conectar_hd(a, p, te_crear(clave));
@@ -941,6 +943,25 @@ void cargarNArio(ArbolBinario a, NodoArbol p, int aux){
       cargarNArio(a, n, 1);
     }
   }
+}
+
+char pedirNodo(){
+  char c;
+  char min;
+  do {
+    printf("\t|| DESEA INGRESAR UN NODO? Y/N: ");
+    c = getchar();
+    min = tolower(c);
+
+    limpiarBuffer();  // Limpia lo que quedó después del getchar
+
+    if (min != 'n' && min != 'y') {
+      printf("\nError, ingrese un dato valido.");
+    }
+
+  } while (min != 'n' && min != 'y');
+
+  return min;
 }
 
 
