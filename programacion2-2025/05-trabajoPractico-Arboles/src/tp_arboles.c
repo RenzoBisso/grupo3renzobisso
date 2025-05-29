@@ -673,7 +673,6 @@ Lista a_ej10_comparacionarboles(int N_repeticiones, int valorminimo,int valormax
     Lista lComparaciones = l_crear();
 
     while (count < N_repeticiones) {
-
         Lista lClaves = a_ej10_generarlistaclaves(cantidaclavesagenerar, valorminimo, valormaximo);
 
         ArbolBinarioBusqueda abb = a_ej10_crearABB(lClaves);

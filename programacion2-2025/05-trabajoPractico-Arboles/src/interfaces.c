@@ -563,8 +563,7 @@ void interfaz8() {
        printf("\t||DADA UNA SERIE DE NUMEROS AL AZAR, CREA UN ABB Y UN AVL                                             ||\n");
        printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
-       printf("\t|| INGRESE EL NUMERO DE REPETICIONES: ");
-       limpiarBuffer();
+       printf("\t|| INGRESE EL NUMERO DE REPETICIONES: \n");
        pedirNumeroPos(&N_repeticiones);
        
        printf("\t|| INGRESE VALOR MINIMO: ");
