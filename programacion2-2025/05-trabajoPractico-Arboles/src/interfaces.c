@@ -563,32 +563,32 @@ void interfaz8() {
        printf("\t||DADA UNA SERIE DE NUMEROS AL AZAR, CREA UN ABB Y UN AVL                                             ||\n");
        printf("\t||----------------------------------------------------------------------------------------------------||\n");
 
-       printf("\t|| INGRESE EL NUMERO DE REPETICIONES: \n");
+       printf("\t|| INGRESE EL NUMERO DE REPETICIONES: ");
        limpiarBuffer();
        pedirNumeroPos(&N_repeticiones);
        
-       printf("\t|| INGRESE VALOR MINIMO: \n");
+       printf("\t|| INGRESE VALOR MINIMO: ");
        limpiarBuffer();
        pedirNumeroPos(&valorminimo);
        
-       printf("\t|| INGRESE VALOR MAXIMO: \n");
+       printf("\t|| INGRESE VALOR MAXIMO: ");
        limpiarBuffer();
        pedirNumeroPos(&valormaximo);
        
        while(valorminimo > valormaximo){
               printf("\t|| ENTRADA INVALIDA, MAXIMO NO PUEDE SER MENOR QUE MINIMO\n");
-              printf("\t|| INGRESE VALOR MAXIMO: \n");
+              printf("\t|| INGRESE VALOR MAXIMO: ");
               limpiarBuffer();
               pedirNumeroPos(&valormaximo);
        }
 
-       printf("\t|| INGRESE CANTIDAD DE CLAVES A GENERAR: \n");
+       printf("\t|| INGRESE CANTIDAD DE CLAVES A GENERAR: ");
        limpiarBuffer();
        pedirNumeroPos(&cantidaclavesagenerar);
 
        while(cantidaclavesagenerar > (valormaximo + valorminimo)){
               printf("\t|| ENTRADA INVALIDA, LA CANTIDAD DE CLAVES A GENERAR EXCEDE EL RANGO DE LAS CLAVES\n");
-              printf("\t|| INGRESE CANTIDAD DE CLAVES A GENERAR: \n");
+              printf("\t|| INGRESE CANTIDAD DE CLAVES A GENERAR: ");
               limpiarBuffer();
               pedirNumeroPos(&cantidaclavesagenerar);
        }
