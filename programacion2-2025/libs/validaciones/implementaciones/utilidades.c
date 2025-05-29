@@ -150,9 +150,7 @@ int cargaManualAuto() {  // 0 manual, 1 azar
     }
 
   } while (bandera);
-  printf(
-      "\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-      ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+  printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
   return opcion;
 }
 // FUNCIONES GENERALES
@@ -744,8 +742,7 @@ void cargar_nodo(ArbolBinario a, NodoArbol padre, int es_izquierdo) {
     return;
   }
 
-  printf("¿Desea agregar un nodo %s de %d? (s/n): ",
-         es_izquierdo ? "izquierdo" : "derecho", n_recuperar(padre)->clave);
+  printf("¿Desea agregar un nodo %s de %d? (s/n): ", es_izquierdo ? "izquierdo" : "derecho", n_recuperar(padre)->clave);
   opcion = leer_opcion_sn();
 
   if (opcion == 's') {
@@ -925,6 +922,26 @@ void pedirNumeroPos(int* valor) {
     }
   }
 }
+
+void cargarNArio(ArbolBinario a, NodoArbol p, int aux){
+  char c;
+  int clave;
+  NodoArbol n;
+
+  if(!a_es_lleno(a)){
+    c = salir();
+    if(c == 'n'){
+      pedirNumero(&clave);
+      if(aux == -1) n = a_conectar_hi(a, p, te_crear(clave));
+      else if(aux == 1) n = a_conectar_hd(a, p, te_crear(clave));
+      else n = a_establecer_raiz(a, te_crear(clave));
+      cargarNArio(a, n, -1);
+      cargarNArio(a, n, 1);
+    }
+  }
+}
+
+
 
 // FUNCIONES DE ARBOLES
 // ####################

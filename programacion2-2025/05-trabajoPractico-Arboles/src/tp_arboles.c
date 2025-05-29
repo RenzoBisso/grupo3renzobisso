@@ -671,6 +671,7 @@ Lista a_ej10_comparacionarboles(int N_repeticiones, int valorminimo,int valormax
     int count = 0;
 
     Lista lComparaciones = l_crear();
+
     while (count < N_repeticiones) {
         Lista lClaves = a_ej10_generarlistaclaves(cantidaclavesagenerar, valorminimo, valormaximo);
 
@@ -679,6 +680,7 @@ Lista a_ej10_comparacionarboles(int N_repeticiones, int valorminimo,int valormax
         ArbolAVL avl = a_ej10_crearAVL(lClaves);
 
         TipoElemento aux = te_crear(a_ej10_difalturas(abb, avl));
+        
         l_agregar(lComparaciones, aux);
         count++;
     }
