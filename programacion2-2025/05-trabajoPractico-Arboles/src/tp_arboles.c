@@ -609,7 +609,7 @@ ArbolBinarioBusqueda a_ej10_crearABB(Lista L) {
     TipoElemento X = te_crear(0);
     Iterador iter = iterador(L);
 
-    while (!abb_es_lleno(abb) || !hay_siguiente(iter)) {
+    while (!abb_es_lleno(abb) && !hay_siguiente(iter)) {
         X = siguiente(iter);
         abb_insertar(abb, X);
     }
@@ -623,7 +623,7 @@ ArbolAVL a_ej10_crearAVL(Lista L) {
     TipoElemento X = te_crear(0);
     Iterador iter = iterador(L);
 
-    while (!avl_es_lleno(avl) || !hay_siguiente(iter)) {
+    while (!avl_es_lleno(avl) && !hay_siguiente(iter)) {
         X = siguiente(iter);
         avl_insertar(avl, X);
     }
@@ -680,7 +680,7 @@ Lista a_ej10_comparacionarboles(int N_repeticiones, int valorminimo,int valormax
         ArbolAVL avl = a_ej10_crearAVL(lClaves);
 
         TipoElemento aux = te_crear(a_ej10_difalturas(abb, avl));
-        
+
         l_agregar(lComparaciones, aux);
         count++;
     }
