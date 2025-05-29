@@ -153,7 +153,7 @@ void cargar_avl(ArbolAVL v);
 void pre_orden(NodoArbol N);
 void in_orden(NodoArbol N);
 void post_orden(NodoArbol N);
-NodoArbol arbolAleatorio();
+NodoArbol nodoAleatorio();
 void cargar_abb(ArbolBinarioBusqueda abb);
 void crearBinarioAleatorio(ArbolBinario b, NodoArbol avl, NodoArbol raiz);
 void cargar_abb_manual(ArbolBinarioBusqueda abb);

@@ -854,7 +854,7 @@ void cargar_avl(ArbolAVL v) {
   }
 }
 
-NodoArbol arbolAleatorio() {
+NodoArbol nodoAleatorio() {
   ArbolAVL avl = avl_crear();
   cargar_avl(avl);
   NodoArbol nodoAvl = avl_raiz(avl);
