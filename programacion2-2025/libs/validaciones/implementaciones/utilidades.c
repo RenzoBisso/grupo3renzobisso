@@ -7,9 +7,9 @@
 
 // EXPANDIR = Ctrl + K seguido de Ctrl + J
 
-// ###################
-// ###################
 // FUNCIONES GENERALES
+// ###################
+// ###################
 void limpiar_pantalla() {
 #ifdef _WIN32
   system("cls");
@@ -58,13 +58,11 @@ void pausa() {
   limpiar_pantalla();
 }
 
-int es_decimal(
-    double num) {  // Funcion para saber si un numero tiene parte decimal
+int es_decimal(double num) {  // Funcion para saber si un numero tiene parte decimal
   double parte_entera;
   double parte_decimal = modf(num, &parte_entera);
 
-  return parte_decimal !=
-         0.0;  // Retorna 1 si tiene parte decimal, 0 si es entero
+  return parte_decimal != 0.0;  // Retorna 1 si tiene parte decimal, 0 si es entero
 }
 
 int esEntero(double num) { return floor(num) == num; }
@@ -153,9 +151,40 @@ int cargaManualAuto() {  // 0 manual, 1 azar
   printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
   return opcion;
 }
+
+int maximo(int a, int b) {
+  return (a > b) ? a : b;
+}
+
+int numero_aleatorio(int min, int max) {
+  return rand() % (max - min + 1) + min;
+}
+
+void pedirNumeroPos(int* valor) { //pedriNumero PERO SOLO POSITIVOS
+  bool flag = true;
+
+  while (flag) {
+    printf("\t||Ingrese un numero: ");
+
+    
+    if (scanf("%d", valor) != 1) {
+      if(valor < 0){
+        printf("\t||Entrada invalida.\n");
+        while (getchar() != '\n');
+      }
+      printf("\t||Entrada invalida.\n");
+      while (getchar() != '\n');
+    } else {
+      flag = false;
+    }
+  }
+}
 // FUNCIONES GENERALES
 // ###################
 // ###################
+
+
+
 
 // FUNCIONES DE LISTAS
 // ###################
@@ -297,9 +326,22 @@ void cargarLista(Lista l, int n, int count) {
   }
   return cargarLista(l, n, count + 1);
 }
+
+void lRandomSinRepetir(Lista l, int min, int max, int cantidad, int count){
+  while(count != cantidad){
+    int clave = rand() % (max-min+1)+min;
+    if(l_buscar(l, clave) == NULL){
+      l_agregar(l, te_crear(clave));
+      count++;
+    }
+  }
+}
 // FUNCIONES DE LISTAS
 // ###################
 // ###################
+
+
+
 
 // FUNCIONES DE PILAS
 // ##################
@@ -443,6 +485,9 @@ void interfazCargaPila(Pila p1) {
 // FUNCIONES DE PILAS
 // ##################
 // ##################
+
+
+
 
 // FUNCIONES DE COLAS
 // ##################
@@ -694,15 +739,17 @@ void c_mostrar_bien(Cola c) {
 
   printf("\n");
 }
-
 // FUNCIONES DE COLAS
 // ##################
 // ##################
 
+
+
+
 // FUNCIONES DE ARBOLES
 // ####################
 // ####################
-void l_mostrar_con_nodo(Lista l) {
+void l_mostrar_con_nodo(Lista l) { //GUARDA EN EL VALOR DEL TE DE LA LISTA EL NODO
   printf("Contenido de la lista (nodos encontrados):\n");
   Iterador iter = iterador(l);
   TipoElemento X;
@@ -715,7 +762,7 @@ void l_mostrar_con_nodo(Lista l) {
   }
 }
 
-char leer_opcion_sn() {
+char leer_opcion_sn() { //TE PREGUNTA SI QUERES INGRESAR UN NODO
   char buffer[10];
   char opcion;
   printf("solo obtiene el primer caracter\n");
@@ -734,7 +781,7 @@ char leer_opcion_sn() {
   }
 }
 
-void cargar_nodo(ArbolBinario a, NodoArbol padre, int es_izquierdo) {
+void cargar_nodo(ArbolBinario a, NodoArbol padre, int es_izquierdo) { //CARGA UN NODO, E HIJOS
   int valor;
   char opcion;
 
@@ -763,7 +810,7 @@ void cargar_nodo(ArbolBinario a, NodoArbol padre, int es_izquierdo) {
   }
 }
 
-void cargar_arbol_binario(ArbolBinario a) {
+void cargar_arbol_binario(ArbolBinario a) { //INTERFAZ PARA CARGAR ARBOL
   int valor;
   printf("Ingrese el valor de la raiz (>= 0): ");
   valor = leer_entero_no_negativo();
@@ -773,10 +820,6 @@ void cargar_arbol_binario(ArbolBinario a) {
 
   cargar_nodo(a, raiz, 1);
   cargar_nodo(a, raiz, 0);
-}
-
-int numero_aleatorio(int min, int max) {
-  return rand() % (max - min + 1) + min;
 }
 
 void pre_orden(NodoArbol N) {
@@ -829,36 +872,35 @@ void l_mostrar_ej2(Lista l) {
   printf("}\n");
 }
 
-void mostrar_arbol(NodoArbol n, char* prefijo, int Izq) {
+void mostrar_arbol(NodoArbol n, char* prefijo, int Izq) { //FUNCION PARA MOSTRAR UN ARBOL
   if (n != NULL) {
     printf("%s", prefijo);
     printf("%s", Izq ? "|-- " : "L-- ");
     printf("%i\n", n_recuperar(n)->clave);
 
     char prefijoNuevo[100];
-    snprintf(prefijoNuevo, sizeof(prefijoNuevo), "%s%s", prefijo,
-             Izq ? "|   " : "    ");
+    snprintf(prefijoNuevo, sizeof(prefijoNuevo), "%s%s", prefijo, Izq ? "|   " : "    ");
 
     mostrar_arbol(n_hijoderecho(n), prefijoNuevo, 1);
     mostrar_arbol(n_hijoizquierdo(n), prefijoNuevo, 0);
   }
 }
 
-void cargar_avl(ArbolAVL v) {
+void cargar_avl(ArbolAVL v) { //[PARTE 3 DE CARGA BINARIA RANDOM]
   while (!avl_es_lleno(v)) {
-    TipoElemento aux = te_crear(numero_aleatorio(0, 20));
+    TipoElemento aux = te_crear(numero_aleatorio(0, 50));
     avl_insertar(v, aux);
   }
 }
 
-NodoArbol nodoAleatorio() {
+NodoArbol nodoAleatorio() { //[PARTE 2 DE CARGA BINARIA RANDOM]
   ArbolAVL avl = avl_crear();
   cargar_avl(avl);
   NodoArbol nodoAvl = avl_raiz(avl);
   return nodoAvl;
 }
 
-void crearBinarioAleatorio(ArbolBinario b, NodoArbol aleatorio, NodoArbol vacio){
+void crearBinarioAleatorio(ArbolBinario b, NodoArbol aleatorio, NodoArbol vacio){ //[PARTE 4 DE CARGA BINARIA RANDOM]
   if(!a_es_rama_nula(aleatorio)){
     if(n_hijoderecho(aleatorio) != NULL){
       NodoArbol x = a_conectar_hd(b, vacio, n_recuperar(n_hijoderecho(aleatorio)));
@@ -871,7 +913,7 @@ void crearBinarioAleatorio(ArbolBinario b, NodoArbol aleatorio, NodoArbol vacio)
   }
 }
 
-ArbolBinario binarioAleatorio(){
+ArbolBinario binarioAleatorio(){ //[PARTE 1 DE CARGA BINARIA RANDOM]
   ArbolBinario b = a_crear();
   NodoArbol n = n_crear(te_crear(0));
   NodoArbol rand = nodoAleatorio();
@@ -882,47 +924,11 @@ ArbolBinario binarioAleatorio(){
   return b;
 }
 
-
-
-int maximo(int a, int b) {
-  return (a > b) ? a : b;
-}
-
-int alturaNodo(NodoArbol na) {
+int alturaNodo(NodoArbol na) { //DEVUELVE LA ALTURA DE UN NODO: -HI+HD
   if (na == NULL) {
     return -1;
   }
   return maximo(alturaNodo(n_hijoizquierdo(na)), alturaNodo(n_hijoderecho(na))) + 1;
-}
-
-void lRandomSinRepetir(Lista l, int min, int max, int cantidad, int count){
-  while(count != cantidad){
-    int clave = rand() % (max-min+1)+min;
-    if(l_buscar(l, clave) == NULL){
-      l_agregar(l, te_crear(clave));
-      count++;
-    }
-  }
-}
-
-void pedirNumeroPos(int* valor) {
-  bool flag = true;
-
-  while (flag) {
-    printf("\t||Ingrese un numero: ");
-
-    
-    if (scanf("%d", valor) != 1) {
-      if(valor < 0){
-        printf("\t||Entrada invalida.\n");
-        while (getchar() != '\n');
-      }
-      printf("\t||Entrada invalida.\n");
-      while (getchar() != '\n');
-    } else {
-      flag = false;
-    }
-  }
 }
 
 void cargarNArio(ArbolBinario a, NodoArbol p, int aux){
@@ -932,24 +938,33 @@ void cargarNArio(ArbolBinario a, NodoArbol p, int aux){
 
   if(!a_es_lleno(a)){
     
-    c = pedirNodo();limpiarBuffer();
+    c = pedirNodo(p);
+
     if(c == 'y'){
-      
-      pedirNumero(&clave);limpiarBuffer();
+      pedirNumero(&clave);
+      limpiarBuffer();
+
       if(aux == -1) n = a_conectar_hi(a, p, te_crear(clave));
       else if(aux == 1) n = a_conectar_hd(a, p, te_crear(clave));
       else n = a_establecer_raiz(a, te_crear(clave));
+
       cargarNArio(a, n, -1);
       cargarNArio(a, n, 1);
     }
   }
 }
 
-char pedirNodo(){
+char pedirNodo(NodoArbol n){ //TE PREGUNTA SI QUERES INGRESAR UN NODO PARA ARBOL N-ARIO
   char c;
   char min;
   do {
-    printf("\t|| DESEA INGRESAR UN NODO? Y/N: ");
+    if(n == NULL){
+      printf("\t|| DESEA INGRESAR UN NODO? Y/N: ");
+    }
+    else{
+      printf("\t|| DESEA INGRESAR UN NODO A [%d]? Y/N: ", n_recuperar(n)->clave);
+    }
+    
     c = getchar();
     min = tolower(c);
 
@@ -963,9 +978,16 @@ char pedirNodo(){
 
   return min;
 }
-
-
-
 // FUNCIONES DE ARBOLES
 // ####################
 // ####################
+
+
+
+// FUNCIONES DE HASH
+// #################
+// #################
+
+// FUNCIONES DE HASH
+// #################
+// #################

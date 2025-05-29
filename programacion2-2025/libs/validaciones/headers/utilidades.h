@@ -54,19 +54,19 @@ void desarrollarPatron(char* cadena, int mitad, int nivel);
 
 void cargarArray(int arr[], int n, int count);
 
-void encontrarSubconjuntos(int conjunto[], int largo, int index,
-                           int subconjunto[], int tamanoSub, int sumaActual,
-                           int objetivo, char** output, int* indiceOutput);
+void encontrarSubconjuntos(int conjunto[], int largo, int index, int subconjunto[], int tamanoSub, int sumaActual, int objetivo, char** output, int* indiceOutput);
 
-void guardarSubconjunto(int arr[], int tamano, char** output,
-                        int* indiceOutput);
+void guardarSubconjunto(int arr[], int tamano, char** output, int* indiceOutput);
 
 char salir();
 
 void pedirNumero(int* valor);
-void pedirNumeroPos(int* valor);
+
+void pedirNumeroPos(int* valor); //pedriNumero PERO SOLO POSITIVOS
 
 int cargaManualAuto();
+
+int maximo(int a, int b); //RETORNA EL MAXIMO DE DOS NUMEROS
 
 // FUNCIONES GENERALES
 // ###################
@@ -87,6 +87,8 @@ void cargarLista(Lista l, int n, int count);
 void mostrar_coeficientes(Lista l);
 
 void interfazCargaLista(Lista l);
+
+void lRandomSinRepetir(Lista l, int min, int max, int cantidad, int count); //CREA UNA LISTA RANDOM SIN REPETIR NUMEROS
 
 // FUNCIONES DE LISTAS
 // ###################
@@ -115,9 +117,13 @@ int largo(Pila p);
 // FUNCIONES DE COLAS
 
 void c_cargar(Cola c, int n, int count);
+
 void c_cargarSinRepetir(Cola c, int n, int count);
+
 void interfazCargaColaSinRepetir(Cola c1);
+
 void llenarCRandom(Cola c);
+
 void llenarCRandomSinRepetir(Cola c);
 
 void llenarCRandomValor(Cola c, int max);
@@ -142,29 +148,38 @@ bool cexisteclave(Cola c, int clave);
 // ##################
 // ##################
 
-void l_mostrar_con_nodo(Lista l);
-void cargar_arbol_binario(ArbolBinario a);
-void cargar_arbol_binario_aleatorio(ArbolBinario a);
-void cargar_nodo(ArbolBinario a, NodoArbol padre, int es_izquierdo);
-void cargar_nodo_aleatorio(ArbolBinario a, NodoArbol padre, int es_izquierdo);
-void l_mostrar_ej2(Lista l);
-void mostrar_arbol(NodoArbol n, char* prefijo, int Izq);
-void cargar_avl(ArbolAVL v);
-void pre_orden(NodoArbol N);
-void in_orden(NodoArbol N);
-void post_orden(NodoArbol N);
-NodoArbol nodoAleatorio();
-void cargar_abb(ArbolBinarioBusqueda abb);
-void crearBinarioAleatorio(ArbolBinario b, NodoArbol aleatorio, NodoArbol vacio);
-ArbolBinario binarioAleatorio();
-void cargar_abb_manual(ArbolBinarioBusqueda abb);
-void cargar_avl_manual(ArbolAVL v);
-void lRandomSinRepetir(Lista l, int min, int max, int cantidad, int count);
-int maximo(int a, int b);
-int alturaNodo(NodoArbol na);
+void l_mostrar_con_nodo(Lista l); //GUARDA EN EL VALOR DEL TE DE LA LISTA EL NODO
 
-void cargarNArio(ArbolBinario a, NodoArbol p, int aux);
-char pedirNodo();
+void cargar_arbol_binario(ArbolBinario a); //INTERFAZ PARA CARGAR ARBOL
+
+void cargar_nodo(ArbolBinario a, NodoArbol padre, int es_izquierdo); //CARGA UN NODO, E HIJOS
+
+char leer_opcion_sn(); //TE PREGUNTA SI QUERES INGRESAR UN NODO
+
+void l_mostrar_ej2(Lista l); //FUNCION DEL EJ2 PARA MOSTRAR UNA LISTA
+
+void mostrar_arbol(NodoArbol n, char* prefijo, int Izq); //FUNCION PARA MOSTRAR UN ARBOL
+
+void pre_orden(NodoArbol N); //FUNCION PARA MOSTRAR ARBOL EN PREORDEN
+
+void in_orden(NodoArbol N); //FUNCION PARA MOSTRAR ARBOL EN INORDEN
+
+void post_orden(NodoArbol N); //FUNCION PARA MOSTRAR ARBOL EN POSTORDEN
+
+ArbolBinario binarioAleatorio(); //FUNCION RESUMEN DE crearBinarioAleatorio [PARTE 1 DE CARGA BINARIA RANDOM]
+
+NodoArbol nodoAleatorio(); //FUNCION PARA CREAR UN NODO CON HIJOS ALEATORIOS [PARTE 2 DE CARGA BINARIA RANDOM]
+
+void cargar_avl(ArbolAVL v); //FUNCION PARA CARGAR UN AVL CON NUMEROS RANDOM [PARTE 3 DE CARGA BINARIA RANDOM]
+
+void crearBinarioAleatorio(ArbolBinario b, NodoArbol aleatorio, NodoArbol vacio); //FUNCION PARA CONECTAR UN NODO RANDOM A UN ARBOL [PARTE 4 DE CARGA BINARIA RANDOM]
+
+int alturaNodo(NodoArbol na); //DEVUELVE LA ALTURA DE UN NODO: -HI+HD
+
+void cargarNArio(ArbolBinario a, NodoArbol p, int aux); //INTERFAZ PARA CARGAR N-ARIO
+
+char pedirNodo(NodoArbol n); //TE PREGUNTA SI QUERES INGRESAR UN NODO PARA ARBOL N-ARIO
+
 // FUNCIONES DE ARBOLES
 // ##################
 // ##################

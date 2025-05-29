@@ -293,7 +293,14 @@ void interfaz4() {
        pedirNumero(&clave);
 
        printf("\t||\n");
-       printf("\t|| EL PADRE DE %d ES [%d]\n", clave, a_ej4_padre(A, clave)->clave);
+       TipoElemento X = a_ej4_padre(A, clave);
+       if(X != NULL){
+              printf("\t|| EL PADRE DE %d ES [%d]\n", clave, a_ej4_padre(A, clave)->clave);
+       }
+       else{
+              printf("\t|| %d NO TIENE PADRE\n", clave);
+       }
+       
        printf("\t||\n");
 
        // E
@@ -448,7 +455,7 @@ void interfaz6() {
        l = a_ej8_internos(A);
 
        printf("\t||\n");
-       printf("\t|| NODOS INTERNOS: \n"); l_mostrar(l);
+       printf("\t|| NODOS INTERNOS: "); l_mostrar(l);
        printf("\t||\n");
 
        free(l);

@@ -595,11 +595,9 @@ int a_ej9_diferenciaalturas(ArbolBinario A, ArbolAVL AVL) {
 }
 
 // PUNTO 10
-Lista a_ej10_generarlistaclaves(int cantidadclavesagenerar, int valorminimo,
-                                int valormaximo) {
+Lista a_ej10_generarlistaclaves(int cantidadclavesagenerar, int valorminimo, int valormaximo) {
     Lista lClaves = l_crear();
-    lRandomSinRepetir(lClaves, valorminimo, valormaximo, cantidadclavesagenerar,
-                      0);
+    lRandomSinRepetir(lClaves, valorminimo, valormaximo, cantidadclavesagenerar, 0);
     return lClaves;
 }
 
