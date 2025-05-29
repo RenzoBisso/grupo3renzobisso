@@ -284,8 +284,6 @@ void interfaz4() {
        }
        printf("\t||\n");
 
-       free(B);
-
        // D
        printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
        printf("\t||D: RETORNA EL PADRE DE UN ELEMENTO DEL ARBOL                                                        ||\n");
@@ -313,8 +311,21 @@ void interfaz4() {
        l_mostrar(l);
        printf("\t||\n");
 
+       printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+       printf("\t||ARBOL A:                                                                                            ||\n");
+       printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+       mostrar_arbol(a_raiz(A), "", 1); printf("\n");
+
+       printf("\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
+       printf("\t||ARBOL B:                                                                                            ||\n");
+       printf("\t||----------------------------------------------------------------------------------------------------||\n");
+
+       mostrar_arbol(a_raiz(B), "", 1); printf("\n");
+
        free(l);
        free(A);
+       free(B);
 
        limpiarBuffer();
 
@@ -539,28 +550,28 @@ void interfaz8() {
        printf("\t|| INGRESE EL NUMERO DE REPETICIONES: \n");
        pedirNumeroPos(&N_repeticiones);
        
-       printf("\t|| INGRESE VALOR MINIMO: ");
+       printf("\t|| INGRESE VALOR MINIMO: \n");
        limpiarBuffer();
        pedirNumeroPos(&valorminimo);
        
-       printf("\t|| INGRESE VALOR MAXIMO: ");
+       printf("\t|| INGRESE VALOR MAXIMO: \n");
        limpiarBuffer();
        pedirNumeroPos(&valormaximo);
        
        while(valorminimo > valormaximo){
               printf("\t|| ENTRADA INVALIDA, MAXIMO NO PUEDE SER MENOR QUE MINIMO\n");
-              printf("\t|| INGRESE VALOR MAXIMO: ");
+              printf("\t|| INGRESE VALOR MAXIMO: \n");
               limpiarBuffer();
               pedirNumeroPos(&valormaximo);
        }
 
-       printf("\t|| INGRESE CANTIDAD DE CLAVES A GENERAR: ");
+       printf("\t|| INGRESE CANTIDAD DE CLAVES A GENERAR: \n");
        limpiarBuffer();
        pedirNumeroPos(&cantidaclavesagenerar);
 
        while(cantidaclavesagenerar > (valormaximo + valorminimo)){
               printf("\t|| ENTRADA INVALIDA, LA CANTIDAD DE CLAVES A GENERAR EXCEDE EL RANGO DE LAS CLAVES\n");
-              printf("\t|| INGRESE CANTIDAD DE CLAVES A GENERAR: ");
+              printf("\t|| INGRESE CANTIDAD DE CLAVES A GENERAR: \n");
               limpiarBuffer();
               pedirNumeroPos(&cantidaclavesagenerar);
        }
