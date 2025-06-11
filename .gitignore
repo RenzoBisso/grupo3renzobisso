@@ -11,3 +11,4 @@ build/
 *.userosscache
 *.sln.docstates
 .clang-format
+.dat
