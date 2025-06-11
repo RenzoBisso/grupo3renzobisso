@@ -19,7 +19,7 @@ void interfaz3(){
     } while (cantElementos < 1 || cantElementos > 2000);
 
     do {
-        printf("\nIngrese rango maximo de las claves");
+        printf("\nIngrese rango maximo de las claves: ");
         pedirDatos(&rango_hasta , 11);
         if(rango_hasta<cantElementos){
             printf("Por favor ingrese un rango maximo mayor a la cantidad de elementos.\n");
@@ -29,7 +29,7 @@ void interfaz3(){
     rango_minimo=rango_hasta-cantElementos;
 
     do{
-        printf("\nIngrese rango de las claves (va desde 1 hasta el valor que ingrese): ");
+        printf("\nIngrese el rango minimo de las claves: ");
         pedirDatos(&rango_desde, 11);
         if (rango_desde > rango_hasta || rango_desde<rango_minimo){
             printf("Ingrese un numero mayor a %d y menor a %d, para poder tener la cantidad de elementos ingresada",rango_minimo, rango_hasta); 
