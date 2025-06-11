@@ -443,3 +443,156 @@ void cargarAleatorioARBOLTH(ArbolAVL arbol, TablaHash tabla, int rango_desde,int
 }
 
 // EJERCICIO 6
+int th_ej6_covid(){
+    TablaHash th = th_crear(TAMANIO_MAXIMO_TH, &hashingMod);
+    int menu = -1;
+    while (menu != 0){
+        int opcionMenu;
+        do {
+            printf("- - - - CONSULTA DE VACUNACION - - - -\n");
+            printf(" 0. Salir del programa \n");
+            printf(" 1. Registrar Vacunados \n");
+            printf(" 2. Ver Vacunados por fecha \n");
+            printf(" Ingrese la opcion deseada: ");
+            fflush(stdin);
+            pedirDatos(&opcionMenu, 11);
+            if (opcionMenu < 0 || opcionMenu > 2){
+                printf("Valor fuera del rango de opciones, pulse una tecla\n");
+                system("pause");
+                system("cls");
+
+            }
+        } while (opcionMenu < 0 || opcionMenu > 2);
+
+        if (opcionMenu == 1){
+            int cantidadDeVacunados;
+            printf("Ingrese la cantidad de vacunados a registrar: ");
+            pedirDatos(&cantidadDeVacunados, 11);
+            cargarEnTablahash(cantidadDeVacunados,th);
+        } else if (opcionMenu == 2){
+            printf("- - - Fecha a consultar vacunados - - - \n");
+            int fecha = pedirFecha();
+            muestraVacunados(th, fecha);
+        } else {
+            printf("Gracias por utilizar el programa!\n");
+            menu = 0;
+        }  
+    system("pause");
+    system("cls");
+    }
+    return 0;
+}
+
+void cargarEnTablahash(int cantidad_paciente, TablaHash th) {
+    int i;
+    int anterior = 0;
+    int fecha = 0;
+    Lista lista_personas;
+    TipoElemento valor;
+    for (i = 0; i < cantidad_paciente; i++) {
+        personas *persona = malloc(sizeof(personas)); // Crear nueva instancia de personas
+        fflush(stdin);
+        printf(" - - - - Persona %d - - - -\n", i + 1);
+        fecha = pedirFecha();
+        fflush(stdin);
+        pedirPersona(persona);
+        lista_personas = retornar_lista_fecha(th,fecha);
+        l_agregar(lista_personas, te_crear_con_valor(fecha, persona));
+        valor = te_crear_con_valor(fecha, lista_personas);
+        th_insertar(th, valor); 
+        printf("\n");
+    }
+}
+
+Lista retornar_lista_fecha(TablaHash th,int fecha){
+        if (th_recuperar(th,fecha)){
+            Lista lista_fecha = (Lista) th_recuperar(th,fecha)->valor;
+        }else{
+            Lista lista_fecha_nueva = l_crear();
+            return lista_fecha_nueva;
+        }
+}
+
+void pedirPersona(personas * p){
+    int dni;
+    do {
+        printf("Ingrese DNI (Maximo 9 digitos): ");
+        pedirDatos(&dni, 11);
+        if (dni < 1 || dni > 999999999)
+            printf("Valor fuera de rango.\n");
+    } while (dni < 1 || dni > 999999999);
+    p -> dni = dni;
+    fflush(stdin);
+    printf("Ingrese Nombre (Se permiten hasta 2 espacios): ");
+    leer_palabra(p -> nombre);
+    printf("Ingrese Apellido (Se permiten hasta 2 espacios): ");
+    leer_palabra(p -> apellido);
+}
+
+int pedirFecha(){
+    int fechaTotal = 0;
+    int dia, mes, anio;
+    bool fechaValida;
+    do {
+        fechaValida = true;
+        do {
+        printf("Ingrese Dia de Vacunacion (2 digitos): ");
+        pedirDatos(&dia, 11);
+        if (dia < 1 || dia > 31)
+            printf("Entrada Invalida.\n");
+        } while (dia < 1 || dia > 31);
+
+        do {
+            printf("Ingrese Mes de Vacunacion (2 digitos): ");
+            pedirDatos(&mes, 11);
+            if (mes < 1 || mes > 12)
+                printf("Entrada Invalida.\n");
+        } while (mes < 1 || mes > 12);
+
+        do {
+            printf("Ingrese Anio de Vacunacion (4 digitos, desde 2020 hasta 2023): ");
+            pedirDatos(&anio, 11);
+            if (anio < 2020 || anio > 2023)
+                printf("Entrada Invalida.\n");
+        } while (anio < 2020 || anio > 2023);
+
+        //Se valida anio bisiesto (Sucede en 2020)
+        if ((((mes == 2 && (dia > 29 || (dia > 28 && !((anio % 4 == 0) && (anio % 100 != 0 || anio % 400 == 0))))) ||
+        ((mes == 4 || mes == 6 || mes == 9 || mes == 11) && dia > 30)))){
+            printf("Fecha Invalida.\n");
+            fechaValida = false;
+        }
+
+        //Se valida fecha maxima.
+        if (anio == 2023){
+            if (mes >= 6 && dia > 12){ //Se permite fecha hasta el dia de entrega del TP.
+                printf("Fecha Invalida.\n");
+                fechaValida = false;
+            }
+        }
+
+    } while (!fechaValida);
+    
+    fechaTotal = (dia * 1000000) + (mes * 10000) + anio;
+    return fechaTotal;
+}
+
+void muestraVacunados(TablaHash th,int fecha){
+    if (th_recuperar(th, fecha)){
+        Lista Muestro = (Lista)th_recuperar(th, fecha)->valor;
+        Iterador ite = iterador(Muestro);
+        TipoElemento X;
+        while (hay_siguiente(ite)) {
+            X = siguiente(ite);
+            personas per = *(personas *)X->valor;
+            printf("- - - - - - - - - - \n");
+            printf("\nDNI: %d\n", per.dni);
+            printf("Apellido: %s\n", per.apellido);
+            printf("Nombre: %s\n", per.nombre);
+            printf("- - - - - - - - - - \n");
+        }
+    } else {
+        printf("No hay personas vacunadas en esa fecha.\n");
+    }
+}
+

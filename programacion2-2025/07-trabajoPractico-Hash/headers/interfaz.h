@@ -13,6 +13,4 @@ void interfaz3();
 
 void interfaz4();
 
-void interfaz5();
-
 #endif /* INTERFAZ_H */

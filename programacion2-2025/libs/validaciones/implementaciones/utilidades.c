@@ -302,6 +302,30 @@ void pedirDatos(int *nro, int tamanio){
     } while (!conversionCorrecta);
 }
 
+void leer_palabra(char * c) {
+    char entrada[30];
+    int EsValido = false;
+
+    //recorre hasta ver q la palabra sean letras de la "a" a la z
+    while (!EsValido){
+        int contadorDeEspacios = 0;
+        EsValido = true;
+        fgets(entrada, sizeof(entrada), stdin);
+        entrada[strlen(entrada)-1] = '\0';
+        strtrim(entrada);
+        for (int i=0;i<strlen(entrada);i++){
+            if (i != 0 && i != strlen(entrada) && entrada[i] == ' '){
+                contadorDeEspacios++;
+            } else if (!isalpha(entrada[i]) || contadorDeEspacios > 2){
+                EsValido = false;
+            }
+        }
+        if (!EsValido)
+            printf("Entrada invalida, Ingrese Nuevamente: ");
+    }
+    strcpy(c, entrada);
+}
+
 
 // FUNCIONES GENERALES
 // ###################

@@ -51,9 +51,6 @@ void interfaz3(){
 }
 
 void interfaz4(){
-
+    th_ej6_covid();
 }
 
-void interfaz5(){
-
-}

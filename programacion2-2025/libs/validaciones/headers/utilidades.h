@@ -88,6 +88,8 @@ bool conversionCharPunto4(char *string);
 
 void pedirDatos(int *nro, int tamanio);
 
+void leer_palabra(char * c);
+
 // FUNCIONES GENERALES
 // ###################
 // ###################
@@ -218,6 +220,12 @@ typedef struct ralumnos{
     int indice;
 }ralumnos;
 
+typedef struct {
+    int dni;
+    char nombre[30];
+    char apellido[30];
+} personas;
+
 
 int hashingMod(int clave);
 void mostrarMenu(TablaHash th, int *indice);
@@ -225,18 +233,20 @@ void crearArchivoBinario(char nombre[], char modo[]);
 
 void crear_alta(char nombre[], char modo[], TablaHash th, int legajo, int * indice);
 void alta(char nombre[], char modo[], TablaHash th, int legajo, int indice);
-
 void baja(char nombre[], char modo[],TablaHash th, int legajo, int indice);
-
 void modificacion(char nombre[], char modo[], TablaHash th, int legajo, int indice, int respuesta);
-
 void mostrarBinario(char nombre[], char modo[]);
-
 void mostrarDatosAlumno(char nombre[], char modo[], int indice);
 
 void agregar_archivos_al_hash(char nombre[], char modo[], TablaHash th, int *indiceMain);
-
 void cargarAleatorioARBOLTH(ArbolAVL arbol, TablaHash tabla, int rango_desde,int rango_hasta, int cantidad);
+
+void pedirPersona(personas * p);
+void cargarEnTablahash(int cantidad_paciente, TablaHash th);
+Lista retornar_lista_fecha(TablaHash th,int fecha);
+void pedirPersona(personas * p);
+int pedirFecha();
+void muestraVacunados(TablaHash th,int fecha);
 // FUNCIONES DE TABLA HASH
 // ##################
 // ##################
