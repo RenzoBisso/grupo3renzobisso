@@ -422,8 +422,8 @@ void th_ej5_comparacion(int q_claves, int q_repeticiones, int rango_desde, int r
     }
     free(arbol);
     free(tabla);
-    printf("Tiempo de respuesta del arbol (En segundos): %.32lf \n", tiempo_avl);
-    printf("Tiempo de respuesta del hash (En segundos): %.32lf \n", tiempo_hash);    
+    printf("Tiempo de respuesta del arbol (En segundos): %.32f \n", tiempo_avl);
+    printf("Tiempo de respuesta del hash (En segundos): %.32f \n", tiempo_hash);    
 }
 
 void cargarAleatorioARBOLTH(ArbolAVL arbol, TablaHash tabla, int rango_desde,int rango_hasta, int cantidad){
@@ -440,6 +440,6 @@ void cargarAleatorioARBOLTH(ArbolAVL arbol, TablaHash tabla, int rango_desde,int
       i++;
     }
   }
-
-  
 }
+
+// EJERCICIO 6
