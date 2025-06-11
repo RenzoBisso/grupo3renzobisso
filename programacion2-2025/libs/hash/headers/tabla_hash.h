@@ -1,7 +1,8 @@
 #ifndef TABLA_HASH_H
 #define TABLA_HASH_H
 
-#include "tipo_elemento.h"
+#include "..\..\tipoElemento\headers\tipo_elemento.h"
+
 
 struct TablaHashRep;
 typedef struct TablaHashRep *TablaHash;

@@ -16,6 +16,17 @@
 #include "..\..\listas\headers\listas.h"
 #include "..\..\pilas\headers\pilas.h"
 #include "..\..\tipoElemento\headers\tipo_elemento.h"
+#include "..\..\hash\headers\tabla_hash.h"
+
+//TABLAS HASH
+#define MAXIMAEJ4 20
+//EJERCICIO 4 TH
+#define CAPACIDAD 2000
+#define PRIMO 1999
+//EJERCICIO 5 y 6 TH
+#define TAMANIO_MAXIMO_TH 2000
+#define N_PRIMO 1999
+
 
 #ifndef UTILIDADES_H
 #define UTILIDADES_H
@@ -67,6 +78,14 @@ void pedirNumeroPos(int* valor); //pedriNumero PERO SOLO POSITIVOS
 int cargaManualAuto();
 
 int maximo(int a, int b); //RETORNA EL MAXIMO DE DOS NUMEROS
+
+bool conversionEntero(char *string, int *nro, int len);
+
+void pedirChar(char *string);
+
+bool conversionCharPunto4(char *string);
+
+void pedirDatos(int *nro, int tamanio);
 
 // FUNCIONES GENERALES
 // ###################
@@ -183,5 +202,41 @@ char pedirNodo(NodoArbol n); //TE PREGUNTA SI QUERES INGRESAR UN NODO PARA ARBOL
 // FUNCIONES DE ARBOLES
 // ##################
 // ##################
+
+// FUNCIONES DE TABLA HASH
+// ##################
+// ##################
+
+typedef struct ralumnos{
+    int legajo;
+    int estado;
+    char apellido[20];
+    char nombre[20];
+    char domicilio[20];
+    int TE;
+    int indice;
+}ralumnos;
+
+
+int hashingMod(int clave);
+void mostrarMenu(TablaHash th, int *indice);
+void crearArchivoBinario(char nombre[], char modo[]);
+
+void crear_alta(char nombre[], char modo[], TablaHash th, int legajo, int * indice);
+void alta(char nombre[], char modo[], TablaHash th, int legajo, int indice);
+
+void baja(char nombre[], char modo[],TablaHash th, int legajo, int indice);
+
+void modificacion(char nombre[], char modo[], TablaHash th, int legajo, int indice, int respuesta);
+
+void mostrarBinario(char nombre[], char modo[]);
+
+void mostrarDatosAlumno(char nombre[], char modo[], int indice);
+
+void agregar_archivos_al_hash(char nombre[], char modo[], TablaHash th, int *indiceMain);
+// FUNCIONES DE TABLA HASH
+// ##################
+// ##################
+
 
 #endif

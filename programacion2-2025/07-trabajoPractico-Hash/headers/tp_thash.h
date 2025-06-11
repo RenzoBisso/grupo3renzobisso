@@ -2,8 +2,9 @@
 #define TP_ARBOLES_H
 
 #include <stdbool.h>
-#include "listas.h"
-#include "tabla_hash.h"
+#include "..\..\libs\listas\headers\listas.h"
+#include "..\..\libs\hash\headers\tabla_hash.h"
+
 
 
 /**
