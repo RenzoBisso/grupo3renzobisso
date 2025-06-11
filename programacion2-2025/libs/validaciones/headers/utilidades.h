@@ -26,6 +26,7 @@
 //EJERCICIO 5 y 6 TH
 #define TAMANIO_MAXIMO_TH 2000
 #define N_PRIMO 1999
+#define CANTIDAD_MINIMA_ITERACIONES 500
 
 
 #ifndef UTILIDADES_H
@@ -234,6 +235,8 @@ void mostrarBinario(char nombre[], char modo[]);
 void mostrarDatosAlumno(char nombre[], char modo[], int indice);
 
 void agregar_archivos_al_hash(char nombre[], char modo[], TablaHash th, int *indiceMain);
+
+void cargarAleatorioARBOLTH(ArbolAVL arbol, TablaHash tabla, int rango_desde,int rango_hasta, int cantidad);
 // FUNCIONES DE TABLA HASH
 // ##################
 // ##################

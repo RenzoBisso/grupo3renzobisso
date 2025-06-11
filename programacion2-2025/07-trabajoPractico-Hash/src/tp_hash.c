@@ -1,6 +1,7 @@
 #include "..\headers\tp_thash.h"
 #include "..\..\libs\validaciones\headers\utilidades.h"
 
+//Ejercicio 4
 
 void th_ej4_abm(){
     int indice=0;
@@ -214,7 +215,6 @@ void mostrarMenu(TablaHash th, int *indice){
     printf("\t\tSaliendo del programa...\n");
 }
 
-
 void crearArchivoBinario(char nombre[], char modo[]){
     FILE*fp=fopen(nombre, modo);
     fclose(fp);
@@ -389,4 +389,57 @@ void agregar_archivos_al_hash(char nombre[], char modo[], TablaHash th, int *ind
         *indiceMain=cantidadLecturas+1; //Esto permite recuperar el indice si hubo lecutras
     }
     fclose(fp);
+}
+
+//Ejercicio 5
+
+void th_ej5_comparacion(int q_claves, int q_repeticiones, int rango_desde, int rango_hasta){
+    int i;
+    clock_t start_avl, end_avl, start_hash, end_hash;
+    double tiempo_avl = 0.0, tiempo_hash = 0.0;
+    
+    ArbolAVL arbol = avl_crear();
+    TablaHash tabla = th_crear(TAMANIO_MAXIMO_TH, &hashingMod);
+    cargarAleatorioARBOLTH(arbol, tabla, rango_desde, rango_hasta, q_claves);
+    int numeroBuscar;
+    
+    srand(time(NULL));
+    
+    for (int j = 0; j < q_repeticiones; j++){
+        start_hash = clock();
+        numeroBuscar = (rand() % rango_hasta) + 1;
+        th_recuperar(tabla,numeroBuscar);
+        end_hash = clock();
+        tiempo_hash += (double)(end_hash - start_hash) / CLOCKS_PER_SEC;
+    }
+    
+    for (int j = 0; j < q_repeticiones; j++){
+        start_avl = clock();
+        numeroBuscar = (rand() % rango_hasta) + 1;
+        avl_buscar(arbol,numeroBuscar);
+        end_avl = clock();
+        tiempo_avl += (double)(end_avl - start_avl) / CLOCKS_PER_SEC;
+    }
+    free(arbol);
+    free(tabla);
+    printf("Tiempo de respuesta del arbol (En segundos): %.32lf \n", tiempo_avl);
+    printf("Tiempo de respuesta del hash (En segundos): %.32lf \n", tiempo_hash);    
+}
+
+void cargarAleatorioARBOLTH(ArbolAVL arbol, TablaHash tabla, int rango_desde,int rango_hasta, int cantidad){
+  srand(time(NULL));
+  int i = 0;
+  TipoElemento valor;
+  int numeroRandom;
+  while (i < cantidad){
+    numeroRandom = (rand() % rango_hasta) + 1;
+    if (!avl_buscar(arbol, numeroRandom) && numeroRandom>rango_desde) {
+      valor = te_crear(numeroRandom);
+      avl_insertar(arbol, valor);
+      th_insertar(tabla, valor);
+      i++;
+    }
+  }
+
+  
 }
