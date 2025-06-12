@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#include "tabla_hash.h"
-#include "listas.h"
+#include "..\headers\tabla_hash.h"
+#include "..\..\listas\headers\listas.h"
 
 struct TipoRegistroTabla {
     TipoElemento tipo_elemento;
