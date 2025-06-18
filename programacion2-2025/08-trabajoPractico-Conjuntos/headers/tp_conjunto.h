@@ -2,8 +2,8 @@
 #define TP_CONJUNTOS_H
 
 #include <stdbool.h>
-#include "conjuntos.h"
-#include "listas.h"
+#include "../../libs/conjuntos/headers/conjuntos.h"
+#include "../../libs/listas/headers/listas.h"
 
 
 /**
