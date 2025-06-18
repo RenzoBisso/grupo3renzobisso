@@ -2,6 +2,8 @@
 
 #include <stdio.h>
 
+#include "utilidades.h"
+
 // ---------- PUNTO 2 ----------
 Conjunto c_ej2_union(Conjunto A, Conjunto B) {
     Conjunto U = cto_crear();
