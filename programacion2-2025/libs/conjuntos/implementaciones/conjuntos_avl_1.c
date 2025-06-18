@@ -1,16 +1,16 @@
-#include "conjuntos.h"
+#include <stdlib.h>
+
 #include "arbol-avl.h"
+#include "conjuntos.h"
 #include "listas.h"
 #include "nodo.h"
-
-#include <stdlib.h>
 
 struct ConjuntoRep {
     ArbolAVL arbolAvl;
 };
 
 Conjunto cto_crear() {
-    Conjunto conjunto = (Conjunto) malloc(sizeof(struct ConjuntoRep));
+    Conjunto conjunto = (Conjunto)malloc(sizeof(struct ConjuntoRep));
     conjunto->arbolAvl = avl_crear();
     return conjunto;
 }
@@ -43,7 +43,7 @@ bool cto_pertenece(Conjunto conjunto, int clave) {
 // Hace la Union recorriendo el AVL del conjunto A primero
 //-------------------------------------------------------------------------
 void unioninta(NodoArbol q, Conjunto rta) {
-    if (!avl_es_rama_nula(q)){
+    if (!avl_es_rama_nula(q)) {
         unioninta(n_hijoizquierdo(q), rta);
         cto_agregar(rta, n_recuperar(q));
         unioninta(n_hijoderecho(q), rta);
@@ -51,9 +51,9 @@ void unioninta(NodoArbol q, Conjunto rta) {
 }
 // por cada elemento de B antes verifica que ya no este en la union
 void unionintb(NodoArbol q, Conjunto rta) {
-    if (!avl_es_rama_nula(q)){
+    if (!avl_es_rama_nula(q)) {
         unionintb(n_hijoizquierdo(q), rta);
-        if (!cto_pertenece(rta, n_recuperar(q))) {
+        if (!cto_pertenece(rta, n_recuperar(q)->clave)) {
             cto_agregar(rta, n_recuperar(q));
         }
         unionintb(n_hijoderecho(q), rta);
@@ -63,8 +63,8 @@ void unionintb(NodoArbol q, Conjunto rta) {
 Conjunto cto_union(Conjunto conjunto_a, Conjunto conjunto_b) {
     Conjunto resultado = cto_crear();
 
-    unioninta(avl_raiz(conjunto_a->arbolAvl),resultado);
-    unionintb(avl_raiz(conjunto_b->arbolAvl),resultado);
+    unioninta(avl_raiz(conjunto_a->arbolAvl), resultado);
+    unionintb(avl_raiz(conjunto_b->arbolAvl), resultado);
 
     return resultado;
 }
@@ -72,9 +72,9 @@ Conjunto cto_union(Conjunto conjunto_a, Conjunto conjunto_b) {
 //-------------------------------------------------------------------------
 // recorre un arbol AVL de conjunto y verifica en B si pertenece
 //-------------------------------------------------------------------------
-void interaconb(NodoArbol q, Conjunto B, Conjunto rta){
-    if(!avl_es_rama_nula(q)){
-        if(cto_pertenece(B, n_recuperar(q)->clave)){
+void interaconb(NodoArbol q, Conjunto B, Conjunto rta) {
+    if (!avl_es_rama_nula(q)) {
+        if (cto_pertenece(B, n_recuperar(q)->clave)) {
             cto_agregar(rta, n_recuperar(q));
         }
         interaconb(n_hijoizquierdo(q), B, rta);
@@ -91,9 +91,9 @@ Conjunto cto_interseccion(Conjunto conjunto_a, Conjunto conjunto_b) {
 //-------------------------------------------------------------------------
 // recorre un arbol AVL del conjunto A y verifica en B si pertenece
 //-------------------------------------------------------------------------
-void difaconb(NodoArbol q, Conjunto B, Conjunto rta){
-    if(!avl_es_rama_nula(q)){
-        if(!cto_pertenece(B, n_recuperar(q)->clave)){
+void difaconb(NodoArbol q, Conjunto B, Conjunto rta) {
+    if (!avl_es_rama_nula(q)) {
+        if (!cto_pertenece(B, n_recuperar(q)->clave)) {
             cto_agregar(rta, n_recuperar(q));
         }
         difaconb(n_hijoizquierdo(q), B, rta);
@@ -110,8 +110,8 @@ Conjunto cto_diferencia(Conjunto conjunto_a, Conjunto conjunto_b) {
 //---------------------------------------------------------------------
 // Toma el elemento de la i-esima posicion segun el recorrido in-orden
 //---------------------------------------------------------------------
-void recupera(NodoArbol q, Lista L){
-    if(!avl_es_rama_nula(q)){
+void recupera(NodoArbol q, Lista L) {
+    if (!avl_es_rama_nula(q)) {
         recupera(n_hijoizquierdo(q), L);
         l_agregar(L, n_recuperar(q));
         recupera(n_hijoderecho(q), L);
@@ -119,7 +119,7 @@ void recupera(NodoArbol q, Lista L){
 }
 
 TipoElemento cto_recuperar(Conjunto conjunto, int posicion_ordinal) {
-    if (cto_cantidad_elementos(conjunto) < posicion_ordinal){
+    if (cto_cantidad_elementos(conjunto) < posicion_ordinal) {
         return NULL;
     }
     // Ahora llamo a la rutina que realmente lo retorna
@@ -129,9 +129,9 @@ TipoElemento cto_recuperar(Conjunto conjunto, int posicion_ordinal) {
 }
 
 //----------------------------------------------------------
-//muestra el arbol AVL que contiene el conjunto en IN-ORDEN
+// muestra el arbol AVL que contiene el conjunto en IN-ORDEN
 //----------------------------------------------------------
-void inorden(NodoArbol q){
+void inorden(NodoArbol q) {
     if (!avl_es_rama_nula(q)) {
         inorden(n_hijoizquierdo(q));
         printf(" %d ", n_recuperar(q)->clave);
@@ -140,7 +140,7 @@ void inorden(NodoArbol q){
 }
 
 void cto_mostrar(Conjunto conjunto) {
-    if (cto_es_vacio(conjunto)){
+    if (cto_es_vacio(conjunto)) {
         printf("Conjunto Vacio \n");
         return;
     }
