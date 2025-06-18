@@ -1178,3 +1178,81 @@ bool cto_es_subconjunto(Conjunto A, Conjunto B) {
     }
     return true;
 }
+void carga_datos(Conjunto C1, int nro) {
+    int n;
+    for (int i = 0; i < nro; i++) {
+        printf("Ingrese los datos: ");
+        pedirDatos(&n, 11);
+        TipoElemento temp = te_crear(n);
+        cto_agregar(C1, temp);
+    }
+}
+
+void carga_datos_naturales(Conjunto C1, int nro) {
+    int n;
+    for (int i = 0; i < nro; i++) {
+        do {
+            printf("Ingrese los datos (numeros naturales): ");
+            pedirDatos(&n, 11);
+            if (n < 1) {
+                printf("\nNumero invalido, tiene que ser natural\n");
+            }
+        } while (n < 1);
+        TipoElemento temp = te_crear(n);
+        cto_agregar(C1, temp);
+    }
+}
+
+// Carga dos conjuntos y los muestra.
+void carga_conjuntos(Conjunto c1, Conjunto c2) {
+    int nro;
+    printf("Ingrese el tamanio del conjunto:");
+    pedirDatos(&nro, 11);
+    printf("\nIngrese los datos del primer conjunto!\n");
+    carga_datos(c1, nro);
+    // Segundo conjunto
+    printf("Ingrese el tamanio del segundo conjunto:");
+    pedirDatos(&nro, 11);
+    printf("\nIngrese los datos del segundo conjunto!\n");
+    carga_datos(c2, nro);
+    cto_mostrar(c1);
+    printf("\n");
+    cto_mostrar(c2);
+}
+
+void pedirCantidad(int *nro) {
+    do {
+        printf("Ingrese la cantidad de elementos (entre 0 y 2000): ");
+        pedirDatos(nro, 11);
+        if (*nro > 2000 || *nro <= -1)
+            printf("No aceptamos esa cantidad, entre 0 a 2000 tiene que ser\n");
+    } while (*nro > 2000 || *nro <= -1);
+}
+Lista crear_lista_de_conjuntos(int cantidad) {
+    Lista lista = l_crear();
+
+    for (int i = 1; i <= cantidad; i++) {
+        printf("\n//////// CONJUNTO %d ////////\n", i);
+        int n;
+        do {
+            printf("¿Cuántos elementos tendrá el conjunto %d? (1 a 10): ", i);
+            pedirDatos(&n, 11);
+
+        } while (n < 1 || n > 10);
+
+        Conjunto c = cto_crear();
+
+        for (int j = 0; j < n; j++) {
+            int clave;
+            printf("Elemento #%d: ", j + 1);
+            scanf("%d", &clave);
+            TipoElemento e = te_crear(clave);
+            cto_agregar(c, e);
+        }
+
+        TipoElemento x = te_crear_con_valor(i, c);
+        l_agregar(lista, x);
+    }
+
+    return lista;
+}

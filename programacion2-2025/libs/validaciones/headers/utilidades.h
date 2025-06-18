@@ -269,5 +269,17 @@ void muestraVacunados(TablaHash th, int fecha);
 // ##################
 // ##################
 bool cto_es_subconjunto(Conjunto A, Conjunto B);
+void carga_datos(Conjunto C1, int nro);
 
+void carga_datos_naturales(Conjunto C1, int nro);
+
+void carga_conjuntos(Conjunto c1, Conjunto c2);
+
+bool conversionEntero(char* string, int* nro, int len);
+
+void pedirDatos(int* nro, int tamanio);
+
+void pedirCantidad(int* nro);
+
+Lista crear_lista_de_conjuntos(int cantidad);
 #endif
