@@ -1,9 +1,9 @@
-#include <stdlib.h>
+#include "..\headers\conjuntos.h"
+#include "..\..\arboles\headers\arbol-avl.h"
+#include "..\..\listas\headers\listas.h"
+#include "..\..\arboles\headers\nodo.h"
 
-#include "arbol-avl.h"
-#include "conjuntos.h"
-#include "listas.h"
-#include "nodo.h"
+#include <stdlib.h>
 
 struct ConjuntoRep {
     ArbolAVL arbolAvl;

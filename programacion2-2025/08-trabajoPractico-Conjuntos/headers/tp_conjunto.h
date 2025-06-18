@@ -2,9 +2,9 @@
 #define TP_CONJUNTOS_H
 
 #include <stdbool.h>
+#include "../../libs/conjuntos/headers/conjuntos.h"
+#include "../../libs/listas/headers/listas.h"
 
-#include "conjuntos.h"
-#include "listas.h"
 
 /**
 2.	Desarrollar un algoritmo que dado dos conjuntos de elementos tipo

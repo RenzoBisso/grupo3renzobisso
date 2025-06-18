@@ -1,11 +1,8 @@
-#include "utilidades.h"
+#include "..\..\libs\validaciones\headers\utilidades.h"
+#include "..\headers\tp_conjunto.h"
 
 int main() {
-    printf("compilo");
-
-    
-
-
-
+    srand(time(NULL));
+    menu();
     return 0;
 }
