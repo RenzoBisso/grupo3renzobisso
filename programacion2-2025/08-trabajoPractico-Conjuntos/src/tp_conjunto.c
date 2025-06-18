@@ -1,8 +1,5 @@
-#include "tp_conjunto.h"
-
-#include <stdio.h>
-
-#include "utilidades.h"
+#include "..\headers\tp_conjunto.h"
+#include "..\..\libs\validaciones\headers\utilidades.h"
 
 // ---------- PUNTO 2 ----------
 Conjunto c_ej2_union(Conjunto A, Conjunto B) {
