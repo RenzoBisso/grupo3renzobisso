@@ -1256,3 +1256,26 @@ Lista crear_lista_de_conjuntos(int cantidad) {
 
     return lista;
 }
+
+bool c_ej2_pertenencia(Conjunto A, int elemento) {
+    return cto_pertenece(A, elemento);
+}
+
+Lista coleccionDeConjuntos(int cantidadDeConjuntos){
+    Lista l_coleccion = l_crear();
+    if (cantidadDeConjuntos == 0){
+        return l_coleccion;
+    }
+
+    int cantElementos;
+    for (int i = 1; i <= cantidadDeConjuntos; i++){
+        printf("Ingrese cantidad de elementos del conjunto %d: ", i);
+        pedirDatos(&cantElementos, 11);
+        Conjunto conjunto = cto_crear();
+        printf("\n//////////////CARGA CONJUNTO %d///////////////\n", i);
+        carga_datos(conjunto, cantElementos);
+        TipoElemento X = te_crear_con_valor(i, conjunto);
+        l_agregar(l_coleccion, X);
+    }
+    return l_coleccion;
+}

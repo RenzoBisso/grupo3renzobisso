@@ -282,4 +282,11 @@ void pedirDatos(int* nro, int tamanio);
 void pedirCantidad(int* nro);
 
 Lista crear_lista_de_conjuntos(int cantidad);
+
+
+//CONJUNTOS
+bool c_ej2_pertenencia(Conjunto c, int clave);
+
+Lista coleccionDeConjuntos(int cantidadDeConjuntos);
+
 #endif

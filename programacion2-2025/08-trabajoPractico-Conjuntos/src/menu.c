@@ -1,82 +1,164 @@
 #include "..\..\libs\validaciones\headers\utilidades.h"
-#include "..\headers\interfaz.h"
+#include "..\headers\tp_conjunto.h"
 
 void menu(){
-    limpiar_pantalla();
-    bool bandera, valido;
-    int opcion = 0;
-    do  //MENU/////////////////////////////////////////////////
-    {
-        printf("\t\t\t\t\t    +------------------------+\n");
-        printf("\t\t\t\t\t    |      Menu Principal    |\n");
-        printf("\t\t\t\t\t    +------------------------+\n\n\n");
-        printf("\t\t\t\t\t||>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>||\n");
-        printf("\t\t\t\t\t||OPCION 1 - Probar ejercicio 2     ||\n");
-        printf("\t\t\t\t\t||----------------------------------||\n");
-        printf("\t\t\t\t\t||OPCION 2 - Probar ejercicio 3     ||\n");
-        printf("\t\t\t\t\t||----------------------------------||\n");
-        printf("\t\t\t\t\t||OPCION 3 - Probar ejercicio 4     ||\n");
-        printf("\t\t\t\t\t||----------------------------------||\n");
-        printf("\t\t\t\t\t||OPCION 4 - Probar ejercicio 5     ||\n");
-        printf("\t\t\t\t\t||----------------------------------||\n");
-        printf("\t\t\t\t\t||OPCION 5 - Probar ejercicio 6     ||\n");
-        printf("\t\t\t\t\t||----------------------------------||\n");
-        printf("\t\t\t\t\t||OPCION 6 - Probar ejercicio 7     ||\n");
-        printf("\t\t\t\t\t||----------------------------------||\n");
-        printf("\t\t\t\t\t||OPCION 7 - Probar ejercicio 8     ||\n");
-        printf("\t\t\t\t\t||----------------------------------||\n");      
-        printf("\t\t\t\t\t||OPCION 0 - Salir del menu         ||\n");
-        printf("\t\t\t\t\t||----------------------------------||\n");
-        printf("\t\t\t\t\t||Ingrese una opcion entre 0 y 4    ||\n");
-        printf("\t\t\t\t\t||<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<||\n");
-        do //VALIDO OPCION DEL MENU////////////////////////////////////////////////////////////
-        {
-            valido = true;
-            bandera = scanf("%d", &opcion);
-            if ( bandera != 1 ||opcion < 0 || opcion > 8 )
-            {
-                printf("Valor invalido, reintente el ingreso...(Opciones validas entre 0 y 4)\n");
-                valido = false;
+    char c;
+    do {
+        int opcion;
+        printf("\n\t\tMENU DE OPERACIONES CON CONJUNTOS\n");
+        printf("\t1. Operaciones entre dos conjuntos (Pertenencia, Interseccion, Union, Diferencia)\n");
+        printf("\t2. Union e interseccion de una coleccion de conjuntos\n");
+        printf("\t3. Transitividad entre conjuntos\n");
+        printf("\t4. Diferencia simetrica entre conjuntos\n");
+        printf("\t5. Subconjuntos propios entre dos conjuntos\n");
+        printf("\t6. Subconjuntos parciales entre tres conjuntos\n");
+        printf("\t7. Comparacion de igualdad entre conjuntos\n");
+        printf("\tIngrese una opcion: ");
+        scanf("%d", &opcion);
+
+        switch (opcion) {
+            case 1: {
+                Conjunto c1 = cto_crear();
+                Conjunto c2 = cto_crear();
+                int cantidad;
+                printf("Ingrese primer conjunto\n");
+                pedirCantidad(&cantidad);
+                carga_datos(c1, cantidad);
+                printf("Ingrese segundo conjunto\n");
+                pedirCantidad(&cantidad);
+                carga_datos(c2, cantidad);
+
+                int clave;
+                printf("Ingrese la clave para saber si pertenece a los conjuntos: ");
+                pedirDatos(&clave, 11);
+
+                if (c_ej2_pertenencia(c1, clave)) {
+                    printf("El elemento %d pertenece al conjunto 1\n", clave);
+                    cto_mostrar(c1);
+                }
+                if (c_ej2_pertenencia(c2, clave)) {
+                    printf("El elemento %d pertenece al conjunto 2\n", clave);
+                    cto_mostrar(c2);
+                }
+                if (!c_ej2_pertenencia(c1, clave) && !c_ej2_pertenencia(c2, clave)) {
+                    printf("No pertenece a ninguno de los dos conjuntos\n");
+                }
+
+                printf("\nInterseccion: ");
+                cto_mostrar(c_ej2_interseccion(c1, c2));
+                printf("\nUnion: ");
+                cto_mostrar(c_ej2_union(c1, c2));
+                printf("\nDiferencia: ");
+                cto_mostrar(c_ej2_diferencia(c1, c2));
+                break;
             }
-            fflush(stdin);
-        } while (!valido);
-        //OPCION SELECCIONADA/////////////////////////////////////////////////////////////////
-        limpiar_pantalla();
+            case 2: {
+                Lista l_conjuntos = coleccionDeConjuntos(3);
+                Conjunto ctoInter = c_ej3_intersecciones(l_conjuntos);
+                Conjunto ctoUnion = c_ej3_uniones(l_conjuntos);
+                printf("\nConjunto de interseccion: ");
+                cto_mostrar(ctoInter);
+                printf("\nConjunto de union: ");
+                cto_mostrar(ctoUnion);
+                break;
+            }
+            case 3: {
+                Conjunto A = cto_crear();
+                Conjunto B = cto_crear();
+                Conjunto C = cto_crear();
+                int cantidad;
+                printf("Cantidad de elementos del primer conjunto\n");
+                pedirCantidad(&cantidad);
+                carga_datos(A, cantidad);
+                printf("Cantidad de elementos del segundo conjunto\n");
+                pedirCantidad(&cantidad);
+                carga_datos(B, cantidad);
+                printf("Cantidad de elementos del tercer conjunto\n");
+                pedirCantidad(&cantidad);
+                carga_datos(C, cantidad);
 
-    switch (opcion)
-    {
-      case 1:
-        interfaz2();
-        pausa();
-        break;
-      case 2:
-        interfaz3();
-        pausa();
-        break;
-      case 3:
-        interfaz4();
-        pausa();
-        break;
-      case 4:
-        interfaz5();
-        pausa();
-        break;
-      case 5:
-        interfaz6();
-        pausa();
-        break;
-      case 6:
-        interfaz7();
-        pausa();
-        break;
-      case 7:
-        interfaz8();
-        pausa();
-        break;
-      default:
-        break;
-    }
-  } while (opcion != 0);
+                if (c_ej4_transitividad(A, B, C))
+                    printf("Se demuestra transitividad: A está contenido en B y B en C, entonces A en C.\n");
+                else
+                    printf("No se demuestra transitividad entre los conjuntos.\n");
+                break;
+            }
+            case 4: {
+                Conjunto c1 = cto_crear();
+                Conjunto c2 = cto_crear();
+                int cantidad;
+                printf("Ingrese primer conjunto\n");
+                pedirCantidad(&cantidad);
+                carga_datos(c1, cantidad);
+                printf("Ingrese segundo conjunto\n");
+                pedirCantidad(&cantidad);
+                carga_datos(c2, cantidad);
 
-    pausa();
+                printf("\nConjunto con la diferencia simetrica: ");
+                cto_mostrar(c_ej5_dif_simetrica(c1, c2));
+                break;
+            }
+            case 5: {
+                Conjunto c1 = cto_crear();
+                Conjunto c2 = cto_crear();
+                int cantidad;
+                printf("Ingrese primer conjunto\n");
+                pedirCantidad(&cantidad);
+                carga_datos_naturales(c1, cantidad);
+                printf("Ingrese segundo conjunto\n");
+                pedirCantidad(&cantidad);
+                carga_datos_naturales(c2, cantidad);
+
+                if (c_ej6_subconjuntopropio(c1, c2))
+                    printf("El conjunto A es subconjunto propio de B\n");
+                else if (c_ej6_subconjuntopropio(c2, c1))
+                    printf("El conjunto B es subconjunto propio de A\n");
+                else
+                    printf("No hay subconjuntos propios, pueden ser iguales o disjuntos\n");
+                break;
+            }
+            case 6: {
+                Conjunto c1 = cto_crear();
+                Conjunto c2 = cto_crear();
+                Conjunto c3 = cto_crear();
+                int cantidad;
+                printf("Ingrese primer conjunto\n");
+                pedirCantidad(&cantidad);
+                carga_datos(c1, cantidad);
+                printf("Ingrese segundo conjunto\n");
+                pedirCantidad(&cantidad);
+                carga_datos(c2, cantidad);
+                printf("Ingrese tercer conjunto\n");
+                pedirCantidad(&cantidad);
+                carga_datos(c3, cantidad);
+
+                c_ej7_subconjtotalparcial(c1, c2, c3);
+                break;
+            }
+            case 7: {
+                Conjunto conjunto1 = cto_crear();
+                Conjunto conjunto2 = cto_crear();
+                int cantidad;
+                printf("Cantidad de elementos del primer conjunto\n");
+                pedirCantidad(&cantidad);
+                if (cantidad != 0) carga_datos_naturales(conjunto1, cantidad);
+                printf("Cantidad de elementos del segundo conjunto\n");
+                pedirCantidad(&cantidad);
+                if (cantidad != 0) carga_datos_naturales(conjunto2, cantidad);
+
+                if (c_ej8_soniguales(conjunto1, conjunto2))
+                    printf("Los conjuntos son iguales\n");
+                else
+                    printf("Los conjuntos NO SON iguales\n");
+                break;
+            }
+            default:
+                printf("Opcion invalida\n");
+        }
+
+        printf("\nDesea realizar otra operacion? (s/n): ");
+        limpiarBuffer();
+        scanf(" %c", &c);
+
+    } while (c == 's');
 }
